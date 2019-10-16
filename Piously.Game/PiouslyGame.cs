@@ -7,7 +7,7 @@ using osuTK.Graphics;
 
 namespace Piously.Game
 {
-    public class PiouslyGame : Game
+    public class PiouslyGame : osu.Framework.Game
     {
         RigidBodySimulation sim;
 

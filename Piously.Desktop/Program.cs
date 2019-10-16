@@ -11,7 +11,7 @@ namespace Piously.Desktop
         public static void Main()
         {
             using (GameHost host = Host.GetSuitableHost(@"awesome-game"))
-            using (Game game = new PiouslyGame())
+            using (osu.Framework.Game game = new PiouslyGame())
                 host.Run(game);
         }
     }
