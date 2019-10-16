@@ -4,7 +4,17 @@ using System.Text;
 
 namespace Piously.Game
 {
-    class PiouslyGame
+    public class PiouslyGame
     {
+        private int y;
+        public PiouslyGame(int y)
+        {
+            this.y = y;
+        }
+
+        public int getY()
+        {
+            return y;
+        }
     }
 }

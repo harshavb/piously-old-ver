@@ -1,14 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using Piously.Game;
 
 namespace Piously.Desktop
 {
     class Program
     {
-        public static void Main(String[] args)
+        static void Main(string[] args)
         {
-            Console.WriteLine("epic");
+            PiouslyGame game = new PiouslyGame(5);
+            Console.WriteLine(game.getY());
         }
     }
 }
