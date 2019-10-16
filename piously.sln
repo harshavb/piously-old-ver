@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29326.143
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Piously.Game", "Piously.Game\Piously.Game.csproj", "{9286F4E6-4927-4A42-9DD2-24AD60BD15CC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Piously.Game", "Piously.Game\Piously.Game.csproj", "{DAEE9DBE-ACBF-47FB-8B15-8562FDED48FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Piously.Desktop", "Piously.Desktop\Piously.Desktop.csproj", "{62872A96-9378-4022-8B9C-04F52E52424A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9286F4E6-4927-4A42-9DD2-24AD60BD15CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9286F4E6-4927-4A42-9DD2-24AD60BD15CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9286F4E6-4927-4A42-9DD2-24AD60BD15CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9286F4E6-4927-4A42-9DD2-24AD60BD15CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAEE9DBE-ACBF-47FB-8B15-8562FDED48FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAEE9DBE-ACBF-47FB-8B15-8562FDED48FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAEE9DBE-ACBF-47FB-8B15-8562FDED48FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAEE9DBE-ACBF-47FB-8B15-8562FDED48FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62872A96-9378-4022-8B9C-04F52E52424A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62872A96-9378-4022-8B9C-04F52E52424A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62872A96-9378-4022-8B9C-04F52E52424A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62872A96-9378-4022-8B9C-04F52E52424A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
