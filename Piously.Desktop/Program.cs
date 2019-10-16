@@ -1,14 +1,18 @@
 ﻿using System;
+using osu.Framework;
+using osu.Framework.Platform;
 using Piously.Game;
 
 namespace Piously.Desktop
 {
-    class Program
+    public static class Program
     {
-        static void Main(string[] args)
+        [STAThread]
+        public static void Main()
         {
-            PiouslyGame game = new PiouslyGame(5);
-            Console.WriteLine(game.getY());
+            using (GameHost host = Host.GetSuitableHost(@"awesome-game"))
+            using (Game game = new PiouslyGame())
+                host.Run(game);
         }
     }
 }
