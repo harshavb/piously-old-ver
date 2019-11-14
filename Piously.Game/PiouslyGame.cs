@@ -18,21 +18,36 @@ namespace Piously.Game
 
             RigidBodyContainer<Drawable> rbc = new RigidBodyContainer<Drawable>
             {
-                Child = new Box
+                Child = new Circle
                 {
                     Anchor = Anchor.Centre,
                     Origin = Anchor.Centre,
                     Size = new Vector2(150, 150),
-                    Colour = Color4.Tomato,
+                    Colour = Color4.Chartreuse,
                 },
                 Position = new Vector2(500, 500),
                 Size = new Vector2(200, 200),
                 Rotation = 45,
-                Colour = Color4.Tomato,
+                Masking = true,
+            };
+
+            RigidBodyContainer<Drawable> rbc2 = new RigidBodyContainer<Drawable>
+            {
+                Child = new EquilateralTriangle
+                {
+                    Anchor = Anchor.Centre,
+                    Origin = Anchor.Centre,
+                    Size = new Vector2(150, 150),
+                    Colour = Color4.HotPink,
+                },
+                Position = new Vector2(500, 500),
+                Size = new Vector2(200, 200),
+                Rotation = 45,
                 Masking = true,
             };
 
             sim.Add(rbc);
+            sim.Add(rbc2);
         }
     }
 }
