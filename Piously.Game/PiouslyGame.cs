@@ -25,7 +25,7 @@ namespace Piously.Game
                     Size = new Vector2(200, 200),
                     Colour = Color4.Chartreuse,
                 },
-                Position = new Vector2(500, 500),
+                Position = new Vector2(750, 500),
                 Size = new Vector2(200, 200),
                 Rotation = 45,
                 
@@ -34,7 +34,7 @@ namespace Piously.Game
 
             RigidBodyContainer<Drawable> rbc2 = new RigidBodyContainer<Drawable>
             {
-                Child = new Box
+                Child = new Circle
                 {
                     Anchor = Anchor.Centre,
                     Origin = Anchor.Centre,
@@ -44,6 +44,7 @@ namespace Piously.Game
                 Position = new Vector2(500, 500),
                 Size = new Vector2(200, 200),
                 Rotation = 45,
+                CornerRadius = 100,
                 Masking = true,
             };
 
