@@ -14,7 +14,11 @@ namespace Piously.Game
         [BackgroundDependencyLoader]
         private void load()
         {
-            Child = sim = new RigidBodySimulation { RelativeSizeAxes = Axes.Both };
+            Child = sim = new RigidBodySimulation
+            {
+                FrictionCoefficient = 0.3f,
+                RelativeSizeAxes = Axes.Both,
+            };
 
             RigidBodyContainer<Drawable> rbc = new RigidBodyContainer<Drawable>
             {
@@ -27,24 +31,24 @@ namespace Piously.Game
                 },
                 Position = new Vector2(750, 500),
                 Size = new Vector2(200, 200),
-                Rotation = 45,
-                
+                FrictionCoefficient = 0.3f,
+                Rotation = 60,
                 Masking = true,
             };
 
             RigidBodyContainer<Drawable> rbc2 = new RigidBodyContainer<Drawable>
             {
-                Child = new Circle
+                Child = new Box
                 {
                     Anchor = Anchor.Centre,
                     Origin = Anchor.Centre,
                     Size = new Vector2(200, 200),
                     Colour = Color4.HotPink,
                 },
-                Position = new Vector2(500, 500),
+                Position = new Vector2(300, 500),
                 Size = new Vector2(200, 200),
-                Rotation = 45,
-                CornerRadius = 100,
+                Rotation = 60,
+                FrictionCoefficient = 0.3f,
                 Masking = true,
             };
 
