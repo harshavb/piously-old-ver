@@ -41,15 +41,32 @@ namespace Piously.Game
                     Size = new Vector2(200, 200),
                     Colour = Color4.HotPink,
                 },
-                Position = new Vector2(500, 500),
+                Position = new Vector2(500, 100),
                 Size = new Vector2(200, 200),
                 Rotation = 45,
                 CornerRadius = 100,
                 Masking = true,
+                Velocity = new Vector2(400, 0),
+                Restitution = 1.01F,
+            };
+            RigidBodyContainer<Drawable> rbc3 = new RigidBodyContainer<Drawable>
+            {
+                Child = new Triangle
+                {
+                    Anchor = Anchor.Centre,
+                    Origin = Anchor.Centre,
+                    Size = new Vector2(200, 200),
+                    Colour = Color4.Chartreuse,
+                },
+                Position = new Vector2(200, 200),
+                Size = new Vector2(200, 200),
+                Masking = true,
+                Restitution = 0F,
             };
 
-            sim.Add(rbc);
+            //sim.Add(rbc);
             sim.Add(rbc2);
+            sim.Add(rbc3);
         }
     }
 }
