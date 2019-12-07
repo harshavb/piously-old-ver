@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29326.143
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Piously.Game", "Piously.Game\Piously.Game.csproj", "{DAEE9DBE-ACBF-47FB-8B15-8562FDED48FC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Piously.Game", "Piously.Game\Piously.Game.csproj", "{DAEE9DBE-ACBF-47FB-8B15-8562FDED48FC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Piously.Desktop", "Piously.Desktop\Piously.Desktop.csproj", "{071161A6-F5B3-49E1-BBAE-3CE831F08853}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Piously.Game.Tests", "Piously.Game.Tests\Piously.Game.Tests.csproj", "{397426C7-CBBA-4DEB-B1CA-E79D0538EAC6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Piously.VisualTests", "Piously.VisualTests\Piously.VisualTests.csproj", "{49C03262-2FDD-4109-90CA-987B26D7FB91}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,15 +23,32 @@ Global
 		{071161A6-F5B3-49E1-BBAE-3CE831F08853}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{071161A6-F5B3-49E1-BBAE-3CE831F08853}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{071161A6-F5B3-49E1-BBAE-3CE831F08853}.Release|Any CPU.Build.0 = Release|Any CPU
-		{397426C7-CBBA-4DEB-B1CA-E79D0538EAC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{397426C7-CBBA-4DEB-B1CA-E79D0538EAC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{397426C7-CBBA-4DEB-B1CA-E79D0538EAC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{397426C7-CBBA-4DEB-B1CA-E79D0538EAC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49C03262-2FDD-4109-90CA-987B26D7FB91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49C03262-2FDD-4109-90CA-987B26D7FB91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49C03262-2FDD-4109-90CA-987B26D7FB91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49C03262-2FDD-4109-90CA-987B26D7FB91}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FD2EC679-E939-4D13-9EBD-32CCDAF18C53}
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		Policies = $0
+		$0.DotNetNamingPolicy = $1
+		$1.DirectoryNamespaceAssociation = PrefixedHierarchical
+		$1.ResourceNamePolicy = MSBuild
+		$0.TextStylePolicy = $2
+		$2.inheritsSet = null
+		$2.scope = text/x-csharp
+		$0.CSharpFormattingPolicy = $3
+		$3.scope = text/x-csharp
+		$0.TextStylePolicy = $4
+		$4.FileWidth = 80
+		$4.TabsToSpaces = True
+		$4.scope = text/plain
+		$0.StandardHeader = $5
+		$0.VersionControlPolicy = $6
 	EndGlobalSection
 EndGlobal
