@@ -45,13 +45,13 @@ namespace Piously.Game
                     Size = new Vector2(200, 200),
                     Colour = Color4.HotPink,
                 },
-                Position = new Vector2(500, 100),
+                Position = new Vector2(400, 200),
                 Size = new Vector2(200, 200),
                 Rotation = 60,
-                FrictionCoefficient = 0.3f,
+                FrictionCoefficient = 2f,
                 Masking = true,
-                Velocity = new Vector2(400, 0),
-                Restitution = 1.01F,
+                //Velocity = new Vector2(400, 0),
+                Restitution = 1.1F,
             };
             RigidBodyContainer<Drawable> rbc3 = new RigidBodyContainer<Drawable>
             {
@@ -62,7 +62,7 @@ namespace Piously.Game
                     Size = new Vector2(200, 200),
                     Colour = Color4.Chartreuse,
                 },
-                Position = new Vector2(200, 200),
+                Position = new Vector2(50, 500),
                 Size = new Vector2(200, 200),
                 Masking = true,
                 Restitution = 0F,
