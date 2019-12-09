@@ -7,6 +7,7 @@ using osu.Framework.Graphics;
 using osu.Framework.Testing;
 using osu.Framework.Physics;
 using osu.Framework.Graphics.Shapes;
+using osu.Framework.Graphics.Sprites;
 using osuTK;
 using osuTK.Graphics;
 
@@ -40,9 +41,12 @@ namespace Piously.VisualTests
             Random rand = new Random();
             int x = rand.Next(50, 201);
             int y = rand.Next(50, 201);
-            byte r = (byte)rand.Next(0, 256);
-            byte g = (byte)rand.Next(0, 256);
-            byte b = (byte)rand.Next(0, 256);
+            int posx = rand.Next(200, 1201);
+            int posy = rand.Next(0, 500);
+            byte r = (byte)rand.Next(100, 256);
+            byte g = (byte)rand.Next(100, 256);
+            byte b = (byte)rand.Next(100, 256);
+            float rt = (float)rand.NextDouble();
             Color4 color = new Color4(r, g, b, 255);
             RigidBodyContainer<Drawable> rbc = new RigidBodyContainer<Drawable>
             {
@@ -53,14 +57,24 @@ namespace Piously.VisualTests
                     Size = new Vector2(x, y),
                     Colour = color,
                 },
-                Position = new Vector2(rand.Next(200, 1201), rand.Next(0, 500)),
+                Position = new Vector2(posx, posy),
                 Size = new Vector2(x, y),
                 Rotation = 0,
                 Colour = color,
                 Masking = true,
-                Restitution = 1.01f,
+                Restitution = rt,
             };
 
+            SpriteText txt = new SpriteText
+            {
+                Text = rt.ToString().Substring(0, 4),
+                Anchor = Anchor.Centre,
+                Origin = Anchor.Centre,
+                Colour = Color4.Black,
+                Font = new FontUsage(null, Math.Min(x*0.6f, y*0.6f)),
+            };
+
+            rbc.Add(txt);
             sim.Add(rbc);
         }
         private void removeAllObjects()
