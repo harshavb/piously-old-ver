@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading.Tasks;
 using System.Linq;
 using NUnit.Framework;
 
@@ -8,9 +7,6 @@ using osu.Framework.Graphics;
 using osu.Framework.Testing;
 using osu.Framework.Physics;
 using osu.Framework.Graphics.Shapes;
-using osu.Framework.Text;
-using osu.Framework.Graphics.Sprites;
-using osu.Framework;
 using osuTK;
 using osuTK.Graphics;
 
