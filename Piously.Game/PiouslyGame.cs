@@ -68,7 +68,7 @@ namespace Piously.Game
                 Restitution = 0F,
             };
 
-            //sim.Add(rbc);
+            sim.Add(rbc);
             sim.Add(rbc2);
             sim.Add(rbc3);
         }

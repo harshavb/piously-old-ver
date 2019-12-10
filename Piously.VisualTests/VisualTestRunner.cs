@@ -11,15 +11,15 @@ namespace Piously.VisualTests
 {
     public class VisualTestRunner : PiouslyGame
     {
-        [BackgroundDependencyLoader]
+        [BackgroundDependencyLoader] // Necessary for something
         private void load()
         {
             Child = new DrawSizePreservingFillContainer
             {
                 Children = new Drawable[]
                 {
-                    new TestBrowser("Piously"), //Specify the namespace to discover tests from
-                    new CursorContainer(),
+                    new TestBrowser("Piously"), // Specify the namespace to discover tests from. Creates NUnit test browser
+                    new CursorContainer(), // Enable cursor
                 },
             };
         }

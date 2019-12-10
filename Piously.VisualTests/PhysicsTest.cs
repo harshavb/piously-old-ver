@@ -16,6 +16,9 @@ namespace Piously.VisualTests
     [TestFixture] // Needed for NUnit
     public class PhysicsTest : TestScene // TestScene has the AddStep function
     {
+        // TODO:
+        // Figure out a way to make NUnit test functions that take parameters from the user during runtime
+        // For example, create a random cube with desired restitution/color/size that can be supplemented in the browser
         private RigidBodySimulation sim;
 
         [BackgroundDependencyLoader]
@@ -35,18 +38,17 @@ namespace Piously.VisualTests
         {
             AddStep("Remove all objects", removeAllObjects);
         }
-        private void performDropRect()
+        private void performDropRect() // Adds a rectangle of random properties to the simulation
         {
-            // Add a new cube to the simulation
             Random rand = new Random();
-            int x = rand.Next(50, 201);
-            int y = rand.Next(50, 201);
-            int posx = rand.Next(200, 1201);
-            int posy = rand.Next(0, 500);
-            byte r = (byte)rand.Next(100, 256);
-            byte g = (byte)rand.Next(100, 256);
-            byte b = (byte)rand.Next(100, 256);
-            float rt = (float)rand.NextDouble();
+            int x = rand.Next(50, 201); // width
+            int y = rand.Next(50, 201); // height
+            int posx = rand.Next(200, 1201); // x-position
+            int posy = rand.Next(0, 500); // y-position
+            byte r = (byte)rand.Next(100, 256); // red channel
+            byte g = (byte)rand.Next(100, 256); // green channel
+            byte b = (byte)rand.Next(100, 256); // blue channel
+            float rt = (float)rand.NextDouble(); // restitution
             Color4 color = new Color4(r, g, b, 255);
             RigidBodyContainer<Drawable> rbc = new RigidBodyContainer<Drawable>
             {
@@ -67,19 +69,21 @@ namespace Piously.VisualTests
 
             SpriteText txt = new SpriteText
             {
-                Text = rt.ToString().Substring(0, 4),
+                Text = rt.ToString().Substring(0, 4), // Displays the restitution to two decimal places
                 Anchor = Anchor.Centre,
                 Origin = Anchor.Centre,
                 Colour = Color4.Black,
-                Font = new FontUsage(null, Math.Min(x*0.6f, y*0.6f)),
+                Font = new FontUsage(null, Math.Min(x*0.6f, y*0.6f)), // Scales the font, but only really works with four characters
+                // TODO:
+                // Figure out how to make font scale to container size, no matter text size
             };
 
             rbc.Add(txt);
             sim.Add(rbc);
         }
-        private void removeAllObjects()
+        private void removeAllObjects() // Destroys all objects in the simulation
         {
-            for(int i = sim.Count - 1; i >= 0; i--)
+            for(int i = sim.Count - 1; i >= 0; i--) // Loops backwards; looping forwards would skip objects after a removal
             {
                 sim.Remove(sim.ElementAt(i));
             }
