@@ -4,12 +4,17 @@ using NUnit.Framework;
 
 using osu.Framework.Allocation;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Textures;
 using osu.Framework.Testing;
 using osu.Framework.Physics;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
+using osu.Framework.Input.Bindings;
+using osu.Framework.Graphics.Containers;
 using osuTK;
 using osuTK.Graphics;
+
+using Piously.Game.Input;
 
 namespace Piously.VisualTests
 {
@@ -20,7 +25,79 @@ namespace Piously.VisualTests
         // Figure out a way to make NUnit test functions that take parameters from the user during runtime
         // For example, create a random cube with desired restitution/color/size that can be supplemented in the browser
         private RigidBodySimulation sim;
+        private class PiouslyTestKeyBindingReceptor : Drawable, IKeyBindingHandler<InputAction> // IKeyBindingHandler implements OnPressed and OnReleased and passes the InputAction enum
+        {
+            private Player player; // Drawable object that will be affected
+            private RigidBodySimulation sim; // Simulation that Player will be in
 
+            // Creates a new player, and adds it to RigidBodySimulation sim
+            public PiouslyTestKeyBindingReceptor(RigidBodySimulation sim)
+            {
+                this.player = new Player();
+                this.sim = sim;
+                this.sim.Add(this.player);
+            }
+
+            // Called when a key is pressed
+            public bool OnPressed(InputAction action)
+            {
+                switch (action)
+                {
+                    case InputAction.Jump:
+                        player.Velocity = new Vector2(player.constantXForce, player.Velocity.Y - 500); // Give an upwards velocity
+                        break;
+                    case InputAction.Right:
+                        player.constantXForce += Player.PLAYER_VELOCITY; // Give a rightwards velocity
+                        break;
+                    case InputAction.Left:
+                        player.constantXForce -= Player.PLAYER_VELOCITY; // Give a leftwards velocity
+                        break;
+                }
+                return true; // Returns true when the event has been handled
+            }
+
+            // Called when a key is released
+            public bool OnReleased(InputAction action)
+            {
+                switch (action) // The following actions reset the players velocity to zero when the left or right key is released. This allows for the player to hold left or right (but not jump) to key moving in that direction
+                {
+                    case InputAction.Left:
+                        player.constantXForce += Player.PLAYER_VELOCITY;
+                        break;
+                    case InputAction.Right:
+                        player.constantXForce -= Player.PLAYER_VELOCITY;
+                        break;
+                }
+                return true;
+            }
+        }
+
+        private class Player : RigidBodyContainer<Drawable>
+        {
+            public float constantXForce; // Stores x-ward velocity
+
+            [BackgroundDependencyLoader]
+            private void load(TextureStore textureStore)
+            {
+                Child = new Box
+                {
+                    Anchor = Anchor.Centre,
+                    Origin = Anchor.Centre,
+                    Size = new Vector2(200, 200),
+                };
+                Position = new Vector2(200, 100);
+                Size = new Vector2(200, 200);
+                Masking = true;
+            }
+
+            public const float PLAYER_VELOCITY = 500f; // How fast it moves left or right
+
+            protected override void Update() // Updates velocity with each tick
+            {
+                base.Update();
+                Velocity = new Vector2(constantXForce, Velocity.Y);
+            }
+        }
         [BackgroundDependencyLoader]
         private void load()
         {
@@ -38,11 +115,24 @@ namespace Piously.VisualTests
         {
             AddStep("Remove all objects", removeAllObjects);
         }
+        [Test]
+        public void NewPlayerTest()
+        {
+            AddStep("Add a player", createNewPlayer);
+        }
+        private void createNewPlayer()
+        {
+            PiouslyKeyBindingContainer keyBindingContainer = new PiouslyKeyBindingContainer(); // Create an object that detects key presses and releases
+            PiouslyTestKeyBindingReceptor keyBindingReceptor = new PiouslyTestKeyBindingReceptor(sim); // Create an object that listens to when keyBindingContainer changes the InputAction
+            keyBindingContainer.Child = keyBindingReceptor; // Sets the receptor as the child of the detector, as is required
+            Add(keyBindingContainer); // Add the keyBindingDetector to the scene
+        }
         private void performDropRect() // Adds a rectangle of random properties to the simulation
         {
             Random rand = new Random();
             int x = rand.Next(50, 201); // width
             int y = rand.Next(50, 201); // height
+            Console.WriteLine(Axes.X);
             int posx = rand.Next(200, 1201); // x-position
             int posy = rand.Next(0, 500); // y-position
             byte r = (byte)rand.Next(100, 256); // red channel
