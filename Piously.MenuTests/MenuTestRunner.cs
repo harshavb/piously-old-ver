@@ -7,9 +7,9 @@ using osu.Framework.Testing;
 
 using Piously.Game;
 
-namespace Piously.VisualTests
+namespace Piously.MenuTests
 {
-    public class VisualTestRunner : PiouslyGame
+    public class MenuTestRunner : PiouslyGame
     {
         [BackgroundDependencyLoader] // Necessary for something
         private void load()

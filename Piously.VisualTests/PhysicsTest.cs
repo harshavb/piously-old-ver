@@ -10,13 +10,12 @@ using osu.Framework.Physics;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
 using osu.Framework.Input.Bindings;
-using osu.Framework.Graphics.Containers;
 using osuTK;
 using osuTK.Graphics;
 
 using Piously.Game.Input;
 
-namespace Piously.VisualTests
+namespace Piously.PhysicsTests
 {
     [TestFixture] // Needed for NUnit
     public class PhysicsTest : TestScene // TestScene has the AddStep function
@@ -29,6 +28,7 @@ namespace Piously.VisualTests
         {
             private Player player; // Drawable object that will be affected
             private RigidBodySimulation sim; // Simulation that Player will be in
+            private InputAction key;
 
             // Creates a new player, and adds it to RigidBodySimulation sim
             public PiouslyTestKeyBindingReceptor(RigidBodySimulation sim)
@@ -53,6 +53,7 @@ namespace Piously.VisualTests
                         player.constantXForce -= Player.PLAYER_VELOCITY; // Give a leftwards velocity
                         break;
                 }
+                this.key = action;
                 return true; // Returns true when the event has been handled
             }
 
@@ -90,7 +91,7 @@ namespace Piously.VisualTests
                 Masking = true;
             }
 
-            public const float PLAYER_VELOCITY = 500f; // How fast it moves left or right
+            public const float PLAYER_VELOCITY = 2000f; // How fast it moves left or right
 
             protected override void Update() // Updates velocity with each tick
             {
@@ -138,7 +139,7 @@ namespace Piously.VisualTests
             byte r = (byte)rand.Next(100, 256); // red channel
             byte g = (byte)rand.Next(100, 256); // green channel
             byte b = (byte)rand.Next(100, 256); // blue channel
-            float rt = (float)rand.NextDouble(); // restitution
+            float rt = (float)rand.NextDouble() * 2.05f - 1; // restitution
             Color4 color = new Color4(r, g, b, 255);
             RigidBodyContainer<Drawable> rbc = new RigidBodyContainer<Drawable>
             {
@@ -159,14 +160,19 @@ namespace Piously.VisualTests
 
             SpriteText txt = new SpriteText
             {
-                Text = rt.ToString().Substring(0, 4), // Displays the restitution to two decimal places
+                Text = rt.ToString().Substring(0, 5), // Displays the restitution to two decimal places
                 Anchor = Anchor.Centre,
                 Origin = Anchor.Centre,
                 Colour = Color4.Black,
-                Font = new FontUsage(null, Math.Min(x*0.6f, y*0.6f)), // Scales the font, but only really works with four characters
+                Font = new FontUsage(null, Math.Min(x*0.5f, y*0.5f)), // Scales the font, but only really works with four characters
                 // TODO:
                 // Figure out how to make font scale to container size, no matter text size
             };
+
+            if(rt >= 0) // If the number is positive, adjust precisison for one less character (-)
+            {
+                txt.Text = txt.Text.ToString().Substring(0, 4);
+            }
 
             rbc.Add(txt);
             sim.Add(rbc);

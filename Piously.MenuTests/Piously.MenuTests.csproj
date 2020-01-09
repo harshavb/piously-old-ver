@@ -5,9 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Class1.cs" />
+    <ProjectReference Include="..\Piously.Game\Piously.Game.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Piously.Game\Piously.Game.csproj" />
+    <Compile Remove="Class1.cs" />
   </ItemGroup>
 </Project>
