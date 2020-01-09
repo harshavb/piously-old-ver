@@ -31,12 +31,25 @@ namespace Piously.MenuTests
         }
 
         [Test]
-        public void loadText()
+        public void bulgeText()
         {
-            AddStep("Load Text", newText);
+            AddStep("Load bulging text", newBulgeText);
         }
 
-        private void newText()
+        [Test]
+        public void clearText()
+        {
+            AddStep("Clear all text", clearAllText);
+        }
+
+        private void clearAllText()
+        {
+            for(int i = con.Count - 1; i >= 0; i--)
+            {
+                con.Remove(con[i]);
+            }
+        }
+        private void newBulgeText()
         {
             SpriteText txt = new SpriteText
             {
@@ -58,18 +71,18 @@ namespace Piously.MenuTests
         private void updateText(Drawable obj)
         {
             SpriteText x = (SpriteText)obj;
-            obj.Rotation += 1;
+            obj.Rotation += 1.5f;
 
             if (inc)
             {
-                x.Font = new FontUsage(null, x.Font.Size + 1);
-                if(x.Font.Size >= 200)
+                x.Font = new FontUsage(null, x.Font.Size * 1.02f);
+                if(x.Font.Size >= 400)
                 {
                     inc = false;
                 }
             } else
             {
-                x.Font = new FontUsage(null, x.Font.Size - 1);
+                x.Font = new FontUsage(null, x.Font.Size / 1.02f);
                 if (x.Font.Size <= 12)
                 {
                     inc = true;
