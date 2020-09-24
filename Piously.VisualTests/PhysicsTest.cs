@@ -58,7 +58,7 @@ namespace Piously.PhysicsTests
             }
 
             // Called when a key is released
-            public bool OnReleased(InputAction action)
+            public void OnReleased(InputAction action)
             {
                 switch (action) // The following actions reset the players velocity to zero when the left or right key is released. This allows for the player to hold left or right (but not jump) to key moving in that direction
                 {
@@ -69,7 +69,6 @@ namespace Piously.PhysicsTests
                         player.constantXForce -= Player.PLAYER_VELOCITY;
                         break;
                 }
-                return true;
             }
         }
 
