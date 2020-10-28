@@ -12,7 +12,7 @@ namespace Piously.Game.IO
         /// <summary>
         /// Indicates the error (if any) that occurred when initialising the custom storage during initial startup.
         /// </summary>
-        public readonly OsuStorageError Error;
+        public readonly PiouslyStorageError Error;
 
         /// <summary>
         /// The custom storage path as selected by the user.
@@ -66,11 +66,11 @@ namespace Piously.Game.IO
         /// </summary>
         /// <param name="error">The error that occurred.</param>
         /// <returns>Whether the custom storage path was used successfully. If not, <paramref name="error"/> will be populated with the reason.</returns>
-        public bool TryChangeToCustomStorage(out OsuStorageError error)
+        public bool TryChangeToCustomStorage(out PiouslyStorageError error)
         {
             Debug.Assert(!string.IsNullOrEmpty(CustomStoragePath));
 
-            error = OsuStorageError.None;
+            error = PiouslyStorageError.None;
             Storage lastStorage = UnderlyingStorage;
 
             try
@@ -78,17 +78,17 @@ namespace Piously.Game.IO
                 Storage userStorage = host.GetStorage(CustomStoragePath);
 
                 if (!userStorage.ExistsDirectory(".") || !userStorage.GetFiles(".").Any())
-                    error = OsuStorageError.AccessibleButEmpty;
+                    error = PiouslyStorageError.AccessibleButEmpty;
 
                 ChangeTargetStorage(userStorage);
             }
             catch
             {
-                error = OsuStorageError.NotAccessible;
+                error = PiouslyStorageError.NotAccessible;
                 ChangeTargetStorage(lastStorage);
             }
 
-            return error == OsuStorageError.None;
+            return error == PiouslyStorageError.None;
         }
 
         protected override void ChangeTargetStorage(Storage newStorage)
@@ -105,7 +105,7 @@ namespace Piously.Game.IO
         }
     }
 
-    public enum OsuStorageError
+    public enum PiouslyStorageError
     {
         /// <summary>
         /// No error.

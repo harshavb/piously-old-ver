@@ -75,7 +75,7 @@ namespace Piously.Game.Overlays
             Add(new Box
             {
                 RelativeSizeAxes = Axes.Both,
-                Colour = ColourProvider.Background6
+                Colour = ColorProvider.Background6
             });
 
             Add(sectionsContainer = new ProfileSectionsContainer
@@ -85,7 +85,7 @@ namespace Piously.Game.Overlays
                 HeaderBackground = new Box
                 {
                     // this is only visible as the ProfileTabControl background
-                    Colour = ColourProvider.Background5,
+                    Colour = ColorProvider.Background5,
                     RelativeSizeAxes = Axes.Both
                 },
             });
@@ -168,13 +168,13 @@ namespace Piously.Game.Overlays
 
             protected override TabItem<ProfileSection> CreateTabItem(ProfileSection value) => new ProfileSectionTabItem(value)
             {
-                AccentColour = AccentColour,
+                AccentColor = AccentColor,
             };
 
             [BackgroundDependencyLoader]
-            private void load(OverlayColourProvider colourProvider)
+            private void load(OverlayColorProvider colorProvider)
             {
-                AccentColour = colourProvider.Highlight1;
+                AccentColor = colorProvider.Highlight1;
             }
 
             protected override bool OnClick(ClickEvent e) => true;
@@ -202,7 +202,7 @@ namespace Piously.Game.Overlays
                 RelativeSizeAxes = Axes.Both;
             }
 
-            protected override OsuScrollContainer CreateScrollContainer() => new OverlayScrollContainer();
+            protected override PiouslyScrollContainer CreateScrollContainer() => new OverlayScrollContainer();
 
             protected override FlowContainer<ProfileSection> CreateScrollContentContainer() => new FillFlowContainer<ProfileSection>
             {
