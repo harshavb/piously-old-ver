@@ -12,7 +12,7 @@ using osu.Framework.Input.Events;
 using Piously.Game.Graphics.Containers;
 using Piously.Game.Online.API.Requests;
 using Piously.Game.Overlays.Profile;
-using Piously.Game.Overlays.Profile.Sections;
+//using Piously.Game.Overlays.Profile.Sections;
 using Piously.Game.Users;
 using osuTK;
 
@@ -29,7 +29,7 @@ namespace Piously.Game.Overlays
         public const float CONTENT_X_MARGIN = 70;
 
         public UserProfileOverlay()
-            : base(OverlayColourScheme.Pink, new ProfileHeader())
+            : base(OverlayColorScheme.Pink, new ProfileHeader())
         {
         }
 
@@ -52,16 +52,14 @@ namespace Piously.Game.Overlays
             Clear();
             lastSection = null;
 
+            //TO BE IMPLEMENTED
             sections = !user.IsBot
                 ? new ProfileSection[]
                 {
                     //new AboutSection(),
-                    new RecentSection(),
-                    new RanksSection(),
-                    //new MedalsSection(),
-                    new HistoricalSection(),
-                    new BeatmapsSection(),
-                    new KudosuSection()
+                    //new RecentSection(),
+                    //new RanksSection(),
+                    //new HistoricalSection(),
                 }
                 : Array.Empty<ProfileSection>();
 

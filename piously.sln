@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29326.143
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Piously.Game", "Piously.Game\Piously.Game.csproj", "{DAEE9DBE-ACBF-47FB-8B15-8562FDED48FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Piously.Game", "Piously.Game\Piously.Game.csproj", "{DAEE9DBE-ACBF-47FB-8B15-8562FDED48FC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Piously.Desktop", "Piously.Desktop\Piously.Desktop.csproj", "{071161A6-F5B3-49E1-BBAE-3CE831F08853}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Piously.PhysicalTests", "Piously.VisualTests\Piously.PhysicalTests.csproj", "{49C03262-2FDD-4109-90CA-987B26D7FB91}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Piously.PhysicalTests", "Piously.VisualTests\Piously.PhysicalTests.csproj", "{49C03262-2FDD-4109-90CA-987B26D7FB91}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Piously.MenuTests", "Piously.MenuTests\Piously.MenuTests.csproj", "{BB4E9413-3CBF-4723-8F2C-20591E8A3AB7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Piously.MenuTests", "Piously.MenuTests\Piously.MenuTests.csproj", "{BB4E9413-3CBF-4723-8F2C-20591E8A3AB7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,8 +21,8 @@ Global
 		{DAEE9DBE-ACBF-47FB-8B15-8562FDED48FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DAEE9DBE-ACBF-47FB-8B15-8562FDED48FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DAEE9DBE-ACBF-47FB-8B15-8562FDED48FC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{071161A6-F5B3-49E1-BBAE-3CE831F08853}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{071161A6-F5B3-49E1-BBAE-3CE831F08853}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{071161A6-F5B3-49E1-BBAE-3CE831F08853}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{071161A6-F5B3-49E1-BBAE-3CE831F08853}.Debug|Any CPU.Build.0 = Release|Any CPU
 		{071161A6-F5B3-49E1-BBAE-3CE831F08853}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{071161A6-F5B3-49E1-BBAE-3CE831F08853}.Release|Any CPU.Build.0 = Release|Any CPU
 		{49C03262-2FDD-4109-90CA-987B26D7FB91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -45,12 +45,11 @@ Global
 		$0.DotNetNamingPolicy = $1
 		$1.DirectoryNamespaceAssociation = PrefixedHierarchical
 		$1.ResourceNamePolicy = MSBuild
-		$0.TextStylePolicy = $2
+		$0.TextStylePolicy = $4
 		$2.inheritsSet = null
 		$2.scope = text/x-csharp
 		$0.CSharpFormattingPolicy = $3
 		$3.scope = text/x-csharp
-		$0.TextStylePolicy = $4
 		$4.FileWidth = 80
 		$4.TabsToSpaces = True
 		$4.scope = text/plain

@@ -59,6 +59,9 @@ namespace Piously.Game.Users
         [JsonProperty(@"competitive_rating")]
         public int? CompetitiveRating;
 
+        [JsonProperty(@"is_bot")]
+        public bool IsBot;
+
         [JsonProperty(@"is_active")]
         public bool Active;
 
@@ -94,6 +97,9 @@ namespace Piously.Game.Users
 
         [JsonProperty(@"website")]
         public string Website;
+
+        [JsonProperty(@"profile_order")]
+        public string[] ProfileOrder;
 
         private UserStatistics statistics;
 
