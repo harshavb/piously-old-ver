@@ -15,7 +15,7 @@ using Piously.Game.Graphics;
 
 namespace Piously.Game.Screens.Menu
 {
-    class PiouslyLogo : PiouslyClickableContainer
+    public class PiouslyLogo : PiouslyClickableContainer
     {
         public readonly Color4 PiouslyYellow = new PiouslyColor().Yellow;
 
@@ -25,10 +25,15 @@ namespace Piously.Game.Screens.Menu
 
         private readonly IntroSequence intro;
 
-        private readonly Container logoContainer;
+        private readonly CircularContainer logoContainer;
         private readonly Container logoHoverContainer;
         private readonly Container colourAndHexagons;
         private readonly Hexagons hexagons;
+
+        /// <summary>
+        /// Return value decides whether the logo should play its own sample for the click action.
+        /// </summary>
+        public Func<bool> Action;
 
         /// <summary>
         /// The size of the logo Sprite with respect to the scale of its hover and bounce containers.

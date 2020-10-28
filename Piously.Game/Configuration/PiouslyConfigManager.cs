@@ -48,5 +48,11 @@ namespace Piously.Game.Configuration
         ScalingPositionY,
         ChatDisplayHeight,
         ExternalLinkWarning,
+        MenuParallax,
+        UIHoldActivationDelay,
+        VolumeInactive,
+        MenuVoice,
+        MenuMusic,
+        ConfineMouseMode,
     }
 }

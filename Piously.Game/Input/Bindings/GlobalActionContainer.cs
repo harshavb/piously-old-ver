@@ -17,7 +17,7 @@ namespace Piously.Game.Input.Bindings
                 handler = game;
         }
 
-        public override IEnumerable<KeyBinding> DefaultKeyBindings => GlobalKeyBindings.Concat(InGameKeyBindings);
+        public override IEnumerable<KeyBinding> DefaultKeyBindings => GlobalKeyBindings.Concat(InGameKeyBindings).Concat(AudioControlKeyBindings);
 
         public IEnumerable<KeyBinding> GlobalKeyBindings => new[]
         {
@@ -41,6 +41,16 @@ namespace Piously.Game.Input.Bindings
             new KeyBinding(InputKey.Escape, GlobalAction.ToggleExit),
         };
 
+        public IEnumerable<KeyBinding> AudioControlKeyBindings => new[]
+        {
+            new KeyBinding(new[] { InputKey.Alt, InputKey.Up }, GlobalAction.IncreaseVolume),
+            new KeyBinding(new[] { InputKey.Alt, InputKey.MouseWheelUp }, GlobalAction.IncreaseVolume),
+            new KeyBinding(new[] { InputKey.Alt, InputKey.Down }, GlobalAction.DecreaseVolume),
+            new KeyBinding(new[] { InputKey.Alt, InputKey.MouseWheelDown }, GlobalAction.DecreaseVolume),
+
+            new KeyBinding(new[] { InputKey.Control, InputKey.F4 }, GlobalAction.ToggleMute),
+        };
+
         protected override IEnumerable<Drawable> KeyBindingInputQueue =>
             handler == null ? base.KeyBindingInputQueue : base.KeyBindingInputQueue.Prepend(handler);
     }
@@ -61,6 +71,15 @@ namespace Piously.Game.Input.Bindings
 
         [Description("Toggle settings")]
         ToggleSettings,
+
+        [Description("Increase volume")]
+        IncreaseVolume,
+
+        [Description("Decrease volume")]
+        DecreaseVolume,
+
+        [Description("Toggle mute")]
+        ToggleMute,
 
         [Description("Back")]
         Back,

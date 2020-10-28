@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Piously.Game.Updater
 {
-    class UpdateManager : CompositeDrawable
+    public class UpdateManager : CompositeDrawable
     {
         /// <summary>
         /// Whether this UpdateManager should be or is capable of checking for updates.
