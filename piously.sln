@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Piously.Game", "Piously.Gam
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Piously.Desktop", "Piously.Desktop\Piously.Desktop.csproj", "{071161A6-F5B3-49E1-BBAE-3CE831F08853}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Piously.PhysicalTests", "Piously.VisualTests\Piously.PhysicalTests.csproj", "{49C03262-2FDD-4109-90CA-987B26D7FB91}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Piously.PhysicsTests", "Piously.VisualTests\Piously.PhysicsTests.csproj", "{49C03262-2FDD-4109-90CA-987B26D7FB91}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Piously.MenuTests", "Piously.MenuTests\Piously.MenuTests.csproj", "{BB4E9413-3CBF-4723-8F2C-20591E8A3AB7}"
 EndProject
@@ -21,8 +21,8 @@ Global
 		{DAEE9DBE-ACBF-47FB-8B15-8562FDED48FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DAEE9DBE-ACBF-47FB-8B15-8562FDED48FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DAEE9DBE-ACBF-47FB-8B15-8562FDED48FC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{071161A6-F5B3-49E1-BBAE-3CE831F08853}.Debug|Any CPU.ActiveCfg = Release|Any CPU
-		{071161A6-F5B3-49E1-BBAE-3CE831F08853}.Debug|Any CPU.Build.0 = Release|Any CPU
+		{071161A6-F5B3-49E1-BBAE-3CE831F08853}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{071161A6-F5B3-49E1-BBAE-3CE831F08853}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{071161A6-F5B3-49E1-BBAE-3CE831F08853}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{071161A6-F5B3-49E1-BBAE-3CE831F08853}.Release|Any CPU.Build.0 = Release|Any CPU
 		{49C03262-2FDD-4109-90CA-987B26D7FB91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU

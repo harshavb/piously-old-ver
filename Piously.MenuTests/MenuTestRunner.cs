@@ -5,11 +5,9 @@ using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Cursor;
 using osu.Framework.Testing;
 
-using Piously.Game;
-
 namespace Piously.MenuTests
 {
-    public class MenuTestRunner : PiouslyGame
+    public class MenuTestRunner : osu.Framework.Game
     {
         [BackgroundDependencyLoader] // Necessary for something
         private void load()

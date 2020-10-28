@@ -1,16 +1,12 @@
 ﻿using System;
 using NUnit.Framework;
-
 using osu.Framework.Allocation;
 using osu.Framework.Testing;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Sprites;
 using osu.Framework.Graphics;
-using osu.Framework.Screens;
-
 using osuTK;
 using osuTK.Graphics;
-using Piously.Game;
 
 namespace Piously.MenuTests
 {

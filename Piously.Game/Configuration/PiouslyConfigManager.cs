@@ -47,5 +47,6 @@ namespace Piously.Game.Configuration
         ScalingPositionX,
         ScalingPositionY,
         ChatDisplayHeight,
+        ExternalLinkWarning,
     }
 }

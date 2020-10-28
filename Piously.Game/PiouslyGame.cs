@@ -37,7 +37,7 @@ using LogLevel = osu.Framework.Logging.LogLevel;
 
 namespace Piously.Game
 {
-    public class PiouslyGame : PiouslyGameBase, IKeyBindingHandler<GlobalAction>
+    public class PiouslyGame : PiouslyGameBase//, IKeyBindingHandler<GlobalAction>
     {
         public Toolbar Toolbar;
 
@@ -47,10 +47,14 @@ namespace Piously.Game
 
         private UserProfileOverlay userProfile;
 
+        //protected SentryLogger SentryLogger;
+
         /// <summary>
         /// Whether overlays should be able to be opened game-wide. Value is sourced from the current active screen.
         /// </summary>
         public readonly IBindable<OverlayActivation> OverlayActivationMode = new Bindable<OverlayActivation>();
+
+        private readonly List<OverlayContainer> overlays = new List<OverlayContainer>();
 
         private readonly List<OverlayContainer> visibleBlockingOverlays = new List<OverlayContainer>();
 
@@ -69,6 +73,52 @@ namespace Piously.Game
             visibleBlockingOverlays.Remove(overlay);
             updateBlockingOverlayFade();
         }
+
+        /// <summary>
+        /// Close all game-wide overlays.
+        /// </summary>
+        /// <param name="hideToolbar">Whether the toolbar should also be hidden.</param>
+        public void CloseAllOverlays(bool hideToolbar = true)
+        {
+            foreach (var overlay in overlays)
+                overlay.Hide();
+
+            if (hideToolbar) Toolbar.Hide();
+        }
+
+        private DependencyContainer dependencies;
+
+        protected override IReadOnlyDependencyContainer CreateChildDependencies(IReadOnlyDependencyContainer parent) =>
+            dependencies = new DependencyContainer(base.CreateChildDependencies(parent));
+
+        [BackgroundDependencyLoader]
+        private void load()
+        {
+            if (!Host.IsPrimaryInstance && !DebugUtils.IsDebugBuild)
+            {
+                Logger.Log(@"Piously does not support multiple running instances.", LoggingTarget.Runtime, LogLevel.Error);
+                Environment.Exit(0);
+            }
+
+            /*if (args?.Length > 0)
+            {
+                var paths = args.Where(a => !a.StartsWith('-')).ToArray();
+                if (paths.Length > 0)
+                    Task.Run(() => Import(paths));
+            }*/
+
+            dependencies.CacheAs(this);
+
+            //dependencies.Cache(SentryLogger);
+
+            //dependencies.Cache(piouslyLogo = new PiouslyLogo { Alpha = 0 });
+
+            //IsActive.BindValueChanged(active => updateActiveState(active.NewValue), true);
+
+            //Audio.AddAdjustment(AdjustableProperty.Volume, inactiveVolumeFade);
+        }
+
+        private ExternalLinkOpener externalLinkOpener;
 
         /// <summary>
         /// Handle an arbitrary URL. Displays via in-game overlays where possible.
@@ -142,9 +192,9 @@ namespace Piously.Game
         {
             var instance = retrieveInstance();
 
-            if (ScreenStack == null || ScreenStack.CurrentScreen is StartupScreen || instance?.IsLoaded != true)
-                Schedule(() => waitForReady(retrieveInstance, action));
-            else
+            //if (ScreenStack == null || ScreenStack.CurrentScreen is StartupScreen || instance?.IsLoaded != true)
+               //Schedule(() => waitForReady(retrieveInstance, action));
+            //else
                 action(instance);
         }
 
