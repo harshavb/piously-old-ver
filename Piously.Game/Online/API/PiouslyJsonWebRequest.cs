@@ -2,7 +2,7 @@
 
 namespace Piously.Game.Online.API
 {
-    class PiouslyJsonWebRequest<T> : JsonWebRequest<T>
+    public class PiouslyJsonWebRequest<T> : JsonWebRequest<T>
     {
         public PiouslyJsonWebRequest(string uri)
             : base(uri)
