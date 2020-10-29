@@ -94,6 +94,14 @@ namespace Piously.Game
 
         private readonly List<OverlayContainer> visibleBlockingOverlays = new List<OverlayContainer>();
 
+        public PiouslyGame(string[] args = null)
+        {
+            this.args = args;
+
+            forwardLoggedErrorsToNotifications();
+
+            SentryLogger = new SentryLogger(this);
+        }
         private void updateBlockingOverlayFade() =>
             screenContainer.FadeColour(visibleBlockingOverlays.Any() ? PiouslyColor.Gray(0.5f) : Color4.White, 500, Easing.OutQuint);
 

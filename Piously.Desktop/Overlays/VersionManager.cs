@@ -42,12 +42,12 @@ namespace Piously.Desktop.Overlays
                             {
                                 new PiouslySpriteText
                                 {
-                                    Font = OsuFont.GetFont(weight: FontWeight.Bold),
+                                    Font = PiouslyFont.GetFont(weight: FontWeight.Bold),
                                     Text = game.Name
                                 },
                                 new PiouslySpriteText
                                 {
-                                    Colour = DebugUtils.IsDebugBuild ? colours.Red : Color4.White,
+                                    Colour = DebugUtils.IsDebugBuild ? colors.Red : Color4.White,
                                     Text = game.Version
                                 },
                             }
