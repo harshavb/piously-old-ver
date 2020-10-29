@@ -118,7 +118,7 @@ namespace Piously.Desktop
         {
             base.SetHost(host);
 
-            var iconStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(GetType(), "lazer.ico");
+            var iconStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(GetType(), "Piously.ico");
 
             switch (host.Window)
             {
