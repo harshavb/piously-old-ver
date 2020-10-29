@@ -64,11 +64,11 @@ namespace Piously.Desktop
             {
             }
 
-            stableInstallPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"osu!");
+            stableInstallPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"Piously");
             if (checkExists(stableInstallPath))
                 return stableInstallPath;
 
-            stableInstallPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".osu");
+            stableInstallPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".Piously");
             if (checkExists(stableInstallPath))
                 return stableInstallPath;
 
