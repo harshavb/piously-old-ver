@@ -25,12 +25,13 @@ using Piously.Game.Database;
 using Piously.Game.Input;
 using Piously.Game.Input.Bindings;
 using Piously.Game.IO;
+using Piously.Game.Resources;
 using osuTK.Input;
 using RuntimeInfo = osu.Framework.RuntimeInfo;
 
 namespace Piously.Game
 {
-    public class PiouslyGameBase : osu.Framework.Game
+    public class PiouslyGameBase : osu.Framework.Game, ICanAcceptFiles
     {
         public const string CLIENT_STREAM_NAME = "Main";
 
@@ -94,7 +95,7 @@ namespace Piously.Game
             using (var str = File.OpenRead(typeof(PiouslyGameBase).Assembly.Location))
                 VersionHash = str.ComputeMD5Hash();
 
-            Resources.AddStore(new DllResourceStore(@"Piously.dll"));
+            Resources.AddStore(new DllResourceStore(PiouslyResources.ResourceAssembly));
 
             dependencies.Cache(contextFactory = new DatabaseContextFactory(Storage));
 
