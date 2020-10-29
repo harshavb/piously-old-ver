@@ -40,7 +40,7 @@ using Piously.Game.Screens.Menu;
 
 namespace Piously.Game
 {
-    public class PiouslyGame : PiouslyGameBase//, IKeyBindingHandler<GlobalAction>
+    public class PiouslyGame : PiouslyGameBase, IKeyBindingHandler<GlobalAction>
     {
         public Toolbar Toolbar;
 
