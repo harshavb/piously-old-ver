@@ -162,10 +162,8 @@ namespace Piously.Game.Screens.Menu
         private void load(TextureStore textures)
         {
             logo.Texture = textures.Get(@"Menu/logo");
-            ripple.Texture = textures.Get(@"Menu/logo");
+            //ripple.Texture = textures.Get(@"Menu/logo");
         }
-
-        private int lastBeatIndex;
 
         public void PlayIntro()
         {
