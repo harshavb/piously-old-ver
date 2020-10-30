@@ -29,7 +29,6 @@
     <Folder Include="Configuration\" />
     <Folder Include="Database\" />
     <Folder Include="Graphics\Backgrounds\" />
-    <Folder Include="Graphics\Containers\" />
     <Folder Include="Graphics\Cursor\" />
     <Folder Include="Graphics\OpenGL\Textures\" />
     <Folder Include="Graphics\Primitives\" />

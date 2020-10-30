@@ -5,11 +5,13 @@ using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
 using osu.Framework.Input.Bindings;
 using osu.Framework.Logging;
+using Piously.Game.Graphics.Containers;
 using Piously.Game.Input.Bindings;
 using osuTK;
 using osuTK.Graphics;
 using LogLevel = osu.Framework.Logging.LogLevel;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
+using osuTK.Graphics.ES20;
+using osu.Framework.Graphics.Containers;
 
 namespace Piously.Game
 {
@@ -27,20 +29,43 @@ namespace Piously.Game
                 Environment.Exit(0);
             }
 
-            Add(box = new Box
+            Add(new FillFlowContainer
             {
                 Anchor = Anchor.Centre,
                 Origin = Anchor.Centre,
-                Size = new Vector2(150, 150),
-                Colour = Color4.Tomato
-            });
-
-            Add(new SpriteText
-            {
-                Anchor = Anchor.Centre,
-                Origin = Anchor.Centre,
-                Text = "Testing font",
-                Font = new FontUsage(family: "InkFree-Bold", size: 40f)
+                AutoSizeAxes = Axes.Both,
+                Direction = FillDirection.Horizontal,
+                Margin = new MarginPadding { Top = 20 },
+                Children = new Drawable[]
+                {
+                    box = new Box
+                    {
+                        Anchor = Anchor.Centre,
+                        Origin = Anchor.Centre,
+                        Size = new Vector2(150, 150),
+                        Colour = Color4.Tomato
+                    },
+                    new TestClickableContainer
+                    {
+                        Child = new Box
+                        {
+                            Anchor = Anchor.Centre,
+                            Origin = Anchor.Centre,
+                            Size = new Vector2(150, 150),
+                            Colour = Color4.Tomato
+                        },
+                        Anchor = Anchor.Centre,
+                        Origin = Anchor.Centre,
+                        AutoSizeAxes = Axes.Both,
+                    },
+                    new SpriteText
+                    {
+                        Anchor = Anchor.Centre,
+                        Origin = Anchor.Centre,
+                        Text = "Testing font",
+                        Font = new FontUsage(family: "InkFree-Bold", size: 40f)
+                    }
+                }
             });
         }
 
