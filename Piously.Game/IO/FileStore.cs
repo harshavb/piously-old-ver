@@ -109,23 +109,6 @@ namespace Piously.Game.IO
 
         public override void Cleanup()
         {
-            using (var usage = ContextFactory.GetForWrite())
-            {
-                var context = usage.Context;
-
-                foreach (var f in context.FileInfo.Where(f => f.ReferenceCount < 1))
-                {
-                    try
-                    {
-                        Storage.Delete(f.StoragePath);
-                        context.FileInfo.Remove(f);
-                    }
-                    catch (Exception e)
-                    {
-                        Logger.Error(e, $@"Could not delete beatmap {f}");
-                    }
-                }
-            }
         }
     }
 }
