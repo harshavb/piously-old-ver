@@ -14,6 +14,7 @@ namespace Piously.Game
         {
             Name = @"Piously";
         }
+
         [BackgroundDependencyLoader]
         private void load(/*TextureStore store, AudioManager audio,*/)
         {

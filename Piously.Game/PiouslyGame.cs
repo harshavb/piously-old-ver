@@ -3,15 +3,18 @@ using osu.Framework.Allocation;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
+using osu.Framework.Input.Bindings;
 using osu.Framework.Logging;
+using Piously.Game.Input.Bindings;
 using osuTK;
 using osuTK.Graphics;
 using LogLevel = osu.Framework.Logging.LogLevel;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace Piously.Game
 {
     //The actual game, specifically loads the UI
-    public class PiouslyGame : PiouslyGameBase
+    public class PiouslyGame : PiouslyGameBase, IKeyBindingHandler<GlobalAction>
     {
         private Box box;
 
@@ -39,6 +42,33 @@ namespace Piously.Game
                 Text = "Testing font",
                 Font = new FontUsage(family: "InkFree-Bold", size: 40f)
             });
+        }
+
+        public bool OnPressed(GlobalAction action)
+        {
+            switch (action)
+            {
+                case GlobalAction.TestAction1:
+                    box.Colour = Color4.GreenYellow;
+                    break;
+                case GlobalAction.TestAction2:
+                    box.Colour = Color4.HotPink;
+                    break;
+            }
+            return true;
+        }
+
+        public void OnReleased(GlobalAction action)
+        {
+            switch (action)
+            {
+                case GlobalAction.TestAction1:
+                    box.Colour = Color4.Tomato;
+                    break;
+                case GlobalAction.TestAction2:
+                    box.Colour = Color4.Tomato;
+                    break;
+            }
         }
 
         protected override void Update()

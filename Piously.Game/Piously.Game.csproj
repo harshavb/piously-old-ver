@@ -37,7 +37,6 @@
     <Folder Include="Graphics\Textures\" />
     <Folder Include="Graphics\UserInterfaceV2\" />
     <Folder Include="Graphics\UserInterface\" />
-    <Folder Include="Input\Bindings\" />
     <Folder Include="IO\" />
     <Folder Include="IPC\" />
     <Folder Include="Online\API\Requests\Responses\" />
