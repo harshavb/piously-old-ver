@@ -55,7 +55,6 @@
     <Folder Include="Overlays\Volume\" />
     <Folder Include="Resources\" />
     <Folder Include="Screens\Backgrounds\" />
-    <Folder Include="Screens\Menu\" />
     <Folder Include="Screens\Select\" />
     <Folder Include="Updater\" />
     <Folder Include="Users\Drawables\" />

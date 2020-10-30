@@ -5,8 +5,10 @@ using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
 using osu.Framework.Input.Bindings;
 using osu.Framework.Logging;
+using osu.Framework.Screens;
 using Piously.Game.Graphics.Containers;
 using Piously.Game.Input.Bindings;
+using Piously.Game.Screens.Menu;
 using osuTK;
 using osuTK.Graphics;
 using LogLevel = osu.Framework.Logging.LogLevel;
@@ -18,7 +20,9 @@ namespace Piously.Game
     //The actual game, specifically loads the UI
     public class PiouslyGame : PiouslyGameBase, IKeyBindingHandler<GlobalAction>
     {
-        private Box box;
+        private ScreenStack piouslyMenuScreenStack;
+        private TestScreen testScreen;
+        private TestScreen2 testScreen2;
 
         [BackgroundDependencyLoader]
         private void load()
@@ -29,44 +33,13 @@ namespace Piously.Game
                 Environment.Exit(0);
             }
 
-            Add(new FillFlowContainer
-            {
-                Anchor = Anchor.Centre,
-                Origin = Anchor.Centre,
-                AutoSizeAxes = Axes.Both,
-                Direction = FillDirection.Horizontal,
-                Margin = new MarginPadding { Top = 20 },
-                Children = new Drawable[]
-                {
-                    box = new Box
-                    {
-                        Anchor = Anchor.Centre,
-                        Origin = Anchor.Centre,
-                        Size = new Vector2(150, 150),
-                        Colour = Color4.Tomato
-                    },
-                    new TestClickableContainer
-                    {
-                        Child = new Box
-                        {
-                            Anchor = Anchor.Centre,
-                            Origin = Anchor.Centre,
-                            Size = new Vector2(150, 150),
-                            Colour = Color4.Tomato
-                        },
-                        Anchor = Anchor.Centre,
-                        Origin = Anchor.Centre,
-                        AutoSizeAxes = Axes.Both,
-                    },
-                    new SpriteText
-                    {
-                        Anchor = Anchor.Centre,
-                        Origin = Anchor.Centre,
-                        Text = "Testing font",
-                        Font = new FontUsage(family: "InkFree-Bold", size: 40f)
-                    }
-                }
-            });
+            testScreen = new TestScreen();
+            testScreen2 = new TestScreen2();
+
+            Add(piouslyMenuScreenStack = new ScreenStack());
+
+            piouslyMenuScreenStack.Push(testScreen);
+            //testScreen.Push(testScreen2);
         }
 
         public bool OnPressed(GlobalAction action)
@@ -74,10 +47,10 @@ namespace Piously.Game
             switch (action)
             {
                 case GlobalAction.TestAction1:
-                    box.Colour = Color4.GreenYellow;
+                    testScreen.editBoxColour(Color4.GreenYellow);
                     break;
                 case GlobalAction.TestAction2:
-                    box.Colour = Color4.HotPink;
+                    testScreen.editBoxColour(Color4.HotPink);
                     break;
             }
             return true;
@@ -88,10 +61,10 @@ namespace Piously.Game
             switch (action)
             {
                 case GlobalAction.TestAction1:
-                    box.Colour = Color4.Tomato;
+                    testScreen.editBoxColour(Color4.Tomato);
                     break;
                 case GlobalAction.TestAction2:
-                    box.Colour = Color4.Tomato;
+                    testScreen.editBoxColour(Color4.Tomato);
                     break;
             }
         }
@@ -99,7 +72,8 @@ namespace Piously.Game
         protected override void Update()
         {
             base.Update();
-            box.Rotation += (float)Time.Elapsed / 10;
+            testScreen.rotateBox();
+            //testScreen2.rotateText();
         }
     }
 }
