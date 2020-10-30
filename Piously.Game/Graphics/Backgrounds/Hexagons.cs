@@ -91,7 +91,7 @@ namespace Piously.Game.Graphics.Backgrounds
         private readonly SortedList<HexagonParticle> parts = new SortedList<HexagonParticle>(Comparer<HexagonParticle>.Default);
 
         private IShader shader;
-        private readonly PiouslyTexture texture;
+        private readonly Texture texture;
 
         /// <summary>
         /// Construct a new hexagon visualisation.
@@ -102,7 +102,7 @@ namespace Piously.Game.Graphics.Backgrounds
             if (seed != null)
                 stableRandom = new Random(seed.Value);
 
-            texture = (PiouslyTexture) Texture.WhitePixel;
+            texture = Texture.WhitePixel;
         }
 
         [BackgroundDependencyLoader]
@@ -248,7 +248,7 @@ namespace Piously.Game.Graphics.Backgrounds
                 base.ApplyState();
 
                 shader = Source.shader;
-                texture = Source.texture;
+                texture = (PiouslyTexture) Source.texture;
                 size = Source.DrawSize;
 
                 parts.Clear();
