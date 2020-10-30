@@ -19,7 +19,7 @@ namespace Piously.Game
         [BackgroundDependencyLoader]
         private void load(/*TextureStore store, AudioManager audio,*/)
         {
-            Resources.AddStore(new DllResourceStore(@"Piously.dll"));
+            Resources.AddStore(new DllResourceStore(@"Piously.Game.dll"));
 
             AddFont(Resources, @"Resources/Fonts/InkFree-Bold");
             AddFont(Resources, @"Resources/Fonts/InkFree");
