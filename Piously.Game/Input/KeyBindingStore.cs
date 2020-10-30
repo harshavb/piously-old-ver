@@ -48,13 +48,15 @@ namespace Piously.Game.Input
             }
         }
 
+        //TO BE IMPLEMENTED
+
         /// <summary>
         /// Retrieve <see cref="DatabasedKeyBinding"/>s for a specified ruleset/variant content.
         /// </summary>
         /// <param name="rulesetId">The ruleset's internal ID.</param>
         /// <param name="variant">An optional variant.</param>
         /// <returns></returns>
-        public List<DatabasedKeyBinding> Query() =>
+        /*public List<DatabasedKeyBinding> Query() =>
             ContextFactory.Get().DatabasedKeyBinding.ToList();
 
         public void Update(KeyBinding keyBinding)
@@ -71,6 +73,6 @@ namespace Piously.Game.Input
             }
 
             KeyBindingChanged?.Invoke();
-        }
+        }*/
     }
 }
