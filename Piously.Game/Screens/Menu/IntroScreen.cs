@@ -101,7 +101,7 @@ namespace Piously.Game.Screens.Menu
 
             logo.Colour = Color4.White;
             logo.Hexagons = false;
-            logo.Ripple = false;
+            //logo.Ripple = false;
 
             if (!resuming)
             {

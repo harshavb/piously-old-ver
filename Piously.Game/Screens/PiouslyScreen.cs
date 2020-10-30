@@ -187,7 +187,7 @@ namespace Piously.Game.Screens
             logo.RelativePositionAxes = Axes.Both;
             logo.BeatMatching = true;
             logo.Hexagons = true;
-            logo.Ripple = true;
+            //logo.Ripple = true;
         }
 
         private void onExitingLogo()

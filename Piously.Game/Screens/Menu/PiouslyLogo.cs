@@ -53,13 +53,13 @@ namespace Piously.Game.Screens.Menu
         }
 
         public bool BeatMatching = true;
-
+/*
         public bool Ripple
         {
             get => rippleContainer.Alpha > 0;
             set => rippleContainer.FadeTo(value ? 1 : 0, transition_length, Easing.OutQuint);
         }
-
+*/
         private readonly Box flashLayer;
 
         private readonly Container impactContainer;
@@ -162,7 +162,7 @@ namespace Piously.Game.Screens.Menu
         private void load(TextureStore textures)
         {
             logo.Texture = textures.Get(@"Menu/logo");
-            ripple.Texture = textures.Get(@"Menu/logo");
+            //ripple.Texture = textures.Get(@"Menu/logo");
         }
 
         private int lastBeatIndex;

@@ -208,8 +208,6 @@ namespace Piously.Game.Graphics.UserInterface
 
             public BouncingIcon()
             {
-                AutoSizeAxes = Axes.Both;
-
                 Children = new Drawable[]
                 {
                     icon = new SpriteIcon
