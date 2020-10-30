@@ -17,10 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Textures\**\*.png" />
-    <EmbeddedResource Include="Tracks\**\*.wav" />
-    <EmbeddedResource Include="Samples\**\*.wav" />
-    <EmbeddedResource Include="Shaders\**\*.glslp" />
     <EmbeddedResource Include="Fonts\**\*.fnt" />
     <EmbeddedResource Include="Fonts\**\*.png" />
   </ItemGroup>
