@@ -17,7 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Fonts\**\*.fnt" />
-    <EmbeddedResource Include="Fonts\**\*.png" />
+    <EmbeddedResource Include="Resources\Fonts\**\*" />
   </ItemGroup>
 </Project>
