@@ -41,10 +41,11 @@ namespace Piously.Game.Input.Bindings
                 store.KeyBindingChanged -= ReloadMappings;
         }
 
+        //TO BE IMPLEMENTED
         protected override void ReloadMappings()
         {
-            if (store != null) KeyBindings = store.Query().ToList();
-            else KeyBindings = DefaultKeyBindings;
+            //if (store != null) KeyBindings = store.Query().ToList();
+            //else KeyBindings = DefaultKeyBindings;
         }
     }
 }

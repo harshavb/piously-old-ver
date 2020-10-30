@@ -163,16 +163,17 @@ namespace Piously.Game.Overlays.Toolbar
             updateKeyBindingTooltip();
         }
 
+        //TO BE IMPLEMENTED
         private void updateKeyBindingTooltip()
         {
-            if (tooltipKeyBinding.IsValid)
+            /*if (tooltipKeyBinding.IsValid)
                 return;
 
             var binding = keyBindings.Query().Find(b => (GlobalAction)b.Action == Hotkey);
             var keyBindingString = binding?.KeyCombination.ReadableString();
             keyBindingTooltip.Text = !string.IsNullOrEmpty(keyBindingString) ? $" ({keyBindingString})" : string.Empty;
 
-            tooltipKeyBinding.Validate();
+            tooltipKeyBinding.Validate();*/
         }
 
         protected override bool OnMouseDown(MouseDownEvent e) => true;

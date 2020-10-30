@@ -19,18 +19,19 @@ namespace Piously.Game.Input
 
         public void Register(KeyBindingContainer manager) => insertDefaults(manager.DefaultKeyBindings);
 
+        //TO BE IMPLEMENTED
         private void insertDefaults(IEnumerable<KeyBinding> defaults)
         {
             using (var usage = ContextFactory.GetForWrite())
             {
                 // compare counts in database vs defaults
-                foreach (var group in defaults.GroupBy(k => k.Action))
+                /*foreach (var group in defaults.GroupBy(k => k.Action))
                 {
                     int count = Query().Count(k => (int)k.Action == (int)group.Key);
                     int aimCount = group.Count();
 
                     if (aimCount <= count)
-                        continue;
+                        //continue;
 
                     foreach (var insertable in group.Skip(count).Take(aimCount - count))
                     {
@@ -44,7 +45,7 @@ namespace Piously.Game.Input
                         // required to ensure stable insert order (https://github.com/dotnet/efcore/issues/11686)
                         usage.Context.SaveChanges();
                     }
-                }
+                }*/
             }
         }
 
