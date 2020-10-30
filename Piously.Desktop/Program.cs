@@ -5,14 +5,16 @@ using Piously.Game;
 
 namespace Piously.Desktop
 {
+    //The actual file which runs the game
     public static class Program
     {
         [STAThread]
-        public static int Main(string[] args)
+        public static int Main()
         {
             using (GameHost host = Host.GetSuitableHost(@"Piously"))
-            using (osu.Framework.Game game = new PiouslyGame())
-                host.Run(game);
+                host.Run(new PiouslyGameDesktop());
+
+            return 0;
         }
     }
 }

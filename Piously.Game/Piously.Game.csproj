@@ -15,4 +15,52 @@
     <PackageReference Include="ppy.squirrel.windows" Version="1.9.0.4" />
     <PackageReference Include="Sentry" Version="2.1.6" />
   </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Textures\**\*.png" />
+    <EmbeddedResource Include="Tracks\**\*.wav" />
+    <EmbeddedResource Include="Samples\**\*.wav" />
+    <EmbeddedResource Include="Shaders\**\*.glslp" />
+    <EmbeddedResource Include="Fonts\**\*.fnt" />
+    <EmbeddedResource Include="Fonts\**\*.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Configuration\" />
+    <Folder Include="Database\" />
+    <Folder Include="Graphics\Backgrounds\" />
+    <Folder Include="Graphics\Containers\" />
+    <Folder Include="Graphics\Cursor\" />
+    <Folder Include="Graphics\OpenGL\Textures\" />
+    <Folder Include="Graphics\Primitives\" />
+    <Folder Include="Graphics\Sprites\" />
+    <Folder Include="Graphics\Textures\" />
+    <Folder Include="Graphics\UserInterfaceV2\" />
+    <Folder Include="Graphics\UserInterface\" />
+    <Folder Include="Input\Bindings\" />
+    <Folder Include="IO\" />
+    <Folder Include="IPC\" />
+    <Folder Include="Online\API\Requests\Responses\" />
+    <Folder Include="Online\Chat\" />
+    <Folder Include="Overlays\AccountCreation\" />
+    <Folder Include="Overlays\Changelog\" />
+    <Folder Include="Overlays\Chat\Selection\" />
+    <Folder Include="Overlays\Chat\Tabs\" />
+    <Folder Include="Overlays\Comments\Buttons\" />
+    <Folder Include="Overlays\Dashboard\Friends\" />
+    <Folder Include="Overlays\Dialog\" />
+    <Folder Include="Overlays\OSD\" />
+    <Folder Include="Overlays\Profile\Header\Components\" />
+    <Folder Include="Overlays\Settings\Sections\General\" />
+    <Folder Include="Overlays\Settings\Sections\Maintenance\" />
+    <Folder Include="Overlays\Toolbar\" />
+    <Folder Include="Overlays\Volume\" />
+    <Folder Include="Resources\" />
+    <Folder Include="Screens\Backgrounds\" />
+    <Folder Include="Screens\Menu\" />
+    <Folder Include="Screens\Select\" />
+    <Folder Include="Updater\" />
+    <Folder Include="Users\Drawables\" />
+    <Folder Include="Utils\" />
+  </ItemGroup>
 </Project>

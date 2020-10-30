@@ -20,4 +20,9 @@
   <ItemGroup Label="Resources">
     <EmbeddedResource Include="Piously.ico" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Overlays\" />
+    <Folder Include="Updater\" />
+  </ItemGroup>
 </Project>
