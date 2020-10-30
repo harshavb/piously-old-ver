@@ -108,10 +108,11 @@ namespace Piously.Game.Database
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<DatabasedKeyBinding>().HasIndex(b => new DatabasedKeyBinding());
+            //TO BE IMPLEMENTED
+            //modelBuilder.Entity<DatabasedKeyBinding>().HasIndex(b => new DatabasedKeyBinding());
             modelBuilder.Entity<DatabasedKeyBinding>().HasIndex(b => b.IntAction);
 
-            modelBuilder.Entity<DatabasedSetting>().HasIndex(b => new DatabasedSetting());
+            //modelBuilder.Entity<DatabasedSetting>().HasIndex(b => new DatabasedSetting());
 
             modelBuilder.Entity<FileInfo>().HasIndex(b => b.Hash).IsUnique();
             modelBuilder.Entity<FileInfo>().HasIndex(b => b.ReferenceCount);

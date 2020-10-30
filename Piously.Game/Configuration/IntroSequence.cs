@@ -4,7 +4,7 @@
     {
         Circles,
         Welcome,
-        Traingles,
+        Triangles,
         Random
     }
 }
