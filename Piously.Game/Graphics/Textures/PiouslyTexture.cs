@@ -1,8 +1,5 @@
 ﻿using System;
-using System.IO;
-using osu.Framework.Graphics.Batches;
 using osu.Framework.Graphics.OpenGL.Textures;
-using osu.Framework.Graphics.Primitives;
 using osuTK;
 using osuTK.Graphics.ES30;
 using osu.Framework.Graphics.Colour;
@@ -17,6 +14,7 @@ namespace Piously.Game.Graphics.Textures
     public class PiouslyTexture : Texture
     {
         public virtual PiouslyTextureGL PiouslyTextureGL { get; }
+        public static PiouslyTexture WhitePixel { get; }
 
         public PiouslyTexture(int width, int height, bool manualMipmaps = false, All filteringMode = All.Linear)
             : base(width, height, manualMipmaps, filteringMode)

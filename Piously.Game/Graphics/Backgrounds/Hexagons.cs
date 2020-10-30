@@ -4,7 +4,6 @@ using osuTK;
 using osuTK.Graphics;
 using System;
 using osu.Framework.Graphics.Shaders;
-using osu.Framework.Graphics.Textures;
 using osu.Framework.Graphics.Colour;
 using osu.Framework.Allocation;
 using System.Collections.Generic;
@@ -91,7 +90,7 @@ namespace Piously.Game.Graphics.Backgrounds
         private readonly SortedList<HexagonParticle> parts = new SortedList<HexagonParticle>(Comparer<HexagonParticle>.Default);
 
         private IShader shader;
-        private readonly Texture texture;
+        private readonly PiouslyTexture texture;
 
         /// <summary>
         /// Construct a new hexagon visualisation.
@@ -102,7 +101,7 @@ namespace Piously.Game.Graphics.Backgrounds
             if (seed != null)
                 stableRandom = new Random(seed.Value);
 
-            texture = Texture.WhitePixel;
+            texture = PiouslyTexture.WhitePixel;
         }
 
         [BackgroundDependencyLoader]

@@ -176,7 +176,7 @@ namespace Piously.Game.Screens.Menu
 
                     using (BeginDelayedSequence(text_4, true))
                     {
-                        welcomeText.FadeIn().OnComplete(t => t.Text = "welcome to osu!");
+                        welcomeText.FadeIn().OnComplete(t => t.Text = "welcome to Piously");
                         welcomeText.TransformTo(nameof(welcomeText.Spacing), new Vector2(50, 0), 5000);
                     }
 

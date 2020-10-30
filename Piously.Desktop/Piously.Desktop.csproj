@@ -1,12 +1,23 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
+  
+  <PropertyGroup Label="Project">
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Description>Click the hexagons!</Description>
+    <AssemblyName>Piously</AssemblyName>
+    <Title>Piously</Title>
+    <Product>Piously</Product>
+    <ApplicationIcon>Piously.ico</ApplicationIcon>
+    <Version>0.0.0</Version>
+    <FileVersion>0.0.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Piously.Game\Piously.Game.csproj" />
   </ItemGroup>
 
+  <ItemGroup Label="Resources">
+    <EmbeddedResource Include="Piously.ico" />
+  </ItemGroup>
 </Project>

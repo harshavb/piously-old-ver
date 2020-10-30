@@ -1,16 +1,10 @@
-﻿using osu.Framework.Graphics.OpenGL;
-using System;
+﻿using System;
 using System.Runtime.CompilerServices;
 using osu.Framework.Graphics.Batches;
 using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics;
-using osu.Framework.Graphics.OpenGL.Buffers;
-using osu.Framework.Graphics.OpenGL.Textures;
 using osu.Framework.Graphics.OpenGL.Vertices;
 using osu.Framework.Graphics.Primitives;
-using osu.Framework.Graphics.Textures;
-using osu.Framework.Threading;
-using osu.Framework.Utils;
 using Piously.Game.Graphics.Primitives;
 using Piously.Game.Graphics.Textures;
 using osuTK;

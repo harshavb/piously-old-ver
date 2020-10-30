@@ -51,7 +51,6 @@ namespace Piously.Game.Screens.Menu
             this.clickAction = clickAction;
             TriggerKey = triggerKey;
 
-            AutoSizeAxes = Axes.Both;
             Alpha = 0;
 
             Vector2 boxSize = new Vector2(ButtonSystem.BUTTON_WIDTH + Math.Abs(extraWidth), ButtonArea.BUTTON_AREA_HEIGHT);
