@@ -339,3 +339,5 @@ ASALocalRun/
 # BeatPulse healthcheck temp database
 healthchecksdb
 Piously.Game/.DS_Store
+Piously.Desktop/.DS_Store
+.DS_Store

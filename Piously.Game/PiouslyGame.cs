@@ -1,19 +1,12 @@
 ﻿using System;
 using osu.Framework.Allocation;
-using osu.Framework.Graphics;
-using osu.Framework.Graphics.Shapes;
-using osu.Framework.Graphics.Sprites;
 using osu.Framework.Input.Bindings;
 using osu.Framework.Logging;
 using osu.Framework.Screens;
-using Piously.Game.Graphics.Containers;
 using Piously.Game.Input.Bindings;
 using Piously.Game.Screens.Menu;
-using osuTK;
 using osuTK.Graphics;
 using LogLevel = osu.Framework.Logging.LogLevel;
-using osuTK.Graphics.ES20;
-using osu.Framework.Graphics.Containers;
 
 namespace Piously.Game
 {

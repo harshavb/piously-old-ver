@@ -1,7 +1,6 @@
 ﻿using System;
 using osu.Framework;
 using osu.Framework.Platform;
-using Piously.Game;
 
 namespace Piously.Desktop
 {

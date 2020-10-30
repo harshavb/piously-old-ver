@@ -1,5 +1,4 @@
-﻿using System.Reflection;
-using osu.Framework.Platform;
+﻿using osu.Framework.Platform;
 using Piously.Game;
 
 namespace Piously.Desktop
