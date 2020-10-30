@@ -106,7 +106,7 @@ namespace Piously.Game.Overlays.Settings.Sections.Maintenance
             try
             {
                 if (target.GetDirectories().Length > 0 || target.GetFiles().Length > 0)
-                    target = target.CreateSubdirectory("osu-lazer");
+                    target = target.CreateSubdirectory("Piously");
             }
             catch (Exception e)
             {

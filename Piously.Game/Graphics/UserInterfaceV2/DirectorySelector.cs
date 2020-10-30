@@ -152,7 +152,7 @@ namespace Piously.Game.Graphics.UserInterfaceV2
 
                 flow.ChildrenEnumerable = new Drawable[]
                 {
-                    new PiouslySpriteText { Text = "Current Directory: ", Font = OsuFont.Default.With(size: DisplayPiece.HEIGHT), },
+                    new PiouslySpriteText { Text = "Current Directory: ", Font = PiouslyFont.Default.With(size: DisplayPiece.HEIGHT), },
                     new ComputerPiece(),
                 }.Concat(pathPieces);
             }
@@ -253,7 +253,7 @@ namespace Piously.Game.Graphics.UserInterfaceV2
                 {
                     new Box
                     {
-                        Colour = colours.GreySeafoamDarker,
+                        Colour = colors.GreySeafoamDarker,
                         RelativeSizeAxes = Axes.Both,
                     },
                     Flow = new FillFlowContainer

@@ -35,6 +35,7 @@ namespace Piously.Game.Graphics
         public readonly Color4 GreyVioletLighter = Color4Extensions.FromHex(@"ebb8fe");
         public readonly Color4 GreyVioletLight = Color4Extensions.FromHex(@"685370");
 
+        public readonly Color4 GreySeafoamDark = Color4Extensions.FromHex(@"2c3532");
         public readonly Color4 GreySeafoamDarker = Color4Extensions.FromHex(@"1e2422");
 
         public readonly Color4 Gray1 = Color4Extensions.FromHex(@"111");
