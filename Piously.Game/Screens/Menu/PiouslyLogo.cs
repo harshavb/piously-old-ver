@@ -165,8 +165,6 @@ namespace Piously.Game.Screens.Menu
             //ripple.Texture = textures.Get(@"Menu/logo");
         }
 
-        private int lastBeatIndex;
-
         public void PlayIntro()
         {
             const double length = 3150;
