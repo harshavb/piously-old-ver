@@ -3,14 +3,18 @@ using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
+using System.Collections.Generic;
+using osu.Framework.Input;
+using osu.Framework.Input.Bindings;
 using osu.Framework.Screens;
 using Piously.Game.Graphics.Containers;
+using Piously.Game.Input.Bindings;
 using osuTK;
 using osuTK.Graphics;
 
 namespace Piously.Game.Screens.Menu
 {
-    public class TestScreen : Screen
+    public class TestScreen : Screen, IKeyBindingHandler<GlobalAction>
     {
         private bool loadComplete = false;
 
@@ -65,9 +69,20 @@ namespace Piously.Game.Screens.Menu
             loadComplete = true;
         }
 
-        public void editBoxColour(Color4 colour)
+        public bool OnPressed(GlobalAction action)
         {
-            box.Colour = colour;
+            if (action == GlobalAction.TestAction1)
+            {
+                if (loadComplete) box.Colour = Color4.LimeGreen;
+                return true;
+            }
+            return false;
+        }
+
+        public void OnReleased(GlobalAction action)
+        {
+            if(action == GlobalAction.TestAction1)
+                    if (loadComplete) box.Colour = Color4.Tomato;
         }
         
         public void rotateBox()

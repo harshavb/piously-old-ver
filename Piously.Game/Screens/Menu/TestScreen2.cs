@@ -1,11 +1,15 @@
 ﻿using osu.Framework.Allocation;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Sprites;
+using osu.Framework.Input.Bindings;
 using osu.Framework.Screens;
+using Piously.Game.Input.Bindings;
+using osuTK;
+using osuTK.Graphics;
 
 namespace Piously.Game.Screens.Menu
 {
-    public class TestScreen2 : Screen
+    public class TestScreen2 : Screen, IKeyBindingHandler<GlobalAction>
     {
         private bool loadComplete = false;
 
@@ -20,6 +24,22 @@ namespace Piously.Game.Screens.Menu
                 Text = "piously moments",
                 Font = new FontUsage(family: "InkFree", size: 200f)
             });
+        }
+
+        public bool OnPressed(GlobalAction action)
+        {
+            if (action == GlobalAction.TestAction2)
+            {
+                if (loadComplete) piously.Colour = Color4.LimeGreen;
+                return true;
+            }
+            return false;
+        }
+
+        public void OnReleased(GlobalAction action)
+        {
+            if (action == GlobalAction.TestAction2)
+                if (loadComplete) piously.Colour = Color4.White;
         }
 
         protected override void LoadComplete()

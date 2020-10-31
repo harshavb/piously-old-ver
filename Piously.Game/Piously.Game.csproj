@@ -19,4 +19,8 @@
   <ItemGroup>
     <EmbeddedResource Include="Resources\Fonts\**\*" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Input\Handlers\" />
+  </ItemGroup>
 </Project>

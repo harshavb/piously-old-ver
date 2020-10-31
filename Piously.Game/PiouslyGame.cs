@@ -14,7 +14,7 @@ using osu.Framework.Input.Events;
 namespace Piously.Game
 {
     //The actual game, specifically loads the UI
-    public class PiouslyGame : PiouslyGameBase, IKeyBindingHandler<GlobalAction>
+    public class PiouslyGame : PiouslyGameBase
     {
         private ScreenStack piouslyMenuScreenStack;
         private TestScreen testScreen;
@@ -75,34 +75,5 @@ namespace Piously.Game
         }*/
 
         //THIS DOES NOT
-        public bool OnPressed(GlobalAction action)
-        {
-            switch (action)
-            {
-                case GlobalAction.TestAction1:
-                    testScreen.editBoxColour(Color4.GreenYellow);
-                    Logger.Log("TestAction1 detected");
-                    break;
-                case GlobalAction.TestAction2:
-                    testScreen.editBoxColour(Color4.HotPink);
-                    Logger.Log("TestAction2 detected");
-                    break;
-            }
-
-            return false;
-        }
-
-        public void OnReleased(GlobalAction action)
-        {
-            switch (action)
-            {
-                case GlobalAction.TestAction1:
-                    testScreen.editBoxColour(Color4.Tomato);
-                    break;
-                case GlobalAction.TestAction2:
-                    testScreen.editBoxColour(Color4.Tomato);
-                    break;
-            }
-        }
     }
 }
