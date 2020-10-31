@@ -1,6 +1,7 @@
 ﻿using osu.Framework.Allocation;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
+using osu.Framework.Graphics.Shapes;
 using Piously.Game.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
 using osu.Framework.Input.Bindings;
@@ -16,7 +17,7 @@ namespace Piously.Game.Screens.Menu
     {
         private bool loadComplete = false;
 
-        private Hexagon triangle;
+        private Hexagon hexagon;
 
         [BackgroundDependencyLoader]
         private void load()
@@ -30,7 +31,7 @@ namespace Piously.Game.Screens.Menu
                 Margin = new MarginPadding { Top = 20 },
                 Children = new Drawable[]
                 {
-                    triangle = new Hexagon
+                    hexagon = new Hexagon
                     {
                         Anchor = Anchor.Centre,
                         Origin = Anchor.Centre,
@@ -39,7 +40,7 @@ namespace Piously.Game.Screens.Menu
                     },
                     new TestClickableContainer
                     {
-                        Child = new Hexagon
+                        Child = new Trapezoid
                         {
                             Anchor = Anchor.Centre,
                             Origin = Anchor.Centre,
@@ -71,7 +72,7 @@ namespace Piously.Game.Screens.Menu
         {
             if (action == GlobalAction.TestAction1)
             {
-                if (loadComplete) triangle.Colour = Color4.LimeGreen;
+                if (loadComplete) hexagon.Colour = Color4.LimeGreen;
                 return true;
             }
             return false;
@@ -80,12 +81,12 @@ namespace Piously.Game.Screens.Menu
         public void OnReleased(GlobalAction action)
         {
             if(action == GlobalAction.TestAction1)
-                    if (loadComplete) triangle.Colour = Color4.Tomato;
+                    if (loadComplete) hexagon.Colour = Color4.Tomato;
         }
         
         public void rotateTriangle()
         {
-            if(loadComplete) triangle.Rotation += (float)Time.Elapsed / 10;
+            if(loadComplete) hexagon.Rotation += (float)Time.Elapsed / 10;
         }
     }
 }

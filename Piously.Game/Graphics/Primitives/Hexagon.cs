@@ -41,31 +41,19 @@ namespace Piously.Game.Graphics.Primitives
             Vector2 p3ToCenter = p3 - center;
             Vector2 betweenCenterAndP3 = (p3 + center) / 2;
             Vector2 inverseP3CenterVector = p3ToCenter.PerpendicularLeft.Normalized();
-            P4 = betweenCenterAndP3 + 0.5f * p3ToCenter.Length * SQRT_3 * inverseP3CenterVector;
-            P2 = betweenCenterAndP3 - 0.5f * p3ToCenter.Length * SQRT_3 * inverseP3CenterVector;
+            P4 = betweenCenterAndP3 - 0.5f * p3ToCenter.Length * SQRT_3 * inverseP3CenterVector;
+            P2 = betweenCenterAndP3 + 0.5f * p3ToCenter.Length * SQRT_3 * inverseP3CenterVector;
 
             Vector2 p0ToCenter = center - p0;
             Vector2 betweenCenterAndP0 = (center + p0) / 2;
             Vector2 inverseP0CenterVector = p0ToCenter.PerpendicularLeft.Normalized();
-            P1 = betweenCenterAndP0 - 0.5f * p0ToCenter.Length * SQRT_3 * inverseP0CenterVector;
-            P5 = betweenCenterAndP0 + 0.5f * p0ToCenter.Length * SQRT_3 * inverseP0CenterVector;
+            P1 = betweenCenterAndP0 + 0.5f * p0ToCenter.Length * SQRT_3 * inverseP0CenterVector;
+            P5 = betweenCenterAndP0 - 0.5f * p0ToCenter.Length * SQRT_3 * inverseP0CenterVector;
 
-            farUpTriangle = new Triangle(P0, P1, P2);
-            nearUpTriangle = new Triangle(P0, P2, P3);
-            nearDownTriangle = new Triangle(P0, P3, P4);
-            farDownTriangle = new Triangle(P0, P4, P5);
-
-            Vector2[] vs = this.GetVertices().ToArray();
-            for(int i = 0; i < vs.Length; i++)
-            {
-                Console.WriteLine("P0: " + vs[0]);
-                Console.WriteLine("P1: " + vs[1]);
-                Console.WriteLine("P2: " + vs[2]);
-                Console.WriteLine("P3: " + vs[3]);
-                Console.WriteLine("P4: " + vs[4]);
-                Console.WriteLine("P5 " + vs[5]);
-
-            }
+            farDownTriangle = new Triangle(P0, P1, P2);
+            nearDownTriangle = new Triangle(P0, P2, P3);
+            nearUpTriangle = new Triangle(P0, P3, P4);
+            farUpTriangle = new Triangle(P0, P4, P5);
 
         }
 
