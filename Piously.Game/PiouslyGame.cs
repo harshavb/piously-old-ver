@@ -30,12 +30,17 @@ namespace Piously.Game
                 Environment.Exit(0);
             }
 
-            Child = piouslyMenuScreenStack = new ScreenStack { RelativeSizeAxes = Axes.Both };
-            testScreen = new TestScreen();
-            testScreen2 = new TestScreen2();
+            piouslyMenuScreenStack = new ScreenStack();
+            piouslyMenuScreenStack2 = new ScreenStack();
 
-            Add(piouslyMenuScreenStack = new ScreenStack());
-            Add(piouslyMenuScreenStack2 = new ScreenStack());
+            AddInternal(new PiouslyKeyBindingContainer
+            {
+                Children = new[]
+                {
+                    piouslyMenuScreenStack,
+                    piouslyMenuScreenStack2
+                }
+            });
         }
 
         protected override void LoadComplete()
