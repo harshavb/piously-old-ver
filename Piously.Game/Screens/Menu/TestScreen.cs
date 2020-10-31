@@ -1,7 +1,7 @@
-﻿using osu.Framework.Graphics;
+﻿using osu.Framework.Allocation;
+using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
-using osu.Framework.Allocation;
 using osu.Framework.Graphics.Sprites;
 using osu.Framework.Screens;
 using Piously.Game.Graphics.Containers;
@@ -12,7 +12,9 @@ namespace Piously.Game.Screens.Menu
 {
     public class TestScreen : Screen
     {
-        private Box box = new Box();
+        private bool loadComplete = false;
+
+        private Box box;
 
         [BackgroundDependencyLoader]
         private void load()
@@ -57,14 +59,20 @@ namespace Piously.Game.Screens.Menu
             });
         }
 
+        protected override void LoadComplete()
+        {
+            base.LoadComplete();
+            loadComplete = true;
+        }
+
         public void editBoxColour(Color4 colour)
         {
-            box.Colour = colour;
+            if(loadComplete) box.Colour = colour;
         }
 
         public void rotateBox()
         {
-            box.Rotation += (float)Time.Elapsed / 10;
+            if(loadComplete) box.Rotation += (float)Time.Elapsed / 10;
         }
     }
 }

@@ -16,6 +16,7 @@ namespace Piously.Game
     {
         private ScreenStack piouslyMenuScreenStack;
         private TestScreen testScreen;
+        private ScreenStack piouslyMenuScreenStack2;
         private TestScreen2 testScreen2;
 
         [BackgroundDependencyLoader]
@@ -28,6 +29,11 @@ namespace Piously.Game
             }
 
             Child = piouslyMenuScreenStack = new ScreenStack { RelativeSizeAxes = Axes.Both };
+            testScreen = new TestScreen();
+            testScreen2 = new TestScreen2();
+
+            Add(piouslyMenuScreenStack = new ScreenStack());
+            Add(piouslyMenuScreenStack2 = new ScreenStack());
         }
 
         public bool OnPressed(GlobalAction action)
@@ -65,7 +71,7 @@ namespace Piously.Game
             testScreen2 = new TestScreen2();
 
             piouslyMenuScreenStack.Push(testScreen);
-            //piouslyMenuScreenStack.Push(testScreen2);
+            piouslyMenuScreenStack2.Push(testScreen2);
         }
 
         protected override void Update()
