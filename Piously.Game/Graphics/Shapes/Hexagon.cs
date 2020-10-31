@@ -1,6 +1,11 @@
 ﻿using System;
-using osu.Framework.Graphics.Sprites;
+using osu.Framework.Graphics.OpenGL.Vertices;
 using osu.Framework.Graphics.Textures;
+using osuTK;
+using osu.Framework.Graphics.Primitives;
+using osu.Framework.Graphics.Sprites;
+using osu.Framework.Graphics.OpenGL;
+using osu.Framework.Graphics;
 
 namespace Piously.Game.Graphics.Shapes
 {
@@ -11,13 +16,60 @@ namespace Piously.Game.Graphics.Shapes
     {
         public Hexagon()
         {
-            base.Texture = Texture.WhitePixel;
+            Texture = Texture.WhitePixel;
         }
 
-        public override Texture Texture
+        public override RectangleF BoundingBox => toHexagon(ToParentSpace(LayoutRectangle)).AABBFloat;
+
+        private static Primitives.Hexagon toHexagon(Quad q) => new Primitives.Hexagon(
+            (q.TopLeft + q.BottomLeft) / 2,
+            (q.TopRight + q.BottomRight) / 2);
+
+        public override bool Contains(Vector2 screenSpacePos) => toHexagon(ScreenSpaceDrawQuad).Contains(screenSpacePos);
+
+        protected override DrawNode CreateDrawNode() => new HexagonDrawNode(this);
+
+        private class HexagonDrawNode : SpriteDrawNode
         {
-            get => base.Texture;
-            set => throw new InvalidOperationException($"The texture of a {nameof(Hexagon)} cannot be set");
+            public HexagonDrawNode(Hexagon source) : base(source)
+            {
+                
+            }
+
+            protected override void Blit(Action<TexturedVertex2D> vertexAction)
+            {
+                Primitives.Hexagon drawingHex = toHexagon(ScreenSpaceDrawQuad);
+                DrawTriangle(Texture, drawingHex.farUpTriangle, DrawColourInfo.Colour, null, null,
+                    new Vector2(InflationAmount.X / DrawRectangle.Width, InflationAmount.Y / DrawRectangle.Height), TextureCoords);
+                DrawTriangle(Texture, drawingHex.nearUpTriangle, DrawColourInfo.Colour, null, null,
+                    new Vector2(InflationAmount.X / DrawRectangle.Width, InflationAmount.Y / DrawRectangle.Height), TextureCoords);
+                DrawTriangle(Texture, drawingHex.nearDownTriangle, DrawColourInfo.Colour, null, null,
+                    new Vector2(InflationAmount.X / DrawRectangle.Width, InflationAmount.Y / DrawRectangle.Height), TextureCoords);
+                DrawTriangle(Texture, drawingHex.farDownTriangle, DrawColourInfo.Colour, null, null,
+                    new Vector2(InflationAmount.X / DrawRectangle.Width, InflationAmount.Y / DrawRectangle.Height), TextureCoords);
+
+            }
+
+            protected override void BlitOpaqueInterior(Action<TexturedVertex2D> vertexAction)
+            {
+                Primitives.Hexagon drawingHex = toHexagon(ScreenSpaceDrawQuad);
+
+                if (GLWrapper.IsMaskingActive)
+                {
+                    DrawClipped(ref drawingHex, Texture, DrawColourInfo.Colour, vertexAction: vertexAction);
+                }
+                else
+                {
+                    DrawTriangle(Texture, drawingHex.farUpTriangle, DrawColourInfo.Colour, null, null,
+                        new Vector2(InflationAmount.X / DrawRectangle.Width, InflationAmount.Y / DrawRectangle.Height), TextureCoords);
+                    DrawTriangle(Texture, drawingHex.nearUpTriangle, DrawColourInfo.Colour, null, null,
+                        new Vector2(InflationAmount.X / DrawRectangle.Width, InflationAmount.Y / DrawRectangle.Height), TextureCoords);
+                    DrawTriangle(Texture, drawingHex.nearDownTriangle, DrawColourInfo.Colour, null, null,
+                        new Vector2(InflationAmount.X / DrawRectangle.Width, InflationAmount.Y / DrawRectangle.Height), TextureCoords);
+                    DrawTriangle(Texture, drawingHex.farDownTriangle, DrawColourInfo.Colour, null, null,
+                        new Vector2(InflationAmount.X / DrawRectangle.Width, InflationAmount.Y / DrawRectangle.Height), TextureCoords);
+                }
+            }
         }
     }
 }

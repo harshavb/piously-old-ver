@@ -1,10 +1,8 @@
 ﻿using osu.Framework.Allocation;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
-using osu.Framework.Graphics.Shapes;
+using Piously.Game.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
-using System.Collections.Generic;
-using osu.Framework.Input;
 using osu.Framework.Input.Bindings;
 using osu.Framework.Screens;
 using Piously.Game.Graphics.Containers;
@@ -18,7 +16,7 @@ namespace Piously.Game.Screens.Menu
     {
         private bool loadComplete = false;
 
-        private Box box;
+        private Hexagon triangle;
 
         [BackgroundDependencyLoader]
         private void load()
@@ -32,7 +30,7 @@ namespace Piously.Game.Screens.Menu
                 Margin = new MarginPadding { Top = 20 },
                 Children = new Drawable[]
                 {
-                    box = new Box
+                    triangle = new Hexagon
                     {
                         Anchor = Anchor.Centre,
                         Origin = Anchor.Centre,
@@ -41,7 +39,7 @@ namespace Piously.Game.Screens.Menu
                     },
                     new TestClickableContainer
                     {
-                        Child = new Box
+                        Child = new Hexagon
                         {
                             Anchor = Anchor.Centre,
                             Origin = Anchor.Centre,
@@ -73,7 +71,7 @@ namespace Piously.Game.Screens.Menu
         {
             if (action == GlobalAction.TestAction1)
             {
-                if (loadComplete) box.Colour = Color4.LimeGreen;
+                if (loadComplete) triangle.Colour = Color4.LimeGreen;
                 return true;
             }
             return false;
@@ -82,12 +80,12 @@ namespace Piously.Game.Screens.Menu
         public void OnReleased(GlobalAction action)
         {
             if(action == GlobalAction.TestAction1)
-                    if (loadComplete) box.Colour = Color4.Tomato;
+                    if (loadComplete) triangle.Colour = Color4.Tomato;
         }
         
-        public void rotateBox()
+        public void rotateTriangle()
         {
-            if(loadComplete) box.Rotation += (float)Time.Elapsed / 10;
+            if(loadComplete) triangle.Rotation += (float)Time.Elapsed / 10;
         }
     }
 }

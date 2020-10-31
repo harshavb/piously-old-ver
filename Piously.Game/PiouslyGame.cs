@@ -1,16 +1,10 @@
 ﻿using System;
 using osu.Framework.Allocation;
-using osu.Framework.Input.Bindings;
 using osu.Framework.Logging;
 using osu.Framework.Screens;
-using osu.Framework.Graphics;
 using Piously.Game.Input.Bindings;
 using Piously.Game.Screens.Menu;
-using osuTK.Graphics;
-using osuTK.Input;
 using LogLevel = osu.Framework.Logging.LogLevel;
-using osu.Framework.Input.Events;
-using System.Net.Sockets;
 
 namespace Piously.Game
 {
@@ -58,8 +52,23 @@ namespace Piously.Game
         protected override void Update()
         {
             base.Update();
-            testScreen.rotateBox();
+            testScreen.rotateTriangle();
             testScreen2.rotateText();
         }
+        
+        //THIS WORKS FINE
+        /*protected override bool OnKeyDown(KeyDownEvent e)
+        {
+            if (e.Key == Key.A)
+                Logger.Log("Detected A");
+            if(e.Key == Key.F)
+                Logger.Log("Detected F");
+            if (e.Key == Key.ControlLeft)
+                Logger.Log("Detected ControlLeft");
+
+            return base.OnKeyDown(e);
+        }*/
+
+        //THIS DOES NOT
     }
 }
