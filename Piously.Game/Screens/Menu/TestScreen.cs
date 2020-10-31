@@ -7,6 +7,9 @@ using osu.Framework.Screens;
 using Piously.Game.Graphics.Containers;
 using osuTK;
 using osuTK.Graphics;
+using System;
+using NUnit.Framework.Internal;
+using LogLevel = osu.Framework.Logging.LogLevel;
 
 namespace Piously.Game.Screens.Menu
 {
@@ -34,7 +37,7 @@ namespace Piously.Game.Screens.Menu
                         Origin = Anchor.Centre,
                         Size = new Vector2(150, 150),
                         Colour = Color4.Tomato
-                    },
+        },
                     new TestClickableContainer
                     {
                         Child = new Box
@@ -43,7 +46,7 @@ namespace Piously.Game.Screens.Menu
                             Origin = Anchor.Centre,
                             Size = new Vector2(150, 150),
                             Colour = Color4.Tomato
-                        },
+        },
                         Anchor = Anchor.Centre,
                         Origin = Anchor.Centre,
                         AutoSizeAxes = Axes.Both,
@@ -67,9 +70,9 @@ namespace Piously.Game.Screens.Menu
 
         public void editBoxColour(Color4 colour)
         {
-            if(loadComplete) box.Colour = colour;
+            box.Colour = colour;
         }
-
+        
         public void rotateBox()
         {
             if(loadComplete) box.Rotation += (float)Time.Elapsed / 10;

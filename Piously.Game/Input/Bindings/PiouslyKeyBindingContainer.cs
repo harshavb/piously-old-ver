@@ -12,7 +12,7 @@ namespace Piously.Game.Input.Bindings
         {
         }
 
-        public override IEnumerable<KeyBinding> DefaultKeyBindings => GlobalKeyBindings.Concat(GlobalKeyBindings);
+        public override IEnumerable<KeyBinding> DefaultKeyBindings => GlobalKeyBindings;
         public IEnumerable<KeyBinding> GlobalKeyBindings => new[]
         {
             new KeyBinding(InputKey.A, GlobalAction.TestAction1),

@@ -7,7 +7,9 @@ using osu.Framework.Graphics;
 using Piously.Game.Input.Bindings;
 using Piously.Game.Screens.Menu;
 using osuTK.Graphics;
+using osuTK.Input;
 using LogLevel = osu.Framework.Logging.LogLevel;
+using osu.Framework.Input.Events;
 
 namespace Piously.Game
 {
@@ -36,33 +38,6 @@ namespace Piously.Game
             Add(piouslyMenuScreenStack2 = new ScreenStack());
         }
 
-        public bool OnPressed(GlobalAction action)
-        {
-            switch (action)
-            {
-                case GlobalAction.TestAction1:
-                    testScreen.editBoxColour(Color4.GreenYellow);
-                    break;
-                case GlobalAction.TestAction2:
-                    testScreen.editBoxColour(Color4.HotPink);
-                    break;
-            }
-            return true;
-        }
-
-        public void OnReleased(GlobalAction action)
-        {
-            switch (action)
-            {
-                case GlobalAction.TestAction1:
-                    testScreen.editBoxColour(Color4.Tomato);
-                    break;
-                case GlobalAction.TestAction2:
-                    testScreen.editBoxColour(Color4.Tomato);
-                    break;
-            }
-        }
-
         protected override void LoadComplete()
         {
             base.LoadComplete();
@@ -79,6 +54,48 @@ namespace Piously.Game
             base.Update();
             testScreen.rotateBox();
             testScreen2.rotateText();
+        }
+
+        protected override bool OnKeyDown(KeyDownEvent e)
+        {
+            if (e.Key == Key.A)
+                Logger.Log("Detected A");
+            if(e.Key == Key.F)
+                Logger.Log("Detected F");
+            if (e.Key == Key.ControlLeft)
+                Logger.Log("Detected ControlLeft");
+
+            return base.OnKeyDown(e);
+        }
+
+        public bool OnPressed(GlobalAction action)
+        {
+            switch (action)
+            {
+                case GlobalAction.TestAction1:
+                    testScreen.editBoxColour(Color4.GreenYellow);
+                    Logger.Log("TestAction1 detected");
+                    break;
+                case GlobalAction.TestAction2:
+                    testScreen.editBoxColour(Color4.HotPink);
+                    Logger.Log("TestAction2 detected");
+                    break;
+            }
+
+            return false;
+        }
+
+        public void OnReleased(GlobalAction action)
+        {
+            switch (action)
+            {
+                case GlobalAction.TestAction1:
+                    testScreen.editBoxColour(Color4.Tomato);
+                    break;
+                case GlobalAction.TestAction2:
+                    testScreen.editBoxColour(Color4.Tomato);
+                    break;
+            }
         }
     }
 }
