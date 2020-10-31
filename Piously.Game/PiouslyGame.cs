@@ -3,6 +3,7 @@ using osu.Framework.Allocation;
 using osu.Framework.Input.Bindings;
 using osu.Framework.Logging;
 using osu.Framework.Screens;
+using osu.Framework.Graphics;
 using Piously.Game.Input.Bindings;
 using Piously.Game.Screens.Menu;
 using osuTK.Graphics;
@@ -26,13 +27,7 @@ namespace Piously.Game
                 Environment.Exit(0);
             }
 
-            testScreen = new TestScreen();
-            testScreen2 = new TestScreen2();
-
-            Add(piouslyMenuScreenStack = new ScreenStack());
-
-            piouslyMenuScreenStack.Push(testScreen);
-            //testScreen.Push(testScreen2);
+            Child = piouslyMenuScreenStack = new ScreenStack { RelativeSizeAxes = Axes.Both };
         }
 
         public bool OnPressed(GlobalAction action)
@@ -62,11 +57,22 @@ namespace Piously.Game
             }
         }
 
+        protected override void LoadComplete()
+        {
+            base.LoadComplete();
+
+            testScreen = new TestScreen();
+            testScreen2 = new TestScreen2();
+
+            piouslyMenuScreenStack.Push(testScreen);
+            //piouslyMenuScreenStack.Push(testScreen2);
+        }
+
         protected override void Update()
         {
             base.Update();
             testScreen.rotateBox();
-            //testScreen2.rotateText();
+            testScreen2.rotateText();
         }
     }
 }

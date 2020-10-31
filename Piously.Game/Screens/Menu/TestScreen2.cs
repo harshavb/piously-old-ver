@@ -21,7 +21,7 @@ namespace Piously.Game.Screens.Menu
                 Anchor = Anchor.Centre,
                 Origin = Anchor.Centre,
                 Text = "piously moments",
-                Font = new FontUsage(family: "InkFree", size: 200f)
+                Font = new FontUsage(family: "InkFree", size: 40f)
             });
         }
 
