@@ -7,9 +7,6 @@ using osu.Framework.Screens;
 using Piously.Game.Graphics.Containers;
 using osuTK;
 using osuTK.Graphics;
-using System;
-using NUnit.Framework.Internal;
-using LogLevel = osu.Framework.Logging.LogLevel;
 
 namespace Piously.Game.Screens.Menu
 {

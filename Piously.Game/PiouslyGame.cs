@@ -55,8 +55,9 @@ namespace Piously.Game
             testScreen.rotateBox();
             testScreen2.rotateText();
         }
-
-        protected override bool OnKeyDown(KeyDownEvent e)
+        
+        //THIS WORKS FINE
+        /*protected override bool OnKeyDown(KeyDownEvent e)
         {
             if (e.Key == Key.A)
                 Logger.Log("Detected A");
@@ -66,8 +67,9 @@ namespace Piously.Game
                 Logger.Log("Detected ControlLeft");
 
             return base.OnKeyDown(e);
-        }
+        }*/
 
+        //THIS DOES NOT
         public bool OnPressed(GlobalAction action)
         {
             switch (action)
