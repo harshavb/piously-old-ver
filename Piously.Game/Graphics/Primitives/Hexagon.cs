@@ -11,7 +11,7 @@ namespace Piously.Game.Graphics.Primitives
     {
         // Note: Do not change the order of vertices. They are ordered in screen-space counter-clockwise fashion.
         // See: IPolygon.GetVertices()
-        public const float SQRT_3 = 1.73205f;
+        private static readonly float SQRT_3 = (float)Math.Sqrt(3);
         public readonly Vector2 center;
         public readonly Vector2 P0;
         public readonly Vector2 P1;
