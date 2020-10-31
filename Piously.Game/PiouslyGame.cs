@@ -10,6 +10,7 @@ using osuTK.Graphics;
 using osuTK.Input;
 using LogLevel = osu.Framework.Logging.LogLevel;
 using osu.Framework.Input.Events;
+using System.Net.Sockets;
 
 namespace Piously.Game
 {
@@ -60,20 +61,5 @@ namespace Piously.Game
             testScreen.rotateBox();
             testScreen2.rotateText();
         }
-        
-        //THIS WORKS FINE
-        /*protected override bool OnKeyDown(KeyDownEvent e)
-        {
-            if (e.Key == Key.A)
-                Logger.Log("Detected A");
-            if(e.Key == Key.F)
-                Logger.Log("Detected F");
-            if (e.Key == Key.ControlLeft)
-                Logger.Log("Detected ControlLeft");
-
-            return base.OnKeyDown(e);
-        }*/
-
-        //THIS DOES NOT
     }
 }

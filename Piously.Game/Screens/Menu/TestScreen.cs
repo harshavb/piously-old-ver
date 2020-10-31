@@ -38,7 +38,7 @@ namespace Piously.Game.Screens.Menu
                         Origin = Anchor.Centre,
                         Size = new Vector2(150, 150),
                         Colour = Color4.Tomato
-        },
+                    },
                     new TestClickableContainer
                     {
                         Child = new Box
@@ -47,7 +47,7 @@ namespace Piously.Game.Screens.Menu
                             Origin = Anchor.Centre,
                             Size = new Vector2(150, 150),
                             Colour = Color4.Tomato
-        },
+                        },
                         Anchor = Anchor.Centre,
                         Origin = Anchor.Centre,
                         AutoSizeAxes = Axes.Both,
