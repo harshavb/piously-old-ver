@@ -35,16 +35,16 @@ namespace Piously.Game.Screens.Menu
                     {
                         Anchor = Anchor.Centre,
                         Origin = Anchor.Centre,
-                        Size = new Vector2(150, 150),
+                        Size = new Vector2(500, 500),
                         Colour = Color4.Tomato
                     },
                     new TestClickableContainer
                     {
-                        Child = new Trapezoid
+                        Child = new Hexagon
                         {
                             Anchor = Anchor.Centre,
                             Origin = Anchor.Centre,
-                            Size = new Vector2(150, 150),
+                            Size = new Vector2(500, 500),
                             Colour = Color4.Tomato
                         },
                         Anchor = Anchor.Centre,
@@ -86,7 +86,8 @@ namespace Piously.Game.Screens.Menu
         
         public void rotateTriangle()
         {
-            if(loadComplete) hexagon.Rotation += (float)Time.Elapsed / 10;
+            //if(loadComplete) hexagon.Rotation += (float)Time.Elapsed / 10;
+            if (loadComplete) hexagon.Rotation = 45;
         }
     }
 }
