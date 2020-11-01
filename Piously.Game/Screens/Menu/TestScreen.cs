@@ -86,8 +86,7 @@ namespace Piously.Game.Screens.Menu
         
         public void rotateTriangle()
         {
-            //if(loadComplete) hexagon.Rotation += (float)Time.Elapsed / 10;
-            if (loadComplete) hexagon.Rotation = 45;
+            if(loadComplete) hexagon.Rotation += (float)Time.Elapsed / 10;
         }
     }
 }
