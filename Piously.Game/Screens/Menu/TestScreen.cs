@@ -40,7 +40,7 @@ namespace Piously.Game.Screens.Menu
                     },
                     new TestClickableContainer
                     {
-                        Child = new Hexagon
+                        Child = new Trapezoid
                         {
                             Anchor = Anchor.Centre,
                             Origin = Anchor.Centre,
@@ -84,7 +84,7 @@ namespace Piously.Game.Screens.Menu
                     if (loadComplete) hexagon.Colour = Color4.Tomato;
         }
         
-        public void rotateTriangle()
+        public void rotateHexagon()
         {
             if(loadComplete) hexagon.Rotation += (float)Time.Elapsed / 10;
         }

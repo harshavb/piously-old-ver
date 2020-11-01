@@ -52,7 +52,7 @@ namespace Piously.Game
         protected override void Update()
         {
             base.Update();
-            testScreen.rotateTriangle();
+            testScreen.rotateHexagon();
             testScreen2.rotateText();
         }
         
