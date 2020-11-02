@@ -31,6 +31,7 @@ namespace Piously.Game.Screens.Menu
         private Texture logo;
 
         private readonly Container colourAndHexagons;
+        private readonly Hexagons hexagons;
 
         public bool Hexagons
         {
@@ -57,6 +58,27 @@ namespace Piously.Game.Screens.Menu
                     Anchor = Anchor.Centre,
                     Origin = Anchor.Centre,
                     Texture = logo
+                },
+                colourAndHexagons = new Container
+                {
+                    RelativeSizeAxes = Axes.Both,
+                    Anchor = Anchor.Centre,
+                    Origin = Anchor.Centre,
+                    Children = new Drawable[]
+                    {
+                        new Box
+                        {
+                            RelativeSizeAxes = Axes.Both,
+                            Colour = PiouslyColour.PiouslyYellow,
+                        },
+                        hexagons = new Hexagons
+                        {
+                            HexagonScale = 4,
+                            ColourLight = Color4Extensions.FromHex(@"ff7db7"),
+                            ColourDark = Color4Extensions.FromHex(@"de5b95"),
+                            RelativeSizeAxes = Axes.Both,
+                        }
+                    }
                 }
             };
         }
