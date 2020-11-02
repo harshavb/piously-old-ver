@@ -63,7 +63,7 @@ namespace Piously.Game.Screens.Menu
 
         private void load(TextureStore textures)
         {
-            logo = textures.Get(@"logo");
+            logo = textures.Get(@"Resources/Textures/logo");
         }
 
         protected override void LoadComplete()
