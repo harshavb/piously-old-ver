@@ -18,7 +18,7 @@
 
   <ItemGroup>
     <EmbeddedResource Include="Resources\Fonts\**\*" />
-    <EmbeddedResource Include="Resources\Textures\**\*" />
+    <EmbeddedResource Include="Resources\Textures\**\*.png" />
   </ItemGroup>
 
   <ItemGroup>

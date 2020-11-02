@@ -46,21 +46,21 @@ namespace Piously.Game
         {
             base.LoadComplete();
 
-            testScreen = new TestScreen();
-            testScreen2 = new TestScreen2();
+            //testScreen = new TestScreen();
+            //testScreen2 = new TestScreen2();
             testScreen3 = new TestScreen3();
 
 
-            piouslyMenuScreenStack.Push(testScreen);
-            piouslyMenuScreenStack2.Push(testScreen2);
+            //piouslyMenuScreenStack.Push(testScreen);
+            //piouslyMenuScreenStack2.Push(testScreen2);
             piouslyMenuScreenStack3.Push(testScreen3);
         }
 
         protected override void Update()
         {
             base.Update();
-            testScreen.rotateHexagon();
-            testScreen2.rotateText();
+            //testScreen.rotateHexagon();
+            //testScreen2.rotateText();
         }
         
         //THIS WORKS FINE

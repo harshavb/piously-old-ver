@@ -13,6 +13,7 @@ using osu.Framework.Input.Events;
 using osu.Framework.Utils;
 using Piously.Game.Graphics.Containers;
 using Piously.Game.Graphics.Backgrounds;
+using Piously.Game.Graphics.Shapes;
 using osuTK;
 using osuTK.Graphics;
 using osuTK.Input;
@@ -23,14 +24,13 @@ using Piously.Game.Graphics;
 
 namespace Piously.Game.Screens.Menu
 {
-    public class PiouslyLogo : ClickableContainer
+    public class PiouslyLogo : Container
     {
         private const double transition_length = 300;
 
-        private readonly Sprite logo;
+        private Texture logo;
 
         private readonly Container colourAndHexagons;
-        private readonly Hexagons hexagons;
 
         public bool Hexagons
         {
@@ -39,49 +39,36 @@ namespace Piously.Game.Screens.Menu
 
         public PiouslyLogo()
         {
+            Anchor = Anchor.Centre;
             Origin = Anchor.Centre;
             AutoSizeAxes = Axes.Both;
 
             Children = new Drawable[]
             {
-                logo = new Sprite
+                new Graphics.Shapes.Hexagon
                 {
                     Anchor = Anchor.Centre,
                     Origin = Anchor.Centre,
+                    Colour = Color4.Tomato
                 },
-                colourAndHexagons = new Container
+                new Sprite
                 {
-                    RelativeSizeAxes = Axes.Both,
                     Anchor = Anchor.Centre,
                     Origin = Anchor.Centre,
-                    Children = new Drawable[]
-                    {
-                        new Box
-                        {
-                            RelativeSizeAxes = Axes.Both,
-                            Colour = PiouslyColour.PiouslyYellow,
-                        },
-                        hexagons = new Hexagons
-                        {
-                            HexagonScale = 4,
-                            ColourLight = Color4Extensions.FromHex(@"ff7db7"),
-                            ColourDark = Color4Extensions.FromHex(@"de5b95"),
-                            RelativeSizeAxes = Axes.Both,
-                        }
-                    }
+                    Size = new Vector2(500, 500),
+                    Texture = logo
                 }
             };
         }
 
         private void load(TextureStore textures, AudioManager audio)
         {
-            logo.Texture = textures.Get(@"Menu/logo");
+            logo = textures.Get(@"logo");
         }
 
         protected override void LoadComplete()
         {
             base.LoadComplete();
-            hexagons.Velocity = 0.5f;
         }
     }
 }
