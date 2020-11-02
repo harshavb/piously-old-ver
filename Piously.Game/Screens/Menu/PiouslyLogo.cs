@@ -82,12 +82,19 @@ namespace Piously.Game.Screens.Menu
         [BackgroundDependencyLoader]
         private void load(TextureStore textures)
         {
-            logo = textures.Get(@"Resources/Textures/logo");
+            logo = textures.Get(@"logo");
         }
 
         protected override void LoadComplete()
         {
             base.LoadComplete();
+            if (logo == null)
+                Console.WriteLine("Bruh");
+            else
+                Console.WriteLine(logo);
+
+            Console.WriteLine(Size);
+            Console.WriteLine(IsLoaded);
         }
     }
 }
