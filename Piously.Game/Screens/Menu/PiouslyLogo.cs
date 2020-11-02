@@ -61,7 +61,7 @@ namespace Piously.Game.Screens.Menu
             };
         }
 
-        private void load(TextureStore textures, AudioManager audio)
+        private void load(TextureStore textures)
         {
             logo = textures.Get(@"logo");
         }
