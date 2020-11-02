@@ -10,12 +10,11 @@ namespace Piously.Game.Screens.Menu
 {
     public class TestScreen3 : Screen
     {
-        PiouslyLogo piouslyLogo;
 
         [BackgroundDependencyLoader]
         private void load()
         {
-            AddInternal(piouslyLogo = new PiouslyLogo());
+            AddInternal(new PiouslyLogo());
         }
     }
 }

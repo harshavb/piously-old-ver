@@ -1,4 +1,5 @@
 ﻿using osu.Framework.Allocation;
+using osu.Framework.Graphics.Textures;
 using osu.Framework.IO.Stores;
 
 namespace Piously.Game
@@ -12,9 +13,11 @@ namespace Piously.Game
         }
 
         [BackgroundDependencyLoader]
-        private void load(/*TextureStore store, AudioManager audio,*/)
+        private void load()
         {
             Resources.AddStore(new DllResourceStore(@"Piously.Game.dll"));
+
+
 
             AddFont(Resources, @"Resources/Fonts/InkFree-Bold");
             AddFont(Resources, @"Resources/Fonts/InkFree");

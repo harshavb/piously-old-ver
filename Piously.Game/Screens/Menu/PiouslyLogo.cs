@@ -11,6 +11,7 @@ using osu.Framework.Graphics.Sprites;
 using osu.Framework.Graphics.Textures;
 using osu.Framework.Input.Events;
 using osu.Framework.Utils;
+using Piously.Game.Graphics;
 using Piously.Game.Graphics.Containers;
 using Piously.Game.Graphics.Backgrounds;
 using Piously.Game.Graphics.Shapes;
@@ -46,19 +47,6 @@ namespace Piously.Game.Screens.Menu
 
             Children = new Drawable[]
             {
-                new Graphics.Shapes.Hexagon
-                {
-                    Anchor = Anchor.Centre,
-                    Origin = Anchor.Centre,
-                    Size = new Vector2(200, 200),
-                    Colour = Color4.Tomato
-                },
-                new Sprite
-                {
-                    Anchor = Anchor.Centre,
-                    Origin = Anchor.Centre,
-                    Texture = logo
-                },
                 colourAndHexagons = new Container
                 {
                     RelativeSizeAxes = Axes.Both,
@@ -66,23 +54,32 @@ namespace Piously.Game.Screens.Menu
                     Origin = Anchor.Centre,
                     Children = new Drawable[]
                     {
-                        new Box
+                        new Graphics.Shapes.Hexagon
                         {
-                            RelativeSizeAxes = Axes.Both,
+                            Anchor = Anchor.Centre,
+                            Origin = Anchor.Centre,
+                            Size = new Vector2(400, 400),
                             Colour = PiouslyColour.PiouslyYellow,
                         },
                         hexagons = new Hexagons
                         {
                             HexagonScale = 4,
-                            ColourLight = Color4Extensions.FromHex(@"ff7db7"),
-                            ColourDark = Color4Extensions.FromHex(@"de5b95"),
+                            ColourLight = PiouslyColour.PiouslyLightYellow,
+                            ColourDark = PiouslyColour.PiouslyDarkYellow,
                             RelativeSizeAxes = Axes.Both,
                         }
                     }
+                },
+                new Sprite
+                {
+                    Anchor = Anchor.Centre,
+                    Origin = Anchor.Centre,
+                    Texture = logo
                 }
             };
         }
 
+        [BackgroundDependencyLoader]
         private void load(TextureStore textures)
         {
             logo = textures.Get(@"Resources/Textures/logo");
