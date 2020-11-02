@@ -15,6 +15,8 @@ namespace Piously.Game
         private TestScreen testScreen;
         private ScreenStack piouslyMenuScreenStack2;
         private TestScreen2 testScreen2;
+        private ScreenStack piouslyMenuScreenStack3;
+        private TestScreen3 testScreen3;
 
         [BackgroundDependencyLoader]
         private void load()
@@ -27,13 +29,15 @@ namespace Piously.Game
 
             piouslyMenuScreenStack = new ScreenStack();
             piouslyMenuScreenStack2 = new ScreenStack();
+            piouslyMenuScreenStack3 = new ScreenStack();
 
             AddInternal(new PiouslyKeyBindingContainer
             {
                 Children = new[]
                 {
                     piouslyMenuScreenStack,
-                    piouslyMenuScreenStack2
+                    piouslyMenuScreenStack2,
+                    piouslyMenuScreenStack3
                 }
             });
         }
@@ -44,9 +48,12 @@ namespace Piously.Game
 
             testScreen = new TestScreen();
             testScreen2 = new TestScreen2();
+            testScreen3 = new TestScreen3();
+
 
             piouslyMenuScreenStack.Push(testScreen);
             piouslyMenuScreenStack2.Push(testScreen2);
+            piouslyMenuScreenStack3.Push(testScreen3);
         }
 
         protected override void Update()
