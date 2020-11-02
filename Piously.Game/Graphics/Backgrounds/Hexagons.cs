@@ -56,31 +56,31 @@ namespace Piously.Game.Graphics.Backgrounds
         }
 
         /// <summary>
-        /// Whether we want to expire triangles as they exit our draw area completely.
+        /// Whether we want to expire hexagons as they exit our draw area completely.
         /// </summary>
-        protected virtual bool ExpireOffScreenTriangles => true;
+        protected virtual bool ExpireOffScreenHexagons => true;
 
         /// <summary>
-        /// Whether we should create new triangles as others expire.
+        /// Whether we should create new hexagons as others expire.
         /// </summary>
-        protected virtual bool CreateNewTriangles => true;
+        protected virtual bool CreateNewHexagons => true;
 
         /// <summary>
-        /// The amount of triangles we want compared to the default distribution.
+        /// The amount of hexagons we want compared to the default distribution.
         /// </summary>
         protected virtual float SpawnRatio => 1;
 
         private float hexagonScale = 1;
 
         /// <summary>
-        /// Whether we should drop-off alpha values of triangles more quickly to improve
+        /// Whether we should drop-off alpha values of hexagons more quickly to improve
         /// the visual appearance of fading. This defaults to on as it is generally more
         /// aesthetically pleasing, but should be turned off in buffered containers.
         /// </summary>
         public bool HideAlphaDiscrepancies = true;
 
         /// <summary>
-        /// The relative velocity of the triangles. Default is 1.
+        /// The relative velocity of the hexagons. Default is 1.
         /// </summary>
         public float Velocity = 1;
 
@@ -94,7 +94,7 @@ namespace Piously.Game.Graphics.Backgrounds
         private readonly Texture texture;
 
         /// <summary>
-        /// Construct a new triangle visualisation.
+        /// Construct a new hexagon visualisation.
         /// </summary>
         /// <param name="seed">An optional seed to stabilise random positions / attributes. Note that this does not guarantee stable playback when seeking in time.</param>
         public Hexagons(int? seed = null)
@@ -140,7 +140,7 @@ namespace Piously.Game.Graphics.Backgrounds
 
             Invalidate(Invalidation.DrawNode);
 
-            if (CreateNewTriangles)
+            if (CreateNewHexagons)
                 addHexagons(false);
 
             float adjustedAlpha = HideAlphaDiscrepancies
@@ -150,15 +150,15 @@ namespace Piously.Game.Graphics.Backgrounds
 
             float elapsedSeconds = (float)Time.Elapsed / 1000;
             // Since position is relative, the velocity needs to scale inversely with DrawHeight.
-            // Since we will later multiply by the scale of individual triangles we normalize by
-            // dividing by triangleScale.
+            // Since we will later multiply by the scale of individual hexagons we normalize by
+            // dividing by hexagonScale.
             float movedDistance = -elapsedSeconds * Velocity * base_velocity / (DrawHeight * hexagonScale);
 
             for (int i = 0; i < parts.Count; i++)
             {
                 HexagonParticle newParticle = parts[i];
 
-                // Scale moved distance by the size of the triangle. Smaller triangles should move more slowly.
+                // Scale moved distance by the size of the hexagon. Smaller hexagons should move more slowly.
                 newParticle.Position.Y += parts[i].Scale * movedDistance;
                 newParticle.Colour.A = adjustedAlpha;
 
@@ -192,9 +192,9 @@ namespace Piously.Game.Graphics.Backgrounds
         }
 
         /// <summary>
-        /// Creates a triangle particle with a random scale.
+        /// Creates a hexagon particle with a random scale.
         /// </summary>
-        /// <returns>The triangle particle.</returns>
+        /// <returns>The hexagon particle.</returns>
         protected virtual HexagonParticle CreateHexagon()
         {
             const float std_dev = 0.16f;
@@ -209,7 +209,7 @@ namespace Piously.Game.Graphics.Backgrounds
         }
 
         /// <summary>
-        /// Creates a shade of colour for the triangles.
+        /// Creates a shade of colour for the hexagons.
         /// </summary>
         /// <returns>The colour.</returns>
         protected virtual Color4 CreateHexagonShade(float shade) => Interpolation.ValueAt(shade, colourDark, colourLight, 0, 1);
@@ -224,9 +224,9 @@ namespace Piously.Game.Graphics.Backgrounds
             }
         }
 
-        protected override DrawNode CreateDrawNode() => new TrianglesDrawNode(this);
+        protected override DrawNode CreateDrawNode() => new HexagonsDrawNode(this);
 
-        private class TrianglesDrawNode : DrawNode
+        private class HexagonsDrawNode : DrawNode
         {
             protected new Hexagons Source => (Hexagons)base.Source;
 
@@ -238,7 +238,7 @@ namespace Piously.Game.Graphics.Backgrounds
 
             private QuadBatch<TexturedVertex2D> vertexBatch;
 
-            public TrianglesDrawNode(Hexagons source)
+            public HexagonsDrawNode(Hexagons source)
                 : base(source)
             {
             }
@@ -271,23 +271,32 @@ namespace Piously.Game.Graphics.Backgrounds
 
                 foreach (HexagonParticle particle in parts)
                 {
-                    var offset = hexagon_size * new Vector2(particle.Scale * 0.5f, particle.Scale * 0.866f);
+                    var offset = hexagon_size * new Vector2(particle.Scale * 0.5f, 0);
 
                     var hexagon = new Hexagon(
-                        Vector2Extensions.Transform(particle.Position * size, DrawInfo.Matrix),
                         Vector2Extensions.Transform(particle.Position * size + offset, DrawInfo.Matrix),
                         Vector2Extensions.Transform(particle.Position * size + new Vector2(-offset.X, offset.Y), DrawInfo.Matrix)
-                    );
+                    ); ;
 
                     ColourInfo colourInfo = DrawColourInfo.Colour;
                     colourInfo.ApplyChild(particle.Colour);
 
-                    DrawHexagon(
+                    /*DrawTriangle(
                         texture,
                         hexagon,
                         colourInfo,
                         null,
                         vertexBatch.AddAction,
+                        Vector2.Divide(localInflationAmount, new Vector2(2 * offset.X, offset.Y)));
+                    */
+
+                    DrawTriangle(texture, hexagon.farUpTriangle, colourInfo, null, vertexBatch.AddAction,
+                        Vector2.Divide(localInflationAmount, new Vector2(2 * offset.X, offset.Y)));
+                    DrawTriangle(texture, hexagon.nearUpTriangle, colourInfo, null, vertexBatch.AddAction,
+                        Vector2.Divide(localInflationAmount, new Vector2(2 * offset.X, offset.Y)));
+                    DrawTriangle(texture, hexagon.nearDownTriangle, colourInfo, null, vertexBatch.AddAction,
+                        Vector2.Divide(localInflationAmount, new Vector2(2 * offset.X, offset.Y)));
+                    DrawTriangle(texture, hexagon.farDownTriangle, colourInfo, null, vertexBatch.AddAction,
                         Vector2.Divide(localInflationAmount, new Vector2(2 * offset.X, offset.Y)));
                 }
 
@@ -305,30 +314,30 @@ namespace Piously.Game.Graphics.Backgrounds
         protected struct HexagonParticle : IComparable<HexagonParticle>
         {
             /// <summary>
-            /// The position of the top vertex of the triangle.
+            /// The position of the top vertex of the hexagon.
             /// </summary>
             public Vector2 Position;
 
             /// <summary>
-            /// The colour shade of the triangle.
-            /// This is needed for colour recalculation of visible triangles when <see cref="ColourDark"/> or <see cref="ColourLight"/> is changed.
+            /// The colour shade of the hexagon.
+            /// This is needed for colour recalculation of visible hexagons when <see cref="ColourDark"/> or <see cref="ColourLight"/> is changed.
             /// </summary>
             public float ColourShade;
 
             /// <summary>
-            /// The colour of the triangle.
+            /// The colour of the hexagon.
             /// </summary>
             public Color4 Colour;
 
             /// <summary>
-            /// The scale of the triangle.
+            /// The scale of the hexagon.
             /// </summary>
             public float Scale;
 
             /// <summary>
             /// Compares two <see cref="HexagonParticle"/>s. This is a reverse comparer because when the
-            /// triangles are added to the particles list, they should be drawn from largest to smallest
-            /// such that the smaller triangles appear on top.
+            /// hexagons are added to the particles list, they should be drawn from largest to smallest
+            /// such that the smaller hexagons appear on top.
             /// </summary>
             /// <param name="other"></param>
             /// <returns></returns>
