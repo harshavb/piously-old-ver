@@ -18,10 +18,6 @@
 
   <ItemGroup>
     <EmbeddedResource Include="Resources\Fonts\**\*" />
-    <EmbeddedResource Include="Resources\Textures\**\*.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Input\Handlers\" />
+    <EmbeddedResource Include="Resources\Textures\**\*" />
   </ItemGroup>
 </Project>
