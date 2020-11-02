@@ -18,9 +18,10 @@ using osuTK.Input;
 
 namespace Piously.Game.Screens.Menu
 {
-    public class PiouslyLogo : Container
+    public class PiouslyLogo : ClickableContainer
     {
         private readonly Sprite logo;
         private readonly Container logoContainer;
+        
     }
 }
