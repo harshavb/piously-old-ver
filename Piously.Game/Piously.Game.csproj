@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <EmbeddedResource Include="Resources\Fonts\**\*" />
+    <EmbeddedResource Include="Resources\Shaders\**\*" />
     <EmbeddedResource Include="Resources\Textures\**\*" />
   </ItemGroup>
 </Project>
