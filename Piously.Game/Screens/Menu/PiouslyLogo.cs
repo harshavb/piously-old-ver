@@ -43,7 +43,7 @@ namespace Piously.Game.Screens.Menu
         {
             Anchor = Anchor.Centre;
             Origin = Anchor.Centre;
-            AutoSizeAxes = Axes.Both;
+            Size = new Vector2(400, 400);
 
             Children = new Drawable[]
             {
@@ -72,6 +72,8 @@ namespace Piously.Game.Screens.Menu
                 },
                 logo = new Sprite
                 {
+                    FillMode = FillMode.Fit,
+                    Size = new Vector2(400, 400),
                     Anchor = Anchor.Centre,
                     Origin = Anchor.Centre,
                 }
@@ -81,7 +83,7 @@ namespace Piously.Game.Screens.Menu
         [BackgroundDependencyLoader]
         private void load(TextureStore textures)
         {
-            logo.Texture = textures.Get(@"Resources/Textures/logo");
+            logo.Texture = textures.Get(@"logo");
         }
 
         protected override void LoadComplete()
