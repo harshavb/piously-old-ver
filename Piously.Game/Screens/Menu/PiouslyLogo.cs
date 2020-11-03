@@ -85,17 +85,5 @@ namespace Piously.Game.Screens.Menu
         {
             logo.Texture = textures.Get(@"logo");
         }
-
-        protected override void LoadComplete()
-        {
-            base.LoadComplete();
-            if (logo == null)
-                Console.WriteLine("Bruh");
-            else
-                Console.WriteLine(logo);
-
-            Console.WriteLine(Size);
-            Console.WriteLine(IsLoaded);
-        }
     }
 }
