@@ -47,35 +47,45 @@ namespace Piously.Game.Screens.Menu
 
             Children = new Drawable[]
             {
-                colourAndHexagons = new Container
+                new HexagonalContainer()
                 {
                     RelativeSizeAxes = Axes.Both,
                     Anchor = Anchor.Centre,
                     Origin = Anchor.Centre,
+
                     Children = new Drawable[]
                     {
-                        new Graphics.Shapes.Hexagon
+                        colourAndHexagons = new Container
                         {
                             RelativeSizeAxes = Axes.Both,
                             Anchor = Anchor.Centre,
                             Origin = Anchor.Centre,
-                            Colour = PiouslyColour.PiouslyLightYellow,
+                            Children = new Drawable[]
+                            {
+                                new Graphics.Shapes.Hexagon
+                                {
+                                    RelativeSizeAxes = Axes.Both,
+                                    Anchor = Anchor.Centre,
+                                    Origin = Anchor.Centre,
+                                    Colour = PiouslyColour.PiouslyLightYellow,
+                                },
+                                hexagons = new Hexagons
+                                {
+                                    RelativeSizeAxes = Axes.Both,
+                                    HexagonScale = 3,
+                                    ColourLight = PiouslyColour.PiouslyLighterYellow,
+                                    ColourDark = PiouslyColour.PiouslyYellow,
+                                }
+                            }
                         },
-                        hexagons = new Hexagons
+                        logo = new Sprite
                         {
                             RelativeSizeAxes = Axes.Both,
-                            HexagonScale = 3,
-                            ColourLight = PiouslyColour.PiouslyLighterYellow,
-                            ColourDark = PiouslyColour.PiouslyYellow,
+                            FillMode = FillMode.Fit,
+                            Anchor = Anchor.Centre,
+                            Origin = Anchor.Centre,
                         }
                     }
-                },
-                logo = new Sprite
-                {
-                    RelativeSizeAxes = Axes.Both,
-                    FillMode = FillMode.Fit,
-                    Anchor = Anchor.Centre,
-                    Origin = Anchor.Centre,
                 }
             };
         }
