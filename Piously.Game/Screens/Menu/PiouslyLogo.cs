@@ -3,6 +3,7 @@ using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Sprites;
 using osu.Framework.Graphics.Textures;
+using osu.Framework.Input.Events;
 using Piously.Game.Graphics;
 using Piously.Game.Graphics.Containers;
 using Piously.Game.Graphics.Backgrounds;
@@ -10,13 +11,14 @@ using osuTK;
 
 namespace Piously.Game.Screens.Menu
 {
-    public class PiouslyLogo : TestClickableContainer
+    public class PiouslyLogo : HexagonalContainer
     {
         private const double transition_length = 300;
 
         private Sprite logo;
 
         private readonly Container colourAndHexagons;
+        private readonly HexagonalContainer hexagonalContainer;
         private readonly Hexagons hexagons;
 
         public bool Hexagons
@@ -32,7 +34,7 @@ namespace Piously.Game.Screens.Menu
 
             Children = new Drawable[]
             {
-                new HexagonalContainer()
+                hexagonalContainer = new HexagonalContainer()
                 {
                     RelativeSizeAxes = Axes.Both,
                     Anchor = Anchor.Centre,
@@ -74,6 +76,29 @@ namespace Piously.Game.Screens.Menu
         private void load(TextureStore textures)
         {
             logo.Texture = textures.Get(@"Menu/logo");
+        }
+
+        protected override bool OnMouseDown(MouseDownEvent e)
+        {
+            this.ScaleTo(1.15f, 25);
+            this.ScaleTo(1.13f, 25);
+            return true;
+        }
+
+        protected override void OnMouseUp(MouseUpEvent e)
+        {
+            if (IsHovered)
+                this.ScaleTo(1.1f, 25);
+        }
+        protected override bool OnHover(HoverEvent e)
+        {
+            this.ScaleTo(1.1f, 50);
+            return true;
+        }
+
+        protected override void OnHoverLost(HoverLostEvent e)
+        {
+            this.ScaleTo(1.00f, 50);
         }
     }
 }
