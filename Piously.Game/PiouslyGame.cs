@@ -24,10 +24,8 @@ namespace Piously.Game
         private ScreenStack piouslyMenuScreenStack3;
         private TestScreen3 testScreen3;
 
-        private Texture texture;
-
         [BackgroundDependencyLoader]
-        private void load(TextureStore store)
+        private void load()
         {
             if (!Host.IsPrimaryInstance)
             {
