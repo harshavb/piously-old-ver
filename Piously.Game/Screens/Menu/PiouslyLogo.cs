@@ -52,40 +52,35 @@ namespace Piously.Game.Screens.Menu
                     RelativeSizeAxes = Axes.Both,
                     Anchor = Anchor.Centre,
                     Origin = Anchor.Centre,
-
-                    Children = new Drawable[]
+                    Scale = new Vector2(0.95f),
+                    Child = colourAndHexagons = new Container
                     {
-                        colourAndHexagons = new Container
+                        RelativeSizeAxes = Axes.Both,
+                        Anchor = Anchor.Centre,
+                        Origin = Anchor.Centre,
+                        Children = new Drawable[]
                         {
-                            RelativeSizeAxes = Axes.Both,
-                            Anchor = Anchor.Centre,
-                            Origin = Anchor.Centre,
-                            Children = new Drawable[]
+                            new Graphics.Shapes.Hexagon
                             {
-                                new Graphics.Shapes.Hexagon
-                                {
-                                    RelativeSizeAxes = Axes.Both,
-                                    Anchor = Anchor.Centre,
-                                    Origin = Anchor.Centre,
-                                    Colour = PiouslyColour.PiouslyLightYellow,
-                                },
-                                hexagons = new Hexagons
-                                {
-                                    RelativeSizeAxes = Axes.Both,
-                                    HexagonScale = 3,
-                                    ColourLight = PiouslyColour.PiouslyLighterYellow,
-                                    ColourDark = PiouslyColour.PiouslyYellow,
-                                }
+                                RelativeSizeAxes = Axes.Both,
+                                Colour = PiouslyColour.PiouslyLightYellow,
+                            },
+                            hexagons = new Hexagons
+                            {
+                                HexagonScale = 3,
+                                ColourLight = PiouslyColour.PiouslyLighterYellow,
+                                ColourDark = PiouslyColour.PiouslyYellow,
+                                RelativeSizeAxes = Axes.Both,
                             }
-                        },
-                        logo = new Sprite
-                        {
-                            RelativeSizeAxes = Axes.Both,
-                            FillMode = FillMode.Fit,
-                            Anchor = Anchor.Centre,
-                            Origin = Anchor.Centre,
                         }
                     }
+                },
+                logo = new Sprite
+                {
+                    RelativeSizeAxes = Axes.Both,
+                    FillMode = FillMode.Fit,
+                    Anchor = Anchor.Centre,
+                    Origin = Anchor.Centre,
                 }
             };
         }
