@@ -17,10 +17,10 @@ namespace Piously.Game
         {
             Resources.AddStore(new NamespacedResourceStore<byte[]>(new DllResourceStore(typeof(PiouslyGameBase).Assembly), "Resources"));
 
-            AddFont(Resources, @"Resources/Fonts/InkFree-Bold");
-            AddFont(Resources, @"Resources/Fonts/InkFree");
-            AddFont(Resources, @"Resources/Fonts/InkFree-Italic");
-            AddFont(Resources, @"Resources/Fonts/InkFree-BoldItalic");
+            AddFont(Resources, @"Fonts/InkFree-Bold");
+            AddFont(Resources, @"Fonts/InkFree");
+            AddFont(Resources, @"Fonts/InkFree-Italic");
+            AddFont(Resources, @"Fonts/InkFree-BoldItalic");
         }
     }
 }
