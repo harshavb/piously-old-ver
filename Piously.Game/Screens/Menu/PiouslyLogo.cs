@@ -58,7 +58,7 @@ namespace Piously.Game.Screens.Menu
                         {
                             Anchor = Anchor.Centre,
                             Origin = Anchor.Centre,
-                            Size = new Vector2(400, 400),
+                            RelativeSizeAxes = Axes.Both,
                             Colour = PiouslyColour.PiouslyYellow,
                         },
                         hexagons = new Hexagons
@@ -72,8 +72,8 @@ namespace Piously.Game.Screens.Menu
                 },
                 logo = new Sprite
                 {
+                    RelativeSizeAxes = Axes.Both,
                     FillMode = FillMode.Fit,
-                    Size = new Vector2(400, 400),
                     Anchor = Anchor.Centre,
                     Origin = Anchor.Centre,
                 }
