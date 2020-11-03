@@ -36,7 +36,7 @@ namespace Piously.Game.Graphics.Containers
         [BackgroundDependencyLoader]
         private void load(ShaderManager shaders) => this.Shader = shaders.Load(VertexShaderDescriptor.TEXTURE_2, "TextureHexagon");
 
-        protected override DrawNode CreateDrawNode() => new PoyoHexagonalContainerDrawNode(this, sharedData);
+        protected override DrawNode CreateDrawNode() => new HexagonalContainerDrawNode(this, sharedData);
 
         public override bool ReceivePositionalInputAt(Vector2 screenSpacePos)
         {
@@ -62,7 +62,7 @@ namespace Piously.Game.Graphics.Containers
             return true;
         }
 
-        private class PoyoHexagonalContainerDrawNode : BufferedDrawNode, ICompositeDrawNode
+        private class HexagonalContainerDrawNode : BufferedDrawNode, ICompositeDrawNode
         {
             protected new HexagonalContainer<T> Source => (HexagonalContainer<T>)base.Source;
 
@@ -74,7 +74,7 @@ namespace Piously.Game.Graphics.Containers
             private BlendingParameters effectBlending;
             private EffectPlacement effectPlacement;
 
-            public PoyoHexagonalContainerDrawNode(BufferedContainer<T> source, HexagonalContainerDrawNodeSharedData sharedData)
+            public HexagonalContainerDrawNode(BufferedContainer<T> source, HexagonalContainerDrawNodeSharedData sharedData)
                 : base(source, new CompositeDrawableDrawNode(source), sharedData) { }
 
             public override void ApplyState()
