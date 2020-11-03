@@ -19,7 +19,8 @@ namespace Piously.Game.Graphics.Containers
 
         protected override void OnMouseUp(MouseUpEvent e)
         {
-            this.ScaleTo(1.1f, 25);
+            if(IsHovered)
+                this.ScaleTo(1.1f, 25);
         }
     }
 }
