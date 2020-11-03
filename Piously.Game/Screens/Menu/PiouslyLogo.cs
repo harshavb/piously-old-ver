@@ -59,14 +59,14 @@ namespace Piously.Game.Screens.Menu
                             RelativeSizeAxes = Axes.Both,
                             Anchor = Anchor.Centre,
                             Origin = Anchor.Centre,
-                            Colour = PiouslyColour.PiouslyYellow,
+                            Colour = PiouslyColour.PiouslyLightYellow,
                         },
                         hexagons = new Hexagons
                         {
                             RelativeSizeAxes = Axes.Both,
                             HexagonScale = 3,
-                            ColourLight = PiouslyColour.PiouslyLightYellow,
-                            ColourDark = PiouslyColour.PiouslyDarkYellow,
+                            ColourLight = PiouslyColour.PiouslyLighterYellow,
+                            ColourDark = PiouslyColour.PiouslyYellow,
                         }
                     }
                 },
