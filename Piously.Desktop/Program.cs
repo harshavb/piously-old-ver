@@ -8,8 +8,9 @@ namespace Piously.Desktop
     public static class Program
     {
         [STAThread]
-        public static int Main()
+        public static int Main(string[] args)
         {
+            args = new string[] {"--sdl"};
             using (GameHost host = Host.GetSuitableHost(@"Piously"))
                 host.Run(new PiouslyGameDesktop());
 
