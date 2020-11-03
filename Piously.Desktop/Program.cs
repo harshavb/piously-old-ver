@@ -10,7 +10,6 @@ namespace Piously.Desktop
         [STAThread]
         public static int Main(string[] args)
         {
-            args = new string[] {"--sdl"};
             using (GameHost host = Host.GetSuitableHost(@"Piously"))
                 host.Run(new PiouslyGameDesktop());
 
