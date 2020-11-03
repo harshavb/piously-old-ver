@@ -93,7 +93,7 @@ namespace Piously.Game.Screens.Menu
         [BackgroundDependencyLoader]
         private void load(TextureStore textures)
         {
-            logo.Texture = textures.Get(@"logo");
+            logo.Texture = textures.Get(@"Menu/logo");
         }
     }
 }

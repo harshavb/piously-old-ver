@@ -1,6 +1,7 @@
 ﻿using osu.Framework.Allocation;
 using osu.Framework.Screens;
 using Piously.Game.Screens.Backgrounds;
+using System;
 
 namespace Piously.Game.Screens.Menu
 {
@@ -9,7 +10,9 @@ namespace Piously.Game.Screens.Menu
         [BackgroundDependencyLoader]
         private void load()
         {
-            AddInternal(new Background("background"));
+            Random randomGenerator = new Random();
+            int choice = randomGenerator.Next(1, 14);
+            AddInternal(new Background("Menu/menu-background-" + choice));
         }
     }
 }
