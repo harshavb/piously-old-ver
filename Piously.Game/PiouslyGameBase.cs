@@ -17,8 +17,6 @@ namespace Piously.Game
         {
             Resources.AddStore(new DllResourceStore(@"Piously.Game.dll"));
 
-
-
             AddFont(Resources, @"Resources/Fonts/InkFree-Bold");
             AddFont(Resources, @"Resources/Fonts/InkFree");
             AddFont(Resources, @"Resources/Fonts/InkFree-Italic");

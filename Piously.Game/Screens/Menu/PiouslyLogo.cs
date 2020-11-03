@@ -29,7 +29,7 @@ namespace Piously.Game.Screens.Menu
     {
         private const double transition_length = 300;
 
-        private Texture logo;
+        private Sprite logo;
 
         private readonly Container colourAndHexagons;
         private readonly Hexagons hexagons;
@@ -70,11 +70,10 @@ namespace Piously.Game.Screens.Menu
                         }
                     }
                 },
-                new Sprite
+                logo = new Sprite
                 {
                     Anchor = Anchor.Centre,
                     Origin = Anchor.Centre,
-                    Texture = logo
                 }
             };
         }
@@ -82,7 +81,7 @@ namespace Piously.Game.Screens.Menu
         [BackgroundDependencyLoader]
         private void load(TextureStore textures)
         {
-            logo = textures.Get(@"logo");
+            logo.Texture = textures.Get(@"Resources/Textures/logo");
         }
 
         protected override void LoadComplete()

@@ -2,9 +2,15 @@
 using osu.Framework.Allocation;
 using osu.Framework.Logging;
 using osu.Framework.Screens;
+using osu.Framework.Graphics;
+using Piously.Game.Graphics.Primitives;
+using Piously.Game.Graphics.Shapes;
 using Piously.Game.Input.Bindings;
 using Piously.Game.Screens.Menu;
+using osuTK;
 using LogLevel = osu.Framework.Logging.LogLevel;
+using osu.Framework.Graphics.Textures;
+using osu.Framework.Graphics.Sprites;
 
 namespace Piously.Game
 {
@@ -18,8 +24,10 @@ namespace Piously.Game
         private ScreenStack piouslyMenuScreenStack3;
         private TestScreen3 testScreen3;
 
+        private Texture texture;
+
         [BackgroundDependencyLoader]
-        private void load()
+        private void load(TextureStore store)
         {
             if (!Host.IsPrimaryInstance)
             {
