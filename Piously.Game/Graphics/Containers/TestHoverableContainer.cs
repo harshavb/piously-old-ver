@@ -13,7 +13,7 @@ namespace Piously.Game.Graphics.Containers
 
         protected override bool OnHover(HoverEvent e)
         {
-            this.ScaleTo(1.25f, 50);
+            this.ScaleTo(1.1f, 50);
             return true;
         }
 

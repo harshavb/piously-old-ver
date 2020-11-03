@@ -24,6 +24,9 @@ namespace Piously.Game
         private ScreenStack piouslyMenuScreenStack3;
         private TestScreen3 testScreen3;
 
+        private BackgroundScreen background;
+        private ScreenStack backgroundStack;
+
         [BackgroundDependencyLoader]
         private void load()
         {
@@ -33,6 +36,7 @@ namespace Piously.Game
                 Environment.Exit(0);
             }
 
+            backgroundStack = new ScreenStack();
             piouslyMenuScreenStack = new ScreenStack();
             piouslyMenuScreenStack2 = new ScreenStack();
             piouslyMenuScreenStack3 = new ScreenStack();
@@ -41,9 +45,10 @@ namespace Piously.Game
             {
                 Children = new[]
                 {
+                    backgroundStack,
                     piouslyMenuScreenStack,
                     piouslyMenuScreenStack2,
-                    piouslyMenuScreenStack3
+                    piouslyMenuScreenStack3,
                 }
             });
         }
@@ -52,13 +57,14 @@ namespace Piously.Game
         {
             base.LoadComplete();
 
+            background = new BackgroundScreen();
             //testScreen = new TestScreen();
-            testScreen2 = new TestScreen2();
+            //testScreen2 = new TestScreen2();
             testScreen3 = new TestScreen3();
 
-
+            backgroundStack.Push(background);
             //piouslyMenuScreenStack.Push(testScreen);
-            piouslyMenuScreenStack2.Push(testScreen2);
+            //piouslyMenuScreenStack2.Push(testScreen2);
             piouslyMenuScreenStack3.Push(testScreen3);
         }
 

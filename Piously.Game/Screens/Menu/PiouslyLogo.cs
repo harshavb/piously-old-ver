@@ -25,7 +25,7 @@ using Piously.Game.Graphics;
 
 namespace Piously.Game.Screens.Menu
 {
-    public class PiouslyLogo : Container
+    public class PiouslyLogo : TestClickableContainer
     {
         private const double transition_length = 300;
 
@@ -43,7 +43,7 @@ namespace Piously.Game.Screens.Menu
         {
             Anchor = Anchor.Centre;
             Origin = Anchor.Centre;
-            Size = new Vector2(400, 400);
+            Size = new Vector2(800, 800);
 
             Children = new Drawable[]
             {
@@ -56,17 +56,17 @@ namespace Piously.Game.Screens.Menu
                     {
                         new Graphics.Shapes.Hexagon
                         {
+                            RelativeSizeAxes = Axes.Both,
                             Anchor = Anchor.Centre,
                             Origin = Anchor.Centre,
-                            RelativeSizeAxes = Axes.Both,
                             Colour = PiouslyColour.PiouslyYellow,
                         },
                         hexagons = new Hexagons
                         {
-                            HexagonScale = 4,
+                            RelativeSizeAxes = Axes.Both,
+                            HexagonScale = 3,
                             ColourLight = PiouslyColour.PiouslyLightYellow,
                             ColourDark = PiouslyColour.PiouslyDarkYellow,
-                            RelativeSizeAxes = Axes.Both,
                         }
                     }
                 },
