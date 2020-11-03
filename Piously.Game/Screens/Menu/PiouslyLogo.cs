@@ -1,27 +1,12 @@
-﻿using System;
-using osu.Framework.Allocation;
-using osu.Framework.Audio;
-using osu.Framework.Audio.Sample;
-using osu.Framework.Audio.Track;
-using osu.Framework.Extensions.Color4Extensions;
+﻿using osu.Framework.Allocation;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
-using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
 using osu.Framework.Graphics.Textures;
-using osu.Framework.Input.Events;
-using osu.Framework.Utils;
 using Piously.Game.Graphics;
 using Piously.Game.Graphics.Containers;
 using Piously.Game.Graphics.Backgrounds;
-using Piously.Game.Graphics.Shapes;
 using osuTK;
-using osuTK.Graphics;
-using osuTK.Input;
-using Piously.Game.Graphics.Primitives;
-using System.Runtime.CompilerServices;
-using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
-using Piously.Game.Graphics;
 
 namespace Piously.Game.Screens.Menu
 {
@@ -88,7 +73,7 @@ namespace Piously.Game.Screens.Menu
         [BackgroundDependencyLoader]
         private void load(TextureStore textures)
         {
-            logo.Texture = textures.Get(@"logo");
+            logo.Texture = textures.Get(@"Menu/logo");
         }
     }
 }
