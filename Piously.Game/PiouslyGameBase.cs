@@ -15,7 +15,7 @@ namespace Piously.Game
         [BackgroundDependencyLoader]
         private void load()
         {
-            Resources.AddStore(new DllResourceStore(@"Piously.Game.dll"));
+            Resources.AddStore(new NamespacedResourceStore<byte[]>(new DllResourceStore(typeof(PiouslyGameBase).Assembly), "Resources"));
 
             AddFont(Resources, @"Resources/Fonts/InkFree-Bold");
             AddFont(Resources, @"Resources/Fonts/InkFree");
