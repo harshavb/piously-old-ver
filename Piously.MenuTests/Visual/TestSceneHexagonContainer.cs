@@ -13,11 +13,13 @@ namespace Piously.MenuTests.Visual
 {
     public class TestSceneHexagonContainer : TestScene
     {
+        private readonly Container container;
+
         public TestSceneHexagonContainer()
         {
             this.AddRange(new Drawable[]
             {
-                new Container
+                this.container = new Container
                 {
                     Size = new Vector2(256),
                     Children = new Drawable[]
@@ -34,6 +36,8 @@ namespace Piously.MenuTests.Visual
                     }
                 }
             });
+
+            this.AddSliderStep(@"Resize", 64, 768, 256, value => this.container.ResizeTo(value));
         }
 
         private class TestHexagonalContainer : HexagonalContainer
