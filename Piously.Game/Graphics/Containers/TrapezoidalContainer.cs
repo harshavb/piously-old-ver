@@ -14,27 +14,27 @@ using osuTK;
 
 namespace Piously.Game.Graphics.Containers
 {
-    public class HexagonalContainer : HexagonalContainer<Drawable> { }
+    public class TrapezoidalContainer : TrapezoidalContainer<Drawable> { }
 
-    public class HexagonalContainer<T> : BufferedContainer<T>
+    public class TrapezoidalContainer<T> : BufferedContainer<T>
         where T : Drawable
     {
-        private static readonly float sin_pi_over_3 = (float)Math.Sin(Math.PI / 3); 
-        private static readonly float tan_pi_over_3 = (float)Math.Tan(Math.PI / 3); 
+        private static readonly float sin_pi_over_3 = (float)Math.Sin(Math.PI / 3);
+        private static readonly float tan_pi_over_3 = (float)Math.Tan(Math.PI / 3);
 
-        public static readonly float HEXAGON_INRADIUS = sin_pi_over_3;
+        public static readonly float TRAPEZOID_INRADIUS = sin_pi_over_3;
 
         public IShader Shader { get; private set; }
 
-        private readonly HexagonalContainerDrawNodeSharedData sharedData;
+        private readonly TrapezoidalContainerDrawNodeSharedData sharedData;
 
-        public HexagonalContainer(RenderbufferInternalFormat[] formats = null, bool pixelSnapping = false) =>
-            this.sharedData = new HexagonalContainerDrawNodeSharedData(formats, pixelSnapping);
+        public TrapezoidalContainer(RenderbufferInternalFormat[] formats = null, bool pixelSnapping = false) =>
+            this.sharedData = new TrapezoidalContainerDrawNodeSharedData(formats, pixelSnapping);
 
         [BackgroundDependencyLoader]
-        private void load(ShaderManager shaders) => this.Shader = shaders.Load(VertexShaderDescriptor.TEXTURE_2, "TextureHexagon");
+        private void load(ShaderManager shaders) => this.Shader = shaders.Load(VertexShaderDescriptor.TEXTURE_2, "TextureTrapezoid");
 
-        protected override DrawNode CreateDrawNode() => new HexagonalContainerDrawNode(this, sharedData);
+        protected override DrawNode CreateDrawNode() => new TrapezoidalContainerDrawNode(this, sharedData);
 
         public override bool ReceivePositionalInputAt(Vector2 screenSpacePos)
         {
@@ -42,17 +42,17 @@ namespace Piously.Game.Graphics.Containers
             norm = new Vector2(norm.X / this.ScreenSpaceDrawQuad.Width, norm.Y / this.ScreenSpaceDrawQuad.Height); // apparently we can't divide Vector2s?
             norm = (norm - new Vector2(0.5f)) * 2;
 
-            if (Math.Abs(norm.Y) > sin_pi_over_3)
+            if (norm.Y > 0)
             {
                 return false; // top and bottom bounds
             }
 
-            if (Math.Abs(norm.Y) > -tan_pi_over_3 * (norm.X - 1))
+            if (norm.Y > -tan_pi_over_3 * (norm.X - 1))
             {
                 return false; // right bounds
             }
 
-            if (Math.Abs(norm.Y) > tan_pi_over_3 * (norm.X + 1))
+            if (norm.Y > tan_pi_over_3 * (norm.X + 1))
             {
                 return false; // right bounds
             }
@@ -60,26 +60,26 @@ namespace Piously.Game.Graphics.Containers
             return true;
         }
 
-        private class HexagonalContainerDrawNode : BufferedDrawNode, ICompositeDrawNode
+        private class TrapezoidalContainerDrawNode : BufferedDrawNode, ICompositeDrawNode
         {
-            protected new HexagonalContainer<T> Source => (HexagonalContainer<T>)base.Source;
+            protected new TrapezoidalContainer<T> Source => (TrapezoidalContainer<T>)base.Source;
 
             protected new CompositeDrawableDrawNode Child => (CompositeDrawableDrawNode)base.Child;
 
-            private IShader hexagonShader;
+            private IShader trapezoidShader;
             private bool drawOriginal;
             private ColourInfo effectColour;
             private BlendingParameters effectBlending;
             private EffectPlacement effectPlacement;
 
-            public HexagonalContainerDrawNode(BufferedContainer<T> source, HexagonalContainerDrawNodeSharedData sharedData)
+            public TrapezoidalContainerDrawNode(BufferedContainer<T> source, TrapezoidalContainerDrawNodeSharedData sharedData)
                 : base(source, new CompositeDrawableDrawNode(source), sharedData) { }
 
             public override void ApplyState()
             {
                 base.ApplyState();
 
-                hexagonShader = Source.Shader;
+                trapezoidShader = Source.Shader;
 
                 effectColour = Source.EffectColour;
                 effectBlending = Source.DrawEffectBlending;
@@ -101,9 +101,9 @@ namespace Piously.Game.Graphics.Containers
 
                 using (BindFrameBuffer(target))
                 {
-                    hexagonShader.Bind();
+                    trapezoidShader.Bind();
                     DrawFrameBuffer(current, new RectangleF(0, 0, current.Texture.Width, current.Texture.Height), ColourInfo.SingleColour(Color4.White));
-                    hexagonShader.Unbind();
+                    trapezoidShader.Unbind();
                 }
 
                 GLWrapper.PopScissorState();
@@ -134,9 +134,9 @@ namespace Piously.Game.Graphics.Containers
             public bool AddChildDrawNodes => RequiresRedraw;
         }
 
-        private class HexagonalContainerDrawNodeSharedData : BufferedDrawNodeSharedData
+        private class TrapezoidalContainerDrawNodeSharedData : BufferedDrawNodeSharedData
         {
-            public HexagonalContainerDrawNodeSharedData(RenderbufferInternalFormat[] formats, bool pixelSnapping)
+            public TrapezoidalContainerDrawNodeSharedData(RenderbufferInternalFormat[] formats, bool pixelSnapping)
                 : base(2, formats, pixelSnapping) { }
         }
     }
