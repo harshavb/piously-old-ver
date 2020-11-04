@@ -1,8 +1,7 @@
 {
   "profiles": {
     "Piously.Desktop": {
-      "commandName": "Project",
-      "commandLineArgs": "--sdl"
+      "commandName": "Project"
     }
   }
 }

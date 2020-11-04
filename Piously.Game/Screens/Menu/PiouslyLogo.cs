@@ -8,11 +8,14 @@ using Piously.Game.Graphics;
 using Piously.Game.Graphics.Containers;
 using Piously.Game.Graphics.Backgrounds;
 using osuTK;
+using System;
 
 namespace Piously.Game.Screens.Menu
 {
     public class PiouslyLogo : HexagonalContainer
     {
+        public MenuState menuState;
+
         private const double transition_length = 300;
 
         private Sprite logo;
@@ -28,6 +31,7 @@ namespace Piously.Game.Screens.Menu
 
         public PiouslyLogo()
         {
+            menuState = MenuState.Closed;
             Anchor = Anchor.Centre;
             Origin = Anchor.Centre;
             Size = new Vector2(800, 800);
@@ -82,6 +86,18 @@ namespace Piously.Game.Screens.Menu
         {
             this.ScaleTo(1.15f, 25);
             this.ScaleTo(1.13f, 25);
+            switch (menuState)
+            {
+                case MenuState.Opened:
+                    menuState = MenuState.Closed;
+                    break;
+                case MenuState.Closed:
+                    menuState = MenuState.Opened;
+                    break;
+                default:
+                    Console.WriteLine("what");
+                    break;
+            }
             return true;
         }
 

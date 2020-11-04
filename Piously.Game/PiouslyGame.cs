@@ -21,8 +21,8 @@ namespace Piously.Game
         private TestScreen testScreen;
         private ScreenStack piouslyMenuScreenStack2;
         private TestScreen2 testScreen2;
-        private ScreenStack piouslyMenuScreenStack3;
-        private TestScreen3 testScreen3;
+        private ScreenStack mainMenuScreenStack;
+        private MainMenu mainMenu;
 
         private BackgroundScreen background;
         private ScreenStack backgroundStack;
@@ -39,7 +39,7 @@ namespace Piously.Game
             backgroundStack = new ScreenStack();
             piouslyMenuScreenStack = new ScreenStack();
             piouslyMenuScreenStack2 = new ScreenStack();
-            piouslyMenuScreenStack3 = new ScreenStack();
+            mainMenuScreenStack = new ScreenStack();
 
             AddInternal(new PiouslyKeyBindingContainer
             {
@@ -48,7 +48,7 @@ namespace Piously.Game
                     backgroundStack,
                     piouslyMenuScreenStack,
                     piouslyMenuScreenStack2,
-                    piouslyMenuScreenStack3,
+                    mainMenuScreenStack,
                 }
             });
         }
@@ -60,12 +60,12 @@ namespace Piously.Game
             background = new BackgroundScreen();
             //testScreen = new TestScreen();
             //testScreen2 = new TestScreen2();
-            testScreen3 = new TestScreen3();
+            mainMenu = new MainMenu();
 
             backgroundStack.Push(background);
             //piouslyMenuScreenStack.Push(testScreen);
             //piouslyMenuScreenStack2.Push(testScreen2);
-            piouslyMenuScreenStack3.Push(testScreen3);
+            mainMenuScreenStack.Push(mainMenu);
         }
 
         protected override void Update()
