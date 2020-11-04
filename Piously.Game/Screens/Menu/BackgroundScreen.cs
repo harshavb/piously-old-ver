@@ -11,7 +11,7 @@ namespace Piously.Game.Screens.Menu
         private void load()
         {
             Random randomGenerator = new Random();
-            int choice = randomGenerator.Next(1, 14);
+            int choice = randomGenerator.Next(1, 18);
             AddInternal(new Background("Menu/menu-background-" + choice));
         }
     }
