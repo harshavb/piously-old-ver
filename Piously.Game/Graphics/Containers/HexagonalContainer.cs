@@ -41,20 +41,18 @@ namespace Piously.Game.Graphics.Containers
             Vector2 norm = screenSpacePos - this.ScreenSpaceDrawQuad.TopLeft;
             norm = new Vector2(norm.X / this.ScreenSpaceDrawQuad.Width, norm.Y / this.ScreenSpaceDrawQuad.Height); // apparently we can't divide Vector2s?
             norm = (norm - new Vector2(0.5f)) * 2;
+            
+            // hexagons are horizontally and vertically symmetrical, so we only have to test one quadrant :)
+            norm = new Vector2(Math.Abs(norm.X), Math.Abs(norm.Y));
 
-            if (Math.Abs(norm.Y) > sin_pi_over_3)
+            if (norm.Y > sin_pi_over_3)
             {
-                return false; // top and bottom bounds
+                return false; // top bound
             }
 
-            if (Math.Abs(norm.Y) > -tan_pi_over_3 * (norm.X - 1))
+            if (norm.Y > -tan_pi_over_3 * (norm.X - 1))
             {
-                return false; // right bounds
-            }
-
-            if (Math.Abs(norm.Y) > tan_pi_over_3 * (norm.X + 1))
-            {
-                return false; // right bounds
+                return false; // right bound
             }
 
             return true;
@@ -101,6 +99,8 @@ namespace Piously.Game.Graphics.Containers
 
                 using (BindFrameBuffer(target))
                 {
+                    float resolution = Math.Max(this.Source.ScreenSpaceDrawQuad.Width, this.Source.ScreenSpaceDrawQuad.Height); // shh
+                    hexagonShader.GetUniform<float>("g_Resolution").UpdateValue(ref resolution);
                     hexagonShader.Bind();
                     DrawFrameBuffer(current, new RectangleF(0, 0, current.Texture.Width, current.Texture.Height), ColourInfo.SingleColour(Color4.White));
                     hexagonShader.Unbind();
