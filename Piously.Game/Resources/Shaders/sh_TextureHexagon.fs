@@ -33,7 +33,7 @@ void main(void)
 
     if (distance <= 0.0)
     {
-        discard;
+        gl_FragColor.a = 0.0;
     }
     else
     {
