@@ -31,7 +31,7 @@ void main(void)
     // distance in pixels from the edge of the hexagon (assuming a square draw quad >_>).
     highp float distance = calculateHexagonDistance(v_TexCoord) * g_Resolution / 2.0;
 
-    if (distance <= 0)
+    if (distance <= 0.0)
     {
         discard;
     }
