@@ -22,6 +22,7 @@ namespace Piously.Game.Screens.Menu
 
         private readonly Container colourAndHexagons;
         private readonly HexagonalContainer hexagonalContainer;
+        private readonly Graphics.Shapes.Trapezoid trapezoid;
         private readonly Hexagons hexagons;
 
         public bool Hexagons
@@ -51,7 +52,7 @@ namespace Piously.Game.Screens.Menu
                         Origin = Anchor.Centre,
                         Children = new Drawable[]
                         {
-                            new Graphics.Shapes.Hexagon
+                            trapezoid = new Graphics.Shapes.Trapezoid
                             {
                                 RelativeSizeAxes = Axes.Both,
                                 Colour = PiouslyColour.PiouslyLightYellow,
@@ -105,6 +106,11 @@ namespace Piously.Game.Screens.Menu
         {
             if (IsHovered)
                 this.ScaleTo(1.1f, 25);
+            Console.WriteLine(trapezoid.DrawHeight);
+            Console.WriteLine(trapezoid.DrawWidth);
+            Console.WriteLine(trapezoid.X);
+            Console.WriteLine(trapezoid.Y);
+            Console.WriteLine(trapezoid.ConservativeScreenSpaceDrawQuad);
         }
         protected override bool OnHover(HoverEvent e)
         {

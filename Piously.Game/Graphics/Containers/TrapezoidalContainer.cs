@@ -40,21 +40,24 @@ namespace Piously.Game.Graphics.Containers
         {
             Vector2 norm = screenSpacePos - this.ScreenSpaceDrawQuad.TopLeft;
             norm = new Vector2(norm.X / this.ScreenSpaceDrawQuad.Width, norm.Y / this.ScreenSpaceDrawQuad.Height); // apparently we can't divide Vector2s?
-            norm = (norm - new Vector2(0.5f)) * 2;
+            norm = (norm - new Vector2(0.5f, 0.0f)) * new Vector2(2.0f, 0.0f);
 
-            if (norm.Y > 0)
+            // trapezoids are horizontally symmetrical, but not vertically, so we only test a bottom and top quadrant :V
+            norm = new Vector2(Math.Abs(norm.X), norm.Y);
+
+            if (norm.Y > sin_pi_over_3)
             {
-                return false; // top and bottom bounds
+                return false; // top bound
             }
 
             if (norm.Y > -tan_pi_over_3 * (norm.X - 1))
             {
-                return false; // right bounds
+                return false; // right bound
             }
 
-            if (norm.Y > tan_pi_over_3 * (norm.X + 1))
+            if(norm.Y < 0)
             {
-                return false; // right bounds
+                return false; // bottom bound
             }
 
             return true;
