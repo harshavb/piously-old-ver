@@ -40,6 +40,6 @@ void main(void)
     else
     {
         // blending range is implicitly 1.0.
-        // gl_FragColor.a *= distance;
+        gl_FragColor.a *= distance;
     }
 }
