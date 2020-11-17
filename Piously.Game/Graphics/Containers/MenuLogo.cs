@@ -1,10 +1,8 @@
 ﻿using osu.Framework.Input.Events;
 using osu.Framework.Graphics;
-using osu.Framework.Graphics.Containers;
 using Piously.Game.Graphics.Shapes;
 using Piously.Game.Screens.Menu;
 using osuTK;
-using System;
 
 namespace Piously.Game.Graphics.Containers
 {
@@ -100,7 +98,6 @@ namespace Piously.Game.Graphics.Containers
         {
             if(logo.menuState == MenuState.Closed)
             {
-                Console.WriteLine("ok now this is epic");
                 testTriangle0.ScaleTo(1f, 300, Easing.InOutBounce);
                 testTriangle1.ScaleTo(1f, 300, Easing.InOutBounce);
                 testTriangle2.ScaleTo(1f, 300, Easing.InOutBounce);

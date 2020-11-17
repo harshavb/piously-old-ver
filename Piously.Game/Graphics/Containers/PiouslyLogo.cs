@@ -8,7 +8,6 @@ using Piously.Game.Graphics.Shapes;
 using Piously.Game.Screens.Menu;
 using Piously.Game.Graphics.Backgrounds;
 using osuTK;
-using System;
 
 namespace Piously.Game.Graphics.Containers
 {
