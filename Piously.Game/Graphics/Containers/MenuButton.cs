@@ -1,10 +1,9 @@
 ﻿using osu.Framework.Graphics;
 using osu.Framework.Graphics.Sprites;
 using osu.Framework.Input.Events;
-using Piously.Game.Graphics.Containers;
 using System;
 
-namespace Piously.Game.Screens.Menu
+namespace Piously.Game.Graphics.Containers
 {
     public class MenuButton : TrapezoidalContainer
     {
