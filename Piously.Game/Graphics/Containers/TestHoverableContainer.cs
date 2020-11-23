@@ -1,10 +1,11 @@
 ﻿using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Input.Events;
+using Piously.Game.Graphics.Containers;
 
 namespace Piously.Game.Graphics.Containers
 {
-    public class TestHoverableContainer : Container
+    public class TestHoverableContainer : HexagonalContainer
     {
         public TestHoverableContainer()
             : base()
@@ -13,13 +14,13 @@ namespace Piously.Game.Graphics.Containers
 
         protected override bool OnHover(HoverEvent e)
         {
-            this.ScaleTo(1.1f, 50);
+            this.ScaleTo(0.733f, 50);
             return true;
         }
 
         protected override void OnHoverLost(HoverLostEvent e)
         {
-            this.ScaleTo(1.00f, 50);
+            this.ScaleTo(0.667f, 50);
         }
     }
 }

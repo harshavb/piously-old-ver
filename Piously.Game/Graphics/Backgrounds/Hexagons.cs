@@ -6,7 +6,6 @@ using System;
 using osu.Framework.Graphics.Shaders;
 using osu.Framework.Graphics.Textures;
 using osu.Framework.Graphics.Colour;
-using osu.Framework.Graphics.Primitives;
 using osu.Framework.Allocation;
 using System.Collections.Generic;
 using osu.Framework.Graphics.Batches;

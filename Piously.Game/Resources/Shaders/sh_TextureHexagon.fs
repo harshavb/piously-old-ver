@@ -18,7 +18,7 @@ highp float calculateHexagonDistance(mediump vec2 coord)
 
     // d1 is the distance from coord to the right bound.
     highp float d1 = (-TAN_PI_OVER_3 * norm.x - norm.y + TAN_PI_OVER_3) / 2.0;
-    // d1 is the distance from coord to the top bound.
+    // d2 is the distance from coord to the top bound.
     highp float d2 = SIN_PI_OVER_3 - norm.y;
 
     return min(d1, d2);

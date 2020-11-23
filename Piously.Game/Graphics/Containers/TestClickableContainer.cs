@@ -12,15 +12,14 @@ namespace Piously.Game.Graphics.Containers
 
         protected override bool OnMouseDown(MouseDownEvent e)
         {
-            this.ScaleTo(1.15f, 25);
-            this.ScaleTo(1.13f, 25);
+            this.ScaleTo(0.753f, 25);
             return true;
         }
 
         protected override void OnMouseUp(MouseUpEvent e)
         {
             if(IsHovered)
-                this.ScaleTo(1.1f, 25);
+                this.ScaleTo(0.733f, 25);
         }
     }
 }
