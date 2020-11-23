@@ -1,21 +1,10 @@
 ﻿using osu.Framework.Graphics;
-using osu.Framework.Graphics.Sprites;
 using osu.Framework.Input.Events;
-using System;
 
 namespace Piously.Game.Graphics.Containers
 {
     public class MenuButton : HexagonalContainer
     {
-        SpriteText label;
-
-        private readonly Action clickAction;
-
-        public MenuButton(SpriteText label, Action clickAction)
-        {
-            
-        }
-
         protected override bool OnMouseDown(MouseDownEvent e)
         {
             this.ScaleTo(1.15f, 25);
