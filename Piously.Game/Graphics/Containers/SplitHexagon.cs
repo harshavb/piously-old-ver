@@ -1,9 +1,60 @@
-﻿using osu.Framework.Graphics.Containers;
+﻿using System;
+using osu.Framework.Graphics.Containers;
+using osu.Framework.Graphics.Shapes;
+using osu.Framework.Graphics.Sprites;
+using osu.Framework.Graphics;
+using osu.Framework.Allocation;
+using osuTK;
 
 namespace Piously.Game.Graphics.Containers
 {
-    public class SplitHexagon : Container
+    public class SplitHexagon : Container<MenuButton>
     {
+        private float spacing = 0;
 
+        /// <summary>
+        /// The spacing between individual elements. Default is 0.
+        /// </summary>
+        public float Spacing
+        {
+            get => spacing;
+            set
+            {
+                if(spacing == value)
+                    return;
+
+                spacing = value;
+            }
+        }
+
+        [BackgroundDependencyLoader]
+        private void load()
+        {
+            CreateTriangles();
+        }
+
+        private void CreateTriangles()
+        {
+            for (int i = 0; i < 6; ++i)
+            {
+                Add(new MenuButton
+                {
+                    Label = new SpriteText(),
+                    RelativeSizeAxes = Axes.Both,
+                    Rotation = i * 60 + 210 + Rotation,
+                    Anchor = Anchor.Centre,
+                    Origin = Anchor.Centre,
+                    EdgeSmoothness = new Vector2(3, 3),
+                });
+            }
+        }
+
+        public void ScaleTo(float newScale, double duration = 0, Easing easing = Easing.None)
+        {
+            foreach(EquilateralTriangle triangle in Children)
+            {
+                triangle.ScaleTo(newScale, duration, easing);
+            }
+        }
     }
 }

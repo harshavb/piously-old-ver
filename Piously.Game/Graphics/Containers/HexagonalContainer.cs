@@ -32,7 +32,7 @@ namespace Piously.Game.Graphics.Containers
             this.sharedData = new HexagonalContainerDrawNodeSharedData(formats, pixelSnapping);
 
         [BackgroundDependencyLoader]
-        private void load(ShaderManager shaders) => this.Shader = shaders.Load(VertexShaderDescriptor.TEXTURE_2, "TextureHexagon");
+        private void load(ShaderManager shaders) => Shader = shaders.Load(VertexShaderDescriptor.TEXTURE_2, "TextureHexagon");
 
         protected override DrawNode CreateDrawNode() => new HexagonalContainerDrawNode(this, sharedData);
 

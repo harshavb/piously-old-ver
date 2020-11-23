@@ -1,20 +1,40 @@
 ﻿using osu.Framework.Graphics;
 using osu.Framework.Graphics.Sprites;
+using osu.Framework.Graphics.Shapes;
 using osu.Framework.Input.Events;
 using System;
 
 namespace Piously.Game.Graphics.Containers
 {
-    public class MenuButton : HexagonalContainer
+    public class MenuButton : EquilateralTriangle
     {
-        SpriteText label;
+        private SpriteText label;
 
-        private readonly Action clickAction;
+        //private Action clickAction;
 
-        public MenuButton(SpriteText label, Action clickAction)
+        public SpriteText Label
         {
-            
+            get => label;
+            set
+            {
+                if (label == value)
+                    return;
+
+                label = value;
+            }
         }
+
+        /*public Action ClickAction
+        {
+            get => clickAction;
+            set
+            {
+                if (clickAction == value)
+                    return;
+
+                clickAction = value;
+            }
+        }*/
 
         protected override bool OnMouseDown(MouseDownEvent e)
         {
