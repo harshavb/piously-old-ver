@@ -15,8 +15,6 @@ namespace Piously.Game
         private MainMenu mainMenu;
         private ScreenStack backgroundStack;
         private BackgroundScreen background;
-        private ScreenStack menuButtonsStack;
-
 
         [BackgroundDependencyLoader]
         private void load()
