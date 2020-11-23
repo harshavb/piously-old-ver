@@ -5,7 +5,7 @@ using System;
 
 namespace Piously.Game.Graphics.Containers
 {
-    public class MenuButton : TrapezoidalContainer
+    public class MenuButton : HexagonalContainer
     {
         SpriteText label;
 
