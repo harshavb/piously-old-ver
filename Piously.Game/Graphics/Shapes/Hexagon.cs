@@ -47,7 +47,6 @@ namespace Piously.Game.Graphics.Shapes
                     new Vector2(InflationAmount.X / DrawRectangle.Width, InflationAmount.Y / DrawRectangle.Height), TextureCoords);
                 DrawTriangle(Texture, drawingHex.farDownTriangle, DrawColourInfo.Colour, null, null,
                     new Vector2(InflationAmount.X / DrawRectangle.Width, InflationAmount.Y / DrawRectangle.Height), TextureCoords);
-
             }
 
             protected override void BlitOpaqueInterior(Action<TexturedVertex2D> vertexAction)
