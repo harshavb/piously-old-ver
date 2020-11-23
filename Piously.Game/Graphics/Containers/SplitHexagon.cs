@@ -41,9 +41,10 @@ namespace Piously.Game.Graphics.Containers
                 {
                     Label = new SpriteText(),
                     RelativeSizeAxes = Axes.Both,
-                    Rotation = i * 60 + 210 + Rotation,
+                    Size = new Vector2(0.5f),
+                    Rotation = i * 60 + Rotation,
                     Anchor = Anchor.Centre,
-                    Origin = Anchor.Centre,
+                    Origin = Anchor.TopCentre,
                     EdgeSmoothness = new Vector2(3, 3),
                 });
             }
