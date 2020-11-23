@@ -2,7 +2,6 @@
 using osu.Framework.Graphics.Sprites;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Input.Events;
-using System;
 
 namespace Piously.Game.Graphics.Containers
 {
