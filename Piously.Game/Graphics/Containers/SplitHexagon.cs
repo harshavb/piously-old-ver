@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using osu.Framework.Graphics.Containers;
 
 namespace Piously.Game.Graphics.Containers
 {
-    class SplitHexagon
+    public class SplitHexagon : Container
     {
+
     }
 }

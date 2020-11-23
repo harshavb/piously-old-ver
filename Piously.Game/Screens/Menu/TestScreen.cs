@@ -40,7 +40,7 @@ namespace Piously.Game.Screens.Menu
                     },
                     new TestClickableContainer
                     {
-                        Child = new Trapezoid
+                        Child = new Hexagon
                         {
                             Anchor = Anchor.Centre,
                             Origin = Anchor.Centre,
