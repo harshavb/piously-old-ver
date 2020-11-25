@@ -1,5 +1,4 @@
-﻿using System;
-using osu.Framework.Graphics.Containers;
+﻿using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
 using osu.Framework.Graphics;
@@ -10,7 +9,9 @@ namespace Piously.Game.Graphics.Containers
 {
     public class SplitHexagon : Container<MenuButton>
     {
+        public MenuLogo parentLogo;
         private float spacing = 0;
+        public MenuButton[] triangles;
 
         /// <summary>
         /// The spacing between individual elements. Default is 0.
@@ -35,9 +36,10 @@ namespace Piously.Game.Graphics.Containers
 
         private void CreateTriangles()
         {
+            triangles = new MenuButton[6];
             for (int i = 0; i < 6; ++i)
             {
-                Add(new MenuButton
+                Add(triangles[i] = new MenuButton
                 {
                     Label = new SpriteText(),
                     RelativeSizeAxes = Axes.Both,
@@ -46,6 +48,7 @@ namespace Piously.Game.Graphics.Containers
                     Anchor = Anchor.Centre,
                     Origin = Anchor.TopCentre,
                     EdgeSmoothness = new Vector2(3, 3),
+                    parentLogo = parentLogo,
                 });
             }
         }

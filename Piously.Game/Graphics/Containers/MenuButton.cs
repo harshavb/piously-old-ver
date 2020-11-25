@@ -2,12 +2,14 @@
 using osu.Framework.Graphics.Sprites;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Input.Events;
+using Piously.Game.Screens.Menu;
 
 namespace Piously.Game.Graphics.Containers
 {
     public class MenuButton : EquilateralTriangle
     {
         private SpriteText label;
+        public MenuLogo parentLogo;
 
         //private Action clickAction;
 
@@ -46,16 +48,20 @@ namespace Piously.Game.Graphics.Containers
         {
             if (IsHovered)
                 this.ScaleTo(1.1f, 25);
+            
         }
         protected override bool OnHover(HoverEvent e)
         {
-            this.ScaleTo(1.1f, 50);
-            return true;
+            if (parentLogo.logo.menuState == MenuState.Opened && parentLogo.logo.IsHovered == false)
+                this.ScaleTo(1.51f, 50);
+
+            return false;
         }
 
         protected override void OnHoverLost(HoverLostEvent e)
         {
-            this.ScaleTo(1.00f, 50);
+            if (parentLogo.logo.menuState == MenuState.Opened && parentLogo.logo.IsHovered == false)
+                this.ScaleTo(1.375f, 50);
         }
     }
 }

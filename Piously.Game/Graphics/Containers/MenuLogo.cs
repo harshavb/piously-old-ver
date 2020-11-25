@@ -1,6 +1,5 @@
 ﻿using osu.Framework.Input.Events;
 using osu.Framework.Graphics;
-using Piously.Game.Graphics.Shapes;
 using Piously.Game.Screens.Menu;
 using osuTK;
 
@@ -24,7 +23,8 @@ namespace Piously.Game.Graphics.Containers
                     RelativeSizeAxes = Axes.Both,
                     Anchor = Anchor.Centre,
                     Origin = Anchor.Centre,
-                    Size = new Vector2(1f * 0.667f)
+                    Size = new Vector2(1f * 0.667f),
+                    parentLogo = this,
                 },
                 logo = new PiouslyLogo()
                 {
@@ -51,6 +51,16 @@ namespace Piously.Game.Graphics.Containers
 
         public void checkTriangleHovers()
         {
+            if (logo.menuState == MenuState.Opened)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    if (menuButtons.triangles[i].IsHovered)
+                    {
+                        menuButtons.triangles[i].ScaleTo(1.51f, 100, Easing.InOutBounce);
+                    }
+                }
+            }
         }
 
         public void closeAllTriangles()
