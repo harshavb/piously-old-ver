@@ -41,7 +41,7 @@ namespace Piously.Game.Graphics.Containers
         {
             if(logo.menuState == MenuState.Closed)
             {
-                menuButtons.ScaleTo(1f, 300, Easing.InOutBounce);
+                menuButtons.ScaleTo(0.99f, 300, Easing.InOutBounce);
             }
             else if(logo.menuState == MenuState.Opened)
             {
