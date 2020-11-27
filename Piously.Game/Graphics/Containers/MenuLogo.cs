@@ -19,14 +19,6 @@ namespace Piously.Game.Graphics.Containers
 
             Children = new Drawable[]
             {
-                logo = new PiouslyLogo()
-                {
-                    RelativeSizeAxes = Axes.Both,
-                    Anchor = Anchor.Centre,
-                    Origin = Anchor.Centre,
-                    Size = new Vector2(1f * 0.667f),
-                    parentLogo = this,
-                },
                 menuButtons = new MenuSplitHexagon
                 {
                     RelativeSizeAxes = Axes.Both,
@@ -35,7 +27,14 @@ namespace Piously.Game.Graphics.Containers
                     Size = new Vector2(1f * 0.667f),
                     parentLogo = this,
                 },
-                
+                logo = new PiouslyLogo()
+                {
+                    RelativeSizeAxes = Axes.Both,
+                    Anchor = Anchor.Centre,
+                    Origin = Anchor.Centre,
+                    Size = new Vector2(1f * 0.667f),
+                    parentLogo = this,
+                },
             };
         }
 

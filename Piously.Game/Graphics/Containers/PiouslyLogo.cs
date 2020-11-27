@@ -106,14 +106,14 @@ namespace Piously.Game.Graphics.Containers
         protected override bool OnHover(HoverEvent e)
         {
             parentLogo.closeAllTriangles();
-            parentLogo.ScaleTo(1.1f, 50);
+            this.ScaleTo(1.1f, 50);
             return false;
         }
 
         protected override void OnHoverLost(HoverLostEvent e)
         {
             parentLogo.checkTriangleHovers();
-            parentLogo.ScaleTo(1f, 50);
+            this.ScaleTo(1f, 50);
         }
     }
 }

@@ -28,8 +28,8 @@ namespace Piously.Game.Graphics.Containers
                 menuButtonSprite = new MenuButtonSprite
                 {
                     RelativeSizeAxes = Axes.Both,
-                    Anchor = Anchor.Centre,
-                    Origin = Anchor.Centre,
+                    Anchor = Anchor.TopCentre,
+                    Origin = Anchor.TopCentre,
                     Size = new Vector2(1f),
                     parentLogo = parentLogo,
                     clickAction = clickAction,
