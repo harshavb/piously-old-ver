@@ -1,4 +1,5 @@
-﻿using osu.Framework.Graphics;
+﻿using System;
+using osu.Framework.Graphics;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Input.Events;
 using Piously.Game.Graphics.Containers;
@@ -9,10 +10,24 @@ namespace Piously.Game.Graphics.Sprites
     public class MenuButtonSprite : EquilateralTriangle
     {
         public MenuLogo parentLogo;
+        public Action clickAction;
+
+        protected override bool OnClick(ClickEvent e)
+        {
+            trigger();
+            return true;
+        }
+
+        private void trigger()
+        {
+            clickAction?.Invoke();
+        }
 
         protected override bool OnMouseDown(MouseDownEvent e)
         {
+            Parent.ScaleTo(1.15f, 25);
             this.ScaleTo(1.15f, 25);
+            Parent.ScaleTo(1.13f, 25);
             this.ScaleTo(1.13f, 25);
             return true;
         }
@@ -20,13 +35,19 @@ namespace Piously.Game.Graphics.Sprites
         protected override void OnMouseUp(MouseUpEvent e)
         {
             if (IsHovered)
+            {
+                Parent.ScaleTo(1.1f, 25);
                 this.ScaleTo(1.1f, 25);
-            
+            }
+
         }
         protected override bool OnHover(HoverEvent e)
         {
             if (parentLogo.logo.menuState == MenuState.Opened && parentLogo.logo.IsHovered == false)
+            {
+                Parent.ScaleTo(1.51f, 50);
                 this.ScaleTo(1.51f, 50);
+            }
 
             return false;
         }
@@ -34,7 +55,10 @@ namespace Piously.Game.Graphics.Sprites
         protected override void OnHoverLost(HoverLostEvent e)
         {
             if (parentLogo.logo.menuState == MenuState.Opened && parentLogo.logo.IsHovered == false)
+            {
+                Parent.ScaleTo(1.375f, 50);
                 this.ScaleTo(1.375f, 50);
+            }
         }
     }
 }

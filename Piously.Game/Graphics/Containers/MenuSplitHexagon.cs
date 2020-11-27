@@ -11,12 +11,13 @@ namespace Piously.Game.Graphics.Containers
     public class MenuSplitHexagon : Container<MenuButton>
     {
         public MenuLogo parentLogo;
-        public MenuButton[] triangles;
+        public MenuButton[] triangles { get; private set; }
         public Action OnSettings;
 
         [BackgroundDependencyLoader]
         private void load()
         {
+            Masking = false;
             CreateTriangles();
         }
 
@@ -34,16 +35,17 @@ namespace Piously.Game.Graphics.Containers
                         2 => PiouslyColour.PiouslyDarkYellow,
                         3 => PiouslyColour.PiouslyLighterYellow,
                         4 => PiouslyColour.PiouslyDarkYellow,
-                        5 => PiouslyColour.PiouslyLighterYellow
+                        5 => PiouslyColour.PiouslyLighterYellow,
+                        _ => PiouslyColour.PiouslyDarkYellow,
                     },
                     clickAction = OnSettings = () => OnSettings?.Invoke(),
                     RelativeSizeAxes = Axes.Both,
                     Size = new Vector2(0.5f),
-                    Scale = new Vector2(0.99f),
                     Rotation = i * 60 + Rotation,
                     Anchor = Anchor.Centre,
                     Origin = Anchor.TopCentre,
-                    parentLogo = parentLogo
+                    parentLogo = parentLogo,
+                    Masking = false,
                 });
             }
         }
