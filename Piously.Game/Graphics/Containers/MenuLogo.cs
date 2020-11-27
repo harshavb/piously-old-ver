@@ -83,6 +83,5 @@ namespace Piously.Game.Graphics.Containers
             if(logo.menuState == MenuState.Opened)
                 this.ScaleTo(1f, 50);
         }
-
     }
 }
