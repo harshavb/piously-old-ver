@@ -49,7 +49,7 @@ namespace Piously.Game.Graphics.Containers
         {
             foreach(MenuButton menuButton in Children)
             {
-                menuButton.ScaleTo(newScale, duration, easing);
+                menuButton.menuButtonSprite.ScaleTo(newScale, duration, easing);
             }
         }
     }

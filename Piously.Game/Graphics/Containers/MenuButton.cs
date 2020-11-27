@@ -10,6 +10,7 @@ namespace Piously.Game.Graphics.Containers
     {
         public SpriteText Label;
         public MenuLogo parentLogo;
+        public MenuButtonSprite menuButtonSprite { get; private set; }
         //public Action clickAction;
 
         [BackgroundDependencyLoader]
@@ -17,7 +18,7 @@ namespace Piously.Game.Graphics.Containers
         {
             Children = new Drawable[]
             {
-                new MenuButtonSprite
+                menuButtonSprite = new MenuButtonSprite
                 {
                     RelativeSizeAxes = Axes.Both,
                     parentLogo = parentLogo
