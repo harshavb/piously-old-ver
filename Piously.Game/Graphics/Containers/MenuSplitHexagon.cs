@@ -45,11 +45,11 @@ namespace Piously.Game.Graphics.Containers
             }
         }
 
-        public void ScaleTo(float newScale, double duration = 0, Easing easing = Easing.None)
+        public void ScaleTo(float newScale, double duration = 0, Easing Easing = Easing.None)
         {
             foreach(MenuButton menuButton in Children)
             {
-                menuButton.menuButtonSprite.ScaleTo(newScale, duration, easing);
+                menuButton.ScaleTo(newScale, duration, Easing);
             }
         }
     }

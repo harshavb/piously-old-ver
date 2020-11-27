@@ -21,14 +21,11 @@ namespace Piously.Game.Graphics.Containers
                 menuButtonSprite = new MenuButtonSprite
                 {
                     RelativeSizeAxes = Axes.Both,
+                    Anchor = Anchor.Centre,
+                    Origin = Anchor.Centre,
                     parentLogo = parentLogo
                 }
             };
-        }
-
-        public void ScaleTo(float newScale, double duration = 0, Easing Easing = default)
-        {
-            menuButtonSprite.ScaleTo(newScale, duration, Easing);
         }
     }
 }
