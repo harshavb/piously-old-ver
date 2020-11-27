@@ -55,7 +55,7 @@ namespace Piously.Game.Graphics.Containers
             {
                 for (int i = 0; i < 6; i++)
                 {
-                    if (menuButtons.triangles[i].IsHovered)
+                    if (menuButtons.triangles[i].menuButtonSprite.IsHovered)
                     {
                         menuButtons.triangles[i].ScaleTo(1.51f, 100, Easing.InOutBounce);
                     }

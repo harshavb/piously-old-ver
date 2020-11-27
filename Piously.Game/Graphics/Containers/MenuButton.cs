@@ -25,5 +25,10 @@ namespace Piously.Game.Graphics.Containers
                 }
             };
         }
+
+        public void ScaleTo(float newScale, double duration = 0, Easing Easing = default)
+        {
+            menuButtonSprite.ScaleTo(newScale, duration, Easing);
+        }
     }
 }
