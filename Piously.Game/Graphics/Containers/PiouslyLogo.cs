@@ -102,6 +102,7 @@ namespace Piously.Game.Graphics.Containers
             if (IsHovered)
                 parentLogo.ScaleTo(1.1f, 25);
         }
+
         protected override bool OnHover(HoverEvent e)
         {
             parentLogo.closeAllTriangles();
@@ -109,12 +110,12 @@ namespace Piously.Game.Graphics.Containers
                 parentLogo.ScaleTo(1.1f, 50);
             return false;
         }
+
         protected override void OnHoverLost(HoverLostEvent e)
         {
             parentLogo.checkTriangleHovers();
             if (menuState == MenuState.Closed)
                 parentLogo.ScaleTo(1f, 50);
         }
-
     }
 }
