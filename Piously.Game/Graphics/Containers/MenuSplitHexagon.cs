@@ -1,4 +1,5 @@
-﻿using osu.Framework.Graphics.Containers;
+﻿using System;
+using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
 using osu.Framework.Graphics;
@@ -11,6 +12,7 @@ namespace Piously.Game.Graphics.Containers
     {
         public MenuLogo parentLogo;
         public MenuButton[] triangles;
+        public Action OnSettings;
 
         [BackgroundDependencyLoader]
         private void load()
@@ -34,6 +36,7 @@ namespace Piously.Game.Graphics.Containers
                         4 => PiouslyColour.PiouslyDarkYellow,
                         5 => PiouslyColour.PiouslyLighterYellow
                     },
+                    clickAction = OnSettings = () => OnSettings?.Invoke(),
                     RelativeSizeAxes = Axes.Both,
                     Size = new Vector2(0.5f),
                     Scale = new Vector2(0.99f),

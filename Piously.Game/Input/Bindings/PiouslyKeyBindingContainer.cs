@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using osu.Framework.Input;
 using osu.Framework.Input.Bindings;
+using System.ComponentModel;
 
 namespace Piously.Game.Input.Bindings
 {
@@ -14,14 +15,13 @@ namespace Piously.Game.Input.Bindings
         public override IEnumerable<KeyBinding> DefaultKeyBindings => GlobalKeyBindings;
         public static IEnumerable<KeyBinding> GlobalKeyBindings => new[]
         {
-            new KeyBinding(InputKey.A, GlobalAction.TestAction1),
-            new KeyBinding(new[] { InputKey.Control, InputKey.F }, GlobalAction.TestAction2)
+            new KeyBinding(new[] { InputKey.Control, InputKey.O }, GlobalAction.ToggleSettings),
         };
     }
 
     public enum GlobalAction
     {
-        TestAction1,
-        TestAction2,
+        [Description("Toggle settings")]
+        ToggleSettings,
     }
 }
