@@ -10,7 +10,6 @@ namespace Piously.Game.Graphics.Containers
     public class MenuSplitHexagon : Container<MenuButton>
     {
         public MenuLogo parentLogo;
-        private float spacing = 0;
         public MenuButton[] triangles;
 
         [BackgroundDependencyLoader]
@@ -41,17 +40,16 @@ namespace Piously.Game.Graphics.Containers
                     Rotation = i * 60 + Rotation,
                     Anchor = Anchor.Centre,
                     Origin = Anchor.TopCentre,
-                    EdgeSmoothness = new Vector2(3, 3),
-                    parentLogo = parentLogo,
+                    parentLogo = parentLogo
                 });
             }
         }
 
         public void ScaleTo(float newScale, double duration = 0, Easing easing = Easing.None)
         {
-            foreach(EquilateralTriangle triangle in Children)
+            foreach(MenuButton menuButton in Children)
             {
-                triangle.ScaleTo(newScale, duration, easing);
+                menuButton.ScaleTo(newScale, duration, easing);
             }
         }
     }
