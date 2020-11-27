@@ -7,10 +7,12 @@ namespace Piously.Game.Screens.Menu
 {
     public class MainMenu : Screen
     {
-        [BackgroundDependencyLoader]
-        private void load(MenuLogo menuLogo, SettingsOverlay settings)
+        MenuLogo menuLogo;
+
+        [BackgroundDependencyLoader(true)]
+        private void load(SettingsOverlay settings)
         {
-            AddInternal(menuLogo);
+            AddInternal(menuLogo = new MenuLogo());
 
             menuLogo.menuButtons.OnSettings = () => settings?.ToggleVisibility();
         }
