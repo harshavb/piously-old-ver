@@ -70,18 +70,5 @@ namespace Piously.Game.Graphics.Containers
                 menuButtons.ScaleTo(1.375f, 100, Easing.InOutBounce);
             }
         }
-
-        protected override bool OnHover(HoverEvent e)
-        {
-            if(logo.menuState == MenuState.Opened)
-                this.ScaleTo(1.1f, 50);
-            return true;
-        }
-
-        protected override void OnHoverLost(HoverLostEvent e)
-        {
-            if(logo.menuState == MenuState.Opened)
-                this.ScaleTo(1f, 50);
-        }
     }
 }
