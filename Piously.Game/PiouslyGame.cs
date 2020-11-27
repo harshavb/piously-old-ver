@@ -11,7 +11,7 @@ namespace Piously.Game
     //The actual game, specifically loads the UI
     public class PiouslyGame : PiouslyGameBase
     {
-        private ScreenStack mainMenuScreenStack;
+        private ScreenStack mainMenuStack;
         private MainMenu mainMenu;
         private ScreenStack backgroundStack;
         private BackgroundScreen background;
@@ -26,14 +26,14 @@ namespace Piously.Game
             }
 
             backgroundStack = new ScreenStack();
-            mainMenuScreenStack = new ScreenStack();
+            mainMenuStack = new ScreenStack();
 
             AddInternal(new PiouslyKeyBindingContainer
             {
                 Children = new[]
                 {
                     backgroundStack,
-                    mainMenuScreenStack,
+                    mainMenuStack,
                 }
             });
         }
@@ -46,7 +46,7 @@ namespace Piously.Game
             mainMenu = new MainMenu();
 
             backgroundStack.Push(background);
-            mainMenuScreenStack.Push(mainMenu);
+            mainMenuStack.Push(mainMenu);
         }
 
         protected override void Update()
