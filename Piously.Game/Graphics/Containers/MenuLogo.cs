@@ -8,7 +8,7 @@ namespace Piously.Game.Graphics.Containers
     public class MenuLogo : HexagonalContainer
     {
         public PiouslyLogo logo;
-        public SplitHexagon menuButtons;
+        public MenuSplitHexagon menuButtons;
 
         public MenuLogo()
         {
@@ -18,7 +18,7 @@ namespace Piously.Game.Graphics.Containers
 
             Children = new Drawable[]
             {
-                menuButtons = new SplitHexagon
+                menuButtons = new MenuSplitHexagon
                 {
                     RelativeSizeAxes = Axes.Both,
                     Anchor = Anchor.Centre,

@@ -7,26 +7,11 @@ using osuTK;
 
 namespace Piously.Game.Graphics.Containers
 {
-    public class SplitHexagon : Container<MenuButton>
+    public class MenuSplitHexagon : Container<MenuButton>
     {
         public MenuLogo parentLogo;
         private float spacing = 0;
         public MenuButton[] triangles;
-
-        /// <summary>
-        /// The spacing between individual elements. Default is 0.
-        /// </summary>
-        public float Spacing
-        {
-            get => spacing;
-            set
-            {
-                if(spacing == value)
-                    return;
-
-                spacing = value;
-            }
-        }
 
         [BackgroundDependencyLoader]
         private void load()
@@ -41,7 +26,15 @@ namespace Piously.Game.Graphics.Containers
             {
                 Add(triangles[i] = new MenuButton
                 {
-                    Label = new SpriteText(),
+                    Colour = i switch
+                    {
+                        0 => PiouslyColour.PiouslyDarkYellow,
+                        1 => PiouslyColour.PiouslyLighterYellow,
+                        2 => PiouslyColour.PiouslyDarkYellow,
+                        3 => PiouslyColour.PiouslyLighterYellow,
+                        4 => PiouslyColour.PiouslyDarkYellow,
+                        5 => PiouslyColour.PiouslyLighterYellow
+                    },
                     RelativeSizeAxes = Axes.Both,
                     Size = new Vector2(0.5f),
                     Scale = new Vector2(0.99f),

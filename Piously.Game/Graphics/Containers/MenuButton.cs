@@ -1,4 +1,5 @@
-﻿using osu.Framework.Graphics;
+﻿using osu.Framework.Allocation;
+using osu.Framework.Graphics;
 using osu.Framework.Graphics.Sprites;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Input.Events;
@@ -8,34 +9,7 @@ namespace Piously.Game.Graphics.Containers
 {
     public class MenuButton : EquilateralTriangle
     {
-        private SpriteText label;
         public MenuLogo parentLogo;
-
-        //private Action clickAction;
-
-        public SpriteText Label
-        {
-            get => label;
-            set
-            {
-                if (label == value)
-                    return;
-
-                label = value;
-            }
-        }
-
-        /*public Action ClickAction
-        {
-            get => clickAction;
-            set
-            {
-                if (clickAction == value)
-                    return;
-
-                clickAction = value;
-            }
-        }*/
 
         protected override bool OnMouseDown(MouseDownEvent e)
         {

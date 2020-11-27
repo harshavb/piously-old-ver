@@ -21,4 +21,8 @@
     <EmbeddedResource Include="Resources\Shaders\**\*" />
     <EmbeddedResource Include="Resources\Textures\**\*" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Graphics\Sprites\" />
+  </ItemGroup>
 </Project>
