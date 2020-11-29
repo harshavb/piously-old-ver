@@ -5,7 +5,7 @@ using osu.Framework.Graphics.Containers;
 using osuTK;
 using osuTK.Graphics;
 
-namespace Piously.Game.Graphics.Overlays
+namespace Piously.Game.Overlays
 {
     public class SettingsOverlay : OverlayContainer
     {

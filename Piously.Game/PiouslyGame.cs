@@ -9,7 +9,7 @@ using osu.Framework.Logging;
 using osu.Framework.Screens;
 using osu.Framework.Threading;
 using Piously.Game.Screens.Menu;
-using Piously.Game.Graphics.Overlays;
+using Piously.Game.Overlays;
 using LogLevel = osu.Framework.Logging.LogLevel;
 
 namespace Piously.Game

@@ -2,7 +2,7 @@
 using osu.Framework.Allocation;
 using osu.Framework.Screens;
 using Piously.Game.Graphics.Containers;
-using Piously.Game.Graphics.Overlays;
+using Piously.Game.Overlays;
 
 namespace Piously.Game.Screens.Menu
 {
