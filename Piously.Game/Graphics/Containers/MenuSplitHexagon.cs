@@ -30,13 +30,13 @@ namespace Piously.Game.Graphics.Containers
                 {
                     triangleColour = i switch
                     {
-                        0 => Colour4.DarkGray,
-                        1 => Colour4.DarkGray,
-                        2 => Colour4.DarkGray,
-                        3 => Colour4.DarkGray,
-                        4 => Colour4.DarkGray,
-                        5 => Colour4.DarkGray,
-                        _ => Colour4.DarkGray,
+                        0 => new Colour4(75, 75, 75, 255),
+                        1 => new Colour4(75, 75, 75, 255),
+                        2 => new Colour4(75, 75, 75, 255),
+                        3 => new Colour4(75, 75, 75, 255),
+                        4 => new Colour4(75, 75, 75, 255),
+                        5 => new Colour4(75, 75, 75, 255),
+                        _ => new Colour4(75, 75, 75, 255),
                     },
                     clickAction = i switch
                     {
