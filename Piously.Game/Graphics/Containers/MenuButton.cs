@@ -16,6 +16,7 @@ namespace Piously.Game.Graphics.Containers
         public Action clickAction;
         public Colour4 triangleColour;
         public string titleText;
+        public bool textIsUpsideDown;
 
         [BackgroundDependencyLoader]
         private void load()
@@ -38,9 +39,8 @@ namespace Piously.Game.Graphics.Containers
                     Text = titleText,
                     Anchor = Anchor.BottomCentre,
                     Origin = Anchor.TopCentre,
-                    //OriginPosition = new Vector2(0, -52f),
-                    Position = new Vector2(0f, -60f),
-                    Rotation = 180,
+                    Position = new Vector2(0f, textIsUpsideDown ? -108f : -60f),
+                    Rotation = textIsUpsideDown ? 0 : 180,
                     Colour = Colour4.White,
                     Font = new FontUsage(null, 48, null, false, false),
                     

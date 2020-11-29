@@ -58,6 +58,16 @@ namespace Piously.Game.Graphics.Containers
                         5 => "Leaderboard",
                         _ => "",
                     },
+                    textIsUpsideDown = i switch
+                    {
+                        0 => true,
+                        1 => true,
+                        2 => false,
+                        3 => false,
+                        4 => false,
+                        5 => true,
+                        _ => false,
+                    },
                     RelativeSizeAxes = Axes.Both,
                     Size = new Vector2(0.5f),
                     Rotation = i * 60 + Rotation,
