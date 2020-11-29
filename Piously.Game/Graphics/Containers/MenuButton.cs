@@ -33,15 +33,15 @@ namespace Piously.Game.Graphics.Containers
                     Size = new Vector2(1f),
                     parentLogo = parentLogo,
                     clickAction = clickAction,
-                    Colour = Colour4.White,
+                    Colour = new Colour4(40, 40, 40, 255),
                 },
                 new EquilateralTriangle
                 {
                     RelativeSizeAxes = Axes.Both,
                     Anchor = Anchor.TopCentre,
                     Origin = Anchor.TopCentre,
-                    Position = new Vector2(0f, 2f),
-                    Size = new Vector2(0.98f),
+                    Position = new Vector2(0f, 4f),
+                    Size = new Vector2(0.97f),
                     Colour = triangleColour,
                 },
                 new SpriteText
