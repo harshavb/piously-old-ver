@@ -3,8 +3,6 @@ using osu.Framework.Allocation;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Sprites;
-using osu.Framework.Input.Events;
-using Piously.Game.Screens.Menu;
 using osuTK;
 using Piously.Game.Graphics.Sprites;
 
@@ -16,7 +14,9 @@ namespace Piously.Game.Graphics.Containers
         public MenuLogo parentLogo;
         public MenuButtonSprite menuButtonSprite { get; private set; }
         public Action clickAction;
-       
+        public Colour4 triangleColour;
+        public string titleText;
+
         [BackgroundDependencyLoader]
         private void load()
         {
@@ -31,7 +31,20 @@ namespace Piously.Game.Graphics.Containers
                     Size = new Vector2(1f),
                     parentLogo = parentLogo,
                     clickAction = clickAction,
-                }
+                    Colour = triangleColour,
+                },
+                new SpriteText
+                {
+                    Text = titleText,
+                    Anchor = Anchor.BottomCentre,
+                    Origin = Anchor.TopCentre,
+                    //OriginPosition = new Vector2(0, -52f),
+                    Position = new Vector2(0f, -60f),
+                    Rotation = 180,
+                    Colour = Colour4.White,
+                    Font = new FontUsage(null, 48, null, false, false),
+                    
+                },
             };
         }
 

@@ -1,6 +1,4 @@
-﻿using System;
-using osu.Framework.Input.Events;
-using osu.Framework.Graphics;
+﻿using osu.Framework.Graphics;
 using Piously.Game.Screens.Menu;
 using osuTK;
 
@@ -10,6 +8,7 @@ namespace Piously.Game.Graphics.Containers
     {
         public PiouslyLogo logo;
         public MenuSplitHexagon menuButtons;
+        
 
         public MenuLogo()
         {

@@ -1,7 +1,5 @@
 ﻿using System;
 using osu.Framework.Graphics.Containers;
-using osu.Framework.Graphics.Shapes;
-using osu.Framework.Graphics.Sprites;
 using osu.Framework.Graphics;
 using osu.Framework.Allocation;
 using osuTK;
@@ -30,7 +28,7 @@ namespace Piously.Game.Graphics.Containers
             {
                 Add(triangles[i] = new MenuButton
                 {
-                    Colour = i switch
+                    triangleColour = i switch
                     {
                         0 => PiouslyColour.PiouslyDarkYellow,
                         1 => PiouslyColour.PiouslyLighterYellow,
@@ -49,6 +47,16 @@ namespace Piously.Game.Graphics.Containers
                         4 => () => OnSettings?.Invoke(),
                         5 => () => OnSettings?.Invoke(),
                         _ => () => OnSettings?.Invoke(),
+                    },
+                    titleText = i switch
+                    {
+                        0 => "Exit",
+                        1 => "Settings",
+                        2 => "Singleplayer",
+                        3 => "Local Game",
+                        4 => "Online Game",
+                        5 => "Leaderboard",
+                        _ => "",
                     },
                     RelativeSizeAxes = Axes.Both,
                     Size = new Vector2(0.5f),
