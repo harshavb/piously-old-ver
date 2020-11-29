@@ -10,6 +10,8 @@ namespace Piously.Desktop
         {
             base.SetHost(host);
 
+            host.Window.WindowState = WindowState.Maximised;
+
             //host.Window.CursorState |= CursorState.Hidden;
             host.Window.Title = Name;
         }
