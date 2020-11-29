@@ -35,12 +35,10 @@ namespace Piously.Game.Graphics.Overlays
 
         protected override void PopIn()
         {
-            ContentContainer.MoveToX(ExpandedPosition, 600, Easing.OutQuint);
+            ContentContainer.MoveToX(0, 600, Easing.OutQuint);
 
             this.FadeTo(1, 600, Easing.OutQuint);
         }
-
-        protected virtual float ExpandedPosition => 0;
 
         protected override void PopOut()
         {
