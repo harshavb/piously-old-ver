@@ -13,6 +13,7 @@ namespace Piously.Game.Graphics.Containers
 
         public Action OnSettings;
         public Action OnExit;
+        public Action OnPlay;
 
         [BackgroundDependencyLoader]
         private void load()
@@ -42,11 +43,11 @@ namespace Piously.Game.Graphics.Containers
                     {
                         0 => () => OnExit?.Invoke(),
                         1 => () => OnSettings?.Invoke(),
-                        2 => () => OnSettings?.Invoke(),
-                        3 => () => OnSettings?.Invoke(),
-                        4 => () => OnSettings?.Invoke(),
-                        5 => () => OnSettings?.Invoke(),
-                        _ => () => OnSettings?.Invoke(),
+                        2 => () => OnPlay?.Invoke(),
+                        3 => () => OnPlay?.Invoke(),
+                        4 => () => OnPlay?.Invoke(),
+                        5 => () => OnPlay?.Invoke(),
+                        _ => () => OnPlay?.Invoke(),
                     },
                     titleText = i switch
                     {
