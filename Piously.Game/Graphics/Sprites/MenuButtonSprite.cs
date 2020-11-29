@@ -25,17 +25,15 @@ namespace Piously.Game.Graphics.Sprites
 
         protected override bool OnMouseDown(MouseDownEvent e)
         {
-            Parent.ScaleTo(1.3f, 25);
+            if(parentLogo.logo.menuState == MenuState.Opened)
+                Parent.ScaleTo(1.3f, 25);
             return true;
         }
 
         protected override void OnMouseUp(MouseUpEvent e)
         {
-            if (IsHovered)
-            {
+            if (parentLogo.logo.menuState == MenuState.Opened && IsHovered)
                 Parent.ScaleTo(1.25f, 25);
-            }
-
         }
         protected override bool OnHover(HoverEvent e)
         {
