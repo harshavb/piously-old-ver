@@ -42,11 +42,11 @@ namespace Piously.Game.Graphics.Containers
         {
             if(logo.menuState == MenuState.Closed)
             {
-                menuButtons.ScaleTo(0.99f, 300, Easing.InOutBounce);
+                menuButtons.ScaleTo(0.99f, 300, Easing.InOutQuint);
             }
             else if(logo.menuState == MenuState.Opened)
             {
-                menuButtons.ScaleTo(1.375f, 300, Easing.InOutBounce);
+                menuButtons.ScaleTo(1.15f, 300, Easing.InOutBounce);
             }
         }
 
@@ -58,7 +58,7 @@ namespace Piously.Game.Graphics.Containers
                 {
                     if (menuButtons.triangles[i].menuButtonSprite.IsHovered)
                     {
-                        menuButtons.triangles[i].ScaleTo(1.51f, 100, Easing.InOutBounce);
+                        menuButtons.triangles[i].ScaleTo(1.25f, 100, Easing.InOutQuint);
                     }
                 }
             }
@@ -68,7 +68,7 @@ namespace Piously.Game.Graphics.Containers
         {
             if (logo.menuState == MenuState.Opened)
             {
-                menuButtons.ScaleTo(1.375f, 100, Easing.InOutBounce);
+                menuButtons.ScaleTo(1.15f, 100, Easing.InOutBounce);
             }
         }
     }
