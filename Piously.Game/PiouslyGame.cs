@@ -81,13 +81,13 @@ namespace Piously.Game
                     {
                         Logger.Log($"Loading {component}...", level: LogLevel.Debug);
 
-                        // Since this is running in a separate thread, it is possible for OsuGame to be disposed after LoadComponentAsync has been called
+                        // Since this is running in a separate thread, it is possible for PiouslyGame to be disposed after LoadComponentAsync has been called
                         // throwing an exception. To avoid this, the call is scheduled on the update thread, which does not run if IsDisposed = true
                         Task task = null;
                         var del = new ScheduledDelegate(() => task = LoadComponentAsync(component, loadCompleteAction));
                         Scheduler.Add(del);
 
-                        // The delegate won't complete if OsuGame has been disposed in the meantime
+                        // The delegate won't complete if PiouslyGame has been disposed in the meantime
                         while (!IsDisposed && !del.Completed)
                             await Task.Delay(10);
 
