@@ -15,7 +15,7 @@ namespace Piously.Game.Graphics.Containers
         {
             Anchor = Anchor.Centre;
             Origin = Anchor.Centre;
-            Size = new Vector2(1200, 1200);
+            Size = new Vector2(1000, 1000);
 
             Children = new Drawable[]
             {

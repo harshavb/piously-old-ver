@@ -12,7 +12,9 @@ namespace Piously.Game.Graphics.Containers
     {
         public MenuLogo parentLogo;
         public MenuButton[] triangles { get; private set; }
+
         public Action OnSettings;
+        public Action OnExit;
 
         [BackgroundDependencyLoader]
         private void load()
@@ -38,7 +40,16 @@ namespace Piously.Game.Graphics.Containers
                         5 => PiouslyColour.PiouslyLighterYellow,
                         _ => PiouslyColour.PiouslyDarkYellow,
                     },
-                    clickAction = OnSettings = () => OnSettings?.Invoke(),
+                    clickAction = i switch
+                    {
+                        0 => () => OnExit?.Invoke(),
+                        1 => () => OnSettings?.Invoke(),
+                        2 => () => OnSettings?.Invoke(),
+                        3 => () => OnSettings?.Invoke(),
+                        4 => () => OnSettings?.Invoke(),
+                        5 => () => OnSettings?.Invoke(),
+                        _ => () => OnSettings?.Invoke(),
+                    },
                     RelativeSizeAxes = Axes.Both,
                     Size = new Vector2(0.5f),
                     Rotation = i * 60 + Rotation,
