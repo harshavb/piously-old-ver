@@ -11,9 +11,7 @@ namespace Piously.Desktop
         public static int Main(string[] args)
         {
             using (GameHost host = Host.GetSuitableHost(@"Piously"))
-            {
                 host.Run(new PiouslyGameDesktop());
-            }
 
             return 0;
         }
