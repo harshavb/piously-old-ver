@@ -15,7 +15,7 @@ namespace Piously.Game.Graphics.Containers
         {
             Anchor = Anchor.Centre;
             Origin = Anchor.Centre;
-            Size = new Vector2(1000, 1000);
+            Size = new Vector2(1333, 1333);
 
             Children = new Drawable[]
             {
@@ -24,7 +24,7 @@ namespace Piously.Game.Graphics.Containers
                     RelativeSizeAxes = Axes.Both,
                     Anchor = Anchor.Centre,
                     Origin = Anchor.Centre,
-                    Size = new Vector2(1f * 0.667f),
+                    Size = new Vector2(1f * 0.5f),
                     parentLogo = this,
                 },
                 logo = new PiouslyLogo()
@@ -32,7 +32,7 @@ namespace Piously.Game.Graphics.Containers
                     RelativeSizeAxes = Axes.Both,
                     Anchor = Anchor.Centre,
                     Origin = Anchor.Centre,
-                    Size = new Vector2(1f * 0.667f),
+                    Size = new Vector2(1f * 0.5f),
                     parentLogo = this,
                 },
             };

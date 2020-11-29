@@ -20,9 +20,7 @@ namespace Piously.Game.Graphics.Containers
         [BackgroundDependencyLoader]
         private void load()
         {
-            //Masking = true;
-            //BorderThickness = 5;
-            //BorderColour = Colour4.Magenta;
+            Masking = false;
             Children = new Drawable[]
             {
                 menuButtonSprite = new MenuButtonSprite
