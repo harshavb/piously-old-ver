@@ -8,6 +8,7 @@ using osu.Framework.Graphics.Containers;
 using osu.Framework.Logging;
 using osu.Framework.Screens;
 using osu.Framework.Threading;
+using Piously.Game.Graphics;
 using Piously.Game.Screens.Menu;
 using Piously.Game.Overlays;
 using LogLevel = osu.Framework.Logging.LogLevel;
@@ -39,6 +40,8 @@ namespace Piously.Game
             }
 
             dependencies.CacheAs(this);
+
+            dependencies.Cache(new PiouslyColour());
         }
 
         private DependencyContainer dependencies;

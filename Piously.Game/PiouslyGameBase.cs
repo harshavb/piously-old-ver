@@ -12,10 +12,17 @@ namespace Piously.Game
             Name = @"Piously";
         }
 
+        private DependencyContainer dependencies;
+
+        protected override IReadOnlyDependencyContainer CreateChildDependencies(IReadOnlyDependencyContainer parent) =>
+            dependencies = new DependencyContainer(base.CreateChildDependencies(parent));
+
         [BackgroundDependencyLoader]
         private void load()
         {
             Resources.AddStore(new NamespacedResourceStore<byte[]>(new DllResourceStore(typeof(PiouslyGameBase).Assembly), "Resources"));
+
+            dependencies.CacheAs(this);
 
             AddFont(Resources, @"Fonts/InkFree-Bold");
             AddFont(Resources, @"Fonts/InkFree");
