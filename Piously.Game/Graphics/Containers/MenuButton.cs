@@ -3,6 +3,7 @@ using osu.Framework.Allocation;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Sprites;
+using osu.Framework.Graphics.Shapes;
 using osuTK;
 using Piously.Game.Graphics.Sprites;
 
@@ -32,6 +33,15 @@ namespace Piously.Game.Graphics.Containers
                     Size = new Vector2(1f),
                     parentLogo = parentLogo,
                     clickAction = clickAction,
+                    Colour = Colour4.White,
+                },
+                new EquilateralTriangle
+                {
+                    RelativeSizeAxes = Axes.Both,
+                    Anchor = Anchor.TopCentre,
+                    Origin = Anchor.TopCentre,
+                    Position = new Vector2(0f, 2f),
+                    Size = new Vector2(0.98f),
                     Colour = triangleColour,
                 },
                 new SpriteText
