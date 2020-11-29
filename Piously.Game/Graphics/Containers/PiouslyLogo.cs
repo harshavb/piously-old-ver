@@ -84,11 +84,15 @@ namespace Piously.Game.Graphics.Containers
             switch (menuState)
             {
                 case MenuState.Opened:
+                    
                     menuState = MenuState.Closed;
+                    this.ScaleTo(1f, 200, Easing.InOutQuint);
                     parentLogo.toggleButtons();
                     break;
                 case MenuState.Closed:
+                    
                     menuState = MenuState.Opened;
+                    this.ScaleTo(0.85f, 200, Easing.InOutQuint);
                     parentLogo.toggleButtons();
                     break;
                 default:
@@ -106,14 +110,28 @@ namespace Piously.Game.Graphics.Containers
         protected override bool OnHover(HoverEvent e)
         {
             parentLogo.closeAllTriangles();
-            this.ScaleTo(1.1f, 50);
+            if (menuState == MenuState.Closed)
+            {
+                this.ScaleTo(1.1f, 50);
+            }
+            else
+            {
+                this.ScaleTo(0.93f, 50);
+            }
             return false;
         }
 
         protected override void OnHoverLost(HoverLostEvent e)
         {
             parentLogo.checkTriangleHovers();
-            this.ScaleTo(1f, 50);
+            if(menuState == MenuState.Closed)
+            {
+                this.ScaleTo(1f, 50);
+            }
+            else
+            {
+                this.ScaleTo(0.85f, 50);
+            }
         }
     }
 }
