@@ -99,7 +99,15 @@ namespace Piously.Game.Graphics.Containers
 
                 using (BindFrameBuffer(target))
                 {
-                    float resolution = Math.Max(this.Source.ScreenSpaceDrawQuad.Width, this.Source.ScreenSpaceDrawQuad.Height); // shh
+                    float resolution;
+                    try
+                    {
+                        resolution = Math.Max(this.Source.ScreenSpaceDrawQuad.Width, this.Source.ScreenSpaceDrawQuad.Height); // shh
+                    } catch(Exception e)
+                    {
+                        Console.WriteLine("Bruh: " + e.ToString());
+                        return;
+                    }
                     hexagonShader.GetUniform<float>("g_Resolution").UpdateValue(ref resolution);
                     hexagonShader.Bind();
                     DrawFrameBuffer(current, new RectangleF(0, 0, current.Texture.Width, current.Texture.Height), ColourInfo.SingleColour(Color4.White));
