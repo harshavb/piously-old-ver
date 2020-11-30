@@ -25,12 +25,6 @@ namespace Piously.Game.Overlays.Settings.Sections.Graphics
                     LabelText = "Parallax",
                     Current = config.GetBindable<bool>(PiouslySetting.MenuParallax)
                 },
-                new SettingsSlider<float, TimeSlider>
-                {
-                    LabelText = "Hold-to-confirm activation time",
-                    Current = config.GetBindable<float>(PiouslySetting.UIHoldActivationDelay),
-                    KeyboardStep = 50
-                },
             };
         }
 

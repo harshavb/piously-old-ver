@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using osu.Framework.Allocation;
+using osu.Framework.Bindables;
 using osu.Framework.Extensions.Color4Extensions;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
@@ -68,6 +69,7 @@ namespace Piously.Game.Graphics.UserInterface
                         Blending = BlendingParameters.Additive,
                         Depth = float.MinValue
                     },
+                    SpriteText = CreateText(),
                 }
             });
         }
@@ -115,6 +117,19 @@ namespace Piously.Game.Graphics.UserInterface
         {
             Content.ScaleTo(1, 1000, Easing.OutElastic);
             base.OnMouseUp(e);
+        }
+
+        protected virtual SpriteText CreateText() => new SpriteText
+        {
+            Depth = -1,
+            Origin = Anchor.Centre,
+            Anchor = Anchor.Centre,
+            Font = new FontUsage(size: 32),
+        };
+
+        private void enabledChanged(ValueChangedEvent<bool> e)
+        {
+            this.FadeColour(e.NewValue ? Color4.White : Color4.Gray, 200, Easing.OutQuint);
         }
     }
 }

@@ -21,7 +21,7 @@ namespace Piously.Game.Overlays.Settings
         public IEnumerable<IFilterable> FilterableChildren => Children.OfType<IFilterable>();
         public virtual IEnumerable<string> FilterTerms => new[] { Header };
 
-        private const int header_size = 26;
+        private const int header_size = 32;
         private const int header_margin = 25;
         private const int border_size = 2;
 

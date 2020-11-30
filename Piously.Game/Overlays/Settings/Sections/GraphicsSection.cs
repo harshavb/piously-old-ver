@@ -14,6 +14,7 @@ namespace Piously.Game.Overlays.Settings.Sections
             {
                 new RendererSettings(),
                 new LayoutSettings(),
+                new UserInterfaceSettings(),
             };
         }
     }
