@@ -48,40 +48,6 @@ namespace Piously.Game.Graphics.Containers
             };
         }
 
-        public MenuLogo()
-        {
-            Anchor = Anchor.Centre;
-            Origin = Anchor.Centre;
-            Size = new Vector2(Math.Min(this.ScreenSpaceDrawQuad.Height, this.ScreenSpaceDrawQuad.Width));
-
-            Child = new DrawSizePreservingFillContainer
-            {
-                Strategy = DrawSizePreservationStrategy.Separate,
-                Anchor = Anchor.Centre,
-                Origin = Anchor.Centre,
-                TargetDrawSize = new Vector2(1333,1333),
-                Children = new Drawable[]
-                {
-                    menuButtons = new MenuSplitHexagon
-                    {
-                        RelativeSizeAxes = Axes.Both,
-                        Anchor = Anchor.Centre,
-                        Origin = Anchor.Centre,
-                        Size = new Vector2(1f * 0.5f),
-                        parentLogo = this,
-                    },
-                    logo = new PiouslyLogo()
-                    {
-                        RelativeSizeAxes = Axes.Both,
-                        Anchor = Anchor.Centre,
-                        Origin = Anchor.Centre,
-                        Size = new Vector2(1f * 0.5f),
-                        parentLogo = this,
-                    },
-                }
-            };
-        }
-
         public void toggleButtons()
         {
             if(logo.menuState == MenuState.Closed)
