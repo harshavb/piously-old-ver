@@ -123,7 +123,7 @@ namespace Piously.Game.Graphics.Cursor
 
             public Cursor()
             {
-                AutoSizeAxes = Axes.Both;
+                Size = new Vector2(150);
             }
 
             [BackgroundDependencyLoader]
@@ -133,7 +133,7 @@ namespace Piously.Game.Graphics.Cursor
                 {
                     cursorContainer = new Container
                     {
-                        AutoSizeAxes = Axes.Both,
+                        RelativeSizeAxes = Axes.Both,
                         Children = new Drawable[]
                         {
                             //TEMPORARY
@@ -142,7 +142,6 @@ namespace Piously.Game.Graphics.Cursor
                                 RelativeSizeAxes = Axes.Both,
                                 Anchor = Anchor.Centre,
                                 Origin = Anchor.Centre,
-                                Size = new Vector2(32),
                                 Colour = new PiouslyColour().Cyan,
                             }
                             //TO BE IMPLEMENTED

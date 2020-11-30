@@ -27,6 +27,10 @@ namespace Piously.Game
 
         protected MenuCursorContainer MenuCursorContainer;
 
+        private Container content;
+
+        protected override Container<Drawable> Content => content;
+
         private Bindable<bool> fpsDisplayVisible;
 
         public PiouslyGameBase()
@@ -77,8 +81,7 @@ namespace Piously.Game
             MenuCursorContainer.Child = globalBindings = new PiouslyKeyBindingContainer(this)
             {
                 RelativeSizeAxes = Axes.Both,
-                //TO BE IMPLEMENTED
-                //Child = content = new PiouslyTooltipContainer(MenuCursorContainer.Cursor) { RelativeSizeAxes = Axes.Both }
+                Child = content = new PiouslyTooltipContainer(MenuCursorContainer.Cursor) { RelativeSizeAxes = Axes.Both }
             };
 
             base.Content.Add(CreateScalingContainer().WithChild(MenuCursorContainer));

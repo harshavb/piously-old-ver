@@ -11,7 +11,7 @@ namespace Piously.Desktop
         {
             base.SetHost(host);
 
-            //host.Window.CursorState |= CursorState.Hidden;
+            host.Window.CursorState |= CursorState.Hidden;
             host.Window.Title = Name;
         }
     }
