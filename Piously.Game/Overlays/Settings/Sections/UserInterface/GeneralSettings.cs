@@ -3,27 +3,38 @@ using osu.Framework.Graphics;
 using Piously.Game.Configuration;
 using Piously.Game.Graphics.UserInterface;
 
-namespace Piously.Game.Overlays.Settings.Sections.Graphics
+namespace Piously.Game.Overlays.Settings.Sections.UserInterface
 {
-    public class UserInterfaceSettings : SettingsSubsection
+    public class GeneralSettings : SettingsSubsection
     {
-        protected override string Header => "User Interface";
+        protected override string Header => "General";
 
         [BackgroundDependencyLoader]
         private void load(PiouslyConfigManager config)
         {
             Children = new Drawable[]
             {
-                //TO BE IMPLEMENTED
-                /*new SettingsCheckbox
+                new SettingsCheckbox
                 {
                     LabelText = "Rotate cursor when dragging",
                     Current = config.GetBindable<bool>(PiouslySetting.CursorRotation)
-                },*/
+                },
+                new SettingsSlider<float, SizeSlider>
+                {
+                    LabelText = "Menu cursor size",
+                    Current = config.GetBindable<float>(PiouslySetting.MenuCursorSize),
+                    KeyboardStep = 0.01f
+                },
                 new SettingsCheckbox
                 {
                     LabelText = "Parallax",
                     Current = config.GetBindable<bool>(PiouslySetting.MenuParallax)
+                },
+                new SettingsSlider<float, TimeSlider>
+                {
+                    LabelText = "Hold-to-confirm activation time",
+                    Current = config.GetBindable<float>(PiouslySetting.UIHoldActivationDelay),
+                    KeyboardStep = 50
                 },
             };
         }

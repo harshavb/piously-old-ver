@@ -12,7 +12,7 @@ namespace Piously.Game.Input
     {
         public event Action KeyBindingChanged;
 
-        protected List<KeyBinding> keyBindings;
+        protected List<KeyBinding> keyBindings = new List<KeyBinding>();
 
         Storage Storage;
 

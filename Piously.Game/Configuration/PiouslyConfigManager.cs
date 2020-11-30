@@ -38,6 +38,7 @@ namespace Piously.Game.Configuration
             Set(PiouslySetting.MenuMusic, true);
 
             //Input
+            Set(PiouslySetting.MenuCursorSize, 1.0f, 0.5f, 2f, 0.01f);
             Set(PiouslySetting.ConfineMouseMode, PiouslyConfineMouseMode.DuringGameplay);
 
             //Graphics
@@ -93,5 +94,6 @@ namespace Piously.Game.Configuration
         CursorRotation,
         UIHoldActivationDelay,
         ConfineMouseMode,
+        MenuCursorSize,
     }
 }

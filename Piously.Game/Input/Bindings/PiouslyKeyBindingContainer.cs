@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using osu.Framework.Graphics;
 using osu.Framework.Input;
 using osu.Framework.Input.Bindings;
 using System.ComponentModel;
@@ -7,9 +9,18 @@ namespace Piously.Game.Input.Bindings
 {
     public class PiouslyKeyBindingContainer : KeyBindingContainer<GlobalAction>, IHandleGlobalKeyboardInput
     {
+        private readonly Drawable handler;
+
         public PiouslyKeyBindingContainer(KeyCombinationMatchingMode keyCombinationMatchingMode = KeyCombinationMatchingMode.Any, SimultaneousBindingMode simultaneousBindingMode = SimultaneousBindingMode.All)
             : base(simultaneousBindingMode, keyCombinationMatchingMode)
         {
+        }
+
+        public PiouslyKeyBindingContainer(PiouslyGameBase game, KeyCombinationMatchingMode keyCombinationMatchingMode = KeyCombinationMatchingMode.Any, SimultaneousBindingMode simultaneousBindingMode = SimultaneousBindingMode.All)
+            : base(simultaneousBindingMode, keyCombinationMatchingMode)
+        {
+            if (game is IKeyBindingHandler<GlobalAction>)
+                handler = game;
         }
 
         public override IEnumerable<KeyBinding> DefaultKeyBindings => GlobalKeyBindings;
@@ -24,6 +35,9 @@ namespace Piously.Game.Input.Bindings
 
             new KeyBinding(new[] { InputKey.Control, InputKey.O }, GlobalAction.ToggleSettings),
         };
+
+        protected override IEnumerable<Drawable> KeyBindingInputQueue =>
+            handler == null ? base.KeyBindingInputQueue : base.KeyBindingInputQueue.Prepend(handler);
     }
 
     public enum GlobalAction

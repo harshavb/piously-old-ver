@@ -1,13 +1,18 @@
 ﻿using osu.Framework.Allocation;
 using osu.Framework.Bindables;
+using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Performance;
-using osu.Framework.Graphics.Textures;
+using osu.Framework.Input;
 using osu.Framework.IO.Stores;
 using osu.Framework.Platform;
 using Piously.Game.Configuration;
+using Piously.Game.Graphics;
+using Piously.Game.Graphics.Cursor;
 using Piously.Game.Input;
+using Piously.Game.Input.Bindings;
 using Piously.Game.IO;
+using osuTK.Input;
 
 namespace Piously.Game
 {
@@ -19,6 +24,8 @@ namespace Piously.Game
         protected KeyBindingStore KeyBindingStore;
 
         protected PiouslyConfigManager LocalConfig;
+
+        protected MenuCursorContainer MenuCursorContainer;
 
         private Bindable<bool> fpsDisplayVisible;
 
@@ -43,6 +50,8 @@ namespace Piously.Game
         protected override IReadOnlyDependencyContainer CreateChildDependencies(IReadOnlyDependencyContainer parent) =>
             dependencies = new DependencyContainer(base.CreateChildDependencies(parent));
 
+        protected override UserInputManager CreateUserInputManager() => new PiouslyUserInputManager();
+
         [BackgroundDependencyLoader]
         private void load()
         {
@@ -59,6 +68,23 @@ namespace Piously.Game
             AddFont(Resources, @"Fonts/InkFree-BoldItalic");
 
             dependencies.Cache(KeyBindingStore = new KeyBindingStore(Storage));
+            dependencies.Cache(new PiouslyColour());
+
+            MenuCursorContainer = new MenuCursorContainer { RelativeSizeAxes = Axes.Both };
+
+            PiouslyKeyBindingContainer globalBindings;
+
+            MenuCursorContainer.Child = globalBindings = new PiouslyKeyBindingContainer(this)
+            {
+                RelativeSizeAxes = Axes.Both,
+                //TO BE IMPLEMENTED
+                //Child = content = new PiouslyTooltipContainer(MenuCursorContainer.Cursor) { RelativeSizeAxes = Axes.Both }
+            };
+
+            base.Content.Add(CreateScalingContainer().WithChild(MenuCursorContainer));
+
+            KeyBindingStore.Register(globalBindings);
+            dependencies.Cache(globalBindings);
         }
 
         protected virtual Container CreateScalingContainer() => new DrawSizePreservingFillContainer();
@@ -80,6 +106,32 @@ namespace Piously.Game
         {
             base.Dispose(isDisposing);
             LocalConfig?.Dispose();
+        }
+
+        private class PiouslyUserInputManager : UserInputManager
+        {
+            protected override MouseButtonEventManager CreateButtonEventManagerFor(MouseButton button)
+            {
+                switch (button)
+                {
+                    case MouseButton.Right:
+                        return new RightMouseManager(button);
+                }
+
+                return base.CreateButtonEventManagerFor(button);
+            }
+
+            private class RightMouseManager : MouseButtonEventManager
+            {
+                public RightMouseManager(MouseButton button)
+                    : base(button)
+                {
+                }
+
+                public override bool EnableDrag => true; // allow right-mouse dragging for absolute scroll in scroll containers.
+                public override bool EnableClick => false;
+                public override bool ChangeFocusOnClick => false;
+            }
         }
 
         public void Migrate(string path)

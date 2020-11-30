@@ -19,6 +19,7 @@ namespace Piously.Game.Overlays
             new GraphicsSection(),
             //CONTINUE IMPLEMENTATION after keybindingstores
             new InputSection(),
+            new UserInterfaceSection(),
             //TO BE IMPLEMENTED after online is implemented
             //new OnlineSection(), 
             new DebugSection(),
