@@ -1,5 +1,6 @@
 ﻿using osu.Framework.Allocation;
 using osu.Framework.Bindables;
+using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Performance;
 using osu.Framework.Graphics.Textures;
 using osu.Framework.IO.Stores;
@@ -55,6 +56,8 @@ namespace Piously.Game
             AddFont(Resources, @"Fonts/InkFree-BoldItalic");
         }
 
+        protected virtual Container CreateScalingContainer() => new DrawSizePreservingFillContainer();
+
         protected override void LoadComplete()
         {
             base.LoadComplete();
@@ -64,6 +67,8 @@ namespace Piously.Game
             fpsDisplayVisible.TriggerChange();
 
             FrameStatistics.ValueChanged += e => fpsDisplayVisible.Value = e.NewValue != FrameStatisticsMode.None;
+
+            base.Content.Add(CreateScalingContainer());
         }
 
         protected override void Dispose(bool isDisposing)

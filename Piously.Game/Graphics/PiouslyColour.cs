@@ -6,6 +6,9 @@ namespace Piously.Game.Graphics
 {
     public class PiouslyColour
     {
+        public static Color4 Gray(float amt) => new Color4(amt, amt, amt, 1f);
+        public static Color4 Gray(byte amt) => new Color4(amt, amt, amt, 255);
+
         public static readonly Color4 PiouslyLighterYellow = Color4Extensions.FromHex(@"#fffc5e");
         public static readonly Color4 PiouslyLightYellow = Color4Extensions.FromHex(@"#fff954");
         public static readonly Color4 PiouslyYellow = Color4Extensions.FromHex(@"#ede734");

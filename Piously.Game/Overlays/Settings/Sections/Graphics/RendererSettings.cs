@@ -16,6 +16,16 @@ namespace Piously.Game.Overlays.Settings.Sections.Graphics
             // NOTE: Compatability mode omitted
             Children = new Drawable[]
             {
+                new SettingsEnumDropdown<FrameSync>
+                {
+                    LabelText = "Frame limiter",
+                    Current = config.GetBindable<FrameSync>(FrameworkSetting.FrameSync)
+                },
+                new SettingsEnumDropdown<ExecutionMode>
+                {
+                    LabelText = "Threading mode",
+                    Current = config.GetBindable<ExecutionMode>(FrameworkSetting.ExecutionMode)
+                },
                 new SettingsCheckbox
                 {
                     LabelText = "Show FPS",

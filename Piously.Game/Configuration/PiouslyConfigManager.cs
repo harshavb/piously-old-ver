@@ -29,6 +29,8 @@ namespace Piously.Game.Configuration
             Set(PiouslySetting.ScalingPositionX, 0.5f, 0f, 1f);
             Set(PiouslySetting.ScalingPositionY, 0.5f, 0f, 1f);
 
+            Set(PiouslySetting.UIScale, 1f, 0.8f, 1.6f, 0.01f);
+
             //Audio
             Set(PiouslySetting.MenuVoice, true);
             Set(PiouslySetting.MenuMusic, true);
@@ -79,5 +81,6 @@ namespace Piously.Game.Configuration
         ScalingPositionY,
         ScalingSizeX,
         ScalingSizeY,
+        UIScale,
     }
 }

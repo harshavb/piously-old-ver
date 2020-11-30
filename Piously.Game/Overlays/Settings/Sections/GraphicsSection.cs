@@ -13,6 +13,7 @@ namespace Piously.Game.Overlays.Settings.Sections
             Children = new Drawable[]
             {
                 new RendererSettings(),
+                new LayoutSettings(),
             };
         }
     }

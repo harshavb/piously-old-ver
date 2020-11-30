@@ -50,7 +50,7 @@ namespace Piously.Game.Overlays.Settings
                 {
                     Text = Header.ToUpperInvariant(),
                     Margin = new MarginPadding { Bottom = 10, Left = SettingsPanel.CONTENT_MARGINS, Right = SettingsPanel.CONTENT_MARGINS },
-                    Font = new FontUsage(),
+                    Font = new FontUsage(size: 24),
                 },
                 FlowContent
             });

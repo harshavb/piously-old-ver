@@ -8,9 +8,13 @@ using osu.Framework.Graphics.Containers;
 using osu.Framework.Logging;
 using osu.Framework.Screens;
 using osu.Framework.Threading;
+using Piously.Game.Configuration;
 using Piously.Game.Graphics;
+using Piously.Game.Graphics.Containers;
 using Piously.Game.Screens.Menu;
+using Piously.Game.Screens.Backgrounds;
 using Piously.Game.Overlays;
+using Piously.Game.Screens;
 using LogLevel = osu.Framework.Logging.LogLevel;
 
 namespace Piously.Game
@@ -20,7 +24,7 @@ namespace Piously.Game
     {
         private ScreenStack mainMenuStack;
         private MainMenu mainMenu;
-        private ScreenStack backgroundStack;
+        private BackgroundScreenStack backgroundStack;
         private BackgroundScreen background;
 
         private readonly List<OverlayContainer> overlays = new List<OverlayContainer>();
@@ -29,6 +33,8 @@ namespace Piously.Game
         private Container leftFloatingOverlayContent;
         private Container rightFloatingOverlayContent;
         private Container topMostOverlayContent;
+
+        private ScalingContainer screenContainer;
 
         [BackgroundDependencyLoader]
         private void load()
@@ -43,6 +49,8 @@ namespace Piously.Game
 
             dependencies.Cache(new PiouslyColour());
         }
+
+        protected override Container CreateScalingContainer() => new ScalingContainer(ScalingMode.Everything);
 
         private DependencyContainer dependencies;
         protected override IReadOnlyDependencyContainer CreateChildDependencies(IReadOnlyDependencyContainer parent) =>
@@ -116,7 +124,7 @@ namespace Piously.Game
         {
             base.LoadComplete();
 
-            backgroundStack = new ScreenStack();
+            backgroundStack = new BackgroundScreenStack();
             mainMenuStack = new ScreenStack();
 
             background = new BackgroundScreen();
@@ -127,8 +135,15 @@ namespace Piously.Game
 
             AddRange(new Drawable[]
             {
-                backgroundStack,
-                mainMenuStack,
+                screenContainer = new ScalingContainer(ScalingMode.ExcludeOverlays)
+                {
+                    RelativeSizeAxes = Axes.Both,
+                    Children = new Drawable[]
+                    {
+                        backgroundStack,
+                        mainMenuStack,
+                    }
+                },
                 overlayContent = new Container { RelativeSizeAxes = Axes.Both },
                 rightFloatingOverlayContent = new Container { RelativeSizeAxes = Axes.Both },
                 leftFloatingOverlayContent = new Container { RelativeSizeAxes = Axes.Both },
