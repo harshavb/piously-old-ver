@@ -18,33 +18,25 @@ namespace Piously.Game.Graphics.Containers
         {
             Anchor = Anchor.Centre;
             Origin = Anchor.Centre;
-            Size = new Vector2(Math.Min(host.Window.ClientSize.Height, host.Window.ClientSize.Width));
-
-            Child = new DrawSizePreservingFillContainer
+            Size = new Vector2(1000, 1000);
+            Children = new Drawable[]
             {
-                Strategy = DrawSizePreservationStrategy.Separate,
-                Anchor = Anchor.Centre,
-                Origin = Anchor.Centre,
-                TargetDrawSize = new Vector2(1333, 1333),
-                Children = new Drawable[]
+                menuButtons = new MenuSplitHexagon
                 {
-                    menuButtons = new MenuSplitHexagon
-                    {
-                        RelativeSizeAxes = Axes.Both,
-                        Anchor = Anchor.Centre,
-                        Origin = Anchor.Centre,
-                        Size = new Vector2(1f * 0.5f),
-                        parentLogo = this,
-                    },
-                    logo = new PiouslyLogo()
-                    {
-                        RelativeSizeAxes = Axes.Both,
-                        Anchor = Anchor.Centre,
-                        Origin = Anchor.Centre,
-                        Size = new Vector2(1f * 0.5f),
-                        parentLogo = this,
-                    },
-                }
+                    RelativeSizeAxes = Axes.Both,
+                    Anchor = Anchor.Centre,
+                    Origin = Anchor.Centre,
+                    Size = new Vector2(1f * 0.5f),
+                    parentLogo = this,
+                },
+                logo = new PiouslyLogo()
+                {
+                    RelativeSizeAxes = Axes.Both,
+                    Anchor = Anchor.Centre,
+                    Origin = Anchor.Centre,
+                    Size = new Vector2(1f * 0.5f),
+                    parentLogo = this,
+                },
             };
         }
 

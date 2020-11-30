@@ -52,7 +52,7 @@ namespace Piously.Game.Graphics.Containers
                     Position = new Vector2(0f, textIsUpsideDown ? -108f : -60f),
                     Rotation = textIsUpsideDown ? 0 : 180,
                     Colour = Colour4.White,
-                    Font = new FontUsage(size: 48), 
+                    Font = new FontUsage(size: 32), 
                 },
             };
         }
