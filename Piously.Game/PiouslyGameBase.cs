@@ -6,6 +6,7 @@ using osu.Framework.Graphics.Textures;
 using osu.Framework.IO.Stores;
 using osu.Framework.Platform;
 using Piously.Game.Configuration;
+using Piously.Game.Input;
 using Piously.Game.IO;
 
 namespace Piously.Game
@@ -14,6 +15,8 @@ namespace Piously.Game
     public class PiouslyGameBase : osu.Framework.Game
     {
         protected Storage Storage { get; set; }
+
+        protected KeyBindingStore KeyBindingStore;
 
         protected PiouslyConfigManager LocalConfig;
 
@@ -54,6 +57,8 @@ namespace Piously.Game
             AddFont(Resources, @"Fonts/InkFree");
             AddFont(Resources, @"Fonts/InkFree-Italic");
             AddFont(Resources, @"Fonts/InkFree-BoldItalic");
+
+            dependencies.Cache(KeyBindingStore = new KeyBindingStore(Storage));
         }
 
         protected virtual Container CreateScalingContainer() => new DrawSizePreservingFillContainer();
