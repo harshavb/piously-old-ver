@@ -133,7 +133,6 @@ namespace Piously.Game.Graphics.Cursor
                 {
                     cursorContainer = new Container
                     {
-                        Position = new Vector2(-11),
                         RelativeSizeAxes = Axes.Both,
                         Children = new Drawable[]
                         {
@@ -141,6 +140,8 @@ namespace Piously.Game.Graphics.Cursor
                             new Hexagon
                             {
                                 RelativeSizeAxes = Axes.Both,
+                                RelativePositionAxes = Axes.Both,
+                                Position = new Vector2(-0.5f),
                                 Anchor = Anchor.Centre,
                                 Origin = Anchor.Centre,
                                 Colour = new PiouslyColour().Cyan,
