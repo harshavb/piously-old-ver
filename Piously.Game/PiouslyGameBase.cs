@@ -25,7 +25,7 @@ namespace Piously.Game
 
         protected PiouslyConfigManager LocalConfig;
 
-        protected MenuCursorContainer MenuCursorContainer;
+        protected PiouslyCursorContainer MenuCursorContainer;
 
         private Container content;
 
@@ -74,7 +74,7 @@ namespace Piously.Game
             dependencies.Cache(KeyBindingStore = new KeyBindingStore(Storage));
             dependencies.Cache(new PiouslyColour());
 
-            MenuCursorContainer = new MenuCursorContainer { RelativeSizeAxes = Axes.Both };
+            MenuCursorContainer = new PiouslyCursorContainer { RelativeSizeAxes = Axes.Both };
 
             PiouslyKeyBindingContainer globalBindings;
 

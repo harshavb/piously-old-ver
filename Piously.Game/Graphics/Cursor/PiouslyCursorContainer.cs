@@ -7,9 +7,9 @@ using osu.Framework.Input.StateChanges;
 namespace Piously.Game.Graphics.Cursor
 {
     /// <summary>
-    /// A container which provides a <see cref="MenuCursor"/> which can be overridden by hovered <see cref="Drawable"/>s.
+    /// A container which provides a <see cref="PiouslyCursor"/> which can be overridden by hovered <see cref="Drawable"/>s.
     /// </summary>
-    public class MenuCursorContainer : Container, IProvideCursor
+    public class PiouslyCursorContainer : Container, IProvideCursor
     {
         protected override Container<Drawable> Content => content;
         private readonly Container content;
@@ -22,11 +22,11 @@ namespace Piously.Game.Graphics.Cursor
         public CursorContainer Cursor { get; }
         public bool ProvidingUserCursor => true;
 
-        public MenuCursorContainer()
+        public PiouslyCursorContainer()
         {
             AddRangeInternal(new Drawable[]
             {
-                Cursor = new MenuCursor { State = { Value = Visibility.Hidden } },
+                Cursor = new PiouslyCursor { State = { Value = Visibility.Hidden } },
                 content = new Container { RelativeSizeAxes = Axes.Both }
             });
         }

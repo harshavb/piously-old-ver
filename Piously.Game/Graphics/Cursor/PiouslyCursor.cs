@@ -15,7 +15,7 @@ using Piously.Game.Graphics.Shapes;
 
 namespace Piously.Game.Graphics.Cursor
 {
-    public class MenuCursor : CursorContainer
+    public class PiouslyCursor : CursorContainer
     {
         private readonly IBindable<bool> screenshotCursorVisibility = new Bindable<bool>(true);
         public override bool IsPresent => screenshotCursorVisibility.Value && base.IsPresent;
