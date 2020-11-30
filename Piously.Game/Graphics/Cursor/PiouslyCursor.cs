@@ -144,7 +144,7 @@ namespace Piously.Game.Graphics.Cursor
                                 Position = new Vector2(-0.5f),
                                 Anchor = Anchor.Centre,
                                 Origin = Anchor.Centre,
-                                Colour = new PiouslyColour().Cyan,
+                                Colour = new PiouslyColour().CursorCyan,
                             }
                             //TO BE IMPLEMENTED
                             /*new Sprite

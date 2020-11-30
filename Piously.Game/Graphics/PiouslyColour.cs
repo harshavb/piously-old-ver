@@ -114,5 +114,7 @@ namespace Piously.Game.Graphics
         public readonly Color4 ChatBlue = Color4Extensions.FromHex(@"17292e");
 
         public readonly Color4 ContextMenuGray = Color4Extensions.FromHex(@"223034");
+
+        public readonly Color4 CursorCyan = new Color4(5, 244, 253, 100);
     }
 }
