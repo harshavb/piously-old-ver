@@ -31,12 +31,17 @@ namespace Piously.Game.Configuration
 
             Set(PiouslySetting.UIScale, 1f, 0.8f, 1.6f, 0.01f);
 
+            Set(PiouslySetting.UIHoldActivationDelay, 200f, 0f, 500f, 50f);
+
             //Audio
             Set(PiouslySetting.MenuVoice, true);
             Set(PiouslySetting.MenuMusic, true);
 
             //Graphics
             Set(PiouslySetting.ShowFpsDisplay, false);
+
+            Set(PiouslySetting.CursorRotation, true);
+
             Set(PiouslySetting.MenuParallax, true);
         }
 
@@ -82,5 +87,7 @@ namespace Piously.Game.Configuration
         ScalingSizeX,
         ScalingSizeY,
         UIScale,
+        CursorRotation,
+        UIHoldActivationDelay,
     }
 }

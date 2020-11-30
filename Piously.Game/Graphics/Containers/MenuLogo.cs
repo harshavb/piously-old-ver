@@ -11,6 +11,7 @@ namespace Piously.Game.Graphics.Containers
     public class MenuLogo : Container
     {
         public PiouslyLogo logo;
+        public ParallaxContainer parallaxContainer;
         public MenuSplitHexagon menuButtons;
 
         [BackgroundDependencyLoader]
@@ -19,24 +20,27 @@ namespace Piously.Game.Graphics.Containers
             Anchor = Anchor.Centre;
             Origin = Anchor.Centre;
             Size = new Vector2(1000, 1000);
-            Children = new Drawable[]
+            Child = parallaxContainer = new ParallaxContainer
             {
-                menuButtons = new MenuSplitHexagon
+                Children = new Drawable[]
                 {
-                    RelativeSizeAxes = Axes.Both,
-                    Anchor = Anchor.Centre,
-                    Origin = Anchor.Centre,
-                    Size = new Vector2(1f * 0.5f),
-                    parentLogo = this,
-                },
-                logo = new PiouslyLogo()
-                {
-                    RelativeSizeAxes = Axes.Both,
-                    Anchor = Anchor.Centre,
-                    Origin = Anchor.Centre,
-                    Size = new Vector2(1f * 0.5f),
-                    parentLogo = this,
-                },
+                    menuButtons = new MenuSplitHexagon
+                    {
+                        RelativeSizeAxes = Axes.Both,
+                        Anchor = Anchor.Centre,
+                        Origin = Anchor.Centre,
+                        Size = new Vector2(1f * 0.5f),
+                        parentLogo = this,
+                    },
+                    logo = new PiouslyLogo()
+                    {
+                        RelativeSizeAxes = Axes.Both,
+                        Anchor = Anchor.Centre,
+                        Origin = Anchor.Centre,
+                        Size = new Vector2(1f * 0.5f),
+                        parentLogo = this,
+                    },
+                }
             };
         }
 
