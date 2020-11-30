@@ -49,7 +49,7 @@ namespace Piously.Game.Graphics.Containers
                     Text = titleText,
                     Anchor = Anchor.BottomCentre,
                     Origin = Anchor.TopCentre,
-                    Position = new Vector2(0f, textIsUpsideDown ? -108f : -60f),
+                    Position = new Vector2(0f, textIsUpsideDown ? -78f : -46f),
                     Rotation = textIsUpsideDown ? 0 : 180,
                     Colour = Colour4.White,
                     Font = new FontUsage(size: 32), 
