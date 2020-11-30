@@ -75,12 +75,13 @@ namespace Piously.Game.Overlays.Settings.Sections.Graphics
                     KeyboardStep = 0.01f,
                     Keywords = new[] { "scale", "letterbox" },
                 },
-                new SettingsEnumDropdown<ScalingMode>
+                //TO BE FIXED
+                /*new SettingsEnumDropdown<ScalingMode>
                 {
                     LabelText = "Screen Scaling",
                     Current = piouslyConfig.GetBindable<ScalingMode>(PiouslySetting.Scaling),
                     Keywords = new[] { "scale", "letterbox" },
-                },
+                },*/
                 scalingSettings = new FillFlowContainer<SettingsSlider<float>>
                 {
                     Direction = FillDirection.Vertical,
