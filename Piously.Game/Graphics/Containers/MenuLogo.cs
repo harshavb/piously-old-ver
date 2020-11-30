@@ -10,31 +10,37 @@ namespace Piously.Game.Graphics.Containers
         public PiouslyLogo logo;
         public MenuSplitHexagon menuButtons;
         
-
         public MenuLogo()
         {
             Anchor = Anchor.Centre;
             Origin = Anchor.Centre;
             Size = new Vector2(1333, 1333);
 
-            Children = new Drawable[]
+            Child = new DrawSizePreservingFillContainer
             {
-                menuButtons = new MenuSplitHexagon
+                Strategy = DrawSizePreservationStrategy.Separate,
+                Anchor = Anchor.Centre,
+                Origin = Anchor.Centre,
+                TargetDrawSize = new Vector2(1333,1333),
+                Children = new Drawable[]
                 {
-                    RelativeSizeAxes = Axes.Both,
-                    Anchor = Anchor.Centre,
-                    Origin = Anchor.Centre,
-                    Size = new Vector2(1f * 0.5f),
-                    parentLogo = this,
-                },
-                logo = new PiouslyLogo()
-                {
-                    RelativeSizeAxes = Axes.Both,
-                    Anchor = Anchor.Centre,
-                    Origin = Anchor.Centre,
-                    Size = new Vector2(1f * 0.5f),
-                    parentLogo = this,
-                },
+                    menuButtons = new MenuSplitHexagon
+                    {
+                        RelativeSizeAxes = Axes.Both,
+                        Anchor = Anchor.Centre,
+                        Origin = Anchor.Centre,
+                        Size = new Vector2(1f * 0.5f),
+                        parentLogo = this,
+                    },
+                    logo = new PiouslyLogo()
+                    {
+                        RelativeSizeAxes = Axes.Both,
+                        Anchor = Anchor.Centre,
+                        Origin = Anchor.Centre,
+                        Size = new Vector2(1f * 0.5f),
+                        parentLogo = this,
+                    },
+                }
             };
         }
 
