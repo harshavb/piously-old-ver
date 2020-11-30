@@ -2,6 +2,7 @@
 using osu.Framework.Configuration;
 using osu.Framework.Graphics;
 using osu.Framework.Platform;
+using Piously.Game.Configuration;
 
 namespace Piously.Game.Overlays.Settings.Sections.Graphics
 {
@@ -10,7 +11,7 @@ namespace Piously.Game.Overlays.Settings.Sections.Graphics
         protected override string Header => "Renderer";
 
         [BackgroundDependencyLoader]
-        private void load()
+        private void load(FrameworkConfigManager config, PiouslyConfigManager piouslyConfig)
         {
             // NOTE: Compatability mode omitted
             Children = new Drawable[]
@@ -18,6 +19,7 @@ namespace Piously.Game.Overlays.Settings.Sections.Graphics
                 new SettingsCheckbox
                 {
                     LabelText = "Show FPS",
+                    Current = piouslyConfig.GetBindable<bool>(PiouslySetting.ShowFpsDisplay)
                 },
             };
         }
