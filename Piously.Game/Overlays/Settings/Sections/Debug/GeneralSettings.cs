@@ -18,11 +18,11 @@ namespace Piously.Game.Overlays.Settings.Sections.Debug
                     LabelText = "Show log overlay",
                     Current = frameworkConfig.GetBindable<bool>(FrameworkSetting.ShowLogOverlay)
                 },
-                new SettingsCheckbox
+                /*new SettingsCheckbox
                 {
                     LabelText = "Bypass front-to-back render pass",
                     Current = config.GetBindable<bool>(DebugSetting.BypassFrontToBackPass)
-                }
+                }*/
             };
         }
     }
