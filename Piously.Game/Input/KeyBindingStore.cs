@@ -73,7 +73,9 @@ namespace Piously.Game.Input
                 {
                     if(!(Query().Count(k => k.KeyCombination.Equals(keyBinding.KeyCombination)) > 0))
                     {
-                        keyBindings.RemoveAt(keyBindings.FindIndex(k => k.KeyCombination.Equals(keyBinding.KeyCombination)));
+                        int value = keyBindings.FindIndex(k => k.KeyCombination.Equals(keyBinding.KeyCombination));
+                        keyBindings.RemoveAt(value);
+                        keyBindings.Insert(value, keyBinding);
                     }
                 }
             }
