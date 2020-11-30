@@ -123,7 +123,7 @@ namespace Piously.Game.Graphics.Cursor
 
             public Cursor()
             {
-                Size = new Vector2(75);
+                Size = new Vector2(150);
             }
 
             [BackgroundDependencyLoader]
@@ -133,7 +133,7 @@ namespace Piously.Game.Graphics.Cursor
                 {
                     cursorContainer = new Container
                     {
-                        Position = new Vector2(-5),
+                        Position = new Vector2(-11),
                         RelativeSizeAxes = Axes.Both,
                         Children = new Drawable[]
                         {
