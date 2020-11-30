@@ -11,12 +11,6 @@ namespace Piously.Desktop
         {
             base.SetHost(host);
 
-            for(int i = 0; i < host.Window.SupportedWindowModes.Count; i++)
-            {
-                if (host.Window.SupportedWindowModes[i] == WindowMode.Borderless)
-                    host.Window.WindowState = WindowState.FullscreenBorderless;
-            }
-
             //host.Window.CursorState |= CursorState.Hidden;
             host.Window.Title = Name;
         }
