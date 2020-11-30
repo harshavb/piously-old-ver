@@ -206,7 +206,7 @@ namespace Piously.Game.Overlays.Settings.Sections.Graphics
         private IReadOnlyList<Size> getResolutions()
         {
             var resolutions = new List<Size> { new Size(9999, 9999) };
-            var currentDisplay = game.Window?.CurrentDisplay.Value;
+            var currentDisplay = game.Window?.CurrentDisplayBindable.Value;
 
             if (currentDisplay != null)
             {
