@@ -1,5 +1,8 @@
-﻿using osu.Framework.Graphics;
+﻿using System;
+using osu.Framework.Allocation;
+using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
+using osu.Framework.Platform;
 using Piously.Game.Screens.Menu;
 using osuTK;
 
@@ -9,12 +12,47 @@ namespace Piously.Game.Graphics.Containers
     {
         public PiouslyLogo logo;
         public MenuSplitHexagon menuButtons;
-        
+
+        [BackgroundDependencyLoader]
+        private void load(GameHost host)
+        {
+            Anchor = Anchor.Centre;
+            Origin = Anchor.Centre;
+            Size = new Vector2(Math.Min(host.Window.ClientSize.Height, host.Window.ClientSize.Width));
+
+            Child = new DrawSizePreservingFillContainer
+            {
+                Strategy = DrawSizePreservationStrategy.Separate,
+                Anchor = Anchor.Centre,
+                Origin = Anchor.Centre,
+                TargetDrawSize = new Vector2(1333, 1333),
+                Children = new Drawable[]
+                {
+                    menuButtons = new MenuSplitHexagon
+                    {
+                        RelativeSizeAxes = Axes.Both,
+                        Anchor = Anchor.Centre,
+                        Origin = Anchor.Centre,
+                        Size = new Vector2(1f * 0.5f),
+                        parentLogo = this,
+                    },
+                    logo = new PiouslyLogo()
+                    {
+                        RelativeSizeAxes = Axes.Both,
+                        Anchor = Anchor.Centre,
+                        Origin = Anchor.Centre,
+                        Size = new Vector2(1f * 0.5f),
+                        parentLogo = this,
+                    },
+                }
+            };
+        }
+
         public MenuLogo()
         {
             Anchor = Anchor.Centre;
             Origin = Anchor.Centre;
-            Size = new Vector2(1333, 1333);
+            Size = new Vector2(Math.Min(this.ScreenSpaceDrawQuad.Height, this.ScreenSpaceDrawQuad.Width));
 
             Child = new DrawSizePreservingFillContainer
             {
