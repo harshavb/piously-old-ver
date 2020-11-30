@@ -37,6 +37,9 @@ namespace Piously.Game.Configuration
             Set(PiouslySetting.MenuVoice, true);
             Set(PiouslySetting.MenuMusic, true);
 
+            //Input
+            Set(PiouslySetting.ConfineMouseMode, PiouslyConfineMouseMode.DuringGameplay);
+
             //Graphics
             Set(PiouslySetting.ShowFpsDisplay, false);
 
@@ -89,5 +92,6 @@ namespace Piously.Game.Configuration
         UIScale,
         CursorRotation,
         UIHoldActivationDelay,
+        ConfineMouseMode,
     }
 }

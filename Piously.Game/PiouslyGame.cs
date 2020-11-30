@@ -13,6 +13,7 @@ using Piously.Game.Graphics;
 using Piously.Game.Graphics.Containers;
 using Piously.Game.Screens.Menu;
 using Piously.Game.Screens.Backgrounds;
+using Piously.Game.Input;
 using Piously.Game.Overlays;
 using Piously.Game.Screens;
 using LogLevel = osu.Framework.Logging.LogLevel;
@@ -148,6 +149,7 @@ namespace Piously.Game
                 rightFloatingOverlayContent = new Container { RelativeSizeAxes = Axes.Both },
                 leftFloatingOverlayContent = new Container { RelativeSizeAxes = Axes.Both },
                 topMostOverlayContent = new Container { RelativeSizeAxes = Axes.Both },
+                new ConfineMouseTracker(),
             });
 
             loadComponentSingleFile(new SettingsOverlay(), leftFloatingOverlayContent.Add, true);

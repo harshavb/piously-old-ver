@@ -17,8 +17,8 @@ namespace Piously.Game.Overlays
         protected override IEnumerable<SettingsSection> CreateSections() => new SettingsSection[]
         {
             new GraphicsSection(),
-            //TO BE IMPLEMENTED after keybindingstores
-            //new InputSection(),
+            //CONTINUE IMPLEMENTATION after keybindingstores
+            new InputSection(),
             //TO BE IMPLEMENTED after online is implemented
             //new OnlineSection(), 
             new DebugSection(),
