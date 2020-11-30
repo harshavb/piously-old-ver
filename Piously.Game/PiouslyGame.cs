@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 using osu.Framework.Allocation;
+using osu.Framework.Configuration;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
+using osu.Framework.Input.Bindings;
 using osu.Framework.Logging;
 using osu.Framework.Screens;
 using osu.Framework.Threading;
@@ -14,21 +17,21 @@ using Piously.Game.Graphics.Containers;
 using Piously.Game.Screens.Menu;
 using Piously.Game.Screens.Backgrounds;
 using Piously.Game.Input;
+using Piously.Game.Input.Bindings;
 using Piously.Game.Overlays;
 using Piously.Game.Screens;
+using osuTK.Graphics;
 using LogLevel = osu.Framework.Logging.LogLevel;
 
 namespace Piously.Game
 {
     //The actual game, specifically loads the UI
-    public class PiouslyGame : PiouslyGameBase
+    public class PiouslyGame : PiouslyGameBase, IKeyBindingHandler<GlobalAction>
     {
         private ScreenStack mainMenuStack;
         private MainMenu mainMenu;
         private BackgroundScreenStack backgroundStack;
         private BackgroundScreen background;
-
-        private readonly List<OverlayContainer> overlays = new List<OverlayContainer>();
 
         private Container overlayContent;
         private Container leftFloatingOverlayContent;
@@ -36,6 +39,35 @@ namespace Piously.Game
         private Container topMostOverlayContent;
 
         private ScalingContainer screenContainer;
+
+        private readonly List<OverlayContainer> overlays = new List<OverlayContainer>();
+        private readonly List<OverlayContainer> visibleBlockingOverlays = new List<OverlayContainer>();
+
+        private void updateBlockingOverlayFade() =>
+            screenContainer.FadeColour(visibleBlockingOverlays.Any() ? PiouslyColour.Gray(0.5f) : Color4.White, 500, Easing.OutQuint);
+
+        public void AddBlockingOverlay(OverlayContainer overlay)
+        {
+            if (!visibleBlockingOverlays.Contains(overlay))
+                visibleBlockingOverlays.Add(overlay);
+            updateBlockingOverlayFade();
+        }
+
+        public void RemoveBlockingOverlay(OverlayContainer overlay)
+        {
+            visibleBlockingOverlays.Remove(overlay);
+            updateBlockingOverlayFade();
+        }
+
+        /// <summary>
+        /// Close all game-wide overlays.
+        /// </summary>
+        /// <param name="hideToolbar">Whether the toolbar should also be hidden.</param>
+        public void CloseAllOverlays(bool hideToolbar = true)
+        {
+            foreach (var overlay in overlays)
+                overlay.Hide();
+        }
 
         [BackgroundDependencyLoader]
         private void load()
@@ -125,6 +157,11 @@ namespace Piously.Game
         {
             base.LoadComplete();
 
+            // The next time this is updated is in UpdateAfterChildren, which occurs too late and results
+            // in the cursor being shown for a few frames during the intro.
+            // This prevents the cursor from showing until we have a screen with CursorVisible = true
+            MenuCursorContainer.CanShowCursor = true; //TEMP
+
             backgroundStack = new BackgroundScreenStack();
             mainMenuStack = new ScreenStack();
 
@@ -158,6 +195,15 @@ namespace Piously.Game
         protected override void Update()
         {
             base.Update();
+        }
+
+        public bool OnPressed(GlobalAction action)
+        {
+            return false;
+        }
+
+        public void OnReleased(GlobalAction action)
+        {
         }
     }
 }
