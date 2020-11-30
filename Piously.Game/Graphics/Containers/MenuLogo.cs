@@ -1,39 +1,50 @@
-﻿using osu.Framework.Graphics;
+﻿using System;
+using osu.Framework.Allocation;
+using osu.Framework.Graphics;
+using osu.Framework.Graphics.Containers;
+using osu.Framework.Platform;
 using Piously.Game.Screens.Menu;
 using osuTK;
 
 namespace Piously.Game.Graphics.Containers
 {
-    public class MenuLogo : HexagonalContainer
+    public class MenuLogo : Container
     {
         public PiouslyLogo logo;
         public MenuSplitHexagon menuButtons;
-        
 
-        public MenuLogo()
+        [BackgroundDependencyLoader]
+        private void load(GameHost host)
         {
             Anchor = Anchor.Centre;
             Origin = Anchor.Centre;
-            Size = new Vector2(1333, 1333);
+            Size = new Vector2(Math.Min(host.Window.ClientSize.Height, host.Window.ClientSize.Width));
 
-            Children = new Drawable[]
+            Child = new DrawSizePreservingFillContainer
             {
-                menuButtons = new MenuSplitHexagon
+                Strategy = DrawSizePreservationStrategy.Separate,
+                Anchor = Anchor.Centre,
+                Origin = Anchor.Centre,
+                TargetDrawSize = new Vector2(1333, 1333),
+                Children = new Drawable[]
                 {
-                    RelativeSizeAxes = Axes.Both,
-                    Anchor = Anchor.Centre,
-                    Origin = Anchor.Centre,
-                    Size = new Vector2(1f * 0.5f),
-                    parentLogo = this,
-                },
-                logo = new PiouslyLogo()
-                {
-                    RelativeSizeAxes = Axes.Both,
-                    Anchor = Anchor.Centre,
-                    Origin = Anchor.Centre,
-                    Size = new Vector2(1f * 0.5f),
-                    parentLogo = this,
-                },
+                    menuButtons = new MenuSplitHexagon
+                    {
+                        RelativeSizeAxes = Axes.Both,
+                        Anchor = Anchor.Centre,
+                        Origin = Anchor.Centre,
+                        Size = new Vector2(1f * 0.5f),
+                        parentLogo = this,
+                    },
+                    logo = new PiouslyLogo()
+                    {
+                        RelativeSizeAxes = Axes.Both,
+                        Anchor = Anchor.Centre,
+                        Origin = Anchor.Centre,
+                        Size = new Vector2(1f * 0.5f),
+                        parentLogo = this,
+                    },
+                }
             };
         }
 

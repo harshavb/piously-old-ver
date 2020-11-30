@@ -27,6 +27,7 @@ namespace Piously.Game.Graphics.Containers
 
         public PiouslyLogo()
         {
+            RelativeSizeAxes = Axes.Both;
             menuState = MenuState.Closed;
             Anchor = Anchor.Centre;
             Origin = Anchor.Centre;
