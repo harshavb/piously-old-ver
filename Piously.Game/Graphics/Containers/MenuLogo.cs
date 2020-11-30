@@ -1,10 +1,11 @@
 ﻿using osu.Framework.Graphics;
+using osu.Framework.Graphics.Containers;
 using Piously.Game.Screens.Menu;
 using osuTK;
 
 namespace Piously.Game.Graphics.Containers
 {
-    public class MenuLogo : HexagonalContainer
+    public class MenuLogo : Container
     {
         public PiouslyLogo logo;
         public MenuSplitHexagon menuButtons;
