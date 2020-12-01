@@ -11,12 +11,7 @@ namespace Piously.Game.Input.Bindings
     {
         private readonly Drawable handler;
 
-        public PiouslyKeyBindingContainer(KeyCombinationMatchingMode keyCombinationMatchingMode = KeyCombinationMatchingMode.Any, SimultaneousBindingMode simultaneousBindingMode = SimultaneousBindingMode.All)
-            : base(simultaneousBindingMode, keyCombinationMatchingMode)
-        {
-        }
-
-        public PiouslyKeyBindingContainer(PiouslyGameBase game, KeyCombinationMatchingMode keyCombinationMatchingMode = KeyCombinationMatchingMode.Any, SimultaneousBindingMode simultaneousBindingMode = SimultaneousBindingMode.All)
+        public PiouslyKeyBindingContainer(PiouslyGameBase game, KeyCombinationMatchingMode keyCombinationMatchingMode = KeyCombinationMatchingMode.Any, SimultaneousBindingMode simultaneousBindingMode = SimultaneousBindingMode.Unique)
             : base(simultaneousBindingMode, keyCombinationMatchingMode)
         {
             if (game is IKeyBindingHandler<GlobalAction>)

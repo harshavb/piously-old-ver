@@ -38,6 +38,8 @@ namespace Piously.Game
         private Container rightFloatingOverlayContent;
         private Container topMostOverlayContent;
 
+        SettingsOverlay settings;
+
         private ScalingContainer screenContainer;
 
         private readonly List<OverlayContainer> overlays = new List<OverlayContainer>();
@@ -189,7 +191,7 @@ namespace Piously.Game
                 new ConfineMouseTracker(),
             });
 
-            loadComponentSingleFile(new SettingsOverlay(), leftFloatingOverlayContent.Add, true);
+            loadComponentSingleFile(settings = new SettingsOverlay(), leftFloatingOverlayContent.Add, true);
         }
 
         protected override void Update()
@@ -199,6 +201,11 @@ namespace Piously.Game
 
         public bool OnPressed(GlobalAction action)
         {
+            if(action == GlobalAction.ToggleSettings)
+            {
+                settings.ToggleVisibility();
+                return true;
+            }
             return false;
         }
 

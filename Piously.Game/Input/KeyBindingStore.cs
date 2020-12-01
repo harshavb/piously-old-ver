@@ -4,7 +4,6 @@ using System.Linq;
 using osu.Framework.Platform;
 using Piously.Game.Input.Bindings;
 using osu.Framework.Input.Bindings;
-using osu.Framework.IO.Stores;
 
 namespace Piously.Game.Input
 {
@@ -19,10 +18,9 @@ namespace Piously.Game.Input
         public KeyBindingStore(Storage storage = null)
         {
             Storage = storage;
-            insertDefaults(new PiouslyKeyBindingContainer().DefaultKeyBindings);
         }
 
-        public void Register(KeyBindingContainer manager) => insertDefaults(manager.DefaultKeyBindings);
+        public void Register(PiouslyKeyBindingContainer manager) => insertDefaults(manager.DefaultKeyBindings);
 
         /// <summary>
         /// Retrieve all user-defined key combinations (in a format that can be displayed) for a specific action.
