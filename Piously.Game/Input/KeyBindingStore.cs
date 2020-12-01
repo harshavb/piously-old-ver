@@ -14,7 +14,7 @@ namespace Piously.Game.Input
 
         protected List<KeyBinding> keyBindings = new List<KeyBinding>();
 
-        Storage Storage;
+        protected readonly Storage Storage;
 
         public KeyBindingStore(Storage storage = null)
         {
