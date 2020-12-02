@@ -10,7 +10,7 @@ namespace Piously.Desktop
         [STAThread]
         public static int Main(string[] args)
         {
-            using (GameHost host = Host.GetSuitableHost(@"Piously", useOsuTK: true))
+            using (GameHost host = Host.GetSuitableHost(@"Piously"))
                 host.Run(new PiouslyGameDesktop());
 
             return 0;

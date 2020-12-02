@@ -32,6 +32,8 @@ namespace Piously.Game.Graphics.Cursor
         private void load([NotNull] PiouslyConfigManager config)
         {
             cursorRotate = config.GetBindable<bool>(PiouslySetting.CursorRotation);
+            RelativeSizeAxes = Axes.None;
+            Size = new Vector2(10, 10);
         }
 
         protected override bool OnMouseMove(MouseMoveEvent e)
@@ -123,7 +125,7 @@ namespace Piously.Game.Graphics.Cursor
 
             public Cursor()
             {
-                Size = new Vector2(150);
+                RelativeSizeAxes = Axes.Both;
             }
 
             [BackgroundDependencyLoader]
@@ -133,7 +135,7 @@ namespace Piously.Game.Graphics.Cursor
                 {
                     cursorContainer = new Container
                     {
-                        RelativeSizeAxes = Axes.Both,
+                        Size = new Vector2(150, 150),
                         Children = new Drawable[]
                         {
                             //TEMPORARY

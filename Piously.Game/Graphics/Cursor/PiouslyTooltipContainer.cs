@@ -91,12 +91,12 @@ namespace Piously.Game.Graphics.Cursor
             {
                 if (instantMovement)
                 {
-                    Position = pos + new Vector2(-150, -150);
+                    Position = pos;
                     instantMovement = false;
                 }
                 else
                 {
-                    this.MoveTo(pos + new Vector2(-150, -150), 200, Easing.OutQuint);
+                    this.MoveTo(pos, 200, Easing.OutQuint);
                 }
             }
         }
