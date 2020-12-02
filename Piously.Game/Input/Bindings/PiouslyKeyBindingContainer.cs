@@ -19,16 +19,16 @@ namespace Piously.Game.Input.Bindings
         }
 
         public override IEnumerable<KeyBinding> DefaultKeyBindings => GlobalKeyBindings;
-        public static IEnumerable<PiouslyKeyBinding> GlobalKeyBindings => new[]
+        public static IEnumerable<KeyBinding> GlobalKeyBindings => new[]
         {
-            new PiouslyKeyBinding(InputKey.Space, GlobalAction.Select),
-            new PiouslyKeyBinding(InputKey.Enter, GlobalAction.Select),
-            new PiouslyKeyBinding(InputKey.KeypadEnter, GlobalAction.Select),
+            new KeyBinding(InputKey.Space, GlobalAction.Select),
+            new KeyBinding(InputKey.Enter, GlobalAction.Select),
+            new KeyBinding(InputKey.KeypadEnter, GlobalAction.Select),
 
-            new PiouslyKeyBinding(InputKey.Escape, GlobalAction.Back),
-            new PiouslyKeyBinding(InputKey.ExtraMouseButton1, GlobalAction.Back),
+            new KeyBinding(InputKey.Escape, GlobalAction.Back),
+            new KeyBinding(InputKey.ExtraMouseButton1, GlobalAction.Back),
 
-            new PiouslyKeyBinding(new[] { InputKey.Control, InputKey.O }, GlobalAction.ToggleSettings),
+            new KeyBinding(new[] { InputKey.Control, InputKey.O }, GlobalAction.ToggleSettings),
         };
 
         protected override IEnumerable<Drawable> KeyBindingInputQueue =>

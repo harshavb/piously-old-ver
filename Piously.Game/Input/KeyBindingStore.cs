@@ -11,7 +11,7 @@ namespace Piously.Game.Input
     {
         public event Action KeyBindingChanged;
 
-        protected List<PiouslyKeyBinding> keyBindings = new List<PiouslyKeyBinding>();
+        protected List<KeyBinding> keyBindings = new List<KeyBinding>();
 
         protected readonly Storage Storage;
 
@@ -51,7 +51,7 @@ namespace Piously.Game.Input
 
                 foreach(var insertable in group.Skip(count).Take(aimCount - count))
                 {
-                    Update(new PiouslyKeyBinding(insertable.KeyCombination, (GlobalAction)insertable.Action));
+                    Update(new KeyBinding(insertable.KeyCombination, insertable.Action));
                 }
             }
         }
@@ -60,9 +60,9 @@ namespace Piously.Game.Input
         /// Retrieve <see cref="DatabasedKeyBinding"/>s.
         /// </summary>
         /// <returns></returns>
-        public List<PiouslyKeyBinding> Query() => keyBindings;
+        public List<KeyBinding> Query() => keyBindings;
 
-        public void Update(PiouslyKeyBinding keyBinding)
+        public void Update(KeyBinding keyBinding)
         {
             foreach(var group in keyBindings.GroupBy(k => k.Action))
             {
@@ -76,7 +76,6 @@ namespace Piously.Game.Input
                     }
                 }
             }
-            keyBindings.Sort();
             //WRITE TO FILE
             KeyBindingChanged?.Invoke();
         }
