@@ -1,6 +1,8 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using osu.Framework.Platform;
 using Piously.Game.Input.Bindings;
 using osu.Framework.Input.Bindings;
@@ -78,6 +80,93 @@ namespace Piously.Game.Input
             }
             //WRITE TO FILE
             KeyBindingChanged?.Invoke();
+
+            Stream file = Storage.GetStream("keybinds.ini", FileAccess.ReadWrite, FileMode.OpenOrCreate);
+
+            if (file.CanWrite && file.CanRead)
+            {
+                bool foundKeyBindingInFile = false;
+                string actionString = "";
+
+                switch (keyBinding.Action)
+                {
+                    case GlobalAction.Select:
+                        actionString = "Select";
+                        break;
+                    case GlobalAction.Back:
+                        actionString = "Back";
+                        break;
+                    case GlobalAction.ToggleSettings:
+                        actionString = "ToggleSettings";
+                        break;
+                }
+
+                if (file.Length > 0)
+                {
+                    byte[] buffer = new byte[file.Length + 10]; // + 10 is for padding
+                    int bytesToRead = (int)file.Length;
+                    int bytesRead = 0;
+                    do {
+                        int n = file.Read(buffer, bytesRead, 10); // Read 10 bytes at a time
+                        bytesRead += n;
+                        bytesToRead -= n;
+                    } while (bytesToRead > 0);
+
+                    string[] fileContent = buffer.ToString().Split("\n");
+                    for(int i = 0; i < fileContent.Length; i++)
+                    {
+                        string line = fileContent[i];
+                        if (line.IndexOf(actionString) != -1)
+                        {
+                            foundKeyBindingInFile = true;
+                            if (keyBinding.KeyCombination.Keys.Length == 1)
+                            {
+                                line = actionString + " = " + keyBinding.KeyCombination.Keys[0].ToString() + "\n";
+                            }
+                            else
+                            {
+                                string keyCombinationString = keyBinding.KeyCombination.Keys[0].ToString();
+                                foreach (InputKey key in keyBinding.KeyCombination.Keys)
+                                {
+                                    keyCombinationString += " + " + keyBinding.KeyCombination.Keys[1].ToString();
+                                }
+
+                                line = actionString + " = " + keyCombinationString + "\n";
+                            }
+
+                            file.SetLength(0);
+                            string writeOut = String.Join("\n", fileContent);
+                            file.Write(Encoding.ASCII.GetBytes(writeOut));
+                        }
+                    }
+                }
+                if(file.Length == 0 || !foundKeyBindingInFile)
+                {
+                    string writeOut;
+                    if (keyBinding.KeyCombination.Keys.Length == 1)
+                    {
+                        writeOut = actionString + " = " + keyBinding.KeyCombination.Keys[0].ToString() + "\n";
+                    }
+                    else
+                    {
+                        string keyCombinationString = keyBinding.KeyCombination.Keys[0].ToString();
+                        foreach (InputKey key in keyBinding.KeyCombination.Keys)
+                        {
+                            keyCombinationString += " + " + keyBinding.KeyCombination.Keys[1].ToString();
+                        }
+
+                        writeOut = actionString + " = " + keyCombinationString + "\n";
+                    }
+
+                    file.Write(Encoding.ASCII.GetBytes(writeOut));
+                }
+
+                file.Close();
+            }
+            else
+            {
+                throw new FileLoadException("Unable to open keybinding file; insufficient permissions (WriteAccess = " + file.CanWrite + ", ReadAccess = " + file.CanRead + ")");
+            }
         }
     }
 }

@@ -21,12 +21,9 @@ namespace Piously.Game.Input.Bindings
         public override IEnumerable<KeyBinding> DefaultKeyBindings => GlobalKeyBindings;
         public static IEnumerable<KeyBinding> GlobalKeyBindings => new[]
         {
-            new KeyBinding(InputKey.Space, GlobalAction.Select),
             new KeyBinding(InputKey.Enter, GlobalAction.Select),
-            new KeyBinding(InputKey.KeypadEnter, GlobalAction.Select),
 
             new KeyBinding(InputKey.Escape, GlobalAction.Back),
-            new KeyBinding(InputKey.ExtraMouseButton1, GlobalAction.Back),
 
             new KeyBinding(new[] { InputKey.Control, InputKey.O }, GlobalAction.ToggleSettings),
         };
