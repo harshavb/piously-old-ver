@@ -28,8 +28,8 @@ namespace Piously.Game
     //The actual game, specifically loads the UI
     public class PiouslyGame : PiouslyGameBase, IKeyBindingHandler<GlobalAction>
     {
-        private ScreenStack mainMenuStack;
-        private MainMenu mainMenu;
+        private MenuLogo menuLogo;
+
         private BackgroundScreenStack backgroundStack;
         private BackgroundScreen background;
 
@@ -165,13 +165,12 @@ namespace Piously.Game
             MenuCursorContainer.CanShowCursor = true; //TEMP
 
             backgroundStack = new BackgroundScreenStack();
-            mainMenuStack = new ScreenStack();
+
+            menuLogo = new MenuLogo();
 
             background = new BackgroundScreen();
-            mainMenu = new MainMenu();
 
             backgroundStack.Push(background);
-            mainMenuStack.Push(mainMenu);
 
             AddRange(new Drawable[]
             {
@@ -181,7 +180,7 @@ namespace Piously.Game
                     Children = new Drawable[]
                     {
                         backgroundStack,
-                        mainMenuStack,
+                        menuLogo,
                     }
                 },
                 overlayContent = new Container { RelativeSizeAxes = Axes.Both },
@@ -192,6 +191,10 @@ namespace Piously.Game
             });
 
             loadComponentSingleFile(settings = new SettingsOverlay(), leftFloatingOverlayContent.Add, true);
+
+            menuLogo.menuButtons.OnSettings = () => settings?.ToggleVisibility();
+            menuLogo.menuButtons.OnExit = () => Environment.Exit(0);
+            menuLogo.menuButtons.OnLocalGame = () => { };
         }
 
         protected override void Update()

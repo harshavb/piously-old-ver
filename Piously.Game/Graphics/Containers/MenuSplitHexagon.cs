@@ -13,6 +13,7 @@ namespace Piously.Game.Graphics.Containers
 
         public Action OnSettings;
         public Action OnExit;
+        public Action OnLocalGame;
         public Action OnPlay;
 
         [BackgroundDependencyLoader]
@@ -43,7 +44,7 @@ namespace Piously.Game.Graphics.Containers
                     {
                         0 => () => OnExit?.Invoke(),
                         1 => () => OnSettings?.Invoke(),
-                        2 => () => OnPlay?.Invoke(),
+                        2 => () => OnLocalGame?.Invoke(),
                         3 => () => OnPlay?.Invoke(),
                         4 => () => OnPlay?.Invoke(),
                         5 => () => OnPlay?.Invoke(),
