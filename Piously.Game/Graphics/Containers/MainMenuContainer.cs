@@ -17,7 +17,7 @@ namespace Piously.Game.Graphics.Containers
         private MainMenuContainerState lastState = MainMenuContainerState.Initial;
 
         [BackgroundDependencyLoader]
-        private void load(GameHost host)
+        private void load()
         {
             Anchor = Anchor.Centre;
             Origin = Anchor.Centre;
