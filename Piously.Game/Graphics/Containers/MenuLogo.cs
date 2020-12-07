@@ -86,11 +86,11 @@ namespace Piously.Game.Graphics.Containers
             {
                 case MenuLogoState.Initial:
                     this.ScaleTo(1f, 500, Easing.OutExpo);
-                    this.MoveTo(new Vector2(0, 0), 300, Easing.OutExpo);
+                    this.MoveTo(new Vector2(0, 0), 750, Easing.OutExpo);
                     break;
                 case MenuLogoState.Exit:
                     this.ScaleTo(0.5f, 500, Easing.OutExpo);
-                    this.MoveTo(new Vector2(-1500, 0), 300, Easing.OutExpo);
+                    this.MoveTo(new Vector2(-1500, 0), 750, Easing.OutExpo);
                     break;
             }
         }
