@@ -8,7 +8,7 @@ namespace Piously.Game.Graphics.Shapes
 {
     public class MenuTriangle : EquilateralTriangle
     {
-        public MenuLogo parentLogo;
+        public MainMenuContainer parentLogo;
         protected override bool OnHover(HoverEvent e)
         {
             if (parentLogo.logo.menuState == MenuState.Opened && !parentLogo.logo.IsHovered)

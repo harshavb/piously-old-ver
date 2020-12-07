@@ -8,13 +8,13 @@ using osuTK;
 
 namespace Piously.Game.Graphics.Containers
 {
-    public class MenuLogo : Container
+    public class MainMenuContainer : Container
     {
         public PiouslyLogo logo;
         public ParallaxContainer parallaxContainer;
         public MenuSplitHexagon menuButtons;
 
-        private MenuLogoState lastState = MenuLogoState.Initial;
+        private MainMenuContainerState lastState = MainMenuContainerState.Initial;
 
         [BackgroundDependencyLoader]
         private void load(GameHost host)
@@ -80,16 +80,16 @@ namespace Piously.Game.Graphics.Containers
             }
         }
 
-        public void updateLogoState(MenuLogoState state = MenuLogoState.Initial)
+        public void updateLogoState(MainMenuContainerState state = MainMenuContainerState.Initial)
         {
             switch(state)
             {
-                case MenuLogoState.Initial:
+                case MainMenuContainerState.Initial:
                     this.ScaleTo(1f, 500, Easing.None);
                     this.MoveTo(new Vector2(0, 0), 500, Easing.InQuad);
                     this.FadeTo(1, 300, Easing.None);
                     break;
-                case MenuLogoState.Exit:
+                case MainMenuContainerState.Exit:
                     this.ScaleTo(0.5f, 500, Easing.None);
                     this.MoveTo(new Vector2(-1500, 0), 500, Easing.InQuad);
                     this.FadeTo(0, 300, Easing.None);
@@ -99,7 +99,7 @@ namespace Piously.Game.Graphics.Containers
 
     }
 
-    public enum MenuLogoState
+    public enum MainMenuContainerState
     {
         Exit,
         Initial,

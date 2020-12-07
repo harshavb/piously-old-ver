@@ -12,7 +12,7 @@ namespace Piously.Game.Graphics.Containers
     public class MenuButton : Container
     {
         public SpriteText Label;
-        public MenuLogo parentLogo;
+        public MainMenuContainer parentLogo;
         public MenuButtonSprite menuButtonSprite { get; private set; }
         public Action clickAction;
         public Colour4 triangleColour;

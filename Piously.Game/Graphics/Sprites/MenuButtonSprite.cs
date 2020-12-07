@@ -9,7 +9,7 @@ namespace Piously.Game.Graphics.Sprites
 {
     public class MenuButtonSprite : EquilateralTriangle
     {
-        public MenuLogo parentLogo;
+        public MainMenuContainer parentLogo;
         public Action clickAction;
 
         protected override bool OnClick(ClickEvent e)

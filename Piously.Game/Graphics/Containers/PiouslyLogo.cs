@@ -16,7 +16,7 @@ namespace Piously.Game.Graphics.Containers
         public MenuState menuState;
         private const double transition_length = 300;
         private Sprite logo;
-        public MenuLogo parentLogo;
+        public MainMenuContainer parentLogo;
 
         private readonly Container colourAndHexagons;
 

@@ -6,9 +6,9 @@ using osuTK;
 
 namespace Piously.Game.Screens
 {
-    public class MainScreenStack : ScreenStack
+    public class BackgroundScreenStack : ScreenStack
     {
-        public MainScreenStack()
+        public BackgroundScreenStack()
             : base(false)
         {
             Scale = new Vector2(1.06f);

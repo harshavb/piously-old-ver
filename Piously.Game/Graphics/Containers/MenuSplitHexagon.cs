@@ -8,7 +8,7 @@ namespace Piously.Game.Graphics.Containers
 {
     public class MenuSplitHexagon : Container<MenuButton>
     {
-        public MenuLogo parentLogo;
+        public MainMenuContainer parentLogo;
         public MenuButton[] triangles { get; private set; }
 
         public Action OnSettings;

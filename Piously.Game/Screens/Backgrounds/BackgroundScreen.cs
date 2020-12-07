@@ -9,19 +9,20 @@ namespace Piously.Game.Screens.Backgrounds
 {
     public class BackgroundScreen : Screen, IEquatable<BackgroundScreen>
     {
+        private readonly string texture;
+
         [BackgroundDependencyLoader]
         private void load()
         {
-            Random randomGenerator = new Random();
-            int choice = randomGenerator.Next(1, 18);
-            AddInternal(new Background("Menu/menu-background-" + choice));
+            AddInternal(new Background(texture));
         }
 
         private readonly bool animateOnEnter;
 
-        public BackgroundScreen(bool animateOnEnter = true)
+        public BackgroundScreen(bool animateOnEnter = true, string texture = "")
         {
             this.animateOnEnter = animateOnEnter;
+            this.texture = texture;
             Anchor = Anchor.Centre;
             Origin = Anchor.Centre;
         }
