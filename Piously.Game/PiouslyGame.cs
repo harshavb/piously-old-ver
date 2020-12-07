@@ -20,6 +20,7 @@ using Piously.Game.Input;
 using Piously.Game.Input.Bindings;
 using Piously.Game.Overlays;
 using Piously.Game.Screens;
+using Piously.Game.Screens.Local;
 using osuTK.Graphics;
 using LogLevel = osu.Framework.Logging.LogLevel;
 
@@ -30,8 +31,11 @@ namespace Piously.Game
     {
         private MenuLogo menuLogo;
 
-        private BackgroundScreenStack backgroundStack;
+        private Container logoContainer;
+
+        private MainScreenStack mainStack;
         private BackgroundScreen background;
+        private LocalGameSettingsScreen localGameSettingsScreen;
 
         private Container overlayContent;
         private Container leftFloatingOverlayContent;
@@ -164,13 +168,14 @@ namespace Piously.Game
             // This prevents the cursor from showing until we have a screen with CursorVisible = true
             MenuCursorContainer.CanShowCursor = true; //TEMP
 
-            backgroundStack = new BackgroundScreenStack();
+            mainStack = new MainScreenStack();
 
             menuLogo = new MenuLogo();
 
             background = new BackgroundScreen();
+            localGameSettingsScreen = new LocalGameSettingsScreen();
 
-            backgroundStack.Push(background);
+            mainStack.Push(background);
 
             AddRange(new Drawable[]
             {
@@ -179,8 +184,8 @@ namespace Piously.Game
                     RelativeSizeAxes = Axes.Both,
                     Children = new Drawable[]
                     {
-                        backgroundStack,
-                        menuLogo,
+                        mainStack,
+                        logoContainer = new Container { RelativeSizeAxes = Axes.Both },
                     }
                 },
                 overlayContent = new Container { RelativeSizeAxes = Axes.Both },
@@ -192,9 +197,20 @@ namespace Piously.Game
 
             loadComponentSingleFile(settings = new SettingsOverlay(), leftFloatingOverlayContent.Add, true);
 
-            menuLogo.menuButtons.OnSettings = () => settings?.ToggleVisibility();
-            menuLogo.menuButtons.OnExit = () => Environment.Exit(0);
-            menuLogo.menuButtons.OnLocalGame = () => { };
+            loadComponentSingleFile(menuLogo, logo =>
+            {
+                logoContainer.Add(logo);
+
+                menuLogo.menuButtons.OnSettings = () => settings?.ToggleVisibility();
+                menuLogo.menuButtons.OnExit = () => Environment.Exit(0);
+                menuLogo.menuButtons.OnLocalGame = () =>
+                {
+                    if (!mainStack.CurrentScreen.Equals(localGameSettingsScreen))
+                    {
+                        mainStack.Push(localGameSettingsScreen);
+                    }
+                };
+            });
         }
 
         protected override void Update()

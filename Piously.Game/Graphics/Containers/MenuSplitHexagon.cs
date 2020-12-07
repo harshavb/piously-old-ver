@@ -44,9 +44,9 @@ namespace Piously.Game.Graphics.Containers
                     {
                         0 => () => OnExit?.Invoke(),
                         1 => () => OnSettings?.Invoke(),
-                        2 => () => OnLocalGame?.Invoke(),
+                        2 => () => OnPlay?.Invoke(),
                         3 => () => OnPlay?.Invoke(),
-                        4 => () => OnPlay?.Invoke(),
+                        4 => () => OnLocalGame?.Invoke(),
                         5 => () => OnPlay?.Invoke(),
                         _ => () => OnPlay?.Invoke(),
                     },
