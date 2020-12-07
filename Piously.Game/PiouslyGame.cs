@@ -4,17 +4,15 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using osu.Framework.Allocation;
-using osu.Framework.Configuration;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Input.Bindings;
 using osu.Framework.Logging;
-using osu.Framework.Screens;
 using osu.Framework.Threading;
+using osuTK;
 using Piously.Game.Configuration;
 using Piously.Game.Graphics;
 using Piously.Game.Graphics.Containers;
-using Piously.Game.Screens.Menu;
 using Piously.Game.Screens.Backgrounds;
 using Piously.Game.Input;
 using Piously.Game.Input.Bindings;
@@ -208,6 +206,7 @@ namespace Piously.Game
                     if (!mainStack.CurrentScreen.Equals(localGameSettingsScreen))
                     {
                         mainStack.Push(localGameSettingsScreen);
+                        menuLogo.updateLogoState(MenuLogoState.Exit);
                     }
                 };
             });
