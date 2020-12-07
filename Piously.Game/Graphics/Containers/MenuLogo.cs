@@ -85,12 +85,14 @@ namespace Piously.Game.Graphics.Containers
             switch(state)
             {
                 case MenuLogoState.Initial:
-                    this.ScaleTo(1f, 500, Easing.OutExpo);
-                    this.MoveTo(new Vector2(0, 0), 750, Easing.OutExpo);
+                    this.ScaleTo(1f, 500, Easing.None);
+                    this.MoveTo(new Vector2(0, 0), 500, Easing.InQuad);
+                    this.FadeTo(1, 300, Easing.None);
                     break;
                 case MenuLogoState.Exit:
-                    this.ScaleTo(0.5f, 500, Easing.OutExpo);
-                    this.MoveTo(new Vector2(-1500, 0), 750, Easing.OutExpo);
+                    this.ScaleTo(0.5f, 500, Easing.None);
+                    this.MoveTo(new Vector2(-1500, 0), 500, Easing.InQuad);
+                    this.FadeTo(0, 300, Easing.None);
                     break;
             }
         }
