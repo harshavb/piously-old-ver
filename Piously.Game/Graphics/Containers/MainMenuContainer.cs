@@ -87,11 +87,13 @@ namespace Piously.Game.Graphics.Containers
                 case MainMenuContainerState.Initial:
                     this.ScaleTo(1f, 500, Easing.None);
                     this.MoveTo(new Vector2(0, 0), 500, Easing.InQuad);
+                    menuButtons.FadeTo(1, 300, Easing.None);
                     this.FadeTo(1, 300, Easing.None);
                     break;
                 case MainMenuContainerState.Exit:
                     this.ScaleTo(0.5f, 500, Easing.None);
                     this.MoveTo(new Vector2(-1500, 0), 500, Easing.InQuad);
+                    menuButtons.FadeTo(0, 300, Easing.None);
                     this.FadeTo(0, 300, Easing.None);
                     break;
             }
