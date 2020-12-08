@@ -2,7 +2,6 @@
 using osu.Framework.Allocation;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
-using osu.Framework.Platform;
 using Piously.Game.Screens.Menu;
 using osuTK;
 
@@ -31,7 +30,7 @@ namespace Piously.Game.Graphics.Containers
                         RelativeSizeAxes = Axes.Both,
                         Anchor = Anchor.Centre,
                         Origin = Anchor.Centre,
-                        Size = new Vector2(1f * 0.5f),
+                        Size = new Vector2(0.5f),
                         parentLogo = this,
                     },
                     logo = new PiouslyLogo()
@@ -39,7 +38,7 @@ namespace Piously.Game.Graphics.Containers
                         RelativeSizeAxes = Axes.Both,
                         Anchor = Anchor.Centre,
                         Origin = Anchor.Centre,
-                        Size = new Vector2(1f * 0.5f),
+                        Size = new Vector2(0.5f),
                         parentLogo = this,
                     },
                 }
@@ -80,7 +79,7 @@ namespace Piously.Game.Graphics.Containers
             }
         }
 
-        public void updateLogoState(MainMenuContainerState state = MainMenuContainerState.Initial)
+        public void updateState(MainMenuContainerState state = MainMenuContainerState.Initial)
         {
             switch(state)
             {

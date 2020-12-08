@@ -25,9 +25,10 @@ namespace Piously.Game
     //The actual game, specifically loads the UI
     public class PiouslyGame : PiouslyGameBase, IKeyBindingHandler<GlobalAction>
     {
-        private MainMenuContainer MainMenuContainer;
+        private MainMenuContainer mainMenuContainer;
+        private LocalGameContainer localGameContainer;
 
-        private Container logoContainer;
+        private Container primaryContainer;
 
         private BackgroundScreenStack backgroundStack;
         private BackgroundScreen background;
@@ -166,7 +167,8 @@ namespace Piously.Game
 
             backgroundStack = new BackgroundScreenStack();
 
-            MainMenuContainer = new MainMenuContainer();
+            mainMenuContainer = new MainMenuContainer();
+            localGameContainer = new LocalGameContainer();
 
             background = new MainMenuBackground();
             loadGameBackground = new LoadGameBackground();
@@ -181,7 +183,7 @@ namespace Piously.Game
                     Children = new Drawable[]
                     {
                         backgroundStack,
-                        logoContainer = new Container { RelativeSizeAxes = Axes.Both },
+                        primaryContainer = new Container { RelativeSizeAxes = Axes.Both },
                     }
                 },
                 overlayContent = new Container { RelativeSizeAxes = Axes.Both },
@@ -192,19 +194,24 @@ namespace Piously.Game
             });
 
             loadComponentSingleFile(settings = new SettingsOverlay(), leftFloatingOverlayContent.Add, true);
-
-            loadComponentSingleFile(MainMenuContainer, logo =>
+            loadComponentSingleFile(localGameContainer, localGame =>
             {
-                logoContainer.Add(logo);
+                primaryContainer.Add(localGame);
+            });
 
-                MainMenuContainer.menuButtons.OnSettings = () => settings?.ToggleVisibility();
-                MainMenuContainer.menuButtons.OnExit = () => Environment.Exit(0);
-                MainMenuContainer.menuButtons.OnLocalGame = () =>
+            loadComponentSingleFile(mainMenuContainer, mainMenu =>
+            {
+                primaryContainer.Add(mainMenu);
+
+                mainMenuContainer.menuButtons.OnSettings = () => settings?.ToggleVisibility();
+                mainMenuContainer.menuButtons.OnExit = () => Environment.Exit(0);
+                mainMenuContainer.menuButtons.OnLocalGame = () =>
                 {
                     if (!backgroundStack.CurrentScreen.Equals(loadGameBackground))
                     {
                         backgroundStack.Push(loadGameBackground);
-                        MainMenuContainer.updateLogoState(MainMenuContainerState.Exit);
+                        mainMenuContainer.updateState(MainMenuContainerState.Exit);
+                        localGameContainer.updateState(LocalGameContainerState.Initial);
                     }
                 };
             });
