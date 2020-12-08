@@ -66,6 +66,11 @@ namespace Piously.Game
             dependencies.CacheAs(this);
             dependencies.Cache(LocalConfig);
 
+            AddFont(Resources, @"Fonts/Aller");
+            AddFont(Resources, @"Fonts/Aller-Bold");
+            AddFont(Resources, @"Fonts/Aller-Italic");
+            AddFont(Resources, @"Fonts/Aller-BoldItalic");
+
             AddFont(Resources, @"Fonts/InkFree-Bold");
             AddFont(Resources, @"Fonts/InkFree");
             AddFont(Resources, @"Fonts/InkFree-Italic");
