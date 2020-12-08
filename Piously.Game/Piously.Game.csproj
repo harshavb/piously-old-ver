@@ -23,5 +23,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Screens\Local\" />
+    <Folder Include="Graphics\Containers\MainMenu\" />
   </ItemGroup>
 </Project>
