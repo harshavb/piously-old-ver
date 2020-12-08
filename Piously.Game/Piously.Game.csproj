@@ -24,5 +24,8 @@
   <ItemGroup>
     <Folder Include="Screens\Local\" />
     <Folder Include="Graphics\Containers\MainMenu\" />
+    <Folder Include="Graphics\Containers\LocalGame\" />
+    <Folder Include="Graphics\Containers\LocalGame\CreateGame\" />
+    <Folder Include="Graphics\Containers\LocalGame\LoadGame\" />
   </ItemGroup>
 </Project>

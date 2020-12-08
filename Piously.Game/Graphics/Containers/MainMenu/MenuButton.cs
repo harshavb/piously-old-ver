@@ -7,7 +7,7 @@ using osu.Framework.Graphics.Shapes;
 using osuTK;
 using Piously.Game.Graphics.Sprites;
 
-namespace Piously.Game.Graphics.Containers
+namespace Piously.Game.Graphics.Containers.MainMenu
 {
     public class MenuButton : Container
     {

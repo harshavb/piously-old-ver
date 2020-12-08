@@ -4,7 +4,7 @@ using osu.Framework.Graphics;
 using osu.Framework.Allocation;
 using osuTK;
 
-namespace Piously.Game.Graphics.Containers
+namespace Piously.Game.Graphics.Containers.MainMenu
 {
     public class MenuSplitHexagon : Container<MenuButton>
     {

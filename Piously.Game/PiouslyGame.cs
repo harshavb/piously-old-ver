@@ -12,6 +12,8 @@ using osu.Framework.Threading;
 using Piously.Game.Configuration;
 using Piously.Game.Graphics;
 using Piously.Game.Graphics.Containers;
+using Piously.Game.Graphics.Containers.MainMenu;
+using Piously.Game.Graphics.Containers.LocalGame;
 using Piously.Game.Screens.Backgrounds;
 using Piously.Game.Input;
 using Piously.Game.Input.Bindings;

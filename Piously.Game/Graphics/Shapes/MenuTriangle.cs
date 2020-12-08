@@ -1,7 +1,7 @@
 ﻿using osu.Framework.Graphics;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Input.Events;
-using Piously.Game.Graphics.Containers;
+using Piously.Game.Graphics.Containers.MainMenu;
 using Piously.Game.Screens.Menu;
 
 namespace Piously.Game.Graphics.Shapes

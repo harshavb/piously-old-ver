@@ -5,7 +5,7 @@ using osu.Framework.Graphics.Containers;
 using Piously.Game.Screens.Menu;
 using osuTK;
 
-namespace Piously.Game.Graphics.Containers
+namespace Piously.Game.Graphics.Containers.MainMenu
 {
     public class MainMenuContainer : Container
     {

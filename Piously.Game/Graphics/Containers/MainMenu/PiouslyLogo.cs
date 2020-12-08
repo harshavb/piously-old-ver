@@ -9,7 +9,7 @@ using Piously.Game.Screens.Menu;
 using Piously.Game.Graphics.Backgrounds;
 using osuTK;
 
-namespace Piously.Game.Graphics.Containers
+namespace Piously.Game.Graphics.Containers.MainMenu
 {
     public class PiouslyLogo : HexagonalContainer
     {
