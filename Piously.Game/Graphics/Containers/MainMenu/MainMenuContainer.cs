@@ -13,7 +13,7 @@ namespace Piously.Game.Graphics.Containers.MainMenu
         public ParallaxContainer parallaxContainer;
         public MenuSplitHexagon menuButtons;
 
-        private MainMenuContainerState lastState = MainMenuContainerState.Initial;
+        //private MainMenuContainerState lastState = MainMenuContainerState.Initial;
 
         [BackgroundDependencyLoader]
         private void load()

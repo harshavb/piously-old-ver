@@ -16,7 +16,7 @@ namespace Piously.Game.Input
     {
         private Bindable<ConfineMouseMode> frameworkConfineMode;
         private Bindable<PiouslyConfineMouseMode> piouslyConfineMode;
-        private IBindable<bool> localUserPlaying;
+        //private IBindable<bool> localUserPlaying;
 
         [BackgroundDependencyLoader]
         private void load(PiouslyGame game, FrameworkConfigManager frameworkConfigManager, PiouslyConfigManager piouslyConfigManager)
@@ -46,7 +46,7 @@ namespace Piously.Game.Input
                     break;
 
                 case PiouslyConfineMouseMode.DuringGameplay:
-                    frameworkConfineMode.Value = localUserPlaying.Value ? ConfineMouseMode.Always : ConfineMouseMode.Never;
+                    //frameworkConfineMode.Value = localUserPlaying.Value ? ConfineMouseMode.Always : ConfineMouseMode.Never;
                     break;
 
                 case PiouslyConfineMouseMode.Always:
