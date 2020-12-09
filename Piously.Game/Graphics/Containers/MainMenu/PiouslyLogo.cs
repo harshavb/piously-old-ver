@@ -3,15 +3,17 @@ using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Sprites;
 using osu.Framework.Graphics.Textures;
+using osu.Framework.Input.Bindings;
 using osu.Framework.Input.Events;
 using Piously.Game.Graphics.Shapes;
+using Piously.Game.Input.Bindings;
 using Piously.Game.Screens.Menu;
 using Piously.Game.Graphics.Backgrounds;
 using osuTK;
 
 namespace Piously.Game.Graphics.Containers.MainMenu
 {
-    public class PiouslyLogo : HexagonalContainer
+    public class PiouslyLogo : HexagonalContainer, IKeyBindingHandler<GlobalAction>
     {
         public MenuState menuState;
         private const double transition_length = 300;
@@ -133,6 +135,25 @@ namespace Piously.Game.Graphics.Containers.MainMenu
             {
                 this.ScaleTo(0.85f, 50);
             }
+        }
+
+        public bool OnPressed(GlobalAction action)
+        {
+            if (action == GlobalAction.Back)
+            {
+                if(menuState == MenuState.Opened)
+                {
+                    menuState = MenuState.Closed;
+                    this.ScaleTo(1f, 200, Easing.InOutQuint);
+                    parentLogo.toggleButtons();
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public void OnReleased(GlobalAction action)
+        {
         }
     }
 }
