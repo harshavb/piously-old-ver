@@ -35,7 +35,6 @@ namespace Piously.Game
         private MainScreenStack mainStack;
         private BackgroundScreen background;
         private LocalGameScreen localGameScreen;
-        private LoadGameBackground loadGameBackground;
 
         private Container overlayContent;
         private Container leftFloatingOverlayContent;
@@ -173,7 +172,6 @@ namespace Piously.Game
             mainMenuContainer = new MainMenuContainer();
 
             background = new MainMenuBackground();
-            loadGameBackground = new LoadGameBackground();
 
             mainStack.Push(background);
 
@@ -207,7 +205,7 @@ namespace Piously.Game
                 mainMenuContainer.menuButtons.OnExit = () => Environment.Exit(0);
                 mainMenuContainer.menuButtons.OnLocalGame = () =>
                 {
-                    if (!mainStack.CurrentScreen.Equals(loadGameBackground))
+                    if (!mainStack.CurrentScreen.Equals(localGameScreen))
                     {
                         mainMenuContainer.updateState(MainMenuContainerState.Exit);
                         mainStack.Push(localGameScreen);
