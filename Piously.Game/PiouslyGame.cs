@@ -19,6 +19,7 @@ using Piously.Game.Input;
 using Piously.Game.Input.Bindings;
 using Piously.Game.Overlays;
 using Piously.Game.Screens;
+using Piously.Game.Screens.Local;
 using osuTK.Graphics;
 using LogLevel = osu.Framework.Logging.LogLevel;
 
@@ -28,12 +29,12 @@ namespace Piously.Game
     public class PiouslyGame : PiouslyGameBase, IKeyBindingHandler<GlobalAction>
     {
         private MainMenuContainer mainMenuContainer;
-        private LocalGameContainer localGameContainer;
 
         private Container primaryContainer;
 
-        private BackgroundScreenStack backgroundStack;
+        private MainScreenStack mainStack;
         private BackgroundScreen background;
+        private LocalGameScreen localGameScreen;
         private LoadGameBackground loadGameBackground;
 
         private Container overlayContent;
@@ -167,15 +168,14 @@ namespace Piously.Game
             // This prevents the cursor from showing until we have a screen with CursorVisible = true
             MenuCursorContainer.CanShowCursor = true; //TEMP
 
-            backgroundStack = new BackgroundScreenStack();
+            mainStack = new MainScreenStack();
 
             mainMenuContainer = new MainMenuContainer();
-            localGameContainer = new LocalGameContainer();
 
             background = new MainMenuBackground();
             loadGameBackground = new LoadGameBackground();
 
-            backgroundStack.Push(background);
+            mainStack.Push(background);
 
             AddRange(new Drawable[]
             {
@@ -184,7 +184,7 @@ namespace Piously.Game
                     RelativeSizeAxes = Axes.Both,
                     Children = new Drawable[]
                     {
-                        backgroundStack,
+                        mainStack,
                         primaryContainer = new Container { RelativeSizeAxes = Axes.Both },
                     }
                 },
@@ -196,10 +196,8 @@ namespace Piously.Game
             });
 
             loadComponentSingleFile(settings = new SettingsOverlay(), leftFloatingOverlayContent.Add, true);
-            loadComponentSingleFile(localGameContainer, localGame =>
-            {
-                primaryContainer.Add(localGame);
-            });
+
+            localGameScreen = new LocalGameScreen();
 
             loadComponentSingleFile(mainMenuContainer, mainMenu =>
             {
@@ -209,11 +207,10 @@ namespace Piously.Game
                 mainMenuContainer.menuButtons.OnExit = () => Environment.Exit(0);
                 mainMenuContainer.menuButtons.OnLocalGame = () =>
                 {
-                    if (!backgroundStack.CurrentScreen.Equals(loadGameBackground))
+                    if (!mainStack.CurrentScreen.Equals(loadGameBackground))
                     {
-                        backgroundStack.Push(loadGameBackground);
                         mainMenuContainer.updateState(MainMenuContainerState.Exit);
-                        localGameContainer.updateState(LocalGameContainerState.Initial);
+                        mainStack.Push(localGameScreen);
                     }
                 };
             });

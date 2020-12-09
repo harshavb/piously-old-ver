@@ -31,7 +31,7 @@ namespace Piously.Game.Graphics.Containers
 
         private readonly Container sizableContainer;
 
-        private BackgroundScreenStack backgroundStack;
+        private MainScreenStack backgroundStack;
 
         /// <summary>
         /// Create a new instance.
@@ -120,7 +120,7 @@ namespace Piously.Game.Graphics.Containers
                 {
                     if (backgroundStack == null)
                     {
-                        AddInternal(backgroundStack = new BackgroundScreenStack
+                        AddInternal(backgroundStack = new MainScreenStack
                         {
                             Colour = PiouslyColour.Gray(0.1f),
                             Alpha = 0,

@@ -1,16 +1,19 @@
-﻿using System;
-using osuTK;
+﻿using osuTK;
 using osu.Framework.Allocation;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Containers;
+using osu.Framework.Screens;
+using Piously.Game.Graphics.Containers.LocalGame;
 using Piously.Game.Graphics.Containers.LocalGame.CreateGame;
 using Piously.Game.Graphics.Containers.LocalGame.LoadGame;
-namespace Piously.Game.Graphics.Containers.LocalGame
+
+namespace Piously.Game.Screens.Local
 {
-    public class LocalGameContainer : Container
+    public class LocalGameScreen : Screen
     {
-        public LocalGameContainer()
+
+        public LocalGameScreen()
         {
             Alpha = 0;
         }
@@ -20,15 +23,14 @@ namespace Piously.Game.Graphics.Containers.LocalGame
         {
             Anchor = Anchor.Centre;
             Origin = Anchor.Centre;
-            Size = new Vector2(1500, 900);
+            RelativeSizeAxes = Axes.Both;
 
             // ContentContainer
-            Child = new Container
+            AddInternal(new Container
             {
                 Anchor = Anchor.Centre,
                 Origin = Anchor.Centre,
                 RelativeSizeAxes = Axes.Both,
-                Size = new Vector2(1f),
 
                 Children = new Drawable[]
                 {
@@ -50,32 +52,32 @@ namespace Piously.Game.Graphics.Containers.LocalGame
                     // MainContentContainer
                     new MainContentContainer(),
                 }
-            };
+            });
         }
 
-        public void updateState(LocalGameContainerState state = LocalGameContainerState.Initial)
+        public override void OnEntering(IScreen last)
         {
-            switch (state)
-            {
-                // Expand
-                case LocalGameContainerState.Initial:
-                    this.ScaleTo(1f, 500, Easing.None);
-                    this.FadeTo(1, 300, Easing.None);
-                    break;
+            this.ScaleTo(1f, 500, Easing.None);
+            this.FadeTo(1, 300, Easing.None);
+        }
 
-                // Shrink
-                case LocalGameContainerState.Exit:
-                    this.ScaleTo(0.5f, 500, Easing.None);
-                    this.FadeTo(0, 300, Easing.None);
-                    break;
-            }
+        public override bool OnExiting(IScreen last)
+        {
+            this.ScaleTo(0.5f, 500, Easing.None);
+            this.FadeTo(0, 300, Easing.None);
+            return false;
+        }
+
+        public override void OnResuming(IScreen last)
+        {
+            this.ScaleTo(1f, 500, Easing.None);
+            this.FadeTo(1, 300, Easing.None);
+        }
+
+        public override void OnSuspending(IScreen last)
+        {
+            this.ScaleTo(0.5f, 500, Easing.None);
+            this.FadeTo(0, 300, Easing.None);
         }
     }
-
-    public enum LocalGameContainerState
-    {
-        Exit,
-        Initial,
-    }
-        
 }

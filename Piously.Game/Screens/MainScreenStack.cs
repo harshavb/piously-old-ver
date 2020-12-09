@@ -2,13 +2,14 @@
 using osu.Framework.Graphics;
 using osu.Framework.Screens;
 using Piously.Game.Screens.Backgrounds;
+using Piously.Game.Screens.Local;
 using osuTK;
 
 namespace Piously.Game.Screens
 {
-    public class BackgroundScreenStack : ScreenStack
+    public class MainScreenStack : ScreenStack
     {
-        public BackgroundScreenStack()
+        public MainScreenStack()
             : base(false)
         {
             Scale = new Vector2(1.06f);

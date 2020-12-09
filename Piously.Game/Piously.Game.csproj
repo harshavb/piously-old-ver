@@ -22,7 +22,6 @@
     <EmbeddedResource Include="Resources\Textures\**\*" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Screens\Local\" />
     <Folder Include="Graphics\Containers\MainMenu\" />
     <Folder Include="Graphics\Containers\LocalGame\" />
     <Folder Include="Graphics\Containers\LocalGame\CreateGame\" />
