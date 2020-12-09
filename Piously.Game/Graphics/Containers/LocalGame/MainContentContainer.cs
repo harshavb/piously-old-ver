@@ -7,6 +7,7 @@ using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Sprites;
 using Piously.Game.Graphics.Containers.LocalGame.CreateGame;
 using osuTK;
+
 namespace Piously.Game.Graphics.Containers.LocalGame
 {
     public class MainContentContainer : Container
@@ -22,7 +23,7 @@ namespace Piously.Game.Graphics.Containers.LocalGame
             EdgeEffect = new EdgeEffectParameters
             {
                 Type = EdgeEffectType.Shadow,
-                Colour = Colour4.Black,
+                Colour = new PiouslyColour().Gray1,
                 Radius = 10,
                 Roundness = 0.6f,
             };
@@ -40,10 +41,11 @@ namespace Piously.Game.Graphics.Containers.LocalGame
                 // GameRules
                 new SpriteText
                 {
-                    RelativeSizeAxes = Axes.Both,
+                    Anchor = Anchor.TopCentre,
+                    Origin = Anchor.TopCentre,
                     RelativePositionAxes = Axes.Both,
-                    Position = new Vector2(0.33f, 0.025f),
-                    Font = new FontUsage("Aller", 24, null, false, false),
+                    Position = new Vector2(0f, 0.025f),
+                    Font = new FontUsage("Aller", 48, "Bold", false, false),
                     Text = "Game Rules",
                 },
 

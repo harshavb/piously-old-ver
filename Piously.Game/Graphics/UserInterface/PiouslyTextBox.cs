@@ -6,6 +6,7 @@ namespace Piously.Game.Graphics.UserInterface
     {
         public PiouslyTextBox() : base()
         {
+            Colour = PiouslyColour.PiouslyLighterYellow;
         }
     }
 }
