@@ -10,7 +10,7 @@ using osuTK;
 
 namespace Piously.Game.Graphics.Containers.LocalGame
 {
-    public class MainContentContainer : Container
+    public class GameRulesContainer : Container
     {
         [BackgroundDependencyLoader]
         private void load()
@@ -56,7 +56,7 @@ namespace Piously.Game.Graphics.Containers.LocalGame
                 new SaveNameContainer(),
 
                 // TwoPlayerContainer
-                new CreateGame.TwoPlayerContainer(),
+                new TwoPlayerContainer(),
 
                 // StartButtonContainer
                 new StartButtonContainer(),

@@ -9,31 +9,31 @@ namespace Piously.Game.Graphics.Containers.LocalGame
     public class LeftPanelContainer : Container
     {
         [BackgroundDependencyLoader]
-        private void load()
+        private void load(PiouslyColour colour)
         {
             RelativeSizeAxes = Axes.Both;
             RelativePositionAxes = Axes.Both;
-            Size = new Vector2(0.4f, 1f);
-            Position = new Vector2(0.025f, 0f);
+            Size = new Vector2(0.5f, 1f);
+            Position = new Vector2(0f, 0f);
             Children = new Drawable[] {
 
                 // CreateGame
-                new SpriteText
+                new LocalGameButton
                 {
                     RelativeSizeAxes = Axes.Both,
                     RelativePositionAxes = Axes.Both,
                     Position = new Vector2(0f, 0.2f),
-                    Font = new FontUsage("Aller", 48, null, false, false),
+                    Colour = colour.Pink,
                     Text = "Create Game",
                 },
 
                 // LoadGame
-                new SpriteText
+                new LocalGameButton
                 {
                     RelativeSizeAxes = Axes.Both,
                     RelativePositionAxes = Axes.Both,
                     Position = new Vector2(0f, 0.4f),
-                    Font = new FontUsage("Aller", 48, null, false, false),
+                    Colour = colour.Pink,
                     Text = "Load Saved Game",
                 },
             };
