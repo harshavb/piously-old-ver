@@ -221,12 +221,12 @@ namespace Piously.Game
             switch (action)
             {
                 case GlobalAction.Back:
-                    if(!mainStack.CurrentScreen.Equals(background))
+                    if(!mainStack.CurrentScreen.Equals(background) && settings.State.Value == Visibility.Hidden)
                     {
                         mainMenuContainer.updateState(MainMenuContainerState.Initial);
                         mainStack.Exit();
                     }
-                    return true;
+                    break;
                 case GlobalAction.ToggleSettings:
                     settings.ToggleVisibility();
                     return true;
