@@ -33,7 +33,7 @@ namespace Piously.Game.Graphics.Containers.LocalGame
                     Origin = Anchor.Centre,
                     Font = new FontUsage("Aller", 48, null, false, false),
                     Text = Text,
-                    Colour = Color4.Black,
+                    Colour = new Colour4(3f, 3f, 3f, 1f),
                 }
             };
 
