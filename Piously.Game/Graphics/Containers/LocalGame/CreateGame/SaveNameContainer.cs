@@ -55,7 +55,7 @@ namespace Piously.Game.Graphics.Containers.LocalGame.CreateGame
                         Position = Vector2.Zero,
                         Size = new Vector2(1f),
                         Text = "New Game",
-                        PlaceholderText = "None",
+                        PlaceholderText = "Untitled Game",
                         LengthLimit = 16,
 
                     }

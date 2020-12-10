@@ -4,16 +4,17 @@ using osu.Framework.Graphics;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Screens;
+using Piously.Game.Screens.Backgrounds;
 using Piously.Game.Graphics.Containers.LocalGame;
 using Piously.Game.Graphics.Containers.LocalGame.CreateGame;
 using Piously.Game.Graphics.Containers.LocalGame.LoadGame;
 
 namespace Piously.Game.Screens.Local
 {
-    public class LocalGameScreen : Screen
+    public class LocalGameScreen : BackgroundScreen
     {
 
-        public LocalGameScreen()
+        public LocalGameScreen(bool animateOnEnter = true) : base(animateOnEnter, "Menu/load-game-background")
         {
             Alpha = 0;
         }
@@ -31,6 +32,7 @@ namespace Piously.Game.Screens.Local
                 Anchor = Anchor.Centre,
                 Origin = Anchor.Centre,
                 RelativeSizeAxes = Axes.Both,
+                Size = new Vector2(0.8f),
 
                 Children = new Drawable[]
                 {
