@@ -8,6 +8,7 @@ using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Input.Bindings;
 using osu.Framework.Logging;
+using osu.Framework.Screens;
 using osu.Framework.Threading;
 using Piously.Game.Configuration;
 using Piously.Game.Graphics;
@@ -167,13 +168,11 @@ namespace Piously.Game
             // This prevents the cursor from showing until we have a screen with CursorVisible = true
             MenuCursorContainer.CanShowCursor = true; //TEMP
 
-            mainStack = new MainScreenStack();
-
-            mainMenuContainer = new MainMenuContainer();
-
             background = new MainMenuBackground();
 
-            mainStack.Push(background);
+            mainStack = new MainScreenStack(background);
+
+            mainMenuContainer = new MainMenuContainer();
 
             AddRange(new Drawable[]
             {
@@ -195,20 +194,18 @@ namespace Piously.Game
 
             loadComponentSingleFile(settings = new SettingsOverlay(), leftFloatingOverlayContent.Add, true);
 
-            localGameScreen = new LocalGameScreen();
-
             loadComponentSingleFile(mainMenuContainer, mainMenu =>
             {
                 primaryContainer.Add(mainMenu);
 
                 mainMenuContainer.menuButtons.OnSettings = () => settings?.ToggleVisibility();
-                mainMenuContainer.menuButtons.OnExit = () => Environment.Exit(0);
+                mainMenuContainer.menuButtons.OnExit = () => Exit();
                 mainMenuContainer.menuButtons.OnLocalGame = () =>
                 {
                     if (!mainStack.CurrentScreen.Equals(localGameScreen))
                     {
                         mainMenuContainer.updateState(MainMenuContainerState.Exit);
-                        mainStack.Push(localGameScreen);
+                        background.Push(localGameScreen = new LocalGameScreen());
                     }
                 };
             });
@@ -221,10 +218,18 @@ namespace Piously.Game
 
         public bool OnPressed(GlobalAction action)
         {
-            if(action == GlobalAction.ToggleSettings)
+            switch (action)
             {
-                settings.ToggleVisibility();
-                return true;
+                case GlobalAction.Back:
+                    if(!mainStack.CurrentScreen.Equals(background))
+                    {
+                        mainMenuContainer.updateState(MainMenuContainerState.Initial);
+                        mainStack.Exit();
+                    }
+                    return true;
+                case GlobalAction.ToggleSettings:
+                    settings.ToggleVisibility();
+                    return true;
             }
             return false;
         }

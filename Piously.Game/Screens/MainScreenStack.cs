@@ -18,6 +18,15 @@ namespace Piously.Game.Screens
             Origin = Anchor.Centre;
         }
 
+        public MainScreenStack(IScreen baseScreen)
+            : base(baseScreen, false)
+        {
+            Scale = new Vector2(1.06f);
+            RelativeSizeAxes = Axes.Both;
+            Anchor = Anchor.Centre;
+            Origin = Anchor.Centre;
+        }
+
         //public float ParallaxAmount { set => parallax.ParallaxAmount = ParallaxContainer.DEFAULT_PARALLAX_AMOUNT * value; }
 
         public void Push(BackgroundScreen screen)
