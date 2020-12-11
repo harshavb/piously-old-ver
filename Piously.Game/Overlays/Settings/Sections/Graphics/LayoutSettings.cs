@@ -84,7 +84,7 @@ namespace Piously.Game.Overlays.Settings.Sections.Graphics
                 },*/
                 scalingSettings = new FillFlowContainer<SettingsSlider<float>>
                 {
-                    Direction = FillDirection.Vertical,
+                    Direction = osu.Framework.Graphics.Containers.FillDirection.Vertical,
                     RelativeSizeAxes = Axes.X,
                     AutoSizeAxes = Axes.Y,
                     AutoSizeDuration = transition_duration,

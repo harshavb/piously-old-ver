@@ -175,7 +175,7 @@ namespace Piously.Game.Graphics.UserInterface
                     {
                         RelativeSizeAxes = Axes.X;
                         AutoSizeAxes = Axes.Y;
-                        Direction = FillDirection.Horizontal;
+                        Direction = osu.Framework.Graphics.Containers.FillDirection.Horizontal;
 
                         Children = new Drawable[]
                         {

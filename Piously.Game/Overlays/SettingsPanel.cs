@@ -114,7 +114,7 @@ namespace Piously.Game.Overlays
                 {
                     AutoSizeAxes = Axes.Y,
                     RelativeSizeAxes = Axes.X,
-                    Direction = FillDirection.Vertical,
+                    Direction = osu.Framework.Graphics.Containers.FillDirection.Vertical,
                 };
 
             public SettingsSectionsContainer()
