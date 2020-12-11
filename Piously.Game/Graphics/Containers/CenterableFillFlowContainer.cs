@@ -90,6 +90,41 @@ namespace Piously.Game.Graphics.Containers
             // First pass, computing initial flow positions
             Vector2 size = Vector2.Zero;
 
+            //CENTERED FILL FLOW CONTAINER COMPUTATION -> BAD IMPLEMENTATION SHOULD BE FIXED DOWN THE LINE
+            if (direction == FillDirection.Centered)
+            {
+                float lengthOfAllChildren = children.Sum(child => child.BoundingBox.X);
+
+                float startPoint = size.X / 2;
+
+                if (children.Length % 2 == 0)
+                {
+                    startPoint += spacing.X / 2;
+                    for(int i = 0; i < children.Length/2; ++i)
+                    {
+                        startPoint -= children[i].BoundingBox.X;
+                        startPoint -= spacing.X;
+                    }
+                }
+                else
+                {
+                    startPoint -= children[children.Length / 2].BoundingBox.X / 2;
+                    for (int i = 0; i < children.Length / 2; ++i)
+                    {
+                        startPoint -= spacing.X;
+                        startPoint -= children[i].BoundingBox.X;
+                    }
+                }
+
+                for(int i = 0; i < children.Length; ++i)
+                {
+                    result[i] = new Vector2(startPoint, size.Y / 2);
+                    startPoint += children[i].BoundingBox.X + spacing.X;
+                }
+
+                return result;
+            }
+
             for (int i = 0; i < children.Length; ++i)
             {
                 Drawable c = children[i];
@@ -138,7 +173,7 @@ namespace Piously.Game.Graphics.Containers
                 float rowWidth = rowBeginOffset + current.X + (1 - spacingFactor(c).X) * size.X;
 
                 //We've exceeded our allowed width, move to a new row
-                if ((direction != FillDirection.Horizontal && direction != FillDirection.Centered) && (Precision.DefinitelyBigger(rowWidth, max.X) || direction == FillDirection.Vertical || ForceNewRow(c)))
+                if ((direction != FillDirection.Horizontal) && (Precision.DefinitelyBigger(rowWidth, max.X) || direction == FillDirection.Vertical || ForceNewRow(c)))
                 {
                     current.X = 0;
                     current.Y += rowHeight;
