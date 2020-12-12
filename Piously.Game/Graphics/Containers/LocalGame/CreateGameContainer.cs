@@ -15,10 +15,12 @@ namespace Piously.Game.Graphics.Containers.LocalGame
         private void load()
         {
             Masking = true;
+            Anchor = Anchor.Centre;
+            Origin = Anchor.Centre;
             RelativeSizeAxes = Axes.Both;
             RelativePositionAxes = Axes.Both;
             Size = new Vector2(0.45f, 0.85f);
-            Position = new Vector2(0.5f, 0.1f);
+            Position = new Vector2(0.25f, 0f);
             EdgeEffect = new EdgeEffectParameters
             {
                 Type = EdgeEffectType.Shadow,
