@@ -1,4 +1,5 @@
-﻿using osu.Framework.Allocation;
+﻿using System;
+using osu.Framework.Allocation;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Effects;
@@ -11,7 +12,20 @@ namespace Piously.Game.Graphics.Containers.LocalGame
 {
     public class LocalGameButton : CircularContainer
     {
+        private Action action;
+
         private string text = "";
+
+        public Action Action
+        {
+            get => action;
+            set
+            {
+                if (action == value) return;
+
+                action = value;
+            }
+        }
 
         public string Text
         {
@@ -66,6 +80,26 @@ namespace Piously.Game.Graphics.Containers.LocalGame
         {
             this.ResizeTo(new Vector2(0.8f, 0.15f), 50);
             base.OnHoverLost(e);
+        }
+
+        protected override bool OnClick(ClickEvent e)
+        {
+            trigger();
+            return true;
+        }
+
+        private void trigger()
+        {
+            action?.Invoke();
+        }
+
+        protected override bool OnMouseDown(MouseDownEvent e)
+        {
+            return false;
+        }
+
+        protected override void OnMouseUp(MouseUpEvent e)
+        {
         }
     }
 }
