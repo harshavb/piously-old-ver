@@ -7,6 +7,7 @@ using osu.Framework.Graphics.Cursor;
 using osu.Framework.Graphics.Effects;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
+
 namespace Piously.Game.Graphics.Cursor
 {
     public class PiouslyTooltipContainer : TooltipContainer

@@ -1,16 +1,11 @@
 ﻿using System;
 using System.Diagnostics;
-using osu.Framework.Bindables;
 using osu.Framework.Configuration;
 using osu.Framework.Configuration.Tracking;
 using osu.Framework.Extensions;
 using osu.Framework.Platform;
-using osu.Framework.Testing;
 using Piously.Game.Input;
 using Piously.Game.Input.Bindings;
-using Piously.Game.Overlays;
-//using Piously.Game.Screens.Select;
-//using Piously.Game.Screens.Select.Filter;
 
 namespace Piously.Game.Configuration
 {

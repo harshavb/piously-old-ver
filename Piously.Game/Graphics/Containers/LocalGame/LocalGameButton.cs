@@ -6,13 +6,23 @@ using osu.Framework.Graphics.Sprites;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Input.Events;
 using osuTK;
-using osuTK.Graphics;
 
 namespace Piously.Game.Graphics.Containers.LocalGame
 {
     public class LocalGameButton : CircularContainer
     {
-        public string Text { get; set; }
+        private string text = "";
+
+        public string Text
+        {
+            get => text;
+            set
+            {
+                if (text == value) return;
+
+                text = value;
+            }
+        }
 
         [BackgroundDependencyLoader]
         private void load(PiouslyColour colours)
@@ -32,7 +42,7 @@ namespace Piously.Game.Graphics.Containers.LocalGame
                     Anchor = Anchor.Centre,
                     Origin = Anchor.Centre,
                     Font = new FontUsage("Aller", 48, null, false, false),
-                    Text = Text,
+                    Text = text,
                     Colour = new Colour4(1f, 2.667f, 1.6f, 1f),
                 }
             };

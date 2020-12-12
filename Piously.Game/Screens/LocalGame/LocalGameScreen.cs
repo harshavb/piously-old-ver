@@ -6,8 +6,6 @@ using osu.Framework.Graphics.Containers;
 using osu.Framework.Screens;
 using Piously.Game.Screens.Backgrounds;
 using Piously.Game.Graphics.Containers.LocalGame;
-using Piously.Game.Graphics.Containers.LocalGame.CreateGame;
-using Piously.Game.Graphics.Containers.LocalGame.LoadGame;
 
 namespace Piously.Game.Screens.Local
 {

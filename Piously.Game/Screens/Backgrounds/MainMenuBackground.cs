@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace Piously.Game.Screens.Backgrounds
 {
     public class MainMenuBackground : BackgroundScreen

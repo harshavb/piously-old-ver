@@ -1,5 +1,4 @@
-﻿using System;
-using osu.Framework.Allocation;
+﻿using osu.Framework.Allocation;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
 using Piously.Game.Screens.Menu;
@@ -12,8 +11,6 @@ namespace Piously.Game.Graphics.Containers.MainMenu
         public PiouslyLogo logo;
         public ParallaxContainer parallaxContainer;
         public MenuSplitHexagon menuButtons;
-
-        //private MainMenuContainerState lastState = MainMenuContainerState.Initial;
 
         [BackgroundDependencyLoader]
         private void load()

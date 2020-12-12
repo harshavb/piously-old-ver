@@ -56,7 +56,5 @@ namespace Piously.Game.Graphics.Containers.MainMenu
                 },
             };
         }
-
-        
     }
 }
