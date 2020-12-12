@@ -96,8 +96,9 @@ namespace Piously.Game.Graphics.Containers.LocalGame.CreateGame
                 {
                     Anchor = Anchor.BottomCentre,
                     Origin = Anchor.BottomCentre,
-                    Font = new FontUsage("Aller", 32, "Bold", false, false),
+                    Font = new FontUsage("Aller", 26, "Bold", false, false),
                     Text = player == PlayerContainerPlayer.Player1 ? "Goes first" : "Creates the board",
+                    MaxWidth = 250,
                 }
             };
         }
