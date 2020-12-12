@@ -1,4 +1,5 @@
-﻿using osuTK;
+﻿using System;
+using osuTK;
 using osu.Framework.Allocation;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Shapes;
@@ -11,6 +12,8 @@ namespace Piously.Game.Screens.Local
 {
     public class LocalGameScreen : BackgroundScreen
     {
+        private CreateGameContainer createGameContainer;
+        private LoadGameContainer loadGameContainer;
 
         public LocalGameScreen(bool animateOnEnter = true) : base(animateOnEnter, "Menu/load-game-background")
         {
@@ -47,10 +50,16 @@ namespace Piously.Game.Screens.Local
                     new TitleContainer(),
 
                     // LeftPanelContainer
-                    new LeftPanelContainer(),
+                    new LeftPanelContainer {
+                        OnCreateGame = new Action(onCreateGame),
+                        OnLoadSavedGame = new Action(onLoadSavedGame),
+                    },
 
-                    // MainContentContainer
-                    new CreateGameContainer(),
+                    // CreateGameContainer
+                    createGameContainer = new CreateGameContainer(),
+
+                    // LoadGameContainer
+                    loadGameContainer = new LoadGameContainer(),
                 }
             });
         }
@@ -78,6 +87,18 @@ namespace Piously.Game.Screens.Local
         {
             this.ScaleTo(0.5f, 500, Easing.None);
             this.FadeTo(0, 300, Easing.None);
+        }
+
+        private void onCreateGame()
+        {
+            if (!createGameContainer.isVisible) createGameContainer.ToggleVisibility();
+            if (loadGameContainer.isVisible) loadGameContainer.ToggleVisibility();
+        }
+
+        private void onLoadSavedGame()
+        {
+            if (createGameContainer.isVisible) createGameContainer.ToggleVisibility();
+            if (!loadGameContainer.isVisible) loadGameContainer.ToggleVisibility();
         }
     }
 }

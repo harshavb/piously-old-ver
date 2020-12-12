@@ -9,8 +9,10 @@ using osuTK;
 
 namespace Piously.Game.Graphics.Containers.LocalGame
 {
-    public class CreateGameContainer : Container
+    public class CreateGameContainer : VisibilityContainer
     {
+        public bool isVisible = false;
+
         [BackgroundDependencyLoader]
         private void load()
         {
@@ -62,6 +64,18 @@ namespace Piously.Game.Graphics.Containers.LocalGame
                 // StartButtonContainer
                 new StartButtonContainer(),
             };
+        }
+
+        protected override void PopIn()
+        {
+            this.FadeTo(1, 0.5);
+            isVisible = true;
+        }
+
+        protected override void PopOut()
+        {
+            this.FadeTo(0, 0.5);
+            isVisible = false;
         }
     }
 }
