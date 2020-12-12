@@ -50,7 +50,7 @@ namespace Piously.Game.Screens.Local
                     new LeftPanelContainer(),
 
                     // MainContentContainer
-                    new GameRulesContainer(),
+                    new CreateGameContainer(),
                 }
             });
         }
