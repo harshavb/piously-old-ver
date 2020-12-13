@@ -33,30 +33,15 @@ namespace Piously.Game.Graphics.Containers.LocalGame.CreateGame
                 },
 
                 //BorderedContainer
-                new Container
+                new BorderedPiouslyTextBox
                 {
-                    Masking = true,
                     Anchor = Anchor.BottomCentre,
                     Origin = Anchor.BottomCentre,
-                    RelativeSizeAxes = Axes.Both,
-                    RelativePositionAxes = Axes.Both,
                     Size = new Vector2(0.5f, 0.5f),
-                    BorderThickness = 20,
-                    BorderColour = new PiouslyColour().Gray9,
-
-                    Child = new PiouslyTextBox
-                    {
-                        Anchor = Anchor.Centre,
-                        Origin = Anchor.Centre,
-                        RelativePositionAxes = Axes.Both,
-                        RelativeSizeAxes = Axes.Both,
-                        Size = new Vector2(1f),
-                        Text = "10:00",
-                        PlaceholderText = "None",
-                        LengthLimit = 5,
-                        
-                    }
-                }
+                    Text = "10:00",
+                    PlaceholderText = "None",
+                    LengthLimit = 5,
+                },
             };
         }
     }

@@ -39,27 +39,15 @@ namespace Piously.Game.Graphics.Containers.LocalGame.CreateGame
                     Colour = new PiouslyColour().Gray7,
                 },
                 // PlayerNameTextBox
-                new Container
+                new BorderedPiouslyTextBox
                 {
                     Anchor = Anchor.TopCentre,
                     Origin = Anchor.TopCentre,
-                    RelativeSizeAxes = Axes.Both,
                     Size = new Vector2(1f, 0.2f),
-                    Masking = true,
-                    BorderThickness = 20,
-                    BorderColour = new PiouslyColour().Gray9,
-
-                    Child = new PiouslyTextBox
-                    {
-                        Anchor = Anchor.Centre,
-                        Origin = Anchor.Centre,
-                        RelativePositionAxes = Axes.Both,
-                        RelativeSizeAxes = Axes.Both,
-                        Size = new Vector2(0.95f),
-                        Text = player == PlayerContainerPlayer.Player1 ? "Player 1" : "Player 2",
-                        PlaceholderText = "Enter player name",
-                        LengthLimit = 20,
-                    }
+                    Text = "Player 1",
+                    PlaceholderText = "Player 1 Name",
+                    LengthLimit = 16,
+                    BorderColour = Colour4.LightGray,
                 },
 
                 //PlayerSpriteText

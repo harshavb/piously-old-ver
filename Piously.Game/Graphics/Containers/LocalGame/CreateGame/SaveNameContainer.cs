@@ -2,6 +2,7 @@
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Sprites;
+using osu.Framework.Graphics.Shapes;
 using Piously.Game.Graphics.UserInterface;
 using osuTK;
 
@@ -27,37 +28,19 @@ namespace Piously.Game.Graphics.Containers.LocalGame.CreateGame
                     Anchor = Anchor.TopCentre,
                     Origin = Anchor.TopCentre,
                     RelativePositionAxes = Axes.Both,
-                    Position = Vector2.Zero,
                     Font = new FontUsage("Aller", 36, null, false, false),
                     Text = "Create a new save file",
                 },
 
                 //BorderedContainer
-                new Container
+                new BorderedPiouslyTextBox
                 {
-                    Masking = true,
                     Anchor = Anchor.BottomCentre,
                     Origin = Anchor.BottomCentre,
-                    RelativeSizeAxes = Axes.Both,
-                    RelativePositionAxes = Axes.Both,
-                    Position = Vector2.Zero,
                     Size = new Vector2(1f, 0.5f),
-                    BorderThickness = 20,
-                    BorderColour = new PiouslyColour().Gray9,
-
-                    Child = new PiouslyTextBox
-                    {
-                        Anchor = Anchor.Centre,
-                        Origin = Anchor.Centre,
-                        RelativePositionAxes = Axes.Both,
-                        RelativeSizeAxes = Axes.Both,
-                        Position = Vector2.Zero,
-                        Size = new Vector2(1f),
-                        Text = "New Game",
-                        PlaceholderText = "Untitled Game",
-                        LengthLimit = 16,
-
-                    }
+                    Text = "New Save",
+                    PlaceholderText = "Save name",
+                    LengthLimit = 16,
                 }
             };
         }
