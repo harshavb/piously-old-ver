@@ -55,7 +55,7 @@ namespace Piously.Game.Graphics.Containers.LocalGame
                 {
                     Anchor = Anchor.Centre,
                     Origin = Anchor.Centre,
-                    Font = new FontUsage("Aller", 48, null, false, false),
+                    Font = new FontUsage("Aller", 36, null, false, false),
                     Text = text,
                     Colour = new Colour4(1f, 2.667f, 1.6f, 1f),
                 }
@@ -84,6 +84,7 @@ namespace Piously.Game.Graphics.Containers.LocalGame
 
         protected override bool OnClick(ClickEvent e)
         {
+
             trigger();
             return true;
         }
@@ -95,11 +96,13 @@ namespace Piously.Game.Graphics.Containers.LocalGame
 
         protected override bool OnMouseDown(MouseDownEvent e)
         {
+            this.ResizeTo(new Vector2(1.05f, 0.15f), 50);
             return false;
         }
 
         protected override void OnMouseUp(MouseUpEvent e)
         {
+            this.ResizeTo(new Vector2(1f, 0.15f), 50);
         }
     }
 }
