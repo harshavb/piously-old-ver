@@ -70,7 +70,7 @@ namespace Piously.Game.Graphics.Containers.LocalGame
                 new TwoPlayerContainer(),
 
                 // StartButtonContainer
-                new StartButtonContainer(),
+                new ResumeButtonContainer(),
             };
         }
 

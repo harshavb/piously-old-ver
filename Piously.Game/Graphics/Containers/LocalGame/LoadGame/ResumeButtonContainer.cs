@@ -3,12 +3,13 @@ using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
+using Piously.Game.Graphics.Backgrounds;
 using Piously.Game.Graphics.UserInterface;
 using osuTK;
 
 namespace Piously.Game.Graphics.Containers.LocalGame.LoadGame
 {
-    public class StartButtonContainer : CircularContainer
+    public class ResumeButtonContainer : CircularContainer
     {
         [BackgroundDependencyLoader]
         private void load()
@@ -27,7 +28,14 @@ namespace Piously.Game.Graphics.Containers.LocalGame.LoadGame
                 {
                     RelativeSizeAxes = Axes.Both,
                     Size = new Vector2(1f),
-                    Colour = PiouslyColour.PiouslyYellow,
+                    Colour = PiouslyColour.PiouslyDarkYellow,
+                },
+
+                new Hexagons
+                {
+                    ColourLight = PiouslyColour.PiouslyYellow,
+                    ColourDark = PiouslyColour.PiouslyDarkYellow,
+                    RelativeSizeAxes = Axes.Both,
                 },
 
                 new SpriteText
