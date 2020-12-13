@@ -76,13 +76,13 @@ namespace Piously.Game.Graphics.Containers.LocalGame
 
         protected override void PopIn()
         {
-            this.FadeTo(1, 0.5);
+            this.MoveTo(new Vector2(0.25f, 0f), 500);
             isVisible = true;
         }
 
         protected override void PopOut()
         {
-            this.FadeTo(0, 0.5);
+            this.MoveTo(new Vector2(1.5f, 0f), 500);
             isVisible = false;
         }
     }
