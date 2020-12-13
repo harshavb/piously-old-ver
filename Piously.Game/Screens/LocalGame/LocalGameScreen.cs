@@ -1,9 +1,6 @@
 ﻿using System;
-using osuTK;
 using osu.Framework.Allocation;
 using osu.Framework.Graphics;
-using osu.Framework.Graphics.Shapes;
-using osu.Framework.Graphics.Containers;
 using osu.Framework.Screens;
 using Piously.Game.Screens.Backgrounds;
 using Piously.Game.Graphics.Containers.LocalGame;
@@ -12,8 +9,7 @@ namespace Piously.Game.Screens.Local
 {
     public class LocalGameScreen : BackgroundScreen
     {
-        private CreateGameContainer createGameContainer;
-        private LoadGameContainer loadGameContainer;
+        private LocalGameContainer localGameContainer;
 
         public LocalGameScreen(bool animateOnEnter = true) : base(animateOnEnter, "Menu/load-game-background")
         {
@@ -28,39 +24,10 @@ namespace Piously.Game.Screens.Local
             RelativeSizeAxes = Axes.Both;
 
             // ContentContainer
-            AddInternal(new Container
+            AddInternal(localGameContainer = new LocalGameContainer()
             {
-                Anchor = Anchor.Centre,
-                Origin = Anchor.Centre,
-                RelativeSizeAxes = Axes.Both,
-                Size = new Vector2(0.8f),
-
-                Children = new Drawable[]
-                {
-                    // BackgroundDrawing
-                    new Box
-                    {
-                        RelativeSizeAxes = Axes.Both,
-                        RelativePositionAxes = Axes.Both,
-                        Size = new Vector2(1f),
-                        Colour = new Colour4(0.25f, 0.25f, 0.25f, 0.4f),
-                    },
-
-                    // TitleContainer
-                    new TitleContainer(),
-
-                    // LeftPanelContainer
-                    new LeftPanelContainer {
-                        OnCreateGame = new Action(onCreateGame),
-                        OnLoadSavedGame = new Action(onLoadSavedGame),
-                    },
-
-                    // CreateGameContainer
-                    createGameContainer = new CreateGameContainer(),
-
-                    // LoadGameContainer
-                    loadGameContainer = new LoadGameContainer(),
-                }
+                onCreateGame = new Action(onCreateGame),
+                onLoadSavedGame = new Action(onLoadSavedGame),
             });
         }
 
@@ -91,14 +58,14 @@ namespace Piously.Game.Screens.Local
 
         private void onCreateGame()
         {
-            if (!createGameContainer.isVisible) createGameContainer.ToggleVisibility();
-            if (loadGameContainer.isVisible) loadGameContainer.ToggleVisibility();
+            if (!localGameContainer.createGameContainer.isVisible) localGameContainer.createGameContainer.ToggleVisibility();
+            if (localGameContainer.loadGameContainer.isVisible) localGameContainer.loadGameContainer.ToggleVisibility();
         }
 
         private void onLoadSavedGame()
         {
-            if (createGameContainer.isVisible) createGameContainer.ToggleVisibility();
-            if (!loadGameContainer.isVisible) loadGameContainer.ToggleVisibility();
+            if (localGameContainer.createGameContainer.isVisible) localGameContainer.createGameContainer.ToggleVisibility();
+            if (!localGameContainer.loadGameContainer.isVisible) localGameContainer.loadGameContainer.ToggleVisibility();
         }
     }
 }
