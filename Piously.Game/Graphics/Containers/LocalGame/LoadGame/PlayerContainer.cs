@@ -7,7 +7,7 @@ using osu.Framework.Graphics.Effects;
 using Piously.Game.Graphics.UserInterface;
 using osuTK;
 
-namespace Piously.Game.Graphics.Containers.LocalGame.CreateGame
+namespace Piously.Game.Graphics.Containers.LocalGame.LoadGame
 {
     public class PlayerContainer : Container
     {
@@ -38,51 +38,38 @@ namespace Piously.Game.Graphics.Containers.LocalGame.CreateGame
                     Size = new Vector2(1f),
                     Colour = new PiouslyColour().Gray7,
                 },
-                // PlayerNameTextBox
-                new Container
-                {
-                    Anchor = Anchor.TopCentre,
-                    Origin = Anchor.TopCentre,
-                    RelativeSizeAxes = Axes.Both,
-                    Size = new Vector2(1f, 0.2f),
-                    Masking = true,
-                    BorderThickness = 20,
-                    BorderColour = new PiouslyColour().Gray9,
-
-                    Child = new PiouslyTextBox
-                    {
-                        Anchor = Anchor.Centre,
-                        Origin = Anchor.Centre,
-                        RelativePositionAxes = Axes.Both,
-                        RelativeSizeAxes = Axes.Both,
-                        Size = new Vector2(0.95f),
-                        Text = player == PlayerContainerPlayer.Player1 ? "Player 1" : "Player 2",
-                        PlaceholderText = "Enter player name",
-                        LengthLimit = 20,
-                    }
-                },
-
-                //PlayerSpriteText
+                // PlayerNameText
                 new SpriteText
                 {
                     Anchor = Anchor.TopCentre,
                     Origin = Anchor.TopCentre,
                     RelativePositionAxes = Axes.Both,
-                    Position = new Vector2(0f, 0.2f),
-                    Font = new FontUsage("Aller", 32, "Bold", false, false),
+                    Position = new Vector2(0.2f, 0.1f),
+                    Font = new FontUsage("Aller", 32, null, false, false),
                     Text = player == PlayerContainerPlayer.Player1 ? "Player 1" : "Player 2",
+                },
+
+                //PlayerSpriteText
+                new SpriteText
+                {
+                    Anchor = Anchor.TopLeft,
+                    Origin = Anchor.TopLeft,
+                    RelativePositionAxes = Axes.Both,
+                    Position = new Vector2(0.25f, 0.1f),
+                    Font = new FontUsage("Aller", 32, "Bold", false, false),
+                    Text = player == PlayerContainerPlayer.Player1 ? "P1" : "P2",
                 },
 
                 //CircularBlackWhiteContainer
                 new CircularContainer
                 {
                     Masking = true,
-                    Anchor = Anchor.Centre,
-                    Origin = Anchor.Centre,
+                    Anchor = Anchor.TopLeft,
+                    Origin = Anchor.TopLeft,
                     RelativePositionAxes = Axes.Both,
                     RelativeSizeAxes = Axes.Both,
-                    Position = new Vector2(0f, 0.1f),
-                    Size = new Vector2(0.3f, 0.343f),
+                    Position = new Vector2(0.05f, 0.1f),
+                    Size = new Vector2(0.12f, 0.3f),
                     Child = new Box
                     {
                         RelativeSizeAxes = Axes.Both,
@@ -97,7 +84,7 @@ namespace Piously.Game.Graphics.Containers.LocalGame.CreateGame
                     Anchor = Anchor.BottomCentre,
                     Origin = Anchor.BottomCentre,
                     Font = new FontUsage("Aller", 26, "Bold", false, false),
-                    Text = player == PlayerContainerPlayer.Player1 ? "Goes first" : "Creates the board",
+                    Text = player == PlayerContainerPlayer.Player1 ? "Went first" : "Created the board",
                 }
             };
         }

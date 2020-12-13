@@ -6,7 +6,7 @@ using osu.Framework.Graphics.Sprites;
 using Piously.Game.Graphics.UserInterface;
 using osuTK;
 
-namespace Piously.Game.Graphics.Containers.LocalGame.CreateGame
+namespace Piously.Game.Graphics.Containers.LocalGame.LoadGame
 {
     public class StartButtonContainer : CircularContainer
     {
@@ -35,7 +35,7 @@ namespace Piously.Game.Graphics.Containers.LocalGame.CreateGame
                     Anchor = Anchor.Centre,
                     Origin = Anchor.Centre,
                     Font = new FontUsage("Aller", 40, "Bold", false, false),
-                    Text = "START",
+                    Text = "RESUME",
                 },
 
                 new PiouslyButton
