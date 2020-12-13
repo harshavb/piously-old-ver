@@ -19,8 +19,7 @@ namespace Piously.Game.Graphics.Containers.LocalGame
         {
             Anchor = Anchor.Centre;
             Origin = Anchor.Centre;
-            RelativeSizeAxes = Axes.Both;
-            Size = new Vector2(0.8f);
+            Size = new Vector2(1000, 650);
 
             Children = new Drawable[]
             {
