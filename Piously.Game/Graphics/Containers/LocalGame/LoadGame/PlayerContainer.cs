@@ -45,7 +45,7 @@ namespace Piously.Game.Graphics.Containers.LocalGame.LoadGame
                     Origin = Anchor.TopCentre,
                     RelativePositionAxes = Axes.Both,
                     Position = new Vector2(0.2f, 0.1f),
-                    Font = new FontUsage("Aller", 32, null, false, false),
+                    Font = new FontUsage("Aller", 24, null, false, false),
                     Text = player == PlayerContainerPlayer.Player1 ? "Player 1" : "Player 2",
                 },
 
@@ -56,7 +56,7 @@ namespace Piously.Game.Graphics.Containers.LocalGame.LoadGame
                     Origin = Anchor.TopLeft,
                     RelativePositionAxes = Axes.Both,
                     Position = new Vector2(0.25f, 0.1f),
-                    Font = new FontUsage("Aller", 32, "Bold", false, false),
+                    Font = new FontUsage("Aller", 24, "Bold", false, false),
                     Text = player == PlayerContainerPlayer.Player1 ? "P1" : "P2",
                 },
 
@@ -69,7 +69,7 @@ namespace Piously.Game.Graphics.Containers.LocalGame.LoadGame
                     RelativePositionAxes = Axes.Both,
                     RelativeSizeAxes = Axes.Both,
                     Position = new Vector2(0.05f, 0.1f),
-                    Size = new Vector2(0.12f, 0.3f),
+                    Size = new Vector2(0.12f, 0.2f),
                     Child = new Box
                     {
                         RelativeSizeAxes = Axes.Both,
@@ -83,7 +83,9 @@ namespace Piously.Game.Graphics.Containers.LocalGame.LoadGame
                 {
                     Anchor = Anchor.BottomCentre,
                     Origin = Anchor.BottomCentre,
-                    Font = new FontUsage("Aller", 26, "Bold", false, false),
+                    RelativePositionAxes = Axes.Both,
+                    Position = new Vector2(0f, -0.05f),
+                    Font = new FontUsage("Aller", 20, "Bold", false, false),
                     Text = player == PlayerContainerPlayer.Player1 ? "Went first" : "Created the board",
                 }
             };

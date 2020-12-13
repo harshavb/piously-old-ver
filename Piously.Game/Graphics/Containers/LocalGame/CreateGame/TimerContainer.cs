@@ -40,7 +40,7 @@ namespace Piously.Game.Graphics.Containers.LocalGame.CreateGame
                     Origin = Anchor.BottomCentre,
                     RelativeSizeAxes = Axes.Both,
                     RelativePositionAxes = Axes.Both,
-                    Size = new Vector2(0.4f, 0.5f),
+                    Size = new Vector2(0.5f, 0.5f),
                     BorderThickness = 20,
                     BorderColour = new PiouslyColour().Gray9,
 
