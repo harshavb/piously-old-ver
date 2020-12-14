@@ -41,7 +41,7 @@ namespace Piously.Game.Graphics.Containers.LocalGame
         [BackgroundDependencyLoader]
         private void load(PiouslyColour colours)
         {
-            Size = new Vector2(0.8f, 0.15f);
+            Size = new Vector2(3f, 0.15f);
             Masking = true;
 
             Children = new Drawable[]
@@ -53,11 +53,13 @@ namespace Piously.Game.Graphics.Containers.LocalGame
                 },
                 new SpriteText
                 {
-                    Anchor = Anchor.Centre,
-                    Origin = Anchor.Centre,
+                    Anchor = Anchor.CentreLeft,
+                    Origin = Anchor.CentreLeft,
                     Font = new FontUsage("Aller", 36, null, false, false),
                     Text = text,
                     Colour = new Colour4(1f, 2.667f, 1.6f, 1f),
+                    RelativePositionAxes = Axes.Both,
+                    Position = new Vector2(0.8f, 0f),
                 }
             };
 
@@ -72,13 +74,13 @@ namespace Piously.Game.Graphics.Containers.LocalGame
 
         protected override bool OnHover(HoverEvent e)
         {
-            this.ResizeTo(new Vector2(1f, 0.15f), 50);
+            this.ResizeTo(new Vector2(3.2f, 0.15f), 50);
             return base.OnHover(e);
         }
 
         protected override void OnHoverLost(HoverLostEvent e)
         {
-            this.ResizeTo(new Vector2(0.8f, 0.15f), 50);
+            this.ResizeTo(new Vector2(3f, 0.15f), 50);
             base.OnHoverLost(e);
         }
 
@@ -96,13 +98,13 @@ namespace Piously.Game.Graphics.Containers.LocalGame
 
         protected override bool OnMouseDown(MouseDownEvent e)
         {
-            this.ResizeTo(new Vector2(1.05f, 0.15f), 50);
+            this.ResizeTo(new Vector2(3.25f, 0.15f), 50);
             return false;
         }
 
         protected override void OnMouseUp(MouseUpEvent e)
         {
-            this.ResizeTo(new Vector2(1f, 0.15f), 50);
+            this.ResizeTo(new Vector2(3.2f, 0.15f), 50);
         }
     }
 }

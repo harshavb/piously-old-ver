@@ -14,7 +14,6 @@ namespace Piously.Game.Graphics.Containers.LocalGame
         [BackgroundDependencyLoader]
         private void load(PiouslyColour colour)
         {
-            Masking = true;
             RelativeSizeAxes = Axes.Both;
             RelativePositionAxes = Axes.Both;
             Size = new Vector2(0.5f, 1f);
@@ -26,7 +25,7 @@ namespace Piously.Game.Graphics.Containers.LocalGame
                 {
                     RelativeSizeAxes = Axes.Both,
                     RelativePositionAxes = Axes.Both,
-                    Position = new Vector2(-0.1f, 0.2f),
+                    Position = new Vector2(-2.3f, 0.2f),
                     Colour = colour.Pink,
                     Text = "Create Game",
                     Action = OnCreateGame,
@@ -37,7 +36,7 @@ namespace Piously.Game.Graphics.Containers.LocalGame
                 {
                     RelativeSizeAxes = Axes.Both,
                     RelativePositionAxes = Axes.Both,
-                    Position = new Vector2(-0.1f, 0.4f),
+                    Position = new Vector2(-2.3f, 0.4f),
                     Colour = colour.Pink,
                     Text = "Load Saved Game",
                     Action = OnLoadSavedGame,
