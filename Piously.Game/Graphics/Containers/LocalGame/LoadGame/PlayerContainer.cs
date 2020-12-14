@@ -67,9 +67,8 @@ namespace Piously.Game.Graphics.Containers.LocalGame.LoadGame
                     Anchor = Anchor.TopLeft,
                     Origin = Anchor.TopLeft,
                     RelativePositionAxes = Axes.Both,
-                    RelativeSizeAxes = Axes.Both,
                     Position = new Vector2(0.05f, 0.1f),
-                    Size = new Vector2(0.12f, 0.2f),
+                    Size = new Vector2(25),
                     Child = new Box
                     {
                         RelativeSizeAxes = Axes.Both,
