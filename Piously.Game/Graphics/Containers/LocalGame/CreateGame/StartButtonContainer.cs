@@ -12,7 +12,7 @@ namespace Piously.Game.Graphics.Containers.LocalGame.CreateGame
     public class StartButtonContainer : CircularContainer
     {
         [BackgroundDependencyLoader]
-        private void load()
+        private void load(PiouslyColour colour)
         {
             Anchor = Anchor.BottomCentre;
             Origin = Anchor.BottomCentre;
@@ -28,14 +28,16 @@ namespace Piously.Game.Graphics.Containers.LocalGame.CreateGame
                 {
                     RelativeSizeAxes = Axes.Both,
                     Size = new Vector2(1f),
-                    Colour = PiouslyColour.PiouslyDarkYellow,
+                    Colour = colour.Yellow,
                 },
 
                 new Hexagons
                 {
-                    ColourLight = PiouslyColour.PiouslyYellow,
-                    ColourDark = PiouslyColour.PiouslyDarkYellow,
+                    HexagonScale = 2,
+                    ColourLight = colour.YellowDark,
+                    ColourDark = colour.YellowLight,
                     RelativeSizeAxes = Axes.Both,
+                    Size = new Vector2(1f, 3f),
                 },
 
                 new SpriteText
