@@ -25,7 +25,7 @@ namespace Piously.Game.Graphics.Containers.LocalGame
                 {
                     RelativeSizeAxes = Axes.Both,
                     RelativePositionAxes = Axes.Both,
-                    Position = new Vector2(-2.3f, 0.2f),
+                    Position = new Vector2(-2.3f, 0.25f),
                     Colour = colour.Pink,
                     Text = "Create Game",
                     Action = OnCreateGame,
@@ -36,7 +36,7 @@ namespace Piously.Game.Graphics.Containers.LocalGame
                 {
                     RelativeSizeAxes = Axes.Both,
                     RelativePositionAxes = Axes.Both,
-                    Position = new Vector2(-2.3f, 0.4f),
+                    Position = new Vector2(-2.3f, 0.45f),
                     Colour = colour.Pink,
                     Text = "Load Saved Game",
                     Action = OnLoadSavedGame,
