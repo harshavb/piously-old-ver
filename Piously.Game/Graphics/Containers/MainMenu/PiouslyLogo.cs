@@ -61,7 +61,7 @@ namespace Piously.Game.Graphics.Containers.MainMenu
                                 ColourLight = PiouslyColour.PiouslyLighterYellow,
                                 ColourDark = PiouslyColour.PiouslyYellow,
                                 RelativeSizeAxes = Axes.Both,
-                                Size = new Vector2(1f, 3f),
+                                Size = new Vector2(1f, 2f),
                             }
                         }
                     }
