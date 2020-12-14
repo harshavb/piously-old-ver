@@ -19,19 +19,10 @@ namespace Piously.Game.Graphics.Containers.LocalGame
         {
             Anchor = Anchor.Centre;
             Origin = Anchor.Centre;
-            Size = new Vector2(1000, 650);
+            Size = new Vector2(1250, 677);
 
             Children = new Drawable[]
             {
-                // BackgroundDrawing
-                new Box
-                {
-                    RelativeSizeAxes = Axes.Both,
-                    RelativePositionAxes = Axes.Both,
-                    Size = new Vector2(1f),
-                    Colour = new Colour4(0.25f, 0.25f, 0.25f, 0.4f),
-                },
-
                 // TitleContainer
                 new TitleContainer(),
 
