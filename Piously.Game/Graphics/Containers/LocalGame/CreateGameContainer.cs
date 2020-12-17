@@ -17,11 +17,10 @@ namespace Piously.Game.Graphics.Containers.LocalGame
         private void load()
         {
             Masking = true;
-            Anchor = Anchor.Centre;
-            Origin = Anchor.Centre;
-            RelativePositionAxes = Axes.Both;
-            Size = new Vector2(562, 575);
-            Position = new Vector2(0.25f, 0f);
+            Anchor = Anchor.CentreRight;
+            Origin = Anchor.CentreRight;
+            Size = new Vector2(550, 575);
+            Position = new Vector2(0, 0);
             EdgeEffect = new EdgeEffectParameters
             {
                 Type = EdgeEffectType.Shadow,
@@ -67,13 +66,13 @@ namespace Piously.Game.Graphics.Containers.LocalGame
 
         protected override void PopIn()
         {
-            this.MoveTo(new Vector2(0.25f, 0f), 200, Easing.OutQuad);
+            this.MoveTo(new Vector2(0, 0), 200, Easing.OutQuad);
             isVisible = true;
         }
 
         protected override void PopOut()
         {
-            this.MoveTo(new Vector2(1.5f, 0f), 200, Easing.OutQuad);
+            this.MoveTo(new Vector2(1000, 0), 200, Easing.OutQuad);
             isVisible = false;
         }
     }

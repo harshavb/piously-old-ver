@@ -17,9 +17,8 @@ namespace Piously.Game.Graphics.Containers.LocalGame
         [BackgroundDependencyLoader]
         private void load()
         {
-            Anchor = Anchor.Centre;
-            Origin = Anchor.Centre;
             RelativeSizeAxes = Axes.Both;
+            Size = new Vector2(0.9f, 1f);
             //Size = new Vector2(1250, 677);
 
             Children = new Drawable[]
@@ -29,7 +28,7 @@ namespace Piously.Game.Graphics.Containers.LocalGame
                 {
                     Anchor = Anchor.TopLeft,
                     Origin = Anchor.TopLeft,
-                    Position = new Vector2(150, 75),
+                    Position = new Vector2(150, 100),
                     Font = new FontUsage("Aller", 64, "Bold", false, false),
                     Text = "Local Game",
                 },

@@ -30,6 +30,7 @@ namespace Piously.Game.Graphics.Containers.LocalGame
                     Colour = colour.Pink,
                     Text = "Create Game",
                     Action = OnCreateGame,
+                    IsCreateGame = true,
                 },
 
                 // LoadGame
