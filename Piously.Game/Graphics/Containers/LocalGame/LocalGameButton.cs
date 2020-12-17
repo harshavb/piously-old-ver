@@ -60,7 +60,7 @@ namespace Piously.Game.Graphics.Containers.LocalGame
                     Text = text,
                     Colour = new Colour4(1f, 2.667f, 1.6f, 1f),
                     RelativePositionAxes = Axes.Both,
-                    Position = new Vector2(0.3555f, 0f),
+                    Position = new Vector2(0.3955f, 0f),
                 }
             };
 

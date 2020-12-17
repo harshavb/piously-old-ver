@@ -19,9 +19,8 @@ namespace Piously.Game.Graphics.Containers.LocalGame
             Masking = true;
             Anchor = Anchor.Centre;
             Origin = Anchor.Centre;
-            RelativeSizeAxes = Axes.Both;
             RelativePositionAxes = Axes.Both;
-            Size = new Vector2(0.45f, 0.85f);
+            Size = new Vector2(562, 575);
             Position = new Vector2(0.25f, 0f);
             EdgeEffect = new EdgeEffectParameters
             {

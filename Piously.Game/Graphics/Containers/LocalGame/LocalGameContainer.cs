@@ -2,6 +2,7 @@
 using osu.Framework.Allocation;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
+using osu.Framework.Graphics.Sprites;
 using osuTK;
 
 namespace Piously.Game.Graphics.Containers.LocalGame
@@ -18,12 +19,20 @@ namespace Piously.Game.Graphics.Containers.LocalGame
         {
             Anchor = Anchor.Centre;
             Origin = Anchor.Centre;
-            Size = new Vector2(1250, 677);
+            RelativeSizeAxes = Axes.Both;
+            //Size = new Vector2(1250, 677);
 
             Children = new Drawable[]
             {
                 // TitleContainer
-                new TitleContainer(),
+                new SpriteText
+                {
+                    Anchor = Anchor.TopLeft,
+                    Origin = Anchor.TopLeft,
+                    Position = new Vector2(150, 75),
+                    Font = new FontUsage("Aller", 64, "Bold", false, false),
+                    Text = "Local Game",
+                },
 
                 // LeftPanelContainer
                 new LeftPanelContainer {

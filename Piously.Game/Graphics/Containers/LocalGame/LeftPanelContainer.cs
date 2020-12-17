@@ -14,9 +14,10 @@ namespace Piously.Game.Graphics.Containers.LocalGame
         [BackgroundDependencyLoader]
         private void load(PiouslyColour colour)
         {
-            RelativeSizeAxes = Axes.Both;
+            Anchor = Anchor.CentreLeft;
+            Origin = Anchor.CentreLeft;
             RelativePositionAxes = Axes.Both;
-            Size = new Vector2(0.5f, 1f);
+            Size = new Vector2(750, 677);
             Position = new Vector2(0f, 0f);
             Children = new Drawable[] {
 
