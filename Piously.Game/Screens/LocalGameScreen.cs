@@ -5,7 +5,7 @@ using osu.Framework.Screens;
 using Piously.Game.Screens.Backgrounds;
 using Piously.Game.Graphics.Containers.LocalGame;
 
-namespace Piously.Game.Screens.Local
+namespace Piously.Game.Screens
 {
     public class LocalGameScreen : BackgroundScreen
     {

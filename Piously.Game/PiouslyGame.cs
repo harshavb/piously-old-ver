@@ -19,7 +19,6 @@ using Piously.Game.Input;
 using Piously.Game.Input.Bindings;
 using Piously.Game.Overlays;
 using Piously.Game.Screens;
-using Piously.Game.Screens.Local;
 using osuTK.Graphics;
 using LogLevel = osu.Framework.Logging.LogLevel;
 
