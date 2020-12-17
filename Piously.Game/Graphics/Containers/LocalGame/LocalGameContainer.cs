@@ -2,7 +2,6 @@
 using osu.Framework.Allocation;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
-using osu.Framework.Graphics.Shapes;
 using osuTK;
 
 namespace Piously.Game.Graphics.Containers.LocalGame
