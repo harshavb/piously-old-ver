@@ -54,13 +54,13 @@ namespace Piously.Game.Graphics.Containers.LocalGame
                 },
                 new SpriteText
                 {
-                    Anchor = Anchor.CentreLeft,
-                    Origin = Anchor.CentreLeft,
+                    Anchor = Anchor.Centre,
+                    Origin = Anchor.Centre,
                     Font = new FontUsage("Aller", 36, null, false, false),
                     Text = text,
                     Colour = new Colour4(1f, 2.667f, 1.6f, 1f),
                     RelativePositionAxes = Axes.Both,
-                    Position = new Vector2(0.8f, 0f),
+                    Position = new Vector2(0.35f, 0f),
                 }
             };
 
