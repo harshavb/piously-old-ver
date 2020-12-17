@@ -13,6 +13,7 @@ namespace Piously.Game.Graphics.Containers.LocalGame
     public class LocalGameButton : CircularContainer
     {
         private Action action;
+        private bool isMouseDown = false;
 
         private string text = "";
 
@@ -74,14 +75,16 @@ namespace Piously.Game.Graphics.Containers.LocalGame
 
         protected override bool OnHover(HoverEvent e)
         {
-            this.ResizeTo(new Vector2(3.2f, 0.15f), 50);
+            if(!isMouseDown)
+                this.ResizeTo(new Vector2(3.2f, 0.15f), 50);
             return base.OnHover(e);
         }
 
         protected override void OnHoverLost(HoverLostEvent e)
         {
-            this.ResizeTo(new Vector2(3f, 0.15f), 50);
-            base.OnHoverLost(e);
+            if(!isMouseDown)
+                this.ResizeTo(new Vector2(3f, 0.15f), 50);
+            
         }
 
         protected override bool OnClick(ClickEvent e)
@@ -99,12 +102,17 @@ namespace Piously.Game.Graphics.Containers.LocalGame
         protected override bool OnMouseDown(MouseDownEvent e)
         {
             this.ResizeTo(new Vector2(3.25f, 0.15f), 50);
+            isMouseDown = true;
             return false;
         }
 
         protected override void OnMouseUp(MouseUpEvent e)
         {
-            this.ResizeTo(new Vector2(3.2f, 0.15f), 50);
+            if(IsHovered)
+                this.ResizeTo(new Vector2(3.2f, 0.15f), 50);
+            else
+                this.ResizeTo(new Vector2(3f, 0.15f), 50);
+            isMouseDown = false;
         }
     }
 }
