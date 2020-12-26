@@ -1,4 +1,5 @@
-﻿using osu.Framework.Allocation;
+﻿using System;
+using osu.Framework.Allocation;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
 using osuTK;
@@ -11,20 +12,6 @@ namespace Piously.Game.Graphics.Containers
         private Vector2 offset;
 
         public Vector2 Offset
-        {
-            get => offset;
-            set
-            {
-                if (offset == value) return;
-
-                offset = value;
-            }
-        }
-
-        //spacing variable
-        private Vector2 spacing;
-
-        public Vector2 Spacing
         {
             get => offset;
             set
@@ -49,7 +36,18 @@ namespace Piously.Game.Graphics.Containers
             }
         }
 
-        private float hexagonHeights;
+        private float hexagonHeight;
+
+        public float HexagonHeight
+        {
+            get => hexagonHeight;
+            set
+            {
+                if (hexagonHeight == value) return;
+
+                hexagonHeight = value;
+            }
+        }
 
         //We want the amount of hexagons to not affect the size of the total HexagonGroup.
         //Hexagons will be oriented with a flat side on the bottom by default.
@@ -57,17 +55,24 @@ namespace Piously.Game.Graphics.Containers
         [BackgroundDependencyLoader]
         private void load()
         {
-            RelativeSizeAxes = Axes.Both;
+            AutoSizeAxes = Axes.Both;
 
-
-
-            Children = new HexagonalContainer[]
+            for(int i = 0; i < hexagons.Length; i++)
             {
-                new HexagonalContainer
+                for(int j = 0; j < hexagons.Length; j++)
                 {
-
+                    if(hexagons[i][j])
+                    {
+                        Add(new HexagonalContainer
+                        {
+                            Size = new Vector2(hexagonHeight),
+                            Anchor = Anchor.TopLeft,
+                            Origin = Anchor.TopLeft,
+                            Position = new Vector2(j * 3 * MathF.Sqrt(3) / 8, hexagonHeight * i - (0.5f * hexagonHeight * j)),
+                        });
+                    }
                 }
-            };
+            }
         }
     }
 }
