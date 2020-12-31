@@ -30,7 +30,7 @@ namespace Piously.Game.Graphics.Containers.LocalGame
                         Origin = Anchor.TopLeft,
                         Size = new Vector2(200, 200),
                         Colour = PiouslyColour.PiouslyLightYellow,
-                    }; ;
+                    };
                 }
             }
 
