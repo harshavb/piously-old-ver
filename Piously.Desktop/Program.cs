@@ -11,7 +11,6 @@ namespace Piously.Desktop
         [STAThread]
         public static int Main(string[] args)
         {
-
             using (SentrySdk.Init("https://2f1d113b6b3248f684c0b39dd39cd96a@o468392.ingest.sentry.io/5576208"))
             using (GameHost host = Host.GetSuitableHost(@"Piously", useOsuTK: false))
             {
