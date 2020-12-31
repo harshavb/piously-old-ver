@@ -2,7 +2,9 @@
 using osu.Framework.Allocation;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
+using osu.Framework.Graphics.Effects;
 using osu.Framework.Graphics.Sprites;
+using Piously.Game.Graphics.Shapes;
 using osuTK;
 
 namespace Piously.Game.Graphics.Containers.LocalGame
@@ -17,7 +19,7 @@ namespace Piously.Game.Graphics.Containers.LocalGame
         [BackgroundDependencyLoader]
         private void load()
         {
-            HexagonalContainer[,] hexagons = new HexagonalContainer[20, 20];
+            HexagonalContainer[,] hexagons = new HexagonalContainer[5, 5];
 
             for(int i = 0; i < hexagons.GetLength(0); i++)
             {
@@ -25,11 +27,22 @@ namespace Piously.Game.Graphics.Containers.LocalGame
                 {
                     hexagons[i, j] = new HexagonalContainer
                     {
-                        RelativeSizeAxes = Axes.Both,
+                        Masking = true,
                         Anchor = Anchor.TopLeft,
                         Origin = Anchor.TopLeft,
                         Size = new Vector2(200, 200),
-                        Colour = PiouslyColour.PiouslyLightYellow,
+                        Child = new Hexagon
+                        {
+                            RelativeSizeAxes = Axes.Both,
+                            Colour = PiouslyColour.PiouslyYellow,
+                        },
+                        EdgeEffect = new EdgeEffectParameters
+                        {
+                            Type = EdgeEffectType.Shadow,
+                            Colour = new PiouslyColour().Gray1,
+                            Radius = 10,
+                            Roundness = 0.6f,
+                        },
                     };
                 }
             }
@@ -42,6 +55,8 @@ namespace Piously.Game.Graphics.Containers.LocalGame
             {
                 new HexagonGroup
                 {
+                    Anchor = Anchor.Centre,
+                    Origin = Anchor.Centre,
                     Hexagons = hexagons,
                 },
 
