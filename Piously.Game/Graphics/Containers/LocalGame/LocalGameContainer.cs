@@ -17,12 +17,34 @@ namespace Piously.Game.Graphics.Containers.LocalGame
         [BackgroundDependencyLoader]
         private void load()
         {
+            HexagonalContainer[,] hexagons = new HexagonalContainer[20, 20];
+
+            for(int i = 0; i < hexagons.GetLength(0); i++)
+            {
+                for(int j = 0; j < hexagons.GetLength(1); j++)
+                {
+                    hexagons[i, j] = new HexagonalContainer
+                    {
+                        RelativeSizeAxes = Axes.Both,
+                        Anchor = Anchor.TopLeft,
+                        Origin = Anchor.TopLeft,
+                        Size = new Vector2(200, 200),
+                        Colour = PiouslyColour.PiouslyLightYellow,
+                    }; ;
+                }
+            }
+
             RelativeSizeAxes = Axes.Both;
             Size = new Vector2(0.9f, 1f);
             //Size = new Vector2(1250, 677);
 
             Children = new Drawable[]
             {
+                new HexagonGroup
+                {
+                    Hexagons = hexagons,
+                },
+
                 // TitleContainer
                 new SpriteText
                 {

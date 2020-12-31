@@ -23,9 +23,9 @@ namespace Piously.Game.Graphics.Containers
         }
 
         //2D array representing hexagons, the length of each dimension representing how many hexagons should exist.
-        private HexagonalContainer[][] hexagons;
+        private HexagonalContainer[,] hexagons;
 
-        public HexagonalContainer[][] Hexagons
+        public HexagonalContainer[,] Hexagons
         {
             get => hexagons;
             set
@@ -36,37 +36,21 @@ namespace Piously.Game.Graphics.Containers
             }
         }
 
-        private float hexagonHeight;
-
-        public float HexagonHeight
-        {
-            get => hexagonHeight;
-            set
-            {
-                if (hexagonHeight == value) return;
-
-                hexagonHeight = value;
-            }
-        }
-
-        //We want the amount of hexagons to not affect the size of the total HexagonGroup.
-        //Hexagons will be oriented with a flat side on the bottom by default.
-
         [BackgroundDependencyLoader]
         private void load()
         {
             AutoSizeAxes = Axes.Both;
 
-            for(int i = 0; i < hexagons.Length; i++)
+            for(int i = 0; i < hexagons.GetLength(0); i++)
             {
-                for(int j = 0; j < hexagons.Length; j++)
+                for(int j = 0; j < hexagons.GetLength(1); j++)
                 {
-                    if(hexagons[i][j] != null)
+                    if(hexagons[i,j] != null)
                     {
-                        hexagons[i][j].Anchor = Anchor.TopLeft;
-                        hexagons[i][j].Origin = Anchor.TopLeft;
-                        hexagons[i][j].Position = new Vector2(j * 3 * MathF.Sqrt(3) / 8, hexagons[i][j].Size.Y * i - (0.5f * hexagons[i][j].Size.Y * j));
-                        Add(hexagons[i][j]);
+                        hexagons[i,j].Anchor = Anchor.TopLeft;
+                        hexagons[i,j].Origin = Anchor.TopLeft;
+                        hexagons[i,j].Position = new Vector2(j * 3 * MathF.Sqrt(3) / 8, hexagons[i,j].Size.Y * i - (0.5f * hexagons[i,j].Size.Y * j));
+                        Add(hexagons[i,j]);
                     }
                 }
             }
