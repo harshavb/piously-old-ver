@@ -23,9 +23,9 @@ namespace Piously.Game.Graphics.Containers
         }
 
         //2D array representing hexagons, the length of each dimension representing how many hexagons should exist.
-        private bool[][] hexagons;
+        private HexagonalContainer[][] hexagons;
 
-        public bool[][] Hexagons
+        public HexagonalContainer[][] Hexagons
         {
             get => hexagons;
             set
@@ -61,15 +61,12 @@ namespace Piously.Game.Graphics.Containers
             {
                 for(int j = 0; j < hexagons.Length; j++)
                 {
-                    if(hexagons[i][j])
+                    if(hexagons[i][j] != null)
                     {
-                        Add(new HexagonalContainer
-                        {
-                            Size = new Vector2(hexagonHeight),
-                            Anchor = Anchor.TopLeft,
-                            Origin = Anchor.TopLeft,
-                            Position = new Vector2(j * 3 * MathF.Sqrt(3) / 8, hexagonHeight * i - (0.5f * hexagonHeight * j)),
-                        });
+                        hexagons[i][j].Anchor = Anchor.TopLeft;
+                        hexagons[i][j].Origin = Anchor.TopLeft;
+                        hexagons[i][j].Position = new Vector2(j * 3 * MathF.Sqrt(3) / 8, hexagons[i][j].Size.Y * i - (0.5f * hexagons[i][j].Size.Y * j));
+                        Add(hexagons[i][j]);
                     }
                 }
             }
