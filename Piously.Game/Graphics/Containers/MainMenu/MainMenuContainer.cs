@@ -94,7 +94,6 @@ namespace Piously.Game.Graphics.Containers.MainMenu
                     break;
             }
         }
-
     }
 
     public enum MainMenuContainerState
