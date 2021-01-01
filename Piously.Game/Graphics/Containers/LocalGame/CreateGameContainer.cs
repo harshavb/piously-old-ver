@@ -34,8 +34,6 @@ namespace Piously.Game.Graphics.Containers.LocalGame
                 new Box
                 {
                     RelativeSizeAxes = Axes.Both,
-                    RelativePositionAxes = Axes.Both,
-                    Size = new Vector2(1f),
                     Colour = new Colour4(0.2f, 0.2f, 0.2f, 0.4f),
                 },
 
@@ -69,7 +67,7 @@ namespace Piously.Game.Graphics.Containers.LocalGame
             this.MoveTo(new Vector2(0, 0), 200, Easing.OutQuad);
             isVisible = true;
         }
-
+        
         protected override void PopOut()
         {
             this.MoveTo(new Vector2(1000, 0), 200, Easing.OutQuad);
