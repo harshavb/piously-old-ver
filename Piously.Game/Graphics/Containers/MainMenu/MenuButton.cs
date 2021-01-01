@@ -30,7 +30,6 @@ namespace Piously.Game.Graphics.Containers.MainMenu
                     RelativeSizeAxes = Axes.Both,
                     Anchor = Anchor.TopCentre,
                     Origin = Anchor.TopCentre,
-                    Size = new Vector2(1f),
                     parentLogo = parentLogo,
                     clickAction = clickAction,
                     Colour = new Colour4(40, 40, 40, 255),
