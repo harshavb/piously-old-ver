@@ -46,13 +46,13 @@ namespace Piously.Game.Graphics.Containers.LocalGame
                                 Anchor = Anchor.Centre,
                                 Origin = Anchor.Centre,
                                 Size = new Vector2(0.95f),
+                                Colour = PiouslyColour.Gray(33),
 
                                 Child = new Hexagon
                                 {
                                     Anchor = Anchor.Centre,
                                     Origin = Anchor.Centre,
                                     RelativeSizeAxes = Axes.Both,
-                                    Colour = PiouslyColour.Gray(33),
                                 }
                             }
                         },

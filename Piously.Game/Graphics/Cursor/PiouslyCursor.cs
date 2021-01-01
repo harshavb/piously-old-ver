@@ -12,6 +12,7 @@ using osu.Framework.Graphics.Textures;
 using osu.Framework.Input.Events;
 using osu.Framework.Utils;
 using Piously.Game.Graphics.Shapes;
+using Piously.Game.Graphics.Containers;
 
 namespace Piously.Game.Graphics.Cursor
 {
@@ -139,15 +140,22 @@ namespace Piously.Game.Graphics.Cursor
                         Children = new Drawable[]
                         {
                             //TEMPORARY
-                            new Hexagon
+                            new HexagonalContainer
                             {
                                 RelativeSizeAxes = Axes.Both,
                                 RelativePositionAxes = Axes.Both,
-                                Position = new Vector2(-0.5f),
                                 Anchor = Anchor.Centre,
                                 Origin = Anchor.Centre,
-                                Colour = new PiouslyColour().CursorCyan,
-                            }
+                                Position = new Vector2(-0.5f),
+                                Colour = colour.CursorCyan,
+
+                                Child = new Hexagon
+                                {
+                                    RelativeSizeAxes = Axes.Both,
+                                    Anchor = Anchor.Centre,
+                                    Origin = Anchor.Centre,
+                                }
+                            },
                             //TO BE IMPLEMENTED
                             /*new Sprite
                             {
