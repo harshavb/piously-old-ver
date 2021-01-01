@@ -40,14 +40,21 @@ namespace Piously.Game.Graphics.Containers.LocalGame
                                 RelativeSizeAxes = Axes.Both,
                                 Colour = PiouslyColour.PiouslyYellow,
                             },
-                            new Hexagon
+                            new HexagonalContainer
                             {
+                                RelativeSizeAxes = Axes.Both,
                                 Anchor = Anchor.Centre,
                                 Origin = Anchor.Centre,
-                                RelativeSizeAxes = Axes.Both,
                                 Size = new Vector2(0.95f),
-                                Colour = PiouslyColour.Gray(33),
-                            },
+
+                                Child = new Hexagon
+                                {
+                                    Anchor = Anchor.Centre,
+                                    Origin = Anchor.Centre,
+                                    RelativeSizeAxes = Axes.Both,
+                                    Colour = PiouslyColour.Gray(33),
+                                }
+                            }
                         },
                         EdgeEffect = new EdgeEffectParameters
                         {
