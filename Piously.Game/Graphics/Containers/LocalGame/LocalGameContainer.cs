@@ -55,9 +55,11 @@ namespace Piously.Game.Graphics.Containers.LocalGame
             {
                 new HexagonGroup
                 {
+                    RelativePositionAxes = Axes.Both,
                     Anchor = Anchor.Centre,
                     Origin = Anchor.Centre,
                     Hexagons = hexagons,
+                    Position = new Vector2(0.3f, 0f),
                 },
 
                 // TitleContainer

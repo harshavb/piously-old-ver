@@ -1,18 +1,22 @@
 ﻿using System;
 using osu.Framework.Allocation;
+using osu.Framework.Extensions.Color4Extensions;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Effects;
 using osu.Framework.Graphics.Sprites;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Input.Events;
+using Piously.Game.Graphics.Backgrounds;
 using osuTK;
+using osuTK.Graphics;
 
 namespace Piously.Game.Graphics.Containers.LocalGame
 {
     public class LocalGameButton : CircularContainer
     {
         private Action action;
+        protected Box Hover;
         private bool isMouseDown = false;
         public bool IsCreateGame = false;
 
@@ -48,10 +52,29 @@ namespace Piously.Game.Graphics.Containers.LocalGame
 
             Children = new Drawable[]
             {
+                Hover = new Box
+                {
+                        Alpha = 0,
+                        Anchor = Anchor.Centre,
+                        Origin = Anchor.Centre,
+                        RelativeSizeAxes = Axes.Both,
+                        Colour = Color4.White.Opacity(.1f),
+                        Blending = BlendingParameters.Additive,
+                        Depth = float.MinValue
+                },
                 new Box
                 {
                     RelativeSizeAxes = Axes.Both,
+                    Colour = colours.Pink,
                     Size = new Vector2(1f, 1f),
+                },
+                new Hexagons
+                {
+                    HexagonScale = 5,
+                    ColourLight = colours.PinkLight,
+                    ColourDark = colours.PinkDark,
+                    RelativeSizeAxes = Axes.Both,
+                    Size = new Vector2(1f, 3f),
                 },
                 new SpriteText
                 {
@@ -62,7 +85,7 @@ namespace Piously.Game.Graphics.Containers.LocalGame
                     Colour = new Colour4(1f, 2.667f, 1.6f, 1f),
                     RelativePositionAxes = Axes.Both,
                     Position = IsCreateGame ? new Vector2(0.3935f, 0f) : new Vector2(0.3955f, 0f),
-                }
+                },
             };
 
             EdgeEffect = new EdgeEffectParameters
@@ -70,22 +93,25 @@ namespace Piously.Game.Graphics.Containers.LocalGame
                 Type = EdgeEffectType.Shadow,
                 Colour = colours.Gray1,
                 Radius = 10,
-                Roundness = 0.6f,
+                Roundness = 1f,
             };
         }
 
         protected override bool OnHover(HoverEvent e)
         {
-            if(!isMouseDown)
+            Hover.FadeIn(200, Easing.OutQuint);
+
+            if (!isMouseDown)
                 this.ResizeTo(new Vector2(3.2f, 0.15f), 50);
             return base.OnHover(e);
         }
 
         protected override void OnHoverLost(HoverLostEvent e)
         {
-            if(!isMouseDown)
+            base.OnHoverLost(e);
+
+            if (!isMouseDown)
                 this.ResizeTo(new Vector2(3f, 0.15f), 50);
-            
         }
 
         protected override bool OnClick(ClickEvent e)
