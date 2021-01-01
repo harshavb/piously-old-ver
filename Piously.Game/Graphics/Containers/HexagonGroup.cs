@@ -49,7 +49,7 @@ namespace Piously.Game.Graphics.Containers
                     {
                         hexagons[i,j].Anchor = Anchor.TopLeft;
                         hexagons[i,j].Origin = Anchor.TopLeft;
-                        hexagons[i,j].Position = new Vector2(0.75f * i * hexagons[i,j].Width, (MathF.Sqrt(3) / 2) * ((j * hexagons[i,j].Width) - (0.5f * i * hexagons[i,j].Width)));
+                        hexagons[i,j].Position = new Vector2(0.98f * 0.75f * i * hexagons[i,j].Width, 0.98f * ((MathF.Sqrt(3) / 2) * ((j * hexagons[i,j].Width) - (0.5f * i * hexagons[i,j].Width))));
                         Add(hexagons[i,j]);
                     }
                 }
