@@ -90,13 +90,13 @@ namespace Piously.Game.Graphics.Containers.MainMenu
                 case MenuState.Opened:
                     
                     menuState = MenuState.Closed;
-                    this.ScaleTo(1f, 200, Easing.InOutQuint);
+                    this.ScaleTo(1f, 400, Easing.OutQuint);
                     parentLogo.toggleButtons();
                     break;
                 case MenuState.Closed:
                     
                     menuState = MenuState.Opened;
-                    this.ScaleTo(0.85f, 200, Easing.InOutQuint);
+                    this.ScaleTo(0.85f, 400, Easing.OutQuint);
                     parentLogo.toggleButtons();
                     break;
                 default:
@@ -145,7 +145,7 @@ namespace Piously.Game.Graphics.Containers.MainMenu
                 if(menuState == MenuState.Opened)
                 {
                     menuState = MenuState.Closed;
-                    this.ScaleTo(1f, 200, Easing.InOutQuint);
+                    this.ScaleTo(1f, 400, Easing.OutQuint);
                     parentLogo.toggleButtons();
                     return true;
                 }

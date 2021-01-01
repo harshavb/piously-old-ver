@@ -17,7 +17,7 @@ namespace Piously.Game.Graphics.Containers.LocalGame
         public LoadGameContainer loadGameContainer;
 
         [BackgroundDependencyLoader]
-        private void load()
+        private void load(PiouslyColour colour)
         {
             HexagonalContainer[,] hexagons = new HexagonalContainer[5, 5];
 
@@ -31,15 +31,28 @@ namespace Piously.Game.Graphics.Containers.LocalGame
                         Anchor = Anchor.TopLeft,
                         Origin = Anchor.TopLeft,
                         Size = new Vector2(200, 200),
-                        Child = new Hexagon
+                        Children = new Drawable[]
                         {
-                            RelativeSizeAxes = Axes.Both,
-                            Colour = PiouslyColour.PiouslyYellow,
+                            new Hexagon
+                            {
+                                Anchor = Anchor.Centre,
+                                Origin = Anchor.Centre,
+                                RelativeSizeAxes = Axes.Both,
+                                Colour = PiouslyColour.PiouslyYellow,
+                            },
+                            new Hexagon
+                            {
+                                Anchor = Anchor.Centre,
+                                Origin = Anchor.Centre,
+                                RelativeSizeAxes = Axes.Both,
+                                Size = new Vector2(0.95f),
+                                Colour = PiouslyColour.Gray(33),
+                            },
                         },
                         EdgeEffect = new EdgeEffectParameters
                         {
                             Type = EdgeEffectType.Shadow,
-                            Colour = new PiouslyColour().Gray1,
+                            Colour = colour.Gray1,
                             Radius = 10,
                             Roundness = 0.6f,
                         },
@@ -59,7 +72,7 @@ namespace Piously.Game.Graphics.Containers.LocalGame
                     Anchor = Anchor.Centre,
                     Origin = Anchor.Centre,
                     Hexagons = hexagons,
-                    Position = new Vector2(0.3f, 0f),
+                    Position = new Vector2(0.34f, -0.04f),
                 },
 
                 // TitleContainer

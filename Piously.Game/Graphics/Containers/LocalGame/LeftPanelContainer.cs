@@ -19,27 +19,32 @@ namespace Piously.Game.Graphics.Containers.LocalGame
             RelativePositionAxes = Axes.Both;
             Size = new Vector2(750, 677);
             Position = new Vector2(0f, 0f);
-            Children = new Drawable[] {
+            Child = new ParallaxContainer
+            {
+                RelativeSizeAxes = Axes.Both,
 
-                // CreateGame
-                new LocalGameButton
+                Children = new Drawable[]
                 {
-                    RelativeSizeAxes = Axes.Both,
-                    RelativePositionAxes = Axes.Both,
-                    Position = new Vector2(-2.3f, 0.25f),
-                    Text = "Create Game",
-                    Action = OnCreateGame,
-                    IsCreateGame = true,
-                },
+                    // CreateGame
+                    new LocalGameButton
+                    {
+                        RelativeSizeAxes = Axes.Both,
+                        RelativePositionAxes = Axes.Both,
+                        Position = new Vector2(-2.3f, 0.25f),
+                        Text = "Create Game",
+                        Action = OnCreateGame,
+                        IsCreateGame = true,
+                    },
 
-                // LoadGame
-                new LocalGameButton
-                {
-                    RelativeSizeAxes = Axes.Both,
-                    RelativePositionAxes = Axes.Both,
-                    Position = new Vector2(-2.3f, 0.45f),
-                    Text = "Load Saved Game",
-                    Action = OnLoadSavedGame,
+                    // LoadGame
+                    new LocalGameButton
+                    {
+                        RelativeSizeAxes = Axes.Both,
+                        RelativePositionAxes = Axes.Both,
+                        Position = new Vector2(-2.3f, 0.45f),
+                        Text = "Load Saved Game",
+                        Action = OnLoadSavedGame,
+                    },
                 },
             };
         }

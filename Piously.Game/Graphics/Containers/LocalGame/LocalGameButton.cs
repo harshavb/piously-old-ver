@@ -82,7 +82,7 @@ namespace Piously.Game.Graphics.Containers.LocalGame
                     Origin = Anchor.Centre,
                     Font = new FontUsage("Aller", 36, null, false, false),
                     Text = text,
-                    Colour = new Colour4(1f, 2.667f, 1.6f, 1f),
+                    Colour = Color4.White,
                     RelativePositionAxes = Axes.Both,
                     Position = IsCreateGame ? new Vector2(0.3935f, 0f) : new Vector2(0.3955f, 0f),
                 },
@@ -102,7 +102,7 @@ namespace Piously.Game.Graphics.Containers.LocalGame
             Hover.FadeIn(200, Easing.OutQuint);
 
             if (!isMouseDown)
-                this.ResizeTo(new Vector2(3.2f, 0.15f), 50);
+                this.ResizeTo(new Vector2(3.2f, 0.15f), 400, Easing.OutElasticHalf);
             return base.OnHover(e);
         }
 
@@ -111,7 +111,7 @@ namespace Piously.Game.Graphics.Containers.LocalGame
             base.OnHoverLost(e);
 
             if (!isMouseDown)
-                this.ResizeTo(new Vector2(3f, 0.15f), 50);
+                this.ResizeTo(new Vector2(3f, 0.15f), 400, Easing.OutElasticHalf);
         }
 
         protected override bool OnClick(ClickEvent e)
