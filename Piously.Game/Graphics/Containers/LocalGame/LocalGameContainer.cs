@@ -86,8 +86,8 @@ namespace Piously.Game.Graphics.Containers.LocalGame
                 new SpriteText
                 {
                     Anchor = Anchor.TopLeft,
-                    Origin = Anchor.TopLeft,
-                    Position = new Vector2(150, 100),
+                    Origin = Anchor.Centre,
+                    Position = new Vector2(300, 150),
                     Font = new FontUsage("Aller", 64, "Bold", false, false),
                     Text = "Local Game",
                 },
