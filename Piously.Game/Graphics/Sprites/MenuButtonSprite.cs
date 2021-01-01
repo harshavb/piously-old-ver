@@ -26,20 +26,20 @@ namespace Piously.Game.Graphics.Sprites
         protected override bool OnMouseDown(MouseDownEvent e)
         {
             if(parentLogo.logo.menuState == MenuState.Opened)
-                Parent.ScaleTo(1.3f, 25);
+                Parent.ScaleTo(1.3f, 50);
             return true;
         }
 
         protected override void OnMouseUp(MouseUpEvent e)
         {
             if (parentLogo.logo.menuState == MenuState.Opened && IsHovered)
-                Parent.ScaleTo(1.25f, 25);
+                Parent.ScaleTo(1.25f, 50);
         }
         protected override bool OnHover(HoverEvent e)
         {
             if (parentLogo.logo.menuState == MenuState.Opened && parentLogo.logo.IsHovered == false)
             {
-                Parent.ScaleTo(1.25f, 50);
+                Parent.ScaleTo(1.25f, 400, Easing.OutElasticHalf);
             }
 
             return false;
@@ -49,7 +49,7 @@ namespace Piously.Game.Graphics.Sprites
         {
             if (parentLogo.logo.menuState == MenuState.Opened && parentLogo.logo.IsHovered == false)
             {
-                Parent.ScaleTo(1.15f, 50);
+                Parent.ScaleTo(1.15f, 400, Easing.OutBounce);
             }
         }
     }

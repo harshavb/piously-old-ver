@@ -62,7 +62,7 @@ namespace Piously.Game.Graphics.Containers.MainMenu
                 {
                     if (menuButtons.triangles[i].menuButtonSprite.IsHovered)
                     {
-                        menuButtons.triangles[i].ScaleTo(1.25f, 400, Easing.OutQuint);
+                        menuButtons.triangles[i].ScaleTo(1.25f, 400, Easing.OutElasticHalf);
                     }
                 }
             }

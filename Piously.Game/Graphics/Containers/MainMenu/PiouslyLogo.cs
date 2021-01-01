@@ -116,11 +116,11 @@ namespace Piously.Game.Graphics.Containers.MainMenu
             parentLogo.closeAllTriangles();
             if (menuState == MenuState.Closed)
             {
-                this.ScaleTo(1.1f, 50);
+                this.ScaleTo(1.1f, 400, Easing.OutElasticHalf);
             }
             else
             {
-                this.ScaleTo(0.93f, 50);
+                this.ScaleTo(0.93f, 400, Easing.OutElasticHalf);
             }
             return false;
         }
