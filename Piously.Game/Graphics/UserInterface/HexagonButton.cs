@@ -3,6 +3,7 @@ using osu.Framework.Allocation;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
 using Piously.Game.Graphics.Backgrounds;
+using osuTK;
 
 namespace Piously.Game.Graphics.UserInterface
 {
@@ -18,6 +19,7 @@ namespace Piously.Game.Graphics.UserInterface
                 RelativeSizeAxes = Axes.Both,
                 ColourDark = colours.BlueDarker,
                 ColourLight = colours.Blue,
+                Size = new Vector2(1f, 3f),
             });
         }
 
