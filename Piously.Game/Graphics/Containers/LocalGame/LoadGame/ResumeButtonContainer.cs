@@ -101,7 +101,7 @@ namespace Piously.Game.Graphics.Containers.LocalGame.LoadGame
         {
             Content.ScaleTo(1, 1000, Easing.OutElastic);
 
-            if (this.IsHovered) Game.TransitionScreen(new LoadingScreen());
+            if (IsHovered) Game.TransitionScreen(new LoadingScreen());
 
             base.OnMouseUp(e);
         }
