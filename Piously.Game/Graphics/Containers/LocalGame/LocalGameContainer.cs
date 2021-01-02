@@ -79,6 +79,7 @@ namespace Piously.Game.Graphics.Containers.LocalGame
                     Anchor = Anchor.Centre,
                     Origin = Anchor.Centre,
                     Hexagons = hexagons,
+                    Connected = true,
                     Position = new Vector2(0.5f, -0.4f),
                 },
 

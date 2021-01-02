@@ -36,6 +36,20 @@ namespace Piously.Game.Graphics.Containers
             }
         }
 
+        //Whether the hexagons are connected or not
+        private bool connected;
+
+        public bool Connected
+        {
+            get => connected;
+            set
+            {
+                if (connected == value) return;
+
+                connected = value;
+            }
+        }
+
         [BackgroundDependencyLoader]
         private void load()
         {
@@ -45,12 +59,15 @@ namespace Piously.Game.Graphics.Containers
             {
                 for(int j = 0; j < hexagons.GetLength(1); j++)
                 {
-                    if(hexagons[i,j] != null)
+                    if(hexagons[i, j] != null)
                     {
-                        hexagons[i,j].Anchor = Anchor.TopLeft;
-                        hexagons[i,j].Origin = Anchor.TopLeft;
-                        hexagons[i,j].Position = new Vector2(0.97f * 0.75f * i * hexagons[i,j].Width, 0.97f * ((MathF.Sqrt(3) / 2) * ((j * hexagons[i,j].Width) - (0.5f * i * hexagons[i,j].Width))));
-                        Add(hexagons[i,j]);
+                        hexagons[i, j].Anchor = Anchor.TopLeft;
+                        hexagons[i, j].Origin = Anchor.TopLeft;
+                        if(connected)
+                            hexagons[i, j].Position = new Vector2(0.97f * 0.75f * i * hexagons[i, j].Width, 0.97f * ((MathF.Sqrt(3) / 2) * ((j * hexagons[i, j].Width) - (0.5f * i * hexagons[i, j].Width))));
+                        else
+                            hexagons[i, j].Position = new Vector2(0.75f * i * hexagons[i, j].Width, ((MathF.Sqrt(3) / 2) * ((j * hexagons[i, j].Width) - (0.5f * i * hexagons[i, j].Width))));
+                        Add(hexagons[i, j]);
                     }
                 }
             }
