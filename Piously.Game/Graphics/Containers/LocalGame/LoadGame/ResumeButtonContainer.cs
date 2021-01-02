@@ -7,6 +7,7 @@ using osu.Framework.Graphics.Sprites;
 using osu.Framework.Input.Events;
 using Piously.Game.Graphics.Backgrounds;
 using Piously.Game.Graphics.UserInterface;
+using Piously.Game.Screens;
 using osuTK;
 using osuTK.Graphics;
 
@@ -16,8 +17,10 @@ namespace Piously.Game.Graphics.Containers.LocalGame.LoadGame
     {
         protected Box Hover;
 
+        protected PiouslyGame Game;
+
         [BackgroundDependencyLoader]
-        private void load(PiouslyColour colour)
+        private void load(PiouslyColour colour, PiouslyGame game)
         {
             Anchor = Anchor.BottomCentre;
             Origin = Anchor.BottomCentre;
@@ -26,6 +29,8 @@ namespace Piously.Game.Graphics.Containers.LocalGame.LoadGame
             Size = new Vector2(0.6f, 0.1f);
             Position = new Vector2(0f, -0.025f);
             Masking = true;
+
+            Game = game;
 
             Children = new Drawable[]
             {
@@ -83,6 +88,22 @@ namespace Piously.Game.Graphics.Containers.LocalGame.LoadGame
             base.OnHoverLost(e);
 
             Hover.FadeOut(300);
+        }
+
+        protected override bool OnMouseDown(MouseDownEvent e)
+        {
+            Content.ScaleTo(0.9f, 4000, Easing.OutQuint);
+
+            return base.OnMouseDown(e);
+        }
+
+        protected override void OnMouseUp(MouseUpEvent e)
+        {
+            Content.ScaleTo(1, 1000, Easing.OutElastic);
+
+            if (this.IsHovered) Game.TransitionScreen(new LoadingScreen());
+
+            base.OnMouseUp(e);
         }
     }
 }

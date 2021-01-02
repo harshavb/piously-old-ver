@@ -32,8 +32,6 @@ namespace Piously.Game
         private Container primaryContainer;
 
         private MainScreenStack mainStack;
-        private BackgroundScreen background;
-        private LocalGameScreen localGameScreen;
 
         private Container overlayContent;
         private Container leftFloatingOverlayContent;
@@ -166,9 +164,7 @@ namespace Piously.Game
             // This prevents the cursor from showing until we have a screen with CursorVisible = true
             MenuCursorContainer.CanShowCursor = true; //TEMP
 
-            background = new MainMenuBackground();
-
-            mainStack = new MainScreenStack(background);
+            mainStack = new MainScreenStack(new MainMenuBackground());
 
             mainMenuContainer = new MainMenuContainer();
 
@@ -200,13 +196,18 @@ namespace Piously.Game
                 mainMenuContainer.menuButtons.OnExit = () => Exit();
                 mainMenuContainer.menuButtons.OnLocalGame = () =>
                 {
-                    if (!mainStack.CurrentScreen.Equals(localGameScreen))
+                    if (!(mainStack.CurrentScreen is LocalGameScreen))
                     {
                         mainMenuContainer.updateState(MainMenuContainerState.Exit);
-                        background.Push(localGameScreen = new LocalGameScreen());
+                        mainStack.Push(new LocalGameScreen());
                     }
                 };
             });
+        }
+
+        public void TransitionScreen(Screen screen)
+        {
+            mainStack.Push(screen);
         }
 
         protected override void Update()
@@ -219,12 +220,23 @@ namespace Piously.Game
             switch (action)
             {
                 case GlobalAction.Back:
-                    if(!mainStack.CurrentScreen.Equals(background) && settings.State.Value == Visibility.Hidden)
+                    if (settings.State.Value == Visibility.Visible)
                     {
-                        mainMenuContainer.updateState(MainMenuContainerState.Initial);
-                        mainStack.Exit();
+                        settings.ToggleVisibility();
+                        return true;
                     }
-                    break;
+                    switch (mainStack.CurrentScreen)
+                    {
+                        case LocalGameScreen localGameScreen:
+                            mainMenuContainer.updateState(MainMenuContainerState.Initial);
+                            mainStack.Exit();
+                            return true;
+                        case LoadingScreen loadingScreen:
+                            mainStack.Exit();
+                            return true;
+                        default:
+                            return false;
+                    }
                 case GlobalAction.ToggleSettings:
                     settings.ToggleVisibility();
                     return true;
