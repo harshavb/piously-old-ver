@@ -1,8 +1,10 @@
 ﻿using System;
 using osu.Framework.Graphics.Containers;
+using osu.Framework.Extensions.Color4Extensions;
 using osu.Framework.Graphics;
 using osu.Framework.Allocation;
 using osuTK;
+using osuTK.Graphics;
 
 namespace Piously.Game.Graphics.Containers.MainMenu
 {
@@ -30,16 +32,7 @@ namespace Piously.Game.Graphics.Containers.MainMenu
             {
                 Add(triangles[i] = new MenuButton
                 {
-                    triangleColour = i switch
-                    {
-                        0 => new Colour4(75, 75, 75, 255),
-                        1 => new Colour4(75, 75, 75, 255),
-                        2 => new Colour4(75, 75, 75, 255),
-                        3 => new Colour4(75, 75, 75, 255),
-                        4 => new Colour4(75, 75, 75, 255),
-                        5 => new Colour4(75, 75, 75, 255),
-                        _ => new Colour4(75, 75, 75, 255),
-                    },
+                    triangleColour = PiouslyColour.Gray(75),
                     clickAction = i switch
                     {
                         0 => () => OnExit?.Invoke(),

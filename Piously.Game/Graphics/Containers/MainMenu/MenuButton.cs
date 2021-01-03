@@ -5,6 +5,7 @@ using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Sprites;
 using osu.Framework.Graphics.Shapes;
 using osuTK;
+using osuTK.Graphics;
 using Piously.Game.Graphics.Sprites;
 
 namespace Piously.Game.Graphics.Containers.MainMenu
@@ -32,7 +33,7 @@ namespace Piously.Game.Graphics.Containers.MainMenu
                     Origin = Anchor.TopCentre,
                     parentLogo = parentLogo,
                     clickAction = clickAction,
-                    Colour = new Colour4(40, 40, 40, 255),
+                    Colour = PiouslyColour.Gray(40),
                 },
                 new EquilateralTriangle
                 {
