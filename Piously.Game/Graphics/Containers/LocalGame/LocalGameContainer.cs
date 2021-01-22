@@ -19,7 +19,7 @@ namespace Piously.Game.Graphics.Containers.LocalGame
         [BackgroundDependencyLoader]
         private void load(PiouslyColour colour)
         {
-            HexagonalContainer[,] hexagons = new HexagonalContainer[10, 10];
+            HexagonalContainer[,] hexagons = new HexagonalContainer[5, 5];
 
             for(int i = 0; i < hexagons.GetLength(0); i++)
             {
@@ -30,7 +30,7 @@ namespace Piously.Game.Graphics.Containers.LocalGame
                         Masking = true,
                         Anchor = Anchor.TopRight,
                         Origin = Anchor.Centre,
-                        Size = new Vector2(200, 200),
+                        Size = new Vector2(150, 150),
                         Children = new Drawable[]
                         {
                             new Hexagon
@@ -80,7 +80,7 @@ namespace Piously.Game.Graphics.Containers.LocalGame
                     Origin = Anchor.Centre,
                     Hexagons = hexagons,
                     Connected = true,
-                    Position = new Vector2(0.5f, -0.4f),
+                    Position = new Vector2(0.4f, -0.2f),
                 },
 
                 // TitleContainer

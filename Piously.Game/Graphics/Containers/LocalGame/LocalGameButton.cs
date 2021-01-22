@@ -94,6 +94,7 @@ namespace Piously.Game.Graphics.Containers.LocalGame
                 Colour = colours.Gray1,
                 Radius = 10,
                 Roundness = 1f,
+                Offset = new Vector2(1f, 2f),
             };
         }
 

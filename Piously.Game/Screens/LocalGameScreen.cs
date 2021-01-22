@@ -11,7 +11,7 @@ namespace Piously.Game.Screens
     {
         private LocalGameContainer localGameContainer;
 
-        public LocalGameScreen(bool animateOnEnter = true) : base(animateOnEnter, "Menu/load-game-background")
+        public LocalGameScreen(bool animateOnEnter = true) : base(animateOnEnter, "LocalGame/local-game-background")
         {
             Alpha = 0;
         }
