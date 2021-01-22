@@ -100,11 +100,5 @@ namespace Piously.Game.Graphics.Containers.LocalGame
                 loadGameContainer = new LoadGameContainer(),
             };
         }
-
-        protected override void Update()
-        {
-            base.Update();
-            hexagonGroup.Rotation += (float)Time.Elapsed / 10;
-        }
     }
 }
