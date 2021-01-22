@@ -15,6 +15,7 @@ namespace Piously.Game.Graphics.Containers.LocalGame
         public Action onLoadSavedGame;
         public CreateGameContainer createGameContainer;
         public LoadGameContainer loadGameContainer;
+        public HexagonGroup hexagonGroup;
 
         [BackgroundDependencyLoader]
         private void load(PiouslyColour colour)
@@ -56,13 +57,6 @@ namespace Piously.Game.Graphics.Containers.LocalGame
                                 }
                             }
                         },
-                        EdgeEffect = new EdgeEffectParameters
-                        {
-                            Type = EdgeEffectType.Shadow,
-                            Colour = colour.Gray1,
-                            Radius = 10,
-                            Roundness = 0.6f,
-                        },
                     };
                 }
             }
@@ -73,7 +67,7 @@ namespace Piously.Game.Graphics.Containers.LocalGame
 
             Children = new Drawable[]
             {
-                new HexagonGroup
+                hexagonGroup = new HexagonGroup
                 {
                     RelativePositionAxes = Axes.Both,
                     Anchor = Anchor.Centre,
@@ -105,6 +99,12 @@ namespace Piously.Game.Graphics.Containers.LocalGame
                 // LoadGameContainer
                 loadGameContainer = new LoadGameContainer(),
             };
+        }
+
+        protected override void Update()
+        {
+            base.Update();
+            hexagonGroup.Rotation += (float)Time.Elapsed / 10;
         }
     }
 }
