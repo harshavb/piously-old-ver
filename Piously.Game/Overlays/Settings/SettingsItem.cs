@@ -14,6 +14,7 @@ using osu.Framework.Graphics.UserInterface;
 using osu.Framework.Input.Events;
 using Piously.Game.Graphics;
 using osuTK;
+using osu.Framework.Localisation;
 
 namespace Piously.Game.Overlays.Settings
 {
@@ -33,7 +34,7 @@ namespace Piously.Game.Overlays.Settings
 
         public bool ShowsDefaultIndicator = true;
 
-        public virtual string LabelText
+        public virtual LocalisableString LabelText
         {
             get => labelText?.Text ?? string.Empty;
             set
@@ -63,9 +64,9 @@ namespace Piously.Game.Overlays.Settings
             set => controlWithCurrent.Current = value;
         }
 
-        public virtual IEnumerable<string> FilterTerms => Keywords == null ? new[] { LabelText } : new List<string>(Keywords) { LabelText }.ToArray();
+        public virtual IEnumerable<string> FilterTerms => Keywords == null ? new[] { LabelText.ToString() } : new List<string>((IEnumerable<string>)Keywords) { LabelText.ToString() }.ToArray();
 
-        public IEnumerable<string> Keywords { get; set; }
+        public IEnumerable<LocalisableString> Keywords { get; set; }
 
         public bool MatchingFilter
         {

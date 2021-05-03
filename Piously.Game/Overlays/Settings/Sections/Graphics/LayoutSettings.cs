@@ -13,6 +13,7 @@ using Piously.Game.Configuration;
 using Piously.Game.Graphics.Containers;
 using Piously.Game.Graphics.UserInterface;
 using osuTK.Graphics;
+using osu.Framework.Localisation;
 
 namespace Piously.Game.Overlays.Settings.Sections.Graphics
 {
@@ -73,7 +74,7 @@ namespace Piously.Game.Overlays.Settings.Sections.Graphics
                     TransferValueOnCommit = true,
                     Current = piouslyConfig.GetBindable<float>(PiouslySetting.UIScale),
                     KeyboardStep = 0.01f,
-                    Keywords = new[] { "scale", "letterbox" },
+                    Keywords = new LocalisableString[] { "scale", "letterbox" },
                 },
                 //TO BE FIXED
                 /*new SettingsEnumDropdown<ScalingMode>
@@ -245,7 +246,7 @@ namespace Piously.Game.Overlays.Settings.Sections.Graphics
 
             private class ResolutionDropdownControl : DropdownControl
             {
-                protected override string GenerateItemText(Size item)
+                protected override LocalisableString GenerateItemText(Size item)
                 {
                     if (item == new Size(9999, 9999))
                         return "Default";

@@ -18,8 +18,8 @@ namespace Piously.Game.Input.Bindings
                 handler = game;
         }
 
-        public override IEnumerable<KeyBinding> DefaultKeyBindings => GlobalKeyBindings;
-        public static IEnumerable<KeyBinding> GlobalKeyBindings => new[]
+        public override IEnumerable<IKeyBinding> DefaultKeyBindings => GlobalKeyBindings;
+        public static IEnumerable<IKeyBinding> GlobalKeyBindings => new[]
         {
             new KeyBinding(InputKey.Enter, GlobalAction.Select),
 

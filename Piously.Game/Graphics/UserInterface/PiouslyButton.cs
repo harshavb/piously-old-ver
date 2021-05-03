@@ -7,15 +7,16 @@ using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
 using osu.Framework.Input.Events;
+using osu.Framework.Localisation;
 using osuTK.Graphics;
 
 namespace Piously.Game.Graphics.UserInterface
 {
     public class PiouslyButton : ClickableContainer
     {
-        public string Text
+        public LocalisableString Text
         {
-            get => SpriteText?.Text;
+            get => SpriteText.Text;
             set
             {
                 if (SpriteText != null)

@@ -2,6 +2,7 @@
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.UserInterface;
 using osu.Framework.Input.Events;
+using osu.Framework.Localisation;
 using osuTK.Graphics;
 
 namespace Piously.Game.Graphics.UserInterface
@@ -12,12 +13,12 @@ namespace Piously.Game.Graphics.UserInterface
         public Color4 UncheckedColor { get; set; } = Color4.White;
         public int FadeDuration { get; set; }
 
-        public string LabelText
+        public LocalisableString LabelText
         {
             set
             {
                 if (labelText != null)
-                    labelText.Text = value;
+                    labelText.Text = value.ToString();
             }
         }
 

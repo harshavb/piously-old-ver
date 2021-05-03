@@ -8,6 +8,7 @@ using osu.Framework.Graphics.Sprites;
 using osu.Framework.Graphics.UserInterface;
 using Piously.Game.Graphics.Containers;
 using osuTK;
+using osu.Framework.Localisation;
 
 namespace Piously.Game.Graphics.UserInterface
 {
@@ -162,7 +163,7 @@ namespace Piously.Game.Graphics.UserInterface
 
                 protected new class Content : FillFlowContainer, IHasText
                 {
-                    public string Text
+                    public LocalisableString Text
                     {
                         get => Label.Text;
                         set => Label.Text = value;
@@ -209,7 +210,7 @@ namespace Piously.Game.Graphics.UserInterface
         {
             protected readonly SpriteText Text;
 
-            protected override string Label
+            protected override LocalisableString Label
             {
                 get => Text.Text;
                 set => Text.Text = value;

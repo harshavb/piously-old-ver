@@ -5,6 +5,7 @@ using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Sprites;
 using osu.Framework.Graphics.UserInterface;
 using osu.Framework.Input.Events;
+using osu.Framework.Localisation;
 using osuTK.Graphics;
 
 namespace Piously.Game.Graphics.UserInterface
@@ -86,7 +87,7 @@ namespace Piously.Game.Graphics.UserInterface
 
         protected class TextContainer : Container, IHasText
         {
-            public string Text
+            public LocalisableString Text
             {
                 get => NormalText.Text;
                 set

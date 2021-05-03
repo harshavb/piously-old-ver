@@ -41,7 +41,7 @@ namespace Piously.Game.Input
             }
         }
 
-        private void insertDefaults(IEnumerable<KeyBinding> defaults)
+        private void insertDefaults(IEnumerable<IKeyBinding> defaults)
         {
             foreach (var group in defaults.GroupBy(k => k.Action))
             {

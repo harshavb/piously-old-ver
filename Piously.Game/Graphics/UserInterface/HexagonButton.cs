@@ -23,7 +23,7 @@ namespace Piously.Game.Graphics.UserInterface
             });
         }
 
-        public virtual IEnumerable<string> FilterTerms => new[] { Text };
+        public virtual IEnumerable<string> FilterTerms => new[] { Text.ToString() };
 
         public bool MatchingFilter
         {
