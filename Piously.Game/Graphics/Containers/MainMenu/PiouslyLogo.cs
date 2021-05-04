@@ -37,7 +37,7 @@ namespace Piously.Game.Graphics.Containers.MainMenu
 
             Children = new Drawable[]
             {
-                new HexagonalContainer()
+                new HexagonalContainer
                 {
                     RelativeSizeAxes = Axes.Both,
                     Anchor = Anchor.Centre,

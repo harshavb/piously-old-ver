@@ -146,7 +146,7 @@ namespace Piously.Game.Graphics.Containers
         private class HexagonalContainerDrawNodeSharedData : BufferedDrawNodeSharedData
         {
             public HexagonalContainerDrawNodeSharedData(RenderbufferInternalFormat[] formats, bool pixelSnapping)
-                : base(2, formats, pixelSnapping) { }
+                : base(1, formats, pixelSnapping) { }
         }
     }
 }
