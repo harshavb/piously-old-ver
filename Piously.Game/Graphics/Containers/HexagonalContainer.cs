@@ -103,12 +103,13 @@ namespace Piously.Game.Graphics.Containers
                     try
                     {
                         resolution = Math.Max(this.Source.ScreenSpaceDrawQuad.Width, this.Source.ScreenSpaceDrawQuad.Height); // shh
-                        hexagonShader.GetUniform<float>("g_Resolution").UpdateValue(ref resolution);
-                    } catch(Exception e)
+                    } 
+                    catch(Exception e)
                     {
-                        Console.WriteLine("Bruh: " + e.ToString());
-                        return;
+                       Console.WriteLine("Bruh: " + e.ToString());
+                       return;
                     }
+                    hexagonShader.GetUniform<float>("g_Resolution").UpdateValue(ref resolution);
                     hexagonShader.Bind();
                     DrawFrameBuffer(current, new RectangleF(0, 0, current.Texture.Width, current.Texture.Height), ColourInfo.SingleColour(Color4.White));
                     hexagonShader.Unbind();
