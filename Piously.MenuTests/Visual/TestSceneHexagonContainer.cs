@@ -14,12 +14,14 @@ namespace Piously.MenuTests.Visual
     public class TestSceneHexagonContainer : TestScene
     {
         private readonly Container container;
+        private readonly HexagonalContainer hexagonalContainer;
+        private readonly ToggleableHexagons hexagons;
 
         public TestSceneHexagonContainer()
         {
-            this.AddRange(new Drawable[]
+            AddRange(new Drawable[]
             {
-                this.container = new Container
+                container = new Container
                 {
                     Size = new Vector2(256),
                     Children = new Drawable[]
@@ -29,46 +31,50 @@ namespace Piously.MenuTests.Visual
                             RelativeSizeAxes = Axes.Both,
                             Colour = Colour4.Red
                         },
-                        new TestHexagonalContainer
+                        hexagonalContainer = new HexagonalContainer
                         {
-                            RelativeSizeAxes = Axes.Both
+                            RelativeSizeAxes = Axes.Both,
+                            Children = new Drawable[]
+                            {
+                                new Box
+                                {
+                                    RelativeSizeAxes = Axes.Both,
+                                    Colour = Colour4.Aqua
+                                },
+                                hexagons = new ToggleableHexagons
+                                {
+                                    hexagons = new Hexagons
+                                    {
+                                        RelativeSizeAxes = Axes.Both,
+                                        ColourDark = PiouslyColour.PiouslyYellow,
+                                        ColourLight = PiouslyColour.PiouslyLighterYellow
+                                    }
+                                }
+                            }
                         }
                     }
                 }
             });
 
-            this.AddSliderStep(@"Resize", 64, 768, 256, value => this.container.ResizeTo(value));
+            AddSliderStep(@"Resize", 64, 768, 256, value => container.ResizeTo(value));
+            AddSliderStep(@"Rotate", 0, 360, 0, value => hexagonalContainer.RotateTo(value));
+            AddToggleStep(@"HexagonsEffectVisibility", value => hexagons.ToggleVisibility());
+        }
+    }
+
+    // Does not work as intended :)
+    public class ToggleableHexagons : VisibilityContainer
+    {
+        public Hexagons hexagons;
+
+        override protected void PopIn()
+        {
+            hexagons.Show();
         }
 
-        private class TestHexagonalContainer : HexagonalContainer
+        override protected void PopOut()
         {
-            private readonly Box backgroundBox;
-
-            public TestHexagonalContainer()
-            {
-                this.AddRange(new Drawable[]
-                {
-                    this.backgroundBox = new Box
-                    {
-                        RelativeSizeAxes = Axes.Both,
-                        Colour = PiouslyColour.PiouslyLightYellow
-                    },
-                    new Hexagons
-                    {
-                        RelativeSizeAxes = Axes.Both,
-                        ColourDark = PiouslyColour.PiouslyYellow,
-                        ColourLight = PiouslyColour.PiouslyLighterYellow
-                    }
-                });
-            }
-
-            protected override bool OnHover(HoverEvent e)
-            {
-                this.backgroundBox.FadeColour(Colour4.Black, 80);
-                return base.OnHover(e);
-            }
-
-            protected override void OnHoverLost(HoverLostEvent e) => this.backgroundBox.FadeColour(PiouslyColour.PiouslyLightYellow, 80);
+            hexagons.Hide();
         }
     }
 }
