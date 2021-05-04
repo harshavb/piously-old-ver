@@ -2,12 +2,12 @@
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
-using osu.Framework.Input.Events;
 using osu.Framework.Testing;
 using osuTK;
 using Piously.Game.Graphics;
 using Piously.Game.Graphics.Backgrounds;
 using Piously.Game.Graphics.Containers;
+using Piously.Game.Graphics.Shapes;
 
 namespace Piously.MenuTests.Visual
 {
@@ -16,6 +16,7 @@ namespace Piously.MenuTests.Visual
         private readonly Container container;
         private readonly HexagonalContainer hexagonalContainer;
         private readonly ToggleableHexagons hexagons;
+        private readonly Hexagon hexagon;
 
         public TestSceneHexagonContainer()
         {
@@ -51,14 +52,20 @@ namespace Piously.MenuTests.Visual
                                     }
                                 }
                             }
+                        },
+                        hexagon = new Hexagon
+                        {
+                            RelativeSizeAxes = Axes.Both,
+                            Colour = Colour4.Black,
                         }
                     }
                 }
             });
 
             AddSliderStep(@"Resize", 64, 768, 256, value => container.ResizeTo(value));
-            AddSliderStep(@"Rotate", 0, 360, 0, value => hexagonalContainer.RotateTo(value));
-            AddToggleStep(@"HexagonsEffectVisibility", value => hexagons.ToggleVisibility());
+            AddSliderStep(@"Rotate Hexagon", 0, 360, 0, value => hexagon.RotateTo(value));
+            AddSliderStep(@"Rotate Hexagonal Container", 0, 360, 0, value => hexagonalContainer.RotateTo(value));
+            AddToggleStep(@"Hexagons Effect Visibility", value => hexagons.ToggleVisibility());
         }
     }
 
