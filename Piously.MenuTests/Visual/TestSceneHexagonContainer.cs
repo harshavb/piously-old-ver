@@ -21,49 +21,46 @@ namespace Piously.MenuTests.Visual
 
         public TestSceneHexagonContainer()
         {
-            AddRange(new Drawable[]
+            Add(container = new Container
             {
-                container = new Container
+                Size = new Vector2(256),
+                Children = new Drawable[]
                 {
-                    Size = new Vector2(256),
-                    Children = new Drawable[]
+                    new Box
                     {
-                        new Box
+                        RelativeSizeAxes = Axes.Both,
+                        Colour = Colour4.Red
+                    },
+                    hexagonalContainer = new HexagonalContainer
+                    {
+                        RelativeSizeAxes = Axes.Both,
+                        Children = new Drawable[]
                         {
-                            RelativeSizeAxes = Axes.Both,
-                            Colour = Colour4.Red
-                        },
-                        hexagonalContainer = new HexagonalContainer
-                        {
-                            RelativeSizeAxes = Axes.Both,
-                            Children = new Drawable[]
+                            new Box
                             {
-                                new Box
+                                RelativeSizeAxes = Axes.Both,
+                                Colour = Colour4.Aqua
+                            },
+                            hexagons = new ToggleableHexagons
+                            {
+                                hexagons = new Hexagons
                                 {
                                     RelativeSizeAxes = Axes.Both,
-                                    Colour = Colour4.Aqua
-                                },
-                                hexagons = new ToggleableHexagons
-                                {
-                                    hexagons = new Hexagons
-                                    {
-                                        RelativeSizeAxes = Axes.Both,
-                                        ColourDark = PiouslyColour.PiouslyYellow,
-                                        ColourLight = PiouslyColour.PiouslyLighterYellow
-                                    }
+                                    ColourDark = PiouslyColour.PiouslyYellow,
+                                    ColourLight = PiouslyColour.PiouslyLighterYellow
                                 }
                             }
-                        },
-                        hexagon = new Hexagon
-                        {
-                            RelativeSizeAxes = Axes.Both,
-                            Colour = Colour4.Black,
-                        },
-                        triangle = new Triangle
-                        {
-                            RelativeSizeAxes = Axes.Both,
-                            Colour = Colour4.GreenYellow,
                         }
+                    },
+                    hexagon = new Hexagon
+                    {
+                        RelativeSizeAxes = Axes.Both,
+                        Colour = Colour4.Black,
+                    },
+                    triangle = new Triangle
+                    {
+                        RelativeSizeAxes = Axes.Both,
+                        Colour = Colour4.GreenYellow,
                     }
                 }
             });
