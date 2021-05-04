@@ -38,8 +38,8 @@ namespace Piously.Game.Graphics.Containers
 
         public override bool ReceivePositionalInputAt(Vector2 screenSpacePos)
         {
-            Vector2 norm = screenSpacePos - this.ScreenSpaceDrawQuad.TopLeft;
-            norm = new Vector2(norm.X / this.ScreenSpaceDrawQuad.Width, norm.Y / this.ScreenSpaceDrawQuad.Height); // apparently we can't divide Vector2s?
+            Vector2 norm = screenSpacePos - ScreenSpaceDrawQuad.TopLeft;
+            norm = Vector2.Divide(norm, ScreenSpaceDrawQuad.Size);
             norm = (norm - new Vector2(0.5f)) * 2;
             
             // hexagons are horizontally and vertically symmetrical, so we only have to test one quadrant :)
@@ -102,7 +102,7 @@ namespace Piously.Game.Graphics.Containers
                     float resolution;
                     try
                     {
-                        resolution = Math.Max(this.Source.ScreenSpaceDrawQuad.Width, this.Source.ScreenSpaceDrawQuad.Height); // shh
+                        resolution = Math.Max(Source.ScreenSpaceDrawQuad.Width, Source.ScreenSpaceDrawQuad.Height); // shh
                     } 
                     catch(Exception e)
                     {
