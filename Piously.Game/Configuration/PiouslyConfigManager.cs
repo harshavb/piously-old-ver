@@ -14,34 +14,34 @@ namespace Piously.Game.Configuration
         protected override void InitialiseDefaults()
         {
             //Update
-            Set(PiouslySetting.Version, string.Empty);
+            SetDefault(PiouslySetting.Version, string.Empty);
 
-            Set(PiouslySetting.Scaling, ScalingMode.Off);
+            SetDefault(PiouslySetting.Scaling, ScalingMode.Off);
 
-            Set(PiouslySetting.ScalingSizeX, 0.8f, 0.2f, 1f);
-            Set(PiouslySetting.ScalingSizeY, 0.8f, 0.2f, 1f);
+            SetDefault(PiouslySetting.ScalingSizeX, 0.8f, 0.2f, 1f);
+            SetDefault(PiouslySetting.ScalingSizeY, 0.8f, 0.2f, 1f);
 
-            Set(PiouslySetting.ScalingPositionX, 0.5f, 0f, 1f);
-            Set(PiouslySetting.ScalingPositionY, 0.5f, 0f, 1f);
+            SetDefault(PiouslySetting.ScalingPositionX, 0.5f, 0f, 1f);
+            SetDefault(PiouslySetting.ScalingPositionY, 0.5f, 0f, 1f);
 
-            Set(PiouslySetting.UIScale, 0.9f, 0.5f, 1f, 0.01f);
+            SetDefault(PiouslySetting.UIScale, 0.9f, 0.5f, 1f, 0.01f);
 
-            Set(PiouslySetting.UIHoldActivationDelay, 200f, 0f, 500f, 50f);
+            SetDefault(PiouslySetting.UIHoldActivationDelay, 200f, 0f, 500f, 50f);
 
             //Audio
-            Set(PiouslySetting.MenuVoice, true);
-            Set(PiouslySetting.MenuMusic, true);
+            SetDefault(PiouslySetting.MenuVoice, true);
+            SetDefault(PiouslySetting.MenuMusic, true);
 
             //Input
-            Set(PiouslySetting.MenuCursorSize, 1.0f, 0.5f, 2f, 0.01f);
-            Set(PiouslySetting.ConfineMouseMode, PiouslyConfineMouseMode.DuringGameplay);
+            SetDefault(PiouslySetting.MenuCursorSize, 1.0f, 0.5f, 2f, 0.01f);
+            SetDefault(PiouslySetting.ConfineMouseMode, PiouslyConfineMouseMode.DuringGameplay);
 
             //Graphics
-            Set(PiouslySetting.ShowFpsDisplay, false);
+            SetDefault(PiouslySetting.ShowFpsDisplay, false);
 
-            Set(PiouslySetting.CursorRotation, true);
+            SetDefault(PiouslySetting.CursorRotation, true);
 
-            Set(PiouslySetting.MenuParallax, true);
+            SetDefault(PiouslySetting.MenuParallax, true);
         }
 
         public PiouslyConfigManager(Storage storage)

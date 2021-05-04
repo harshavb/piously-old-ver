@@ -12,7 +12,6 @@
     <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
     <PackageReference Include="Microsoft.Win32.Registry" Version="5.0.0" />
     <PackageReference Include="ppy.osu.Framework" Version="2021.427.0" />
-    <PackageReference Include="ppy.squirrel.windows" Version="1.9.0.5" />
     <PackageReference Include="Sentry" Version="3.3.4" />
   </ItemGroup>
 
