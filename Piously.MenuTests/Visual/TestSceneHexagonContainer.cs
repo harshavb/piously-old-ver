@@ -17,6 +17,7 @@ namespace Piously.MenuTests.Visual
         private readonly HexagonalContainer hexagonalContainer;
         private readonly ToggleableHexagons hexagons;
         private readonly Hexagon hexagon;
+        private readonly Triangle triangle;
 
         public TestSceneHexagonContainer()
         {
@@ -57,6 +58,11 @@ namespace Piously.MenuTests.Visual
                         {
                             RelativeSizeAxes = Axes.Both,
                             Colour = Colour4.Black,
+                        },
+                        triangle = new Triangle
+                        {
+                            RelativeSizeAxes = Axes.Both,
+                            Colour = Colour4.GreenYellow,
                         }
                     }
                 }
@@ -64,6 +70,7 @@ namespace Piously.MenuTests.Visual
 
             AddSliderStep(@"Resize", 64, 768, 256, value => container.ResizeTo(value));
             AddSliderStep(@"Rotate Hexagon", 0, 360, 0, value => hexagon.RotateTo(value));
+            AddSliderStep(@"Rotate Triangle", 0, 360, 0, value => triangle.RotateTo(value));
             AddSliderStep(@"Rotate Hexagonal Container", 0, 360, 0, value => hexagonalContainer.RotateTo(value));
             AddToggleStep(@"Hexagons Effect Visibility", value => hexagons.ToggleVisibility());
         }
