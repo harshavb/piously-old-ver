@@ -19,8 +19,8 @@ namespace Piously.Game.Graphics.Containers
     public class HexagonalContainer<T> : BufferedContainer<T>
         where T : Drawable
     {
-        private static readonly float sin_pi_over_3 = (float)Math.Sin(Math.PI / 3); 
-        private static readonly float tan_pi_over_3 = (float)Math.Tan(Math.PI / 3); 
+        private static readonly float sin_pi_over_3 = MathF.Sin(MathF.PI / 3); 
+        private static readonly float tan_pi_over_3 = MathF.Tan(MathF.PI / 3); 
 
         public static readonly float HEXAGON_INRADIUS = sin_pi_over_3;
 
