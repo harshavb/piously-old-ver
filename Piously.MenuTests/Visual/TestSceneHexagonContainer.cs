@@ -24,6 +24,8 @@ namespace Piously.MenuTests.Visual
             Add(container = new Container
             {
                 Size = new Vector2(256),
+                RelativePositionAxes = Axes.Both,
+                Position = new Vector2(0.5f, 0.5f),
                 Children = new Drawable[]
                 {
                     new Box
@@ -55,7 +57,7 @@ namespace Piously.MenuTests.Visual
                     hexagon = new Hexagon
                     {
                         RelativeSizeAxes = Axes.Both,
-                        Colour = Colour4.Black,
+                        Colour = Colour4.Purple,
                     },
                     triangle = new Triangle
                     {
