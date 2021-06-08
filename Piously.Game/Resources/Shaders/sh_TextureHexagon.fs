@@ -7,11 +7,11 @@ varying mediump vec2 v_TexCoord;
 
 uniform lowp sampler2D m_Sampler;
 
-// this is the "size" of the object in screen space--specifically max(width, height).
-uniform highp float g_Resolution;
+// this is the rotation of the hexagonal container AND the "size" of the object in screen space--specifically max(width, height).
+uniform highp vec2 g_RotationAndResolution;
 
 // a visual demonstration of this calculation can be found at https://www.desmos.com/calculator/vihhpowcrb.
-highp float calculateHexagonDistance(mediump vec2 coord)
+highp float calculateHexagonDistance(mediump vec2 coord, highp vec2 g_RotationAndResolution)
 {
     mediump vec2 tmp = (coord - vec2(0.5));
     mediump vec2 norm = vec2(abs(tmp.x * 2.0), abs(tmp.y * 2.0));
@@ -29,7 +29,7 @@ void main(void)
     gl_FragColor = toSRGB(texture2D(m_Sampler, v_TexCoord));
 
     // distance in pixels from the edge of the hexagon (assuming a square draw quad >_>).
-    highp float distance = calculateHexagonDistance(v_TexCoord) * g_Resolution / 2.0;
+    highp float distance = calculateHexagonDistance(v_TexCoord, g_RotationAndResolution) * g_RotationAndResolution.y / 2.0;
 
     if (distance <= 0.0)
     {

@@ -29,7 +29,7 @@ namespace Piously.Game.Graphics.Containers
         private readonly HexagonalContainerDrawNodeSharedData sharedData;
 
         public HexagonalContainer(RenderbufferInternalFormat[] formats = null, bool pixelSnapping = false) =>
-            this.sharedData = new HexagonalContainerDrawNodeSharedData(formats, pixelSnapping);
+            sharedData = new HexagonalContainerDrawNodeSharedData(formats, pixelSnapping);
 
         [BackgroundDependencyLoader]
         private void load(ShaderManager shaders) => Shader = shaders.Load(VertexShaderDescriptor.TEXTURE_2, "TextureHexagon");
@@ -99,17 +99,18 @@ namespace Piously.Game.Graphics.Containers
 
                 using (BindFrameBuffer(target))
                 {
-                    float resolution;
+                    Vector2 rotationAndResolution;
                     try
                     {
-                        resolution = Math.Max(Source.ScreenSpaceDrawQuad.Width, Source.ScreenSpaceDrawQuad.Height); // shh
-                    } 
-                    catch(Exception e)
-                    {
-                       Console.WriteLine("Bruh: " + e.ToString());
-                       return;
+                        rotationAndResolution.X = Source.Rotation;
+                        rotationAndResolution.Y = Math.Max(Source.ScreenSpaceDrawQuad.Width, Source.ScreenSpaceDrawQuad.Height); // shh
                     }
-                    hexagonShader.GetUniform<float>("g_Resolution").UpdateValue(ref resolution);
+                    catch (Exception e)
+                    {
+                        Console.WriteLine("Bruh: " + e.ToString());
+                        return;
+                    }
+                    hexagonShader.GetUniform<Vector2>("g_RotationAndResolution").UpdateValue(ref rotationAndResolution);
                     hexagonShader.Bind();
                     DrawFrameBuffer(current, new RectangleF(0, 0, current.Texture.Width, current.Texture.Height), ColourInfo.SingleColour(Color4.White));
                     hexagonShader.Unbind();
