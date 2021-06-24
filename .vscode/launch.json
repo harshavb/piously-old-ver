@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": ".NET Core Launch (console)",
+            "name": "Launch Piously",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
@@ -14,6 +14,17 @@
             "cwd": "${workspaceFolder}/Piously.Desktop",
             "console": "internalConsole",
             "stopAtEntry": false
+        },
+        {
+            "name": "Launch MenuTest",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/Piously.MenuTests/bin/Debug/net5.0/Piously.MenuTests.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": false,
+            "console": "internalConsole"
         },
         {
             "name": ".NET Core Attach",
