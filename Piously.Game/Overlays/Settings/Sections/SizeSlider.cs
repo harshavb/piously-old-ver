@@ -1,4 +1,5 @@
 ﻿using Piously.Game.Graphics.UserInterface;
+using osu.Framework.Localisation;
 
 namespace Piously.Game.Overlays.Settings.Sections
 {
@@ -7,6 +8,6 @@ namespace Piously.Game.Overlays.Settings.Sections
     /// </summary>
     internal class SizeSlider : PiouslySliderBar<float>
     {
-        public override string TooltipText => Current.Value.ToString(@"0.##x");
+        public override LocalisableString TooltipText => Current.Value.ToString(@"0.##x");
     }
 }

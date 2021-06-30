@@ -173,7 +173,7 @@ namespace Piously.Game.Overlays.Settings
                 UpdateState();
             }
 
-            public string TooltipText => "revert to default";
+            public LocalisableString TooltipText => "revert to default";
 
             protected override bool OnClick(ClickEvent e)
             {

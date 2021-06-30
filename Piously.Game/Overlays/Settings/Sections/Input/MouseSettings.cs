@@ -5,6 +5,7 @@ using osu.Framework.Configuration;
 using osu.Framework.Graphics;
 using osu.Framework.Input.Handlers.Mouse;
 using osu.Framework.Platform;
+using osu.Framework.Localisation;
 using Piously.Game.Configuration;
 using Piously.Game.Graphics.UserInterface;
 using Piously.Game.Input;
@@ -101,7 +102,7 @@ namespace Piously.Game.Overlays.Settings.Sections.Input
 
         private class SensitivitySlider : PiouslySliderBar<double>
         {
-            public override string TooltipText => Current.Disabled ? "enable high precision mouse to adjust sensitivity" : $"{base.TooltipText}x";
+            public override LocalisableString TooltipText => Current.Disabled ? "enable high precision mouse to adjust sensitivity" : $"{base.TooltipText}x";
         }
     }
 }

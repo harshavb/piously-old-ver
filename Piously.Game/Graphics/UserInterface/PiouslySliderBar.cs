@@ -9,6 +9,7 @@ using osu.Framework.Graphics.UserInterface;
 using osu.Framework.Graphics.Cursor;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Input.Events;
+using osu.Framework.Localisation;
 
 namespace Piously.Game.Graphics.UserInterface
 {
@@ -25,7 +26,7 @@ namespace Piously.Game.Graphics.UserInterface
         private readonly Box rightBox;
         private readonly Container nubContainer;
 
-        public virtual string TooltipText { get; private set; }
+        public virtual LocalisableString TooltipText { get; private set; }
 
         /// <summary>
         /// Whether to format the tooltip as a percentage or the actual value.
