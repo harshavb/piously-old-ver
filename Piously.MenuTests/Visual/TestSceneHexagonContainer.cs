@@ -41,7 +41,8 @@ namespace Piously.MenuTests.Visual
                             new Box
                             {
                                 RelativeSizeAxes = Axes.Both,
-                                Colour = Colour4.Aqua
+                                Colour = Colour4.Aqua,
+                                Size = new Vector2(10f, 10f),
                             },
                             hexagons = new ToggleableHexagons
                             {

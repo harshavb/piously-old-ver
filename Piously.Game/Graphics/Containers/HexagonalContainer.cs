@@ -19,8 +19,8 @@ namespace Piously.Game.Graphics.Containers
     public class HexagonalContainer<T> : BufferedContainer<T>
         where T : Drawable
     {
-        private static readonly float sin_pi_over_3 = MathF.Sin(MathF.PI / 3); 
-        private static readonly float tan_pi_over_3 = MathF.Tan(MathF.PI / 3); 
+        private static readonly float sin_pi_over_3 = 0.8660254037844386f; 
+        private static readonly float tan_pi_over_3 = 1.732050807568877f;
 
         public static readonly float HEXAGON_INRADIUS = sin_pi_over_3;
 
@@ -36,26 +36,56 @@ namespace Piously.Game.Graphics.Containers
 
         protected override DrawNode CreateDrawNode() => new HexagonalContainerDrawNode(this, sharedData);
 
+        // equation 1 is the line on top
+        private float equ1(Vector2 coord)
+        {
+            return coord.Y - sin_pi_over_3;
+        }
+
+        // equation 2 is the top right line
+        private float equ2(Vector2 coord)
+        {
+            return (float)(tan_pi_over_3 * coord.X + coord.Y - 2.0 * sin_pi_over_3);
+        }
+
+        // equation 3 is the top left line
+        private float equ3(Vector2 coord)
+        {
+            return (float)(-tan_pi_over_3 * coord.X + coord.Y - 2.0 * sin_pi_over_3);
+        }
+
+        // equation 4 is the line on bottom
+        private float equ4(Vector2 coord)
+        {
+            return -coord.Y - sin_pi_over_3;
+        }
+
+        // equation 5 is the bottom left line
+        private float equ5(Vector2 coord)
+        {
+            return (float)(tan_pi_over_3 * coord.X - coord.Y - 2.0 * sin_pi_over_3);
+        }
+
+        // equation 6 is the bottom right line
+        private float equ6(Vector2 coord)
+        {
+            return (float)(-tan_pi_over_3 * coord.X - coord.Y - 2.0 * sin_pi_over_3);
+        }
+
         public override bool ReceivePositionalInputAt(Vector2 screenSpacePos)
         {
             Vector2 norm = screenSpacePos - ScreenSpaceDrawQuad.TopLeft;
             norm = Vector2.Divide(norm, ScreenSpaceDrawQuad.Size);
             norm = (norm - new Vector2(0.5f)) * 2;
-            
-            // hexagons are horizontally and vertically symmetrical, so we only have to test one quadrant :)
-            norm = new Vector2(Math.Abs(norm.X), Math.Abs(norm.Y));
 
-            if (norm.Y > sin_pi_over_3)
-            {
-                return false; // top bound
-            }
+            float y1 = equ1(norm);
+            float y2 = equ2(norm);
+            float y3 = equ3(norm);
+            float y4 = equ4(norm);
+            float y5 = equ5(norm);
+            float y6 = equ6(norm);
 
-            if (norm.Y > -tan_pi_over_3 * (norm.X - 1))
-            {
-                return false; // right bound
-            }
-
-            return true;
+            return y1 <= 0.0 && y2 <= 0.0 && y3 <= 0.0 && y4 <= 0.0 && y5 <= 0.0 && y6 <= 0.0;
         }
 
         private class HexagonalContainerDrawNode : BufferedDrawNode, ICompositeDrawNode
