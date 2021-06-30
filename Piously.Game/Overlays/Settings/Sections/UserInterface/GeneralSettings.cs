@@ -1,5 +1,6 @@
 ﻿using osu.Framework.Allocation;
 using osu.Framework.Graphics;
+using osu.Framework.Localisation;
 using Piously.Game.Configuration;
 using Piously.Game.Graphics.UserInterface;
 
@@ -41,7 +42,7 @@ namespace Piously.Game.Overlays.Settings.Sections.UserInterface
 
         private class TimeSlider : PiouslySliderBar<float>
         {
-            public override string TooltipText => Current.Value.ToString("N0") + "ms";
+            public override LocalisableString TooltipText => Current.Value.ToString("N0") + "ms";
         }
     }
 }

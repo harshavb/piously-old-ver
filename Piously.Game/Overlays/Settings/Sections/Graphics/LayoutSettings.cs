@@ -237,7 +237,7 @@ namespace Piously.Game.Overlays.Settings.Sections.Graphics
 
         private class UIScaleSlider : PiouslySliderBar<float>
         {
-            public override string TooltipText => base.TooltipText + "x";
+            public override LocalisableString TooltipText => base.TooltipText + "x";
         }
 
         private class ResolutionSettingsDropdown : SettingsDropdown<Size>
