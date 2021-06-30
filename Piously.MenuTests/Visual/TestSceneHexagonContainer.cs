@@ -36,16 +36,12 @@ namespace Piously.MenuTests.Visual
                     hexagonalContainer = new HexagonalContainer
                     {
                         RelativeSizeAxes = Axes.Both,
-                        Masking = true,
-                        BorderColour = Colour4.Lime,
-                        BorderThickness = 2,
                         Children = new Drawable[]
                         {
                             new Box
                             {
                                 RelativeSizeAxes = Axes.Both,
-                                Colour = Colour4.Aqua,
-                                Size = new Vector2(1.0f, 1.0f)
+                                Colour = Colour4.Aqua
                             },
                             hexagons = new ToggleableHexagons
                             {
@@ -74,7 +70,7 @@ namespace Piously.MenuTests.Visual
             AddSliderStep(@"Resize", 64, 768, 256, value => container.ResizeTo(value));
             AddSliderStep(@"Rotate Hexagon", 0, 360, 0, value => hexagon.RotateTo(value));
             AddSliderStep(@"Rotate Triangle", 0, 360, 0, value => triangle.RotateTo(value));
-            AddSliderStep(@"Rotate Container", 0, 360, 0, value => hexagonalContainer.RotateTo(value));
+            AddSliderStep(@"Rotate Hexagonal Container", 0, 360, 0, value => hexagonalContainer.RotateTo(value));
             AddToggleStep(@"Hexagons Effect Visibility", value => hexagons.ToggleVisibility());
         }
     }
