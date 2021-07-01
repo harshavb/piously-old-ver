@@ -4,6 +4,7 @@
 #define SIN_PI_OVER_3 0.8660254037844386
 #define TAN_PI_OVER_3 1.732050807568877
 #define PI 3.1415926535
+#define SQRT_2_OVER_2 0.475
 
 varying mediump vec2 v_TexCoord;
 
@@ -15,46 +16,47 @@ uniform highp vec2 g_RotationAndResolution;
 // (A*cos(theta) + B*sin(theta)) * (x - x_0) + (B*cos(theta) - A*sin(theta)) * (y-y_0) + Ax_0 + By_0 + C = 0
 
 
+// NOTE: The scaling factor on the far right is a hack. Containers scale with the size of the rotating screenspacedrawquad, which we don't want for hexagons. There is no way to fix this behavior other than doing the opposite here.
 // equation 1 is the line on top
 highp float equ1(mediump vec2 coord, highp float rotation)
 {
     // return coord.y - SIN_PI_OVER_3;
-    return sin(rotation) * coord.x + cos(rotation) * coord.y - SIN_PI_OVER_3;
+    return sin(rotation) * coord.x + cos(rotation) * coord.y - SIN_PI_OVER_3/(1.0 + SQRT_2_OVER_2 * abs(sin(2.0 * rotation)));
 }
 
 // equation 2 is the top right line
 highp float equ2(mediump vec2 coord, highp float rotation)
 {
     // return TAN_PI_OVER_3 * coord.x + coord.y - 2.0 * SIN_PI_OVER_3;
-    return (TAN_PI_OVER_3 * cos(rotation) + sin(rotation)) * coord.x + (cos(rotation) - TAN_PI_OVER_3 * sin(rotation)) * coord.y - 2.0 * SIN_PI_OVER_3;
+    return (TAN_PI_OVER_3 * cos(rotation) + sin(rotation)) * coord.x + (cos(rotation) - TAN_PI_OVER_3 * sin(rotation)) * coord.y - 2.0 * SIN_PI_OVER_3/(1.0 + SQRT_2_OVER_2 * abs(sin(2.0 * rotation)));
 }
 
 // equation 3 is the top left line
 highp float equ3(mediump vec2 coord, highp float rotation)
 {
     // return -TAN_PI_OVER_3 * coord.x + coord.y - 2.0 * SIN_PI_OVER_3;
-    return (-TAN_PI_OVER_3 * cos(rotation) + sin(rotation)) * coord.x + (cos(rotation) - -TAN_PI_OVER_3 * sin(rotation)) * coord.y - 2.0 * SIN_PI_OVER_3;
+    return (-TAN_PI_OVER_3 * cos(rotation) + sin(rotation)) * coord.x + (cos(rotation) - -TAN_PI_OVER_3 * sin(rotation)) * coord.y - 2.0 * SIN_PI_OVER_3/(1.0 + SQRT_2_OVER_2 * abs(sin(2.0 * rotation)));
 }
 
 // equation 4 is the line on bottom
 highp float equ4(mediump vec2 coord, highp float rotation)
 {
     // return -coord.y - SIN_PI_OVER_3;
-    return -sin(rotation) * coord.x + -cos(rotation) * coord.y - SIN_PI_OVER_3;
+    return -sin(rotation) * coord.x + -cos(rotation) * coord.y - SIN_PI_OVER_3/(1.0 + SQRT_2_OVER_2 * abs(sin(2.0 * rotation)));
 }
 
 // equation 5 is the bottom left line
 highp float equ5(mediump vec2 coord, highp float rotation)
 {
     // return TAN_PI_OVER_3 * coord.x - coord.y - 2.0 * SIN_PI_OVER_3;
-    return (TAN_PI_OVER_3 * cos(rotation) - sin(rotation)) * coord.x + (-cos(rotation) - TAN_PI_OVER_3 * sin(rotation)) * coord.y - 2.0 * SIN_PI_OVER_3;
+    return (TAN_PI_OVER_3 * cos(rotation) - sin(rotation)) * coord.x + (-cos(rotation) - TAN_PI_OVER_3 * sin(rotation)) * coord.y - 2.0 * SIN_PI_OVER_3/(1.0 + SQRT_2_OVER_2 * abs(sin(2.0 * rotation)));
 }
 
 // equation 6 is the bottom right line
 highp float equ6(mediump vec2 coord, highp float rotation)
 {
     // return -TAN_PI_OVER_3 * coord.x - coord.y - 2.0 * SIN_PI_OVER_3;
-    return (-TAN_PI_OVER_3 * cos(rotation) - sin(rotation)) * coord.x + (-cos(rotation) - -TAN_PI_OVER_3 * sin(rotation)) * coord.y - 2.0 * SIN_PI_OVER_3;
+    return (-TAN_PI_OVER_3 * cos(rotation) - sin(rotation)) * coord.x + (-cos(rotation) - -TAN_PI_OVER_3 * sin(rotation)) * coord.y - 2.0 * SIN_PI_OVER_3/(1.0 + SQRT_2_OVER_2 * abs(sin(2.0 * rotation)));
 }
 
 // a visual demonstration of this calculation can be found at https://www.desmos.com/calculator/vihhpowcrb.

@@ -79,8 +79,8 @@ namespace Piously.MenuTests.Visual
             });
 
             AddSliderStep(@"Resize", 64, 768, 256, value => container.ResizeTo(value));
-            AddSliderStep(@"Rotate Hexagon", 0, 360, 0, value => hexagon.RotateTo(value));
-            AddSliderStep(@"Rotate Triangle", 0, 360, 0, value => triangle.RotateTo(value));
+            AddSliderStep(@"Rotate Hexagon", 0, 360, 153, value => hexagon.RotateTo(value));
+            AddSliderStep(@"Rotate Triangle", 0, 360, 153, value => triangle.RotateTo(value));
             AddSliderStep(@"Rotate Hexagonal Container", 0, 360, 0, value => hexagonalContainer.RotateTo(value));
             AddToggleStep(@"Hexagons Effect Visibility", value => hexagons.ToggleVisibility());
         }
