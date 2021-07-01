@@ -14,7 +14,7 @@ namespace Piously.MenuTests.Visual
     public class TestSceneHexagonContainer : TestScene
     {
         private readonly Container container;
-        private readonly HexagonalContainer hexagonalContainer;
+        private readonly Container hexagonalContainer;
         private readonly ToggleableHexagons hexagons;
         private readonly Hexagon hexagon;
         private readonly Triangle triangle;
@@ -30,19 +30,29 @@ namespace Piously.MenuTests.Visual
                 {
                     new Box
                     {
+                        Origin = Anchor.Centre,
+                        RelativeSizeAxes = Axes.Both,
+                        Colour = Colour4.Lime,
+                        Size = new Vector2(10f, 10f),
+                    },
+                    new Box
+                    {
                         RelativeSizeAxes = Axes.Both,
                         Colour = Colour4.Red
                     },
-                    hexagonalContainer = new HexagonalContainer
+                    hexagonalContainer = new Container
                     {
+                        Anchor = Anchor.Centre,
+                        Origin = Anchor.Centre,
                         RelativeSizeAxes = Axes.Both,
                         Children = new Drawable[]
                         {
-                            new Box
+                            new Hexagon
                             {
+                                Anchor = Anchor.Centre,
+                                Origin = Anchor.Centre,
                                 RelativeSizeAxes = Axes.Both,
                                 Colour = Colour4.Aqua,
-                                Size = new Vector2(10f, 10f),
                             },
                             hexagons = new ToggleableHexagons
                             {

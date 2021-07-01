@@ -81,7 +81,7 @@ namespace Piously.Game.Graphics.Primitives
                 float xMax = Math.Max(P0.X, Math.Max(P1.X, Math.Max(P2.X, Math.Max(P3.X, Math.Max(P4.X, P5.X)))));
                 float yMax = Math.Max(P0.Y, Math.Max(P1.Y, Math.Max(P2.Y, Math.Max(P3.Y, Math.Max(P4.Y, P5.Y)))));
 
-                return new RectangleF(xMin, yMin, xMax - xMin, yMax - yMin);
+                return new RectangleF(xMin + 50, yMin, xMax - xMin, yMax - yMin);
             }
         }
 
